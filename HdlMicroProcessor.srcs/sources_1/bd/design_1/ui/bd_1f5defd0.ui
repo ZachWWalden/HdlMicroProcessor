@@ -1,0 +1,19 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-433,-1",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port ddr3_sdram -pg 1 -lvl 2 -x 330 -y 50 -defaultsOSRD
+preplace port port-id_clk_ref_i -pg 1 -lvl 0 -x -20 -y 110 -defaultsOSRD
+preplace port port-id_sys_clk_i -pg 1 -lvl 0 -x -20 -y 130 -defaultsOSRD
+preplace inst mig_7series_0 -pg 1 -lvl 1 -x 160 -y 100 -defaultsOSRD
+preplace netloc clk_ref_i_1 1 0 1 NJ 110
+preplace netloc sys_clk_i_1 1 0 1 NJ 130
+preplace netloc mig_7series_0_DDR3 1 1 1 N 50
+levelinfo -pg 1 -20 160 330
+pagesize -pg 1 -db -bbox -sgen -130 0 450 940
+"
+}
+

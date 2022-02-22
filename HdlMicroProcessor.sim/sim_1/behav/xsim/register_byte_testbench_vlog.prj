@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen" \
+"../../../../HdlMicroProcessor.srcs/sources_1/imports/src/primitives/register_byte.v" \
+"../../../../HdlMicroProcessor.srcs/sim/primitives/register_byte_testbench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

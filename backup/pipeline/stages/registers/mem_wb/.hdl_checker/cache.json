@@ -1,0 +1,195 @@
+{
+ "builder": {
+  "_version": "<undefined>",
+  "_logger": "hdl_checker.builders.fallback",
+  "_work_folder": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/pipeline/mem_wb/.hdl_checker",
+  "_builtin_libraries": [],
+  "_added_libraries": [
+   {
+    "name": "default_library",
+    "case_sensitive": false,
+    "__class__": "Identifier"
+   }
+  ],
+  "__class__": "Fallback"
+ },
+ "config_file": [
+  {
+   "name": "/tmp/hdl_checker_project_pid1135779.json",
+   "__class__": "Path"
+  },
+  1644900051.1860611,
+  "generated"
+ ],
+ "database": {
+  "sources": [
+   {
+    "path": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/pipeline/mem_wb/mem_wb.v",
+     "__class__": "Path"
+    },
+    "mtime": 1644900349.5653296,
+    "flags": {
+     "source_specific": [],
+     "single": [],
+     "dependencies": []
+    },
+    "dependencies": [],
+    "diags": []
+   }
+  ],
+  "inferred_libraries": [
+   {
+    "name": "/tmp/nvimfVZIIf/tmpg7cf6hwl.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpkbbvd0hl.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpl6m_me63.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpfqel9m_s.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmp053lhbo3.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmplapg81_i.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpwk1yrtdw.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpe_rchrdl.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpgvbyug4h.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmphdxze642.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpyvxr1a0c.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmp1wv0i_oc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmppn1aa7lp.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpfu3z5r8h.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpxgy8ofmt.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpnd9jf_1q.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmp_zv0wz53.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpntforj8l.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmph5bl6q7a.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpnkh_3fz8.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmp4oh3e8ai.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpd8tsha0k.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpgosz5to7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpp5z423ra.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpyfdv11m5.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmp9xxr1e76.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmp2x8qt1bc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/pipeline/mem_wb/mem_wb.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpk1bv2v86.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpx1uxex1c.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmpojaaztq0.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimfVZIIf/tmprwf_j5qf.v",
+    "__class__": "Path"
+   }
+  ],
+  "design_units": [
+   {
+    "owner": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/pipeline/mem_wb/mem_wb.v",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "mem_wb",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      7,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   }
+  ],
+  "__class__": "Database"
+ },
+ "__version__": "0.7.4"
+}

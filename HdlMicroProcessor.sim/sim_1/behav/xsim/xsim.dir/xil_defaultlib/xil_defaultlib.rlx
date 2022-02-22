@@ -1,0 +1,7 @@
+0.7
+2020.2
+Jun 10 2021
+19:45:28
+/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,,,,,,,
+/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/primitives/register_byte_testbench.v,1642884572,verilog,,,,register_byte_testbench,,,../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen,,,,,
+/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/imports/src/primitives/register_byte.v,1642882547,verilog,,/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/primitives/register_byte_testbench.v,,register_byte,,,../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen,,,,,

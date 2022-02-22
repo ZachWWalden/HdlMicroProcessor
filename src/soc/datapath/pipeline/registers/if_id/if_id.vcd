@@ -1,0 +1,60 @@
+$date
+	Sat Feb 12 18:31:13 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module if_id $end
+$var wire 1 ! clock $end
+$var wire 32 " instruction_in [31:0] $end
+$var wire 1 # nreset $end
+$var wire 1 $ stall $end
+$var wire 1 % take_branch_addr $end
+$var wire 1 & take_branch_addr_out $end
+$var wire 32 ' instruction_out [31:0] $end
+$var reg 32 ( instruction_word [31:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bz (
+bz '
+z&
+z%
+0$
+1#
+bz "
+1!
+$end
+#5000
+b11111111111111111111111111111111 "
+0!
+#10000
+b11111111111111111111111111111111 '
+b11111111111111111111111111111111 (
+1!
+#15000
+1&
+1%
+0!
+#20000
+1!
+#25000
+b0 '
+0&
+1$
+0!
+#30000
+1!
+#35000
+0#
+0!
+#40000
+b0 (
+1!
+#45000
+0!
+#45001

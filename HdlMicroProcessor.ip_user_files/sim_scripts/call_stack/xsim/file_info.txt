@@ -1,0 +1,2 @@
+call_stack.v,verilog,xil_defaultlib,../../../../HdlMicroProcessor.gen/sources_1/ip/call_stack/sim/call_stack.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

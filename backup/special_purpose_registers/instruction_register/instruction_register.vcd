@@ -1,0 +1,60 @@
+$date
+	Thu Jan 27 14:45:10 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module instruction_register $end
+$var wire 1 ! clock $end
+$var wire 32 " data_in [31:0] $end
+$var wire 32 # data_out [31:0] $end
+$var wire 1 $ nreset $end
+$var wire 1 % stall $end
+$var reg 32 & value [31:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 &
+0%
+1$
+b0 #
+b1001111100100000110 "
+1!
+$end
+#5000
+b1001111100100000110 #
+b1001111100100000110 &
+0!
+#10000
+b11110100001001000000 "
+1%
+1!
+#15000
+0!
+#20000
+1!
+#25000
+0!
+#30000
+1!
+#35000
+0!
+#40000
+0%
+1!
+#45000
+0$
+b11110100001001000000 #
+b11110100001001000000 &
+0!
+#50000
+b0 #
+b0 &
+1!
+#55000
+0!
+#55001

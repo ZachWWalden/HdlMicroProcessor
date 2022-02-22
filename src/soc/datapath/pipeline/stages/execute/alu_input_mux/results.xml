@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1645153703" />
+    <testcase name="test_alu_input_mux" classname="alu_input_mux_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/pipeline/stages/execute/alu_input_mux/alu_input_mux_tb.py" lineno="6" time="0.002384662628173828" sim_time_ns="65.001" ratio_time="27257.943841631677" />
+  </testsuite>
+</testsuites>

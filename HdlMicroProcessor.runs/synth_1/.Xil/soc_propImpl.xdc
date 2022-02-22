@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc rfile:../../../HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:9 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN R2    IOSTANDARD SSTL135 } [get_ports { CLK100MHZ }]; #IO_L12P_T1_MRCC_34 Sch=ddr3_clk[200]
+set_property src_info {type:XDC file:1 line:33 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN G15   IOSTANDARD LVCMOS33 } [get_ports { reset }]; #IO_L18N_T2_A23_15 Sch=btn[0]

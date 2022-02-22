@@ -1,0 +1,511 @@
+{
+ "builder": {
+  "_version": "<undefined>",
+  "_logger": "hdl_checker.builders.fallback",
+  "_work_folder": "/home/zww/Documents/College/2022SP/HDL/src/soc/datapath/pipeline/registers/if_id/.hdl_checker",
+  "_builtin_libraries": [],
+  "_added_libraries": [
+   {
+    "name": "not_in_project",
+    "case_sensitive": true,
+    "__class__": "Identifier"
+   },
+   {
+    "name": "default_library",
+    "case_sensitive": false,
+    "__class__": "Identifier"
+   }
+  ],
+  "__class__": "Fallback"
+ },
+ "config_file": [
+  {
+   "name": "/tmp/hdl_checker_project_pid915279.json",
+   "__class__": "Path"
+  },
+  1645498370.9887836,
+  "generated"
+ ],
+ "database": {
+  "sources": [
+   {
+    "path": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/src/soc/datapath/pipeline/registers/if_id/if_id.v",
+     "__class__": "Path"
+    },
+    "mtime": 1645498505.678398,
+    "flags": {
+     "source_specific": [],
+     "single": [],
+     "dependencies": []
+    },
+    "dependencies": [],
+    "diags": []
+   }
+  ],
+  "inferred_libraries": [
+   {
+    "name": "/tmp/nvim9uGuwH/tmpzj7a7_rk.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpcr9q2kkb.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpa948r27h.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpbgdzcty4.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpyevn4tbb.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpp5lv1yfu.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpis9acfcm.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpk_1eg8i1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpe0xrz5vz.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpvrj9k7ew.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmplz45xzse.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpxvmunlnx.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp078n4pki.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpjifgsmig.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpidh787y6.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpnxeo56e5.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp7gmls_e7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpoec1jrtu.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp7azvebit.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpzw0250ff.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpch3swp6a.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmped8nb449.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpel_tca8p.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmptpw1pbid.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpqzvhwqws.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpr8j1s787.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp47ay1q1_.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp6oymiwe7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpmjr1n8mz.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpj0ke94i1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmph380xowz.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp3tbzrl9h.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp43q1qdze.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp78eaeq1r.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpuj1choj9.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpng5741hj.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpp7eo5k7p.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmptc24zfhl.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp5m6g70dn.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmprlpwaxo6.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp_ucy_k2s.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpc34_dfoc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp04m23t3s.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp9ztes57i.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpzfvibsue.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpvhokj5iv.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpbv_mowe_.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpi1vf7k3o.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp4o0rjrhc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp2_h25m19.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpp004e7ny.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp19j58gnj.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpjmckgkpx.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpoe1w6vhg.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpfs_g5866.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp8g244orx.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpb72x9m4n.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmptb0ll6a2.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpl61m86o6.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp8y7mogtx.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp_8aegmuc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmplp_1xppf.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpy_x99z6c.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpyxo_tnfc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpt753y3r7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpt4okek1q.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpba4eytqe.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp9rahv3r9.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp9lqdcwof.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/home/zww/Documents/College/2022SP/HDL/src/soc/datapath/pipeline/registers/if_id/if_id.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp5git63l5.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmppfts7z4f.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpz87quck1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpbp745r5n.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp5bt4uxmd.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmphz56yv1h.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpqbh6l4r7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpf1w_1jrv.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpysed_zth.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpjzxj8pue.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpb64h9__b.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpf0f6u9kr.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp6hbtc_xv.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpx0f8svpf.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpme8lwl_z.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpofmwyapm.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmptdbdsqfn.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp5txw00zp.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpb1r77yf_.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpvuxg133x.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpwuqncdqy.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpicqhgf58.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpd3g9kich.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp8phctemg.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpt6kai275.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpjcu33t8m.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpkdkgkngn.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp4yyigngy.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpx_yi27ph.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp2r_ttuc1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpon97cr9r.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpf33s0j1d.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpf9yn0g0v.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmpcnghtzog.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvim9uGuwH/tmp2mhdjh8h.v",
+    "__class__": "Path"
+   }
+  ],
+  "design_units": [
+   {
+    "owner": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/src/soc/datapath/pipeline/registers/id_ex/id_ex.v",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "id_ex",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      7,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/src/soc/datapath/pipeline/registers/if_id/if_id.v",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "if_id",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      11,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   }
+  ],
+  "__class__": "Database"
+ },
+ "__version__": "0.7.4"
+}

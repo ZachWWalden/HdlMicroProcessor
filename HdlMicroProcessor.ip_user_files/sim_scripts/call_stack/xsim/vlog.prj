@@ -1,0 +1,6 @@
+verilog xil_defaultlib  \
+"../../../../HdlMicroProcessor.gen/sources_1/ip/call_stack/sim/call_stack.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

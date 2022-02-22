@@ -1,0 +1,319 @@
+{
+ "builder": {
+  "_version": "<undefined>",
+  "_logger": "hdl_checker.builders.fallback",
+  "_work_folder": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/templates/.hdl_checker",
+  "_builtin_libraries": [],
+  "_added_libraries": [
+   {
+    "name": "not_in_project",
+    "case_sensitive": true,
+    "__class__": "Identifier"
+   },
+   {
+    "name": "default_library",
+    "case_sensitive": false,
+    "__class__": "Identifier"
+   }
+  ],
+  "__class__": "Fallback"
+ },
+ "config_file": [
+  {
+   "name": "/tmp/hdl_checker_project_pid19553.json",
+   "__class__": "Path"
+  },
+  1643080915.5334744,
+  "generated"
+ ],
+ "database": {
+  "sources": [
+   {
+    "path": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/templates/module_name.v",
+     "__class__": "Path"
+    },
+    "mtime": 1643081525.9253058,
+    "flags": {
+     "source_specific": [],
+     "single": [],
+     "dependencies": []
+    },
+    "dependencies": [],
+    "diags": []
+   }
+  ],
+  "inferred_libraries": [
+   {
+    "name": "/tmp/nvimnE4WvS/tmpnoridhmu.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmphmzhprn3.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp_gn46te6.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmph0slba4z.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpugi50h3z.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpiue5jk4u.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp30nqcq7z.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpros1kgdp.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp0tqt30fc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpni070yqq.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpzwtexgqa.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpg9mvzsnh.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpsuq179d0.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpywf8s766.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpvmoelqn6.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpdpegbwo3.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp_b28r1z7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpyij4hksu.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/templates/module_name.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpyrdissrn.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpza_azxln.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp9okxrpti.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpjnf0exfh.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpf3_pv65d.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpg1mgfjcs.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpb390i1l1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp69lqhrhj.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmplh5_h4gi.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpk4_e5zgn.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpk_m5vy5_.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpk9tfxlk1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpvx5waw3m.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpnqvqph79.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpdai5_jfh.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp3x7eqbt7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmprq4tc8pd.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmph2rfgev7.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpzhdp1gpk.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpkq_khpuc.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmphcryjdmt.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp30paa9lw.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp7iz9iqy8.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmps5xrqcoo.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpn_4sqs9l.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp3orzxtu4.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp61a2gvvn.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpytu4r1uk.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp8dgpu41y.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp_6i13yol.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp5oea2jpk.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp4299pss8.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp_i3jimll.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp3dnsvmky.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpthl49_4c.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmp5ify0zce.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpxijno1g1.v",
+    "__class__": "Path"
+   },
+   {
+    "name": "/tmp/nvimnE4WvS/tmpj8hfdu3k.v",
+    "__class__": "Path"
+   }
+  ],
+  "design_units": [
+   {
+    "owner": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/special_purpose_registers/instruction_register/instruction_register.v",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "instruction_register",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      12,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   },
+   {
+    "owner": {
+     "name": "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/templates/module_name.v",
+     "__class__": "Path"
+    },
+    "type_": "entity",
+    "name": {
+     "name": "CHANGE",
+     "case_sensitive": true,
+     "__class__": "VerilogIdentifier"
+    },
+    "locations": [
+     [
+      8,
+      7
+     ]
+    ],
+    "__class__": "VerilogDesignUnit"
+   }
+  ],
+  "__class__": "Database"
+ },
+ "__version__": "0.7.4"
+}

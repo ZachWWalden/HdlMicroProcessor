@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1644055143" />
+    <testcase name="test_reg_file_input_decoder" classname="reg_file_input_decoder_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/functional_units/reg_file_input_decoder/reg_file_input_decoder_tb.py" lineno="6" time="0.0027222633361816406" sim_time_ns="45.001" ratio_time="16530.729926782275" />
+  </testsuite>
+</testsuites>

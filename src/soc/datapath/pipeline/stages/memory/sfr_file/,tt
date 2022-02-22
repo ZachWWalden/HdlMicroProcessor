@@ -1,0 +1,15 @@
+import cocotb
+from cocotb.clock import Clock
+from cocotb.triggers import FallingEdge
+from cocotb.triggers import RisingEdge
+
+@cocotb.test()
+async def test_sfr_file(dut):
+    clock = Clock(dut.clock, 10, units="ns")
+    cocotb.start_soon(clock.start())
+
+    dut.nreset.value = 0
+    await RisingEdge(dut.clock)
+    dut.nreset.value = 1
+
+    #loop through each register and write too it.

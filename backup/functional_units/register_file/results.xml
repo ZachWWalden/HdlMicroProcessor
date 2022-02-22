@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1644183242" />
+    <testcase name="test_register_file" classname="register_file_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/functional_units/register_file/register_file_tb.py" lineno="6" time="0.01878809928894043" sim_time_ns="660.001" ratio_time="35128.67320157862" />
+  </testsuite>
+</testsuites>

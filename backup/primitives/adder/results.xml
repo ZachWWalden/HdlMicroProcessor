@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1643415511" />
+    <testcase name="test_adder" classname="adder_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/primitives/adder/adder_tb.py" lineno="6" time="0.11000561714172363" sim_time_ns="5115.001" ratio_time="46497.63469269198" />
+  </testsuite>
+</testsuites>
