@@ -3,11 +3,11 @@ WAVES=1
 GUI=1
 
 ifeq ($(TOPLEVEL_LANG),verilog)
-	VERILOG_SOURCES = $(shell pwd)/CHANGE.v
+	VERILOG_SOURCES = $(shell pwd)/mem_addr_sel_mux.v
 else ifeq ($(TOPLEVEL_LANG), vhdl)
-	VHDL_SOURCES = $(shell pwd)/CHANGE.vhdl
+	VHDL_SOURCES = $(shell pwd)/mem_addr_sel_mux.vhdl
 endif
 
-MODULE = CHANGE_tb
-TOPLEVEL = CHANGE
+MODULE = mem_addr_sel_mux_tb
+TOPLEVEL = mem_addr_sel_mux
 include $(shell cocotb-config --makefiles)/Makefile.sim

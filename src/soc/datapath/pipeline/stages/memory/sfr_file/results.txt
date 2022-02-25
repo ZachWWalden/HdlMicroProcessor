@@ -1,0 +1,24 @@
+make -f Makefile results.xml
+make[1]: Entering directory '/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file'
+/usr/bin/iverilog -o sim_build/sim.vvp -D COCOTB_SIM=1 -s sfr_file -f sim_build/cmds.f -g2012   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file.v
+MODULE=sfr_file_tb TESTCASE= TOPLEVEL=sfr_file TOPLEVEL_LANG=verilog \
+         /usr/bin/vvp -M /usr/lib/python3.10/site-packages/cocotb/libs -m libcocotbvpi_icarus   sim_build/sim.vvp 
+     -.--ns INFO     cocotb.gpi                         ..mbed/gpi_embed.cpp:76   in set_program_name_in_venv        Did not detect Python virtual environment. Using system-wide Python interpreter
+     -.--ns INFO     cocotb.gpi                         ../gpi/GpiCommon.cpp:99   in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     Running tests with cocotb v1.6.1 from /usr/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     Seeding Python random module with 1645816421
+     0.00ns WARNING  Pytest not found, assertion rewriting will not occur
+     0.00ns INFO     Found test sfr_file_tb.test_sfr_file
+     0.00ns INFO     running test_sfr_file (1/1)
+  1055.00ns INFO     test_sfr_file passed
+  1055.00ns INFO     **************************************************************************************
+                     ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                     **************************************************************************************
+                     ** sfr_file_tb.test_sfr_file      PASS        1055.00           0.01      78390.64  **
+                     **************************************************************************************
+                     ** TESTS=1 PASS=1 FAIL=0 SKIP=0               1055.00           0.02      59047.17  **
+                     **************************************************************************************
+                     
+VCD info: dumpfile sfr_file.vcd opened for output.
+make[1]: Leaving directory '/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file'
