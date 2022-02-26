@@ -23,12 +23,12 @@ module ex_mem(
 	output [31:0] instruction_out
 	input [1:0] mem_wren_in,
 	output [1:0] mem_wren_out,
-	input main_memory_enable_in,
+	input main_memory_enable_in, 		//BEGIN These Signals Are to be sent to the memory i/o unit rather than the memory stage.
 	output main_memory_enable_out,
 	input frame_buffer_enable_in,
 	output frame_buffer_enable_out,
 	input call_stack_enable_in,
-	output call_stack_enable_out,
+	output call_stack_enable_out,  		//END MEM/IO Signals
 	input [1:0] mem_wb_data_input_sel_in,
 	output [1:0] mem_wb_data_input_sel_out,
 	input sfr_file_input_sel_in,
@@ -41,7 +41,7 @@ module ex_mem(
 	output [1:0] reg_file_wen_out,
 	input [1:0] sfr_file_wren_in,
 	output [1:0] sfr_file_wren_out,
-	input [13:0] ret_addr_in,
+	input [13:0] ret_addr_in, 		//This Signal goes directly to the call stack.
 	output [13:0] ret_addr_out
 );
 
