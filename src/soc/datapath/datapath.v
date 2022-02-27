@@ -6,7 +6,7 @@ Description -
 Parameters -
 */
 
-module CHANGE(
+module datapath(
 
 );
 
@@ -18,8 +18,8 @@ module CHANGE(
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
-  $dumpfile ("CHANGE.vcd");
-  $dumpvars (0, CHANGE);
+  $dumpfile ("datapath.vcd");
+  $dumpvars (0, datapath);
   #1;
 end
 `endif

@@ -40,7 +40,11 @@ module decode(
 
 	//instantiate instruction decode unit.
 
+	//instantiate branch_resolution_logic.
+
 	//instantiate alu forwarding unit.
+
+	//instantiate ex_mem_data_input_mux
 
 	always @ (posedge clock)
 	begin
