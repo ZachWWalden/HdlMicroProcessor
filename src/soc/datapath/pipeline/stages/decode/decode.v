@@ -35,7 +35,8 @@ module decode(
 	output [1:0] reg_file_wen,
 	output [1:0] sfr_file_wren,
 	//BEGIN interface to hazard unit.
-	output request_stall
+	output request_stall,
+	output ret 					//This signal is neccessary in order to communicate to the hazard unit that a return instruction has entered the pipeline. Requiring fetch to stall until the return address can be popped off of the call stack and loaded into the program counter.
 );
 
 	//instantiate instruction decode unit.

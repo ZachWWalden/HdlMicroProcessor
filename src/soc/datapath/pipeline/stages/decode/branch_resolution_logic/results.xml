@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1646450596" />
+    <testcase name="test_branch_resolution_logic" classname="branch_resolution_logic_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/branch_resolution_logic/branch_resolution_logic_tb.py" lineno="6" time="0.00520634651184082" sim_time_ns="205.001" ratio_time="39375.21245152722" />
+  </testsuite>
+</testsuites>

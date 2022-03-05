@@ -10,7 +10,7 @@ module branch_resolution_logic(
 	input clock,
 	input [7:0] operation,
 	input [2:0] flags,
-	output take_branch_target
+	output reg take_branch_target
 );
 
 	always @ (*)
@@ -18,7 +18,7 @@ module branch_resolution_logic(
 		if(operation[7:3] == 5'b00111)
 		begin
 			//Carry Branches flags[2]
-			if(operation[1:0 == 2'b01)
+			if(operation[1:0] == 2'b01)
 			begin
 				if(flags[2] == 1'b1 && operation[2] == 1'b1)
 				begin
@@ -34,7 +34,7 @@ module branch_resolution_logic(
 				end
 			end
 			//Zero Branches flags[0]
-			else if(operation[1:0 == 2'b10)
+			else if(operation[1:0] == 2'b10)
 			begin
 				if(flags[0] == 1'b1 && operation[2] == 1'b1)
 				begin
@@ -50,7 +50,7 @@ module branch_resolution_logic(
 				end
 			end
 			//Negative Branches flags[1]
-			else if(operation[1:0 == 2'b11)
+			else if(operation[1:0] == 2'b11)
 			begin
 				if(flags[1] == 1'b1 && operation[2] == 1'b1)
 				begin
@@ -79,8 +79,8 @@ module branch_resolution_logic(
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
-  $dumpfile ("CHANGE.vcd");
-  $dumpvars (0, CHANGE);
+  $dumpfile ("branch_resolution_logic.vcd");
+  $dumpvars (0, branch_resolution_logic);
   #1;
 end
 `endif
