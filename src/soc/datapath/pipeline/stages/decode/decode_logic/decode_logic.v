@@ -6,11 +6,11 @@ Description -
 Parameters -
 */
 
-module CHANGE(
+module decode_logic(
 
 );
 
-	always @ (posedge clock)
+	always @ (*)
 	begin
 
 	end
@@ -18,8 +18,8 @@ module CHANGE(
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
-  $dumpfile ("CHANGE.vcd");
-  $dumpvars (0, CHANGE);
+  $dumpfile ("decode_logic.vcd");
+  $dumpvars (0, decode_logic);
   #1;
 end
 `endif

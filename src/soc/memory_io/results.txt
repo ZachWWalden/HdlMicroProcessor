@@ -1,0 +1,23 @@
+make -f Makefile results.xml
+make[1]: Entering directory '/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io'
+MODULE=memory_io_tb TESTCASE= TOPLEVEL=memory_io TOPLEVEL_LANG=verilog \
+         /usr/bin/vvp -M /usr/lib/python3.10/site-packages/cocotb/libs -m libcocotbvpi_icarus   sim_build/sim.vvp 
+     -.--ns INFO     cocotb.gpi                         ..mbed/gpi_embed.cpp:76   in set_program_name_in_venv        Did not detect Python virtual environment. Using system-wide Python interpreter
+     -.--ns INFO     cocotb.gpi                         ../gpi/GpiCommon.cpp:99   in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     Running on Icarus Verilog version 11.0 (stable)
+     0.00ns INFO     Running tests with cocotb v1.6.1 from /usr/lib/python3.10/site-packages/cocotb
+     0.00ns INFO     Seeding Python random module with 1646113606
+     0.00ns WARNING  Pytest not found, assertion rewriting will not occur
+     0.00ns INFO     Found test memory_io_tb.test_memory_io
+     0.00ns INFO     running test_memory_io (1/1)
+    75.00ns INFO     test_memory_io passed
+    75.00ns INFO     **************************************************************************************
+                     ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                     **************************************************************************************
+                     ** memory_io_tb.test_memory_io    PASS          75.00           0.00      16937.33  **
+                     **************************************************************************************
+                     ** TESTS=1 PASS=1 FAIL=0 SKIP=0                 75.00           0.01       5752.42  **
+                     **************************************************************************************
+                     
+VCD info: dumpfile memory_io.vcd opened for output.
+make[1]: Leaving directory '/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io'

@@ -1,0 +1,145 @@
+$date
+	Mon Feb 28 23:46:46 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module memory_io $end
+$var wire 17 ! addr_in [16:0] $end
+$var wire 8 " call_stk_addr [7:0] $end
+$var wire 8 # call_stk_addr_in [7:0] $end
+$var wire 14 $ call_stk_data_in [13:0] $end
+$var wire 14 % call_stk_data_out [13:0] $end
+$var wire 14 & call_stk_din [13:0] $end
+$var wire 14 ' call_stk_dout [13:0] $end
+$var wire 1 ( call_stk_en $end
+$var wire 1 ) call_stk_wen $end
+$var wire 1 * clock $end
+$var wire 12 + data_in [11:0] $end
+$var wire 1 , fb_en $end
+$var wire 17 - frame_buf_addra [16:0] $end
+$var wire 12 . frame_buf_dina [11:0] $end
+$var wire 12 / frame_buf_douta [11:0] $end
+$var wire 1 0 frame_buf_wena $end
+$var wire 8 1 main_mem_dout [7:0] $end
+$var wire 1 2 main_mem_en $end
+$var wire 1 3 main_mem_wen $end
+$var wire 1 4 mem_wen $end
+$var wire 14 5 prog_mem_addr_fetch [13:0] $end
+$var wire 14 6 prog_mem_addra [13:0] $end
+$var wire 32 7 prog_mem_douta [31:0] $end
+$var wire 8 8 prog_mem_doutb [7:0] $end
+$var wire 1 9 prog_mem_en $end
+$var wire 32 : prog_mem_instruction [31:0] $end
+$var wire 16 ; prog_mem_addrb [15:0] $end
+$var wire 8 < main_mem_din [7:0] $end
+$var wire 16 = main_mem_addr [15:0] $end
+$var wire 12 > data_out [11:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx >
+bz =
+bz <
+bz ;
+bz :
+z9
+bz 8
+bz 7
+bz 6
+bz 5
+04
+03
+z2
+bz 1
+00
+bz /
+bz .
+bz -
+z,
+bz +
+1*
+0)
+1(
+b1010101010 '
+b11111111111111 &
+b1010101010 %
+b11111111111111 $
+b11111111 #
+b11111111 "
+bz !
+$end
+#5000
+1)
+x3
+x0
+14
+0*
+#10000
+1*
+#15000
+0)
+b11111111 <
+b1111111111111111 =
+b1111111111111111 ;
+13
+0(
+b111111111111 .
+b111111111111 +
+b11111111111111111 -
+b11111111111111111 !
+12
+0*
+#20000
+1*
+#25000
+03
+10
+02
+1,
+0*
+#30000
+1*
+#35000
+b11111111 >
+00
+0,
+04
+b11111111 1
+b11101110 8
+b110111011101 /
+12
+0*
+#40000
+1*
+#45000
+b11101110 >
+02
+19
+0*
+#50000
+1*
+#55000
+b110111011101 >
+09
+1,
+0*
+#60000
+1*
+#65000
+b0 >
+0,
+b1010101010 6
+b1010101010 5
+b11111110111111101111111011111110 :
+b11111110111111101111111011111110 7
+0*
+#70000
+1*
+#75000
+0*
+#75001
