@@ -1,5 +1,5 @@
 $date
-	Thu Feb 17 19:08:03 2022
+	Sat Mar  5 18:38:54 2022
 $end
 $version
 	Icarus Verilog
@@ -11,17 +11,19 @@ $scope module ex_mem_data_input_mux $end
 $var wire 8 ! alu_res_bot [7:0] $end
 $var wire 8 " alu_res_top [7:0] $end
 $var wire 1 # clock $end
-$var wire 8 $ reg_file_bot [7:0] $end
-$var wire 8 % reg_file_top [7:0] $end
-$var wire 2 & sel_signals [1:0] $end
-$var wire 8 ' ex_data_out_top [7:0] $end
-$var wire 8 ( ex_data_out_bot [7:0] $end
+$var wire 8 $ immeadiate [7:0] $end
+$var wire 8 % reg_file_bot [7:0] $end
+$var wire 8 & reg_file_top [7:0] $end
+$var wire 4 ' sel_signals [3:0] $end
+$var wire 8 ( ex_data_out_top [7:0] $end
+$var wire 8 ) ex_data_out_bot [7:0] $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+bx )
 bx (
-bx '
+bz '
 bz &
 bz %
 bz $
@@ -30,13 +32,14 @@ bz "
 bz !
 $end
 #5000
-b10101010 '
+b10101010 )
 b10101010 (
+b10101010 &
 b10101010 %
-b10101010 $
 b11111111 "
 b11111111 !
-b0 &
+b11101110 $
+b10 '
 0#
 #10000
 1#
@@ -45,12 +48,22 @@ b0 &
 #20000
 1#
 #25000
-b11111111 '
+b11111111 )
 b11111111 (
-b11 &
+b101 '
 0#
 #30000
 1#
 #35000
 0#
-#35001
+#40000
+1#
+#45000
+b11101110 )
+b1001 '
+0#
+#50000
+1#
+#55000
+0#
+#55001

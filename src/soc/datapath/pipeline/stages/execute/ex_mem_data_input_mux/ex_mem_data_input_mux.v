@@ -8,11 +8,12 @@ Parameters -
 
 module ex_mem_data_input_mux(
 	input clock,
-	input [1:0] sel_signals,
+	input [3:0] sel_signals, 		//4 bits the low bit selects between the alu result and ID/EX data top values,
 	input [7:0] reg_file_top,
 	input [7:0] reg_file_bot,
 	input [7:0] alu_res_top,
 	input [7:0] alu_res_bot,
+	input [7:0] immeadiate,
 	output [7:0] ex_data_out_top,
 	output [7:0] ex_data_out_bot
 );
@@ -26,14 +27,15 @@ module ex_mem_data_input_mux(
 	assign ex_data_out_top[6] = (~sel_signals[0] & reg_file_top[6]) | (sel_signals[0] & alu_res_top[6]);
 	assign ex_data_out_top[7] = (~sel_signals[0] & reg_file_top[7]) | (sel_signals[0] & alu_res_top[7]);
 
-	assign ex_data_out_bot[0] = (~sel_signals[1] & reg_file_bot[0]) | (sel_signals[1] & alu_res_bot[0]);
-	assign ex_data_out_bot[1] = (~sel_signals[1] & reg_file_bot[1]) | (sel_signals[1] & alu_res_bot[1]);
-	assign ex_data_out_bot[2] = (~sel_signals[1] & reg_file_bot[2]) | (sel_signals[1] & alu_res_bot[2]);
-	assign ex_data_out_bot[3] = (~sel_signals[1] & reg_file_bot[3]) | (sel_signals[1] & alu_res_bot[3]);
-	assign ex_data_out_bot[4] = (~sel_signals[1] & reg_file_bot[4]) | (sel_signals[1] & alu_res_bot[4]);
-	assign ex_data_out_bot[5] = (~sel_signals[1] & reg_file_bot[5]) | (sel_signals[1] & alu_res_bot[5]);
-	assign ex_data_out_bot[6] = (~sel_signals[1] & reg_file_bot[6]) | (sel_signals[1] & alu_res_bot[6]);
-	assign ex_data_out_bot[7] = (~sel_signals[1] & reg_file_bot[7]) | (sel_signals[1] & alu_res_bot[7]);
+	//sel_signals[1] == 1 -> ex_data_out_bot = reg_file_bot, sel_signals[2] == 1 -> ex_data_out_bot = alu_res_bot, sel_signals[3] == 1 -> ex_data_out_bot = immeadiate
+	assign ex_data_out_bot[0] = (sel_signals[1] & reg_file_bot[0]) | (sel_signals[2] & alu_res_bot[0]) | (sel_signals[3] & immeadiate[0]);
+	assign ex_data_out_bot[1] = (sel_signals[1] & reg_file_bot[1]) | (sel_signals[2] & alu_res_bot[1]) | (sel_signals[3] & immeadiate[1]);
+	assign ex_data_out_bot[2] = (sel_signals[1] & reg_file_bot[2]) | (sel_signals[2] & alu_res_bot[2]) | (sel_signals[3] & immeadiate[2]);
+	assign ex_data_out_bot[3] = (sel_signals[1] & reg_file_bot[3]) | (sel_signals[2] & alu_res_bot[3]) | (sel_signals[3] & immeadiate[3]);
+	assign ex_data_out_bot[4] = (sel_signals[1] & reg_file_bot[4]) | (sel_signals[2] & alu_res_bot[4]) | (sel_signals[3] & immeadiate[4]);
+	assign ex_data_out_bot[5] = (sel_signals[1] & reg_file_bot[5]) | (sel_signals[2] & alu_res_bot[5]) | (sel_signals[3] & immeadiate[5]);
+	assign ex_data_out_bot[6] = (sel_signals[1] & reg_file_bot[6]) | (sel_signals[2] & alu_res_bot[6]) | (sel_signals[3] & immeadiate[6]);
+	assign ex_data_out_bot[7] = (sel_signals[1] & reg_file_bot[7]) | (sel_signals[2] & alu_res_bot[7]) | (sel_signals[3] & immeadiate[7]);
 
 // the "macro" to dump signals
 `ifdef COCOTB_SIM

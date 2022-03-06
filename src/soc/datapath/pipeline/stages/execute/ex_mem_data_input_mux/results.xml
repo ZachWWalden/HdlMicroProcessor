@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1645146483" />
-    <testcase name="test_ex_mem_data_input_mux" classname="ex_mem_data_input_mux_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sim/pipeline/stages/execute/ex_mem_data_input_mux/ex_mem_data_input_mux_tb.py" lineno="6" time="0.002077817916870117" sim_time_ns="35.001" ratio_time="16845.07565163511" />
+    <property name="random_seed" value="1646527134" />
+    <testcase name="test_ex_mem_data_input_mux" classname="ex_mem_data_input_mux_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/ex_mem_data_input_mux/ex_mem_data_input_mux_tb.py" lineno="6" time="0.002582550048828125" sim_time_ns="55.001" ratio_time="21297.167125553915" />
   </testsuite>
 </testsuites>
