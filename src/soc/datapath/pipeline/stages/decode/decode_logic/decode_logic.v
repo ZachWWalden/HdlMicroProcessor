@@ -16,7 +16,7 @@ module decode_logic(
 	output reg call_stack_enable,
 	output reg [1:0] mem_wren,
 
-	output reg [1:0] ex_mem_data_input_sel,
+	output reg [3:0] ex_mem_data_input_sel,
 	output reg [3:0] mem_wb_data_input_sel,
 
 	output reg [1:0] reg_file_wen
