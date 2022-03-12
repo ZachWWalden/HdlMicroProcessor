@@ -1,0 +1,34 @@
+$date
+	Sat Mar 12 01:12:51 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module inst_word_sel_mux $end
+$var wire 1 ! clock $end
+$var wire 32 " hazard_unit_inst_word [31:0] $end
+$var wire 32 # mem_inst_word [31:0] $end
+$var wire 1 $ sel $end
+$var wire 32 % inst_word_out [31:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b11111111111111111111111111111111 %
+0$
+b11111111111111111111111111111111 #
+b10101010101010101010101010101010 "
+1!
+$end
+#5000
+b10101010101010101010101010101010 %
+1$
+0!
+#10000
+1!
+#15000
+0!
+#15001
