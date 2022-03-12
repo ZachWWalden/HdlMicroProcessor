@@ -28,19 +28,41 @@ module alu_forwarding_logic(
 
 	always @ (*)
 	begin
-		//If any potential hazard is detected.
-		if(dec_addr_high == mem_wb_addr_high || dec_addr_high == mem_wb_addr_low || dec_addr_high == ex_mem_addr_high || dec_addr_high == ex_mem_addr_low || dec_addr_high == id_ex_addr_high || dec_addr_high == id_ex_addr_low || dec_addr_low == mem_wb_addr_high || dec_addr_low == mem_wb_addr_low || dec_addr_low == ex_mem_addr_high || dec_addr_low == ex_mem_addr_low || dec_addr_low == id_ex_addr_high || dec_addr_low == id_ex_addr_low)
-		begin
-
-		end
-		else
-		begin
-			/*
-			alu_bot_sel = 6'b000001;
-			alu_top_sel = 5'b00001;
-			stall_req = 1;
-			*/
-		end
+		case(instruction_word[7:0])
+			//Add Immeadiate, Increment, Decrement, Sub Immeadiate, Complement, Invert, Compare Immeadiate
+			8'hBC :
+			begin
+			end
+			//Add, Subtract, Compare
+			8'h80 :
+			begin
+			end
+			//Multiply
+			8'h8E :
+			begin
+			end
+			//Mulitply Immeadiate
+			8'h9E :
+			begin
+			end
+			//And, Or
+			8'h97 :
+			begin
+			end
+			//And Immeadiate, Or Immeadiate
+			8'h9B :
+			begin
+			end
+			//Shift Right, Shift Left
+			8'hA5 :
+			begin
+			end
+			//Default Case
+			default
+			begin
+				//Illegal Opcode Exception. This is very useful for security. All other control signals are NOP'd
+			end
+		endcase
 	end
 
 	assign alu_bot_sel = 1;

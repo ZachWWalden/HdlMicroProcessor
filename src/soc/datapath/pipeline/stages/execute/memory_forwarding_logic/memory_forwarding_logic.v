@@ -20,9 +20,33 @@ module memory_forwarding_logic(
 	output [3:0] mem_write_data_sel_bot
 );
 
-	always @ (posedge clock)
+	always @ (*)
 	begin
+		case(instruction[7:0])
+			//Load, Load Framebuffer, Pop
+			8'hFB :
+			begin
+			end
+			//Store, Store Framebuffer, Push
+			8'hC4 :
+			begin
 
+			end
+			//Move Register, In, Out
+			8'h9C :
+			begin
+
+			end
+			//Load From Program Memory
+			8'hF9 :
+			begin
+			end
+			//Default Case
+			default
+			begin
+				//Illegal Opcode Exception. This is very useful for security. All other control signals are NOP'd
+			end
+		endcase
 	end
 
 	assign sfr_input_sel = 1'b0;
