@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1647321087" />
+    <testcase name="test_vga_controller" classname="vga_controller_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/new_vga_controller/vga_controller_tb.py" lineno="6" time="33.17716717720032" sim_time_ns="24575960.001" ratio_time="740749.1986804963" />
+  </testsuite>
+</testsuites>

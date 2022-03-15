@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1647305141" />
+    <testcase name="test_horiz_cntr" classname="horiz_cntr_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/new_vga_controller/horiz_cntr/horiz_cntr_tb.py" lineno="6" time="0.05725860595703125" sim_time_ns="4095.001" ratio_time="71517.65104223852" />
+  </testsuite>
+</testsuites>
