@@ -21,8 +21,8 @@ module decode_logic(
 
 	output reg [1:0] reg_file_wen,
 
-	output reg return_in_pipeline,
-	output reg illegal_opcode_exception,
+	output reg return_in_pipeline, 			//To the Hazard Unit
+	output reg illegal_opcode_exception, 		//To the Interrupt Contorller.
 );
 
 	always @ (*)
