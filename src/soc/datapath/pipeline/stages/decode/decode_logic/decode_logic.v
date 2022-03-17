@@ -525,7 +525,7 @@ module decode_logic(
 				//Check for a post increment
 				if(instruction[19:18] == 2'b01)
 				begin
-					if(instruction[21] == 1'b1)
+					if(instruction[22] == 1'b1)
 					begin
 						mem_ptr_ctl <= 7'b0010000; 		//X Pointer Post Increment
 					end
@@ -536,7 +536,7 @@ module decode_logic(
 				end
 				else if(instruction[19:18] == 2'b10)
 				begin
-					if(instruction[21] == 1'b1)
+					if(instruction[22] == 1'b1)
 					begin
 						mem_ptr_ctl <= 7'b0100000; 		//Y Pointer Post Increment
 					end
@@ -547,7 +547,7 @@ module decode_logic(
 				end
 				else if(instruction[19:18] == 2'b11)
 				begin
-					if(instruction[21] == 1'b1)
+					if(instruction[22] == 1'b1)
 					begin
 						mem_ptr_ctl <= 7'b1000000; 		//Z Pointer Post Increment
 					end
@@ -558,7 +558,7 @@ module decode_logic(
 				end
 				else
 				begin
-					if(instruction[21] == 1'b1)
+					if(instruction[22] == 1'b1)
 					begin
 						mem_ptr_ctl <= 7'b0000000;  		//Do not modify the value of the stack pointer.
 					end
