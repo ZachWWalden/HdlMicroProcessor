@@ -154,7 +154,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//And, Or
+			//And, Or   DONE
 			8'h97 :
 			begin
 				reg_file_ren <= 2'b11;
@@ -286,8 +286,8 @@ module decode_logic(
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel[0] <= 1'b1;  					//Select Load Result Bot
-				mem_wb_data_input_sel[3:1] <= instruction[20] ? 3'b010 : 3'b100  	//Select Load Result Top if this is loading from the framebuffer
+				mem_wb_data_input_sel[0] <= ~instruction[20];  					//Select Load Result Top if this is loading from the framebuffer
+				mem_wb_data_input_sel[3:1] <= 3'b100; 					  	//Select Load Result Bot
 
 
 				reg_file_wen[0] <= instruction[21];  					//Write Load Result Bottom is the Write Result Bit is set in the instruciton word.
@@ -358,7 +358,7 @@ module decode_logic(
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b1;
-				mem_wb_data_input_sel <= 4'h0;  					//Select Load Result
+				mem_wb_data_input_sel <= 4'h4;  					//Pass through EX/MEM data, even though it does not matter as reg_file_wen is 2'b00
 
 				reg_file_wen <= 2'b00;
 
@@ -392,7 +392,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0;
 			end
-			//Move Register, In, Out
+			//Move Register, In, Out   DONE
 			8'h9C :
 			begin
 				//OUT SFR Write Address is the "Top" address, IN SFR Read Addres is "Bottom" Address
@@ -410,7 +410,7 @@ module decode_logic(
 					//IN.
 					reg_file_ren <= 2'b00; 		//Read Top address from the register file.
 					sfr_wren <= 2'b10;
-					mem_wb_data_input_sel <= 4'h4;  	//
+					mem_wb_data_input_sel <= 4'h2;  	//Select SFR Data into data bototm of MEM/WB.
 					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
 				else if(instruction[19:18] == 2'b10)
@@ -430,7 +430,7 @@ module decode_logic(
 					reg_file_wen <= 2'b00;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
 
-				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+				id_ex_data_input_sel <= 1'b0; 		//Select the Reg file outputs.
 				ex_mem_data_input_sel <= 2'b00; 	//Select the two data words in ID/EX to be placed in EX/MEM
 				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
 				frame_buffer_enable <= 1'b0;
@@ -467,7 +467,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Call
+			//Call   DONE
 			8'h42 :
 			begin
 				reg_file_ren <= 2'b00
@@ -489,7 +489,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Return, Return From Interrupt
+			//Return, Return From Interrupt   DONE
 			8'h43 :
 			begin
 				//Invert instruction[20] signifies whether the instruction is ret or reti
@@ -512,10 +512,67 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Load From Program Memory
+			//Load From Program Memory   DONE
 			8'hF9 :
 			begin
 				reg_file_ren <= 2'b00
+
+				id_ex_data_input_sel <= 1'b0;  			//Select The Register File Outputs. Does, not matter.
+				ex_mem_data_input_sel <= 2'b00; 		//Select ID/EX Data, does not matter.
+				main_memory_enable <= 1'b0;
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b1;
+
+				//Check for a post increment
+				if(instruction[19:18] == 2'b01)
+				begin
+					if(instruction[21] == 1'b1)
+					begin
+						mem_ptr_ctl <= 7'b0010000; 		//X Pointer Post Increment
+					end
+					else
+					begin
+						mem_ptr_ctl <= 7'b0000000;
+					end
+				end
+				else if(instruction[19:18] == 2'b10)
+				begin
+					if(instruction[21] == 1'b1)
+					begin
+						mem_ptr_ctl <= 7'b0100000; 		//Y Pointer Post Increment
+					end
+					else
+					begin
+						mem_ptr_ctl <= 7'b0000000;
+					end
+				end
+				else if(instruction[19:18] == 2'b11)
+				begin
+					if(instruction[21] == 1'b1)
+					begin
+						mem_ptr_ctl <= 7'b1000000; 		//Z Pointer Post Increment
+					end
+					else
+					begin
+						mem_ptr_ctl <= 7'b0000000;
+					end
+				end
+				else
+				begin
+					if(instruction[21] == 1'b1)
+					begin
+						mem_ptr_ctl <= 7'b0000000;  		//Do not modify the value of the stack pointer.
+					end
+					else
+					begin
+						mem_ptr_ctl <= 7'b0000000;
+					end
+				end
+
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h8;
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -525,7 +582,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Halt
+			//Halt   DONE
 			8'h1F :
 			begin
 				//All Zeros
@@ -548,7 +605,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b1
 			end
-			//Default Case
+			//Default Case   DONE
 			default
 			begin
 				//Illegal Opcode Exception. This is very useful for security. All other control signals are NOP'd
