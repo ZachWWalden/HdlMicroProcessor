@@ -71,7 +71,7 @@ module branch_resolution_logic(
 			end
 		end
 		//If a Call Instruction
-		else if(operation[7:0] == 8'h40)
+		else if(operation[7:0] == 8'h42)
 		begin
 			take_branch_target = 1;
 		end

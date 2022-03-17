@@ -10,16 +10,17 @@ module decode_logic(
 	input [31:0] instruction,
 
 	output reg [1:0] reg_file_ren,
-	output reg [2:0] id_ex_data_input_sel,
+	output reg id_ex_data_input_sel,
 
 	output reg [1:0] ex_mem_data_input_sel,
 
 	output reg main_memory_enable,
 	output reg frame_buffer_enable,
 	output reg call_stack_enable,
+	output reg prog_mem_enable,
 	output reg [6:0] mem_ptr_ctl,
 	output reg [1:0] sfr_wren,
-	output reg [1:0] mem_wren,
+	output reg mem_wen,
 	output reg [3:0] mem_wb_data_input_sel,
 
 	output reg [1:0] reg_file_wen,
@@ -33,20 +34,22 @@ module decode_logic(
 	always @ (*)
 	begin
 		case(instruction[7:0])
-			//NOP
+			//NOP DONE
 			8'h00 :
 			begin
 				//All Zeros
 				reg_file_ren <= 2'b00;
-				id_ex_data_input_sel <= 3'b000;
+				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
 				main_memory_enable <= 1'b0;
 				frame_buffer_enable <= 1'b0;
 				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
-				mem_wren <= 2'b00;
+				mem_wen <= 1'b0;
 				mem_wb_data_input_sel <= 4'h0;
+
 				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b0;
@@ -58,6 +61,17 @@ module decode_logic(
 			8'hBC :
 			begin
 				reg_file_ren <= 2'b01;
+
+				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+				ex_mem_data_input_sel <= 2'b00;
+				main_memory_enable <= 1'b0;
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h0;
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -99,6 +113,8 @@ module decode_logic(
 			begin
 				reg_file_ren <= 2'b01;
 
+				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= instruction[21];
 
@@ -126,6 +142,8 @@ module decode_logic(
 				//Read destination operand from the register file, load it into
 				reg_file_ren <= 2'b01;
 
+				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
 
@@ -152,6 +170,63 @@ module decode_logic(
 			begin
 				reg_file_ren <= 2'b00
 
+				id_ex_data_input_sel <= 1'b0;
+				ex_mem_data_input_sel <= 2'b00;
+				main_memory_enable <= instruction[20];  		//Select Between The correct memory
+				frame_buffer_enable <= ~instruction[20];
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+
+				case(instruction[19:18])
+				begin
+					//Stack Pointer, i.e. this instruction is a Pop
+					2'b00 :
+					begin
+						mem_ptr_ctl <= 7'b0000010; 				//Stack Pointer Increment
+					end
+					//X Pointer
+					2'b01 :
+					begin
+						if(instruction[22] == 1'b1)
+						begin
+							mem_ptr_ctl <= 7'b0010000;  			//X Pointer Post Increment
+						end
+						else
+						begin
+							mem_ptr_ctl <= 7'b0000000;
+						end
+					end
+					//Y Pointer
+					2'b10 :
+					begin
+						if(instruction[22] == 1'b1)
+						begin
+							mem_ptr_ctl <= 7'b0100000;  			//Y Pointer Post Increment
+						end
+						else
+						begin
+							mem_ptr_ctl <= 7'b0000000;
+						end
+					end
+					//Z Pointer
+					2'b11 :
+					begin
+						if(instruction[22] == 1'b1)
+						begin
+							mem_ptr_ctl <= 7'b1000000; 			//Z Pointer Post Increment
+						end
+						else
+						begin
+							mem_ptr_ctl <= 7'b0000000;
+						end
+					end
+				end
+
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h0;  					//Select Load Result
+
+
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
 
@@ -163,6 +238,55 @@ module decode_logic(
 			//Store, Store Framebuffer, Push
 			8'hC4 :
 			begin
+
+				case(instruction[19:18])
+				begin
+					//Stack Pointer, i.e. this instruction is a Pop
+					2'b00 :
+					begin
+						mem_ptr_ctl <= 7'b0000001; 				//Stack Pointer Decrement
+					end
+					//X Pointer
+					2'b01 :
+					begin
+						if(instruction[22] == 1'b1)
+						begin
+							mem_ptr_ctl <= 7'b0010000;  			//X Pointer Post Increment
+						end
+						else
+						begin
+							mem_ptr_ctl <= 7'b0000000;
+						end
+					end
+					//Y Pointer
+					2'b10 :
+					begin
+						if(instruction[22] == 1'b1)
+						begin
+							mem_ptr_ctl <= 7'b0100000;  			//Y Pointer Post Increment
+						end
+						else
+						begin
+							mem_ptr_ctl <= 7'b0000000;
+						end
+					end
+					//Z Pointer
+					2'b11 :
+					begin
+						if(instruction[22] == 1'b1)
+						begin
+							mem_ptr_ctl <= 7'b1000000; 			//Z Pointer Post Increment
+						end
+						else
+						begin
+							mem_ptr_ctl <= 7'b0000000;
+						end
+					end
+				end
+
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h0;  					//Select Load Result
 
 				reg_file_wen <= 2'b00;
 
@@ -176,6 +300,8 @@ module decode_logic(
 			begin
 				//This moves the immeadiate data into the destination register.
 				reg_file_ren <= 2'b00
+
+				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -199,14 +325,16 @@ module decode_logic(
 			begin
 				//All Zeros
 				reg_file_ren <= 2'b00;
-				id_ex_data_input_sel <= 3'b000;
+
+				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
 				main_memory_enable <= 1'b0;
 				frame_buffer_enable <= 1'b0;
 				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
-				mem_wren <= 2'b00;
+				mem_wen <= 1'b0;
 				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
@@ -220,15 +348,40 @@ module decode_logic(
 			begin
 				reg_file_ren <= 2'b00
 
+				id_ex_data_input_sel <= 1'b0;
+				ex_mem_data_input_sel <= 2'b00;
+				main_memory_enable <= 1'b0;
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b1;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0001000;  			//Call Stack Pointer Increment
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b1;
+				mem_wb_data_input_sel <= 4'h0;
+				reg_file_wen <= 2'b00;
+
 				return_in_pipeline <= 1'b0;
-				stall_fetch <= 1'b0;
+				stall_fetch <= 1'b1; 				//This may be unecessary, depends on logic delay and the ratio between memory clock and core clock.
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
 			//Return, Return From Interrupt
 			8'h43 :
 			begin
+				//Invert instruction[20] signifies whether the instruction is ret or reti
 				reg_file_ren <= 2'b00
+
+				id_ex_data_input_sel <= 1'b0;
+				ex_mem_data_input_sel <= 2'b00;
+				main_memory_enable <= 1'b0;
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b1;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000100;  			//Call Stack Pointer Decrement
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h0;
+				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b1;
 				stall_fetch <= 1'b0;
@@ -253,14 +406,16 @@ module decode_logic(
 			begin
 				//All Zeros
 				reg_file_ren <= 2'b00;
-				id_ex_data_input_sel <= 3'b000;
+
+				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
 				main_memory_enable <= 1'b0;
 				frame_buffer_enable <= 1'b0;
 				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
-				mem_wren <= 2'b00;
+				mem_wen <= 1'b0;
 				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
@@ -275,14 +430,16 @@ module decode_logic(
 				//Illegal Opcode Exception. This is very useful for security. All other control signals are NOP'd
 				//All Zeros
 				reg_file_ren <= 2'b00;
-				id_ex_data_input_sel <= 3'b000;
+
+				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
 				main_memory_enable <= 1'b0;
 				frame_buffer_enable <= 1'b0;
 				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
-				mem_wren <= 2'b00;
+				mem_wen <= 1'b0;
 				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
