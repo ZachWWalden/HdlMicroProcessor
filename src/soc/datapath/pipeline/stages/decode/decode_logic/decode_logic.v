@@ -55,7 +55,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Add Immeadiate, Increment, Decrement, Sub Immeadiate, Complement, Invert, Compare Immeadiate   DONE
 			8'hBC :
@@ -79,7 +79,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Add, Subtract, Compare   DONE
 			8'h80 :
@@ -103,7 +103,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Multiply DONE
 			8'h8E :
@@ -127,7 +127,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 
 			end
 			//Mulitply Immeadiate   DONE
@@ -152,7 +152,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//And, Or   DONE
 			8'h97 :
@@ -176,7 +176,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//And Immeadiate, Or Immeadiate   DONE
 			8'h9B :
@@ -201,7 +201,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Shift Right, Shift Left   DONE
 			8'hA5 :
@@ -225,12 +225,12 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Load, Load Framebuffer, Pop   DONE
 			8'hFB :
 			begin
-				reg_file_ren <= 2'b00
+				reg_file_ren <= 2'b00;
 
 				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
@@ -240,7 +240,6 @@ module decode_logic(
 				prog_mem_enable <= 1'b0;
 
 				case(instruction[19:18])
-				begin
 					//Stack Pointer, i.e. this instruction is a Pop
 					2'b00 :
 					begin
@@ -282,7 +281,7 @@ module decode_logic(
 							mem_ptr_ctl <= 7'b0000000;
 						end
 					end
-				end
+				endcase
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
@@ -296,7 +295,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Store, Store Framebuffer, Push   DONE
 			8'hC4 :
@@ -312,7 +311,6 @@ module decode_logic(
 				prog_mem_enable <= 1'b0;
 
 				case(instruction[19:18])
-				begin
 					//Stack Pointer, i.e. this instruction is a Push
 					2'b00 :
 					begin
@@ -354,7 +352,7 @@ module decode_logic(
 							mem_ptr_ctl <= 7'b0000000;
 						end
 					end
-				end
+				endcase
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b1;
@@ -365,13 +363,13 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Load Immeadiate   DONE
 			8'hF8 :
 			begin
 				//This moves the immeadiate data into the destination register.
-				reg_file_ren <= 2'b00
+				reg_file_ren <= 2'b00;
 
 				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
 				ex_mem_data_input_sel <= 2'b00; 	//Select the two data words in ID/EX to be placed in EX/MEM
@@ -442,7 +440,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Control Flow Instructions
 			8'h38 :
@@ -465,12 +463,12 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Call   DONE
 			8'h42 :
 			begin
-				reg_file_ren <= 2'b00
+				reg_file_ren <= 2'b00;
 
 				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
@@ -487,13 +485,13 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b1; 				//This may be unecessary, depends on logic delay and the ratio between memory clock and core clock.
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Return, Return From Interrupt   DONE
 			8'h43 :
 			begin
 				//Invert instruction[20] signifies whether the instruction is ret or reti
-				reg_file_ren <= 2'b00
+				reg_file_ren <= 2'b00;
 
 				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;
@@ -510,12 +508,12 @@ module decode_logic(
 				return_in_pipeline <= 1'b1;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Load From Program Memory   DONE
 			8'hF9 :
 			begin
-				reg_file_ren <= 2'b00
+				reg_file_ren <= 2'b00;
 
 				id_ex_data_input_sel <= 1'b0;  			//Select The Register File Outputs. Does, not matter.
 				ex_mem_data_input_sel <= 2'b00; 		//Select ID/EX Data, does not matter.
@@ -580,7 +578,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Halt   DONE
 			8'h1F :
@@ -603,7 +601,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b1
+				halt <= 1'b1;
 			end
 			//Default Case   DONE
 			default
@@ -627,7 +625,7 @@ module decode_logic(
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b1;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 		endcase
 	end

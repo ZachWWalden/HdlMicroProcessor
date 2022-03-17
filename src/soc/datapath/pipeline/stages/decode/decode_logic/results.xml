@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1647494696" />
+    <testcase name="test_decode_logic" classname="decode_logic_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode_logic/decode_logic_tb.py" lineno="6" time="0.0014793872833251953" sim_time_ns="0.001" ratio_time="0.6759555197421434">
+      <failure />
+    </testcase>
+  </testsuite>
+</testsuites>
