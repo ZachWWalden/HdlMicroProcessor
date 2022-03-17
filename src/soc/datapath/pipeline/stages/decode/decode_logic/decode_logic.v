@@ -57,21 +57,21 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Add Immeadiate, Increment, Decrement, Sub Immeadiate, Complement, Invert, Compare Immeadiate
+			//Add Immeadiate, Increment, Decrement, Sub Immeadiate, Complement, Invert, Compare Immeadiate   DONE
 			8'hBC :
 			begin
-				reg_file_ren <= 2'b01;
+				reg_file_ren <= 2'b01; 			//Load Destination Register Operand. This will be in ID/EX Data Top
 
 				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
-				ex_mem_data_input_sel <= 2'b00;
-				main_memory_enable <= 1'b0;
+				ex_mem_data_input_sel <= 2'b10; 	//Select ALU Result Bottom, the bottom bit does not matter in this case
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
 				frame_buffer_enable <= 1'b0;
 				call_stack_enable <= 1'b0;
 				prog_mem_enable <= 1'b0;
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -81,11 +81,22 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Add, Subtract, Compare
+			//Add, Subtract, Compare   DONE
 			8'h80 :
 			begin
 				reg_file_ren <= 2'b11;
 
+				id_ex_data_input_sel <= 1'b0; 		//Select Register File Output
+				ex_mem_data_input_sel <= 2'b10; 	//Select ALU Result Bottom, the bottom bit does not matter in this case
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
+
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
 
@@ -94,10 +105,21 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Multiply
+			//Multiply DONE
 			8'h8E :
 			begin
 				reg_file_ren <= 2'b11;
+
+				id_ex_data_input_sel <= 1'b0; 		//Select Register File Output
+				ex_mem_data_input_sel <= 2'b11; 	//Select ALU Result Bottom & Top
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= instruction[21];
@@ -108,12 +130,21 @@ module decode_logic(
 				halt <= 1'b0
 
 			end
-			//Mulitply Immeadiate
+			//Mulitply Immeadiate   DONE
 			8'h9E :
 			begin
 				reg_file_ren <= 2'b01;
 
 				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+				ex_mem_data_input_sel <= 2'b11; 	//Select ALU Result Bottom & Top
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= instruction[21];
@@ -128,6 +159,17 @@ module decode_logic(
 			begin
 				reg_file_ren <= 2'b11;
 
+				id_ex_data_input_sel <= 1'b0; 		//Select Register File Output
+				ex_mem_data_input_sel <= 2'b10; 	//Select ALU Result Bottom, the bottom bit does not matter in this case
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
+
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
 
@@ -136,13 +178,22 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//And Immeadiate, Or Immeadiate
+			//And Immeadiate, Or Immeadiate   DONE
 			8'h9B :
 			begin
 				//Read destination operand from the register file, load it into
 				reg_file_ren <= 2'b01;
 
 				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+				ex_mem_data_input_sel <= 2'b10; 	//Select ALU Result Bottom, the bottom bit does not matter in this case
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -152,11 +203,22 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Shift Right, Shift Left
+			//Shift Right, Shift Left   DONE
 			8'hA5 :
 			begin
 				reg_file_ren <= 2'b01;
 
+				id_ex_data_input_sel <= 1'b0; 		//Select Register File Output
+				ex_mem_data_input_sel <= 2'b10; 	//Select ALU Result Bottom, the bottom bit does not matter in this case
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
+
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
 
@@ -165,7 +227,7 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Load, Load Framebuffer, Pop
+			//Load, Load Framebuffer, Pop   DONE
 			8'hFB :
 			begin
 				reg_file_ren <= 2'b00
@@ -224,24 +286,34 @@ module decode_logic(
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;  					//Select Load Result
+				mem_wb_data_input_sel[0] <= 1'b1;  					//Select Load Result Bot
+				mem_wb_data_input_sel[3:1] <= instruction[20] ? 3'b010 : 3'b100  	//Select Load Result Top if this is loading from the framebuffer
 
 
-				reg_file_wen[0] <= instruction[21];
-				reg_file_wen[1] <= 0;
+				reg_file_wen[0] <= instruction[21];  					//Write Load Result Bottom is the Write Result Bit is set in the instruciton word.
+				reg_file_wen[1] <= (~instruction[20] & instruction[21]);  		//Write Load Result Top if this is a LDFB and Wrtie Result is set.
 
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Store, Store Framebuffer, Push
+			//Store, Store Framebuffer, Push   DONE
 			8'hC4 :
 			begin
+				reg_file_ren[0] <= instruction[21];  					//Read Load Result Bottom is the Write Result Bit is set in the instruciton word.
+				reg_file_ren[1] <= (~instruction[20] & instruction[21]);  		//Read Load Result Top if this is a LDFB and Wrtie Result is set.
+
+				id_ex_data_input_sel <= 1'b0;
+				ex_mem_data_input_sel <= 2'b00;
+				main_memory_enable <= instruction[20];  		//Select Between The correct memory
+				frame_buffer_enable <= ~instruction[20];
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
 
 				case(instruction[19:18])
 				begin
-					//Stack Pointer, i.e. this instruction is a Pop
+					//Stack Pointer, i.e. this instruction is a Push
 					2'b00 :
 					begin
 						mem_ptr_ctl <= 7'b0000001; 				//Stack Pointer Decrement
@@ -285,7 +357,7 @@ module decode_logic(
 				end
 
 				sfr_wren <= 2'b00;
-				mem_wen <= 1'b0;
+				mem_wen <= 1'b1;
 				mem_wb_data_input_sel <= 4'h0;  					//Select Load Result
 
 				reg_file_wen <= 2'b00;
@@ -295,25 +367,77 @@ module decode_logic(
 				illegal_opcode_exception <= 1'b0;
 				halt <= 1'b0
 			end
-			//Load Immeadiate
+			//Load Immeadiate   DONE
 			8'hF8 :
 			begin
 				//This moves the immeadiate data into the destination register.
 				reg_file_ren <= 2'b00
 
 				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+				ex_mem_data_input_sel <= 2'b00; 	//Select the two data words in ID/EX to be placed in EX/MEM
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				sfr_wren <= 2'b00;
+				mem_wen <= 1'b0;
+				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
-				reg_file_wen[1] <= 0;
+				reg_file_wen[1] <= 1'b0;
 
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
 				illegal_opcode_exception <= 1'b0;
-				halt <= 1'b0
+				halt <= 1'b0;
 			end
 			//Move Register, In, Out
 			8'h9C :
 			begin
+				//OUT SFR Write Address is the "Top" address, IN SFR Read Addres is "Bottom" Address
+				//This block
+				if(instruction[19:18] == 2'b00)
+				begin
+					//Move Register.
+					reg_file_ren <= 2'b10; 		//Read Top address from the register file.
+					sfr_wren <= 2'b00;
+					mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
+					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
+				end
+				else if(instruction[19:18] == 2'b01)
+				begin
+					//IN.
+					reg_file_ren <= 2'b00; 		//Read Top address from the register file.
+					sfr_wren <= 2'b10;
+					mem_wb_data_input_sel <= 4'h4;  	//
+					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
+				end
+				else if(instruction[19:18] == 2'b10)
+				begin
+					//OUT.
+					reg_file_ren <= 2'b10; 		//Read Top address from the register file.
+					sfr_wren <= 2'b01;
+					mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
+					reg_file_wen <= 2'b00;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
+				end
+				else
+				begin
+					//Should Never Happen, but if so do something.
+					reg_file_ren <= 2'b00; 		//Read Top address from the register file.
+					sfr_wren <= 2'b00;
+					mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
+					reg_file_wen <= 2'b00;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
+				end
+
+				id_ex_data_input_sel <= 1'b1; 		//Select Imemadiate
+				ex_mem_data_input_sel <= 2'b00; 	//Select the two data words in ID/EX to be placed in EX/MEM
+				main_memory_enable <= 1'b0; 		//No memory Accesses, Load Store Architecture.
+				frame_buffer_enable <= 1'b0;
+				call_stack_enable <= 1'b0;
+				prog_mem_enable <= 1'b0;
+				mem_ptr_ctl <= 7'b0000000;
+				mem_wen <= 1'b0;
 
 				return_in_pipeline <= 1'b0;
 				stall_fetch <= 1'b0;
