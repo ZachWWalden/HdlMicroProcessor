@@ -298,7 +298,7 @@ module decode_logic(
 				halt <= 1'b0;
 			end
 			//Store, Store Framebuffer, Push   DONE
-			8'hC4 :
+			8'hC6 :
 			begin
 				reg_file_ren[0] <= instruction[21];  					//Read Load Result Bottom is the Write Result Bit is set in the instruciton word.
 				reg_file_ren[1] <= (~instruction[20] & instruction[21]);  		//Read Load Result Top if this is a LDFB and Wrtie Result is set.

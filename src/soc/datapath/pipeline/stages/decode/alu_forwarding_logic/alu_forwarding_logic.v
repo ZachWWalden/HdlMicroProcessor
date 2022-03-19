@@ -8,7 +8,7 @@ Parameters -
 
 module alu_forwarding_logic(
 		input clock,
-		input [31:0] instruction_word,
+		input [31:0] instruction,
 		input [31:0] ex_mem_instruction,
 		input [31:0] id_ex_instruction,
 		output reg [4:0] alu_top_sel,
@@ -18,13 +18,13 @@ module alu_forwarding_logic(
 
 	always @ (*)
 	begin
-		case(instruction_word[7:0])
+		case(instruction[7:0])
 			//Add Immeadiate, Increment, Decrement, Sub Immeadiate, Complement, Invert, Compare Immeadiate, Or Immeadiate, And Immeadiate, Mulitply Immeadiate, Shift Right, Shift Left   CASES DONE
 			8'hBC, 8'h9E, 8'h9B, 8'hA5 :
 			begin
 				//Check for dependent load that requires a stall.
 				//LD, LDFB
-				if(id_ex_instruction[7:0] == 8'h42)
+				if(id_ex_instruction[7:0] == 8'hFB)
 				begin
 					//Check if a LDFB or not.
 					if(id_ex_instruction[20] == 1'b1)
@@ -243,7 +243,7 @@ module alu_forwarding_logic(
 				end
 				//Check for a potential dependent Load
 				//LD, LDFB
-				else if(ex_mem_instruction[7:0] == 8'h42)
+				else if(ex_mem_instruction[7:0] == 8'hFB)
 				begin
 					//Check if a LDFB or not.
 					if(ex_mem_instruction[20] == 1'b1)
@@ -341,7 +341,7 @@ module alu_forwarding_logic(
 
 				//Check for dependent load that requires a stall.
 				//LD, LDFB
-				if(id_ex_instruction[7:0] == 8'h42)
+				if(id_ex_instruction[7:0] == 8'hFB)
 				begin
 					//Check if a LDFB or not.
 					if(id_ex_instruction[20] == 1'b1)
@@ -688,7 +688,7 @@ module alu_forwarding_logic(
 				end
 				//Check for a potential dependent Load
 				//LD, LDFB
-				else if(ex_mem_instruction[7:0] == 8'h42)
+				else if(ex_mem_instruction[7:0] == 8'hFB)
 				begin
 					//Check if a LDFB or not.
 					if(ex_mem_instruction[20] == 1'b1)
