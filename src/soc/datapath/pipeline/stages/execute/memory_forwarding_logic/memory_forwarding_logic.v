@@ -9,12 +9,8 @@ Parameters -
 module memory_forwarding_logic(
 	input clock,
 	input [31:0] instruction,
-	input [7:0] ex_mem_operation,
-	input [4:0] ex_mem_addr_low,
-	input [4:0] ex_mem_addr_high,
-	input [7:0] mem_wb_operation,
-	input [4:0] mem_wb_addr_low,
-	input [4:0] mem_wb_addr_high,
+	input [7:0] ex_mem_instruction,
+	input [7:0] mem_wb_instruction,
 	output sfr_input_sel,
 	output [3:0] mem_write_data_sel_top,
 	output [3:0] mem_write_data_sel_bot

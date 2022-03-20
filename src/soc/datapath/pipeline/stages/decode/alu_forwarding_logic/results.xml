@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1647730080" />
-    <testcase name="test_alu_forwarding_logic" classname="alu_forwarding_logic_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/alu_forwarding_logic/alu_forwarding_logic_tb.py" lineno="6" time="0.002877473831176758" sim_time_ns="5.001" ratio_time="1737.9827909520259" />
+    <property name="random_seed" value="1647733425" />
+    <testcase name="test_alu_forwarding_logic" classname="alu_forwarding_logic_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/alu_forwarding_logic/alu_forwarding_logic_tb.py" lineno="6" time="0.006804227828979492" sim_time_ns="215.001" ratio_time="31598.14829895932" />
   </testsuite>
 </testsuites>
