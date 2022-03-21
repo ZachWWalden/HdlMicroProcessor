@@ -19,23 +19,15 @@ module memory_forwarding_logic(
 	always @ (*)
 	begin
 		case(instruction[7:0])
-			//Load, Load Framebuffer, Pop
-			8'hFB :
-			begin
-			end
 			//Store, Store Framebuffer, Push
 			8'hC4 :
 			begin
-
+				//Check if store or store FB
 			end
-			//Move Register, In, Out
+			//Out
 			8'h9C :
 			begin
 
-			end
-			//Load From Program Memory
-			8'hF9 :
-			begin
 			end
 			//Default Case
 			default
