@@ -1,4 +1,4 @@
-.ORG 0x500
+.ORG 0x000
 :MAIN
 	LDI R0 0xFF
 	;Set Up The Stack Pointer

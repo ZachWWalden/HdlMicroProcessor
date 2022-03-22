@@ -107,8 +107,8 @@ module alu_forwarding_logic(
 						stall_decode <= 1'b0;
 					end
 				end
-				//Out
-				else if( id_ex_instruction[7:0] == 8'h9C && id_ex_instruction[18] == 1'b1)
+				//Out, MOVR
+				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b01 || id_ex_instruction[19:18] == 2'b00))
 				begin
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin
@@ -309,7 +309,7 @@ module alu_forwarding_logic(
 					end
 				end
 				//Out
-				else if(ex_mem_instruction[7:0] == 8'h9C && ex_mem_instruction[18] == 1'b1)
+				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b01 || id_ex_instruction[19:18] == 2'b00))
 				begin
 					if(instruction[12:8] == ex_mem_instruction[12:8])
 					begin
@@ -480,7 +480,7 @@ module alu_forwarding_logic(
 					end
 				end
 				//Out
-				else if(id_ex_instruction[7:0] == 8'h9C && id_ex_instruction[18] == 1'b1)
+				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b01 || id_ex_instruction[19:18] == 2'b00))
 				begin
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin
@@ -802,7 +802,7 @@ module alu_forwarding_logic(
 					end
 				end
 				//Out
-				else if(ex_mem_instruction[7:0] == 8'h9C && ex_mem_instruction[18] == 1'b1)
+				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b01 || id_ex_instruction[19:18] == 2'b00))
 				begin
 					if(instruction[12:8] == ex_mem_instruction[12:8])
 					begin
