@@ -4,6 +4,6 @@ from cocotb.triggers import FallingEdge
 from cocotb.triggers import RisingEdge
 
 @cocotb.test()
-async def test_CHANGE(dut):
+async def test_hazard_control_unit(dut):
     clock = Clock(dut.clock, 10, units="ns")
     cocotb.start_soon(clock.start())
