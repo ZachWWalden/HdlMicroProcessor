@@ -11,36 +11,36 @@ module id_ex(
 	input stall,  				//Stall signal from hazard unit.
 	input [31:0] ex_mem_instruction_in, 	//Passtrough for the opcode in the EX/MEM pipeline register
 	output [31:0] ex_mem_instruction_out,
-	input [4:0] alu_top_select_in,  	//I/O for the alu top input multiplexor selection signals.
-	output reg [4:0] alu_top_select_out,
-	input [4:0] alu_bot_select_in, 		//I/O for the alu bottom input multiplexor selection signals.
-	output reg [4:0] alu_bot_select_out,
+	input [4:0] alu_top_select_in,  	//I/O for the alu top input multiplexor selection signals. Consumed in execute
+	output reg [4:0] alu_top_select_out = 0,
+	input [4:0] alu_bot_select_in, 		//I/O for the alu bottom input multiplexor selection signals. Consumed in execute
+	output reg [4:0] alu_bot_select_out = 0,
 	input [7:0] id_ex_top_in, 		//I/O for the top register file operand read.
-	output reg [7:0] id_ex_top_out,
+	output reg [7:0] id_ex_top_out = 0,
 	input [7:0] id_ex_bot_in, 		//I/O for the bottom register file operand read.
-	output reg [7:0] id_ex_bot_out,
+	output reg [7:0] id_ex_bot_out = 0,
 	input [31:0] instruction_in, 		//I/O for the instruction word.
-	output reg [31:0] instruction_out
-	input mem_wen_in,
-	output reg mem_wen_out,
-	input main_memory_enable_in,
-	output reg main_memory_enable_out,
-	input frame_buffer_enable_in,
-	output reg frame_buffer_enable_out,
-	input call_stack_enable_in,
-	output reg call_stack_enable_out,
-	input prog_mem_enable_in,
-	output reg prog_mem_enable_out,
-	input [6:0] mem_ptr_ctl_in,
-	output reg [6:0] mem_ptr_ctl_out,
-	input [1:0] ex_mem_data_input_sel_in,
-	output reg [1:0] ex_mem_data_input_sel_out,
-	input [1:0] reg_file_wen_in,
-	output reg [1:0] reg_file_wen_out,
-	input [1:0] sfr_file_wren_in,
-	output reg [1:0] sfr_file_wren_out,
-	input [13:0] ret_addr_in,
-	output reg [13:0] ret_addr_out
+	output reg [31:0] instruction_out = 0,
+	input mem_wen_in, 					//Consumed in memory
+	output reg mem_wen_out = 0,
+	input main_memory_enable_in, 				//Consumed in memory
+	output reg main_memory_enable_out = 0,
+	input frame_buffer_enable_in, 				//Consumed in memory
+	output reg frame_buffer_enable_out = 0,
+	input call_stack_enable_in, 				//Consumed in memory
+	output reg call_stack_enable_out = 0,
+	input prog_mem_enable_in, 				//Consumed in memory
+	output reg prog_mem_enable_out = 0,
+	input [6:0] mem_ptr_ctl_in, 				//Consumed in memory
+	output reg [6:0] mem_ptr_ctl_out = 0,
+	input [1:0] ex_mem_data_input_sel_in, 			//Consumed in execute
+	output reg [1:0] ex_mem_data_input_sel_out = 0,
+	input [1:0] reg_file_wen_in, 				//Consumed in memory
+	output reg [1:0] reg_file_wen_out = 0,
+	input [1:0] sfr_file_wren_in, 				//Consumed in memory
+	output reg [1:0] sfr_file_wren_out = 0,
+	input [13:0] call_addr_in, 				///Consumed in memory.
+	output reg [13:0] call_addr_out = 0
 );
 
 	always @ (posedge clock)
@@ -75,7 +75,7 @@ module id_ex(
 
 			sfr_file_wren_out <= 0;
 
-			ret_addr_out <= 0;
+			call_addr_out <= 0;
 		end
 		else
 		begin
@@ -107,7 +107,7 @@ module id_ex(
 
 			sfr_file_wren_out <= sfr_file_wren_in;
 
-			ret_addr_out <= ret_addr_in;
+			call_addr_out <= call_addr_in;
 		end
 	end
 
