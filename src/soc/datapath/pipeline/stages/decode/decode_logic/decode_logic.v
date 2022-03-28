@@ -21,7 +21,6 @@ module decode_logic(
 	output reg [6:0] mem_ptr_ctl,
 	output reg [1:0] sfr_wren,
 	output reg mem_wen,
-	output reg [3:0] mem_wb_data_input_sel,
 
 	output reg [1:0] reg_file_wen,
 
@@ -48,7 +47,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;
 
 				reg_file_wen <= 2'b00;
 
@@ -71,7 +69,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -95,7 +92,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -119,7 +115,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= instruction[21];
@@ -144,7 +139,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= instruction[21];
@@ -168,7 +162,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -193,7 +186,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -217,7 +209,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -285,9 +276,6 @@ module decode_logic(
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel[0] <= ~instruction[20];  					//Select Load Result Top if this is loading from the framebuffer
-				mem_wb_data_input_sel[3:1] <= 3'b100; 					  	//Select Load Result Bot
-
 
 				reg_file_wen[0] <= instruction[21];  					//Write Load Result Bottom is the Write Result Bit is set in the instruciton word.
 				reg_file_wen[1] <= (~instruction[20] & instruction[21]);  		//Write Load Result Top if this is a LDFB and Wrtie Result is set.
@@ -356,7 +344,6 @@ module decode_logic(
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b1;
-				mem_wb_data_input_sel <= 4'h4;  					//Pass through EX/MEM data, even though it does not matter as reg_file_wen is 2'b00
 
 				reg_file_wen <= 2'b00;
 
@@ -380,7 +367,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 1'b0;
@@ -400,7 +386,6 @@ module decode_logic(
 					//Move Register.
 					reg_file_ren <= 2'b10; 		//Read Top address from the register file.
 					sfr_wren <= 2'b00;
-					mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
 				else if(instruction[19:18] == 2'b01)
@@ -408,7 +393,6 @@ module decode_logic(
 					//IN.
 					reg_file_ren <= 2'b00; 		//Read Top address from the register file.
 					sfr_wren <= 2'b10;
-					mem_wb_data_input_sel <= 4'h2;  	//Select SFR Data into data bototm of MEM/WB.
 					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
 				else if(instruction[19:18] == 2'b10)
@@ -416,7 +400,6 @@ module decode_logic(
 					//OUT.
 					reg_file_ren <= 2'b10; 		//Read Top address from the register file.
 					sfr_wren <= 2'b01;
-					mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 					reg_file_wen <= 2'b00;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
 				else
@@ -424,7 +407,6 @@ module decode_logic(
 					//Should Never Happen, but if so do something.
 					reg_file_ren <= 2'b00; 		//Read Top address from the register file.
 					sfr_wren <= 2'b00;
-					mem_wb_data_input_sel <= 4'h4;  	//Simply pass the two data values in EX/MEM into the data values of MEM/WB
 					reg_file_wen <= 2'b00;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
 
@@ -457,7 +439,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b0;
@@ -479,7 +460,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0001000;  			//Call Stack Pointer Increment
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b1;
-				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b0;
@@ -502,7 +482,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000100;  			//Call Stack Pointer Decrement
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b1;
@@ -570,7 +549,6 @@ module decode_logic(
 
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h8;
 
 				reg_file_wen[0] <= instruction[21];
 				reg_file_wen[1] <= 0;
@@ -595,7 +573,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b0;
@@ -619,7 +596,6 @@ module decode_logic(
 				mem_ptr_ctl <= 7'b0000000;
 				sfr_wren <= 2'b00;
 				mem_wen <= 1'b0;
-				mem_wb_data_input_sel <= 4'h0;
 				reg_file_wen <= 2'b00;
 
 				return_in_pipeline <= 1'b0;

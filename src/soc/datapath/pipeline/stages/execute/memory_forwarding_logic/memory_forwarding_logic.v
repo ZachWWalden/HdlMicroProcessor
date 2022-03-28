@@ -12,6 +12,8 @@ module memory_forwarding_logic(
 	input [7:0] ex_mem_instruction,
 	input [7:0] mem_wb_instruction,
 	output reg [4:0] sfr_input_sel,
+	output reg [3:0] mem_wb_data_sel_top,
+	output reg [6:0] mem_wb_data_sel_bot,
 	output reg [3:0] mem_write_data_sel_top,
 	output reg [3:0] mem_write_data_sel_bot
 );
@@ -19,8 +21,26 @@ module memory_forwarding_logic(
 	always @ (*)
 	begin
 		case(instruction[7:0])
+			//Load, Load Framebuffer, Pop
+			8'hFB :
+			begin
+				sfr_input_sel <= 5'b00001;
+				mem_write_data_sel_top <= 5'b00001;
+				mem_write_data_sel_bot <= 5'b00100;
+				mem_wb_data_sel_top <= 4'b0010;  		//Select both load results for simplicity.
+				mem_wb_data_sel_bot <= 7'b0000100;
+			end
+			//Load Program Memory
+			8'hF9 :
+			begin
+				sfr_input_sel <= 5'b00001;
+				mem_write_data_sel_top <= 5'b00001;
+				mem_write_data_sel_bot <= 5'b00100;
+				mem_wb_data_sel_top <= 4'b0001;  		//Select load bottom result
+				mem_wb_data_sel_bot <= 7'b0000100;
+			end
 			//Store, Store Framebuffer, Push
-			8'hC4 :
+			8'hC6 :
 			begin
 				//Check if store or store framebuffer?
 				if(instruction[20] == 1'b1)
@@ -36,6 +56,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00100;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -43,6 +65,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -54,6 +78,8 @@ module memory_forwarding_logic(
   							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00100;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if(instruction[17:13] == ex_mem_instruction[17:13])
 						begin
@@ -61,6 +87,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00010;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -68,6 +96,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//MEM/WB
@@ -79,6 +109,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b10000;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -86,6 +118,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -97,6 +131,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b10000;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if(instruction[17:13] == mem_wb_instruction[17:13])
 						begin
@@ -104,6 +140,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b01000;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -111,6 +149,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					else
@@ -119,6 +159,8 @@ module memory_forwarding_logic(
 						sfr_input_sel <= 5'b00001;
 						mem_write_data_sel_top <= 5'b00001;
 						mem_write_data_sel_bot <= 5'b00001;
+						mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+						mem_wb_data_sel_bot <= 7'b0000010;
 					end
 				end
 				else
@@ -134,6 +176,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00100;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if(instruction[17:13] == ex_mem_instruction[12:8])
 						begin
@@ -141,6 +185,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00100;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -148,6 +194,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -161,6 +209,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b00010;
 								mem_write_data_sel_bot <= 5'b00100;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 							else
 							begin
@@ -168,6 +218,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b00001;
 								mem_write_data_sel_bot <= 5'b00100;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 						end
 						else if(instruction[12:8] == ex_mem_instruction[17:13])
@@ -178,6 +230,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b00100;
 								mem_write_data_sel_bot <= 5'b00010;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 							else
 							begin
@@ -185,6 +239,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b00001;
 								mem_write_data_sel_bot <= 5'b00010;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 						end
 						else if(instruction[17:13] == ex_mem_instruction[12:8])
@@ -193,6 +249,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00100;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if((instruction[17:13] == ex_mem_instruction[17:13])
 						begin
@@ -200,6 +258,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00010;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -207,6 +267,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//MEM/WB
@@ -218,6 +280,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b10000;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 
 						end
 						else if(instruction[17:13] == mem_wb_instruction[12:8])
@@ -226,6 +290,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b10000;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -233,6 +299,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -246,6 +314,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b01000;
 								mem_write_data_sel_bot <= 5'b10000;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 							else
 							begin
@@ -253,6 +323,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b00001;
 								mem_write_data_sel_bot <= 5'b10000;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 						end
 						else if(instruction[12:8] == mem_wb_instruction[17:13])
@@ -263,6 +335,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b10001;
 								mem_write_data_sel_bot <= 5'b01000;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 							else
 							begin
@@ -270,6 +344,8 @@ module memory_forwarding_logic(
 								sfr_input_sel <= 5'b00001;
 								mem_write_data_sel_top <= 5'b00001;
 								mem_write_data_sel_bot <= 5'b01000;
+								mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+								mem_wb_data_sel_bot <= 7'b0000010;
 							end
 						end
 						else if(instruction[17:13] == mem_wb_instruction[12:8])
@@ -278,6 +354,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b10000;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if((instruction[17:13] == mem_wb_instruction[17:13])
 						begin
@@ -285,6 +363,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b10000;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -292,6 +372,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					else
@@ -300,14 +382,26 @@ module memory_forwarding_logic(
 						sfr_input_sel <= 5'b00001;
 						mem_write_data_sel_top <= 5'b00001;
 						mem_write_data_sel_bot <= 5'b00001;
+						mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+						mem_wb_data_sel_bot <= 7'b0000010;
 					end
 				end
 			end
-			//MOVR, OUT
+			//MOVR, OUT, IN
 			8'h9C :
 			begin
+				//In
+				if(instruction[19:18] == 2'b10)
+				begin
+					//No forward necessary
+					sfr_input_sel <= 5'b00001;
+					mem_write_data_sel_top <= 5'b00001;
+					mem_write_data_sel_bot <= 5'b00001;
+					mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+					mem_wb_data_sel_bot <= 7'b0000001; 		//Select SFR read data
+				end
 				//Out
-				if(instruction[19:18] == 2'b01)
+				else if(instruction[19:18] == 2'b01)
 				begin
 					//EX/MEM
 					//SINGLE WRITE INSTRUCTIONS, INC, DEC, ADD, ADDI, SUB, SUBI, CP, CPI, AND, ANDI, OR, ORI, SHR, SHL, COM, INV, LD, POP, LPM, MOVR, OUT
@@ -319,6 +413,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00100;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -326,6 +422,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -337,6 +435,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00100;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if(instruction[17:13] == ex_mem_instruction[17:13])
 						begin
@@ -344,6 +444,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00010;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -351,6 +453,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//MEM/WB
@@ -362,6 +466,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b10000;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -369,6 +475,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -380,6 +488,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b10000;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else if(instruction[17:13] == mem_wb_instruction[17:13])
 						begin
@@ -387,6 +497,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b01000;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 						else
 						begin
@@ -394,6 +506,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					else
@@ -402,6 +516,8 @@ module memory_forwarding_logic(
 						sfr_input_sel <= 5'b00001;
 						mem_write_data_sel_top <= 5'b00001;
 						mem_write_data_sel_bot <= 5'b00001;
+						mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+						mem_wb_data_sel_bot <= 7'b0000010;
 					end
 				end
 				//TODO This module needs to handle the creation of the signal that controls the mem/wb data input mux. to do this, a control signal will be added to this bus along with cases to handle the creation of the signal for anny memory loads, and sfr reads. On top of that, the mem/wb data input mux will need to be rewritten to handsle the mem/wb time minus 1 (tm1) values
@@ -418,6 +534,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0010000;
 						end
 						else
 						begin
@@ -425,6 +543,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -432,11 +552,21 @@ module memory_forwarding_logic(
 					begin
 						if(instruction[17:13] == ex_mem_instruction[12:8])
 						begin
-							//Forward mem_wb data bot to mem str data bottom
+							//Forward mem_wb data bot to mem/wb data bottom
+							sfr_input_sel <= 5'b00001;
+							mem_write_data_sel_top <= 5'b00001;
+							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0010000;
 						end
 						else if(instruction[17:13] == ex_mem_instruction[17:13])
 						begin
 							//Forward mem_wb data top to mem str data bottom
+							sfr_input_sel <= 5'b00001;
+							mem_write_data_sel_top <= 5'b00001;
+							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0001000;
 						end
 						else
 						begin
@@ -444,6 +574,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//MEM/WB
@@ -451,7 +583,12 @@ module memory_forwarding_logic(
 					begin
 						if(instruction[17:13] == mem_wb_instruction[12:8])
 						begin
-							//Forward MEM/WB tm1 data bottom to mem str data bottom
+							//Forward MEM/WB tm1 data bottom to mem/wb data bottom
+							sfr_input_sel <= 5'b00001;
+							mem_write_data_sel_top <= 5'b00001;
+							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b1000000;
 						end
 						else
 						begin
@@ -459,6 +596,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					//DOUBLE WRITE INSTRUCTIONS LDFB, MUL, MULI
@@ -466,12 +605,21 @@ module memory_forwarding_logic(
 					begin
 						if(instruction[17:13] == mem_wb_instruction[12:8])
 						begin
-							//Forward mem_wb tm1 da
-							ta bot to mem str data bottom
+							//Forward mem_wb tm1 data bot to mem/wb data bottom
+							sfr_input_sel <= 5'b00001;
+							mem_write_data_sel_top <= 5'b00001;
+							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b1000000;
 						end
 						else if(instruction[17:13] == mem_wb_instruction[17:13])
 						begin
-							//Forward mem_wb tm1 data top to mem str data bottom
+							//Forward mem_wb tm1 data top to mem/wb data bottom
+							sfr_input_sel <= 5'b00001;
+							mem_write_data_sel_top <= 5'b00001;
+							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0100000;
 						end
 						else
 						begin
@@ -479,6 +627,8 @@ module memory_forwarding_logic(
 							sfr_input_sel <= 5'b00001;
 							mem_write_data_sel_top <= 5'b00001;
 							mem_write_data_sel_bot <= 5'b00001;
+							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+							mem_wb_data_sel_bot <= 7'b0000010;
 						end
 					end
 					else
@@ -487,6 +637,8 @@ module memory_forwarding_logic(
 						sfr_input_sel <= 5'b00001;
 						mem_write_data_sel_top <= 5'b00001;
 						mem_write_data_sel_bot <= 5'b00001;
+						mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+						mem_wb_data_sel_bot <= 7'b0000010;
 					end
 				end
 				else
@@ -495,6 +647,8 @@ module memory_forwarding_logic(
 					sfr_input_sel <= 5'b00001;
 					mem_write_data_sel_top <= 5'b00001;
 					mem_write_data_sel_bot <= 5'b00001;
+					mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+					mem_wb_data_sel_bot <= 7'b0000010;
 				end
 			end
 			//Default Case
@@ -504,6 +658,8 @@ module memory_forwarding_logic(
 				sfr_input_sel <= 5'b00001;
 				mem_write_data_sel_top <= 5'b00001;
 				mem_write_data_sel_bot <= 5'b00001;
+				mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
+				mem_wb_data_sel_bot <= 7'b0000010;
 			end
 		endcase
 	end
