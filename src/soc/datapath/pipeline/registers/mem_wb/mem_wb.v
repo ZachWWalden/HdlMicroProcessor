@@ -13,6 +13,8 @@ module mem_wb(
 	output [7:0] data_top_out,
 	input [7:0] data_bot_in, 		//I/O for the bottom register file operand read.
 	output [7:0] data_bot_out,
+	output reg [7:0] data_tm1_top,
+	output reg [7:0] data_tm1_bot,
 	input [31:0] instruction_in, 		//I/O for the instruction word.
 	output [31:0] instruction_out
 	input [1:0] reg_file_wen_in,
@@ -42,6 +44,9 @@ module mem_wb(
 			reg_file_wen <= 0;
 
 			ret_addr <= 0;
+
+			data_tm1_top <= 0;
+			data_tm1_bot <= 0;
 		end
 		else if(stall == 1'b1)
 		begin
@@ -53,6 +58,9 @@ module mem_wb(
 			reg_file_wen <= reg_file_wen;
 
 			ret_addr <= ret_addr;
+
+			data_tm1_top <= data_tm1_top;
+			data_tm1_bot <= data_tm1_bot;
 		end
 		else
 		begin
@@ -64,6 +72,9 @@ module mem_wb(
 			reg_file_wen <= reg_file_wen_in;
 
 			ret_addr <= ret_addr_in;
+
+			data_tm1_top <= data_top;
+			data_tm1_bot <= data_bot;
 		end
 	end
 

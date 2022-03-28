@@ -9,18 +9,10 @@ module id_ex(
 	input clock, 				//System Clock
 	input nreset, 				//System Reset Signal
 	input stall,  				//Stall signal from hazard unit.
-	input [7:0] ex_mem_operation_in, 	//Passtrough for the opcode in the EX/MEM pipeline register
-	output [7:0] ex_mem_operation_out,
-	input [4:0] ex_mem_addr_low_in, 	//passthrough for the low address stored in the EX/MEM pipeline register
-	output [4:0] ex_mem_addr_low_out,
-	input [4:0] ex_mem_addr_high_in, 	//passthrough for the high address stored in the EX/MEM pipeline register
-	output [4:0] ex_mem_addr_high_out,
-	input [7:0] mem_wb_operation_in, 	//passthrough for the operation stored in the MEM/WB pipeline register.
-	output [7:0] mem_wb_operation_out,
-	input [4:0] mem_wb_addr_low_in,  	//passthrough for the low address stored in the MEM/WB pipeline register.
-	output [4:0] mem_wb_addr_low_out,
-	input [4:0] mem_wb_addr_high_in, 	//passthrough for the high address stored in the MEM/WB Pipeline register.
-	output [4:0] mem_wb_addr_high_out,
+	input [31:0] ex_mem_operation_in, 	//Passtrough for the opcode in the EX/MEM pipeline register
+	output [31:0] ex_mem_operation_out,
+	input [31:0] id_ex_operation_in, 	//passthrough for the operation stored in the MEM/WB pipeline register.
+	output [31:0] id_ex_operation_out,
 	input [5:0] alu_top_select_in,  	//I/O for the alu top input multiplexor selection signals.
 	output [5:0] alu_top_select_out,
 	input [6:0] alu_bot_select_in, 		//I/O for the alu bottom input multiplexor selection signals.

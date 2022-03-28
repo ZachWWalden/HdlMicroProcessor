@@ -9,8 +9,8 @@ Parameters -
 module memory_forwarding_logic(
 	input clock,
 	input [31:0] instruction,
-	input [7:0] ex_mem_instruction,
-	input [7:0] mem_wb_instruction,
+	input [31:0] ex_mem_instruction,
+	input [31:0] mem_wb_instruction,
 	output reg [4:0] sfr_input_sel,
 	output reg [3:0] mem_wb_data_sel_top,
 	output reg [6:0] mem_wb_data_sel_bot,
