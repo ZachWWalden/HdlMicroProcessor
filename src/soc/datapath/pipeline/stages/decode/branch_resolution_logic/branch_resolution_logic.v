@@ -7,7 +7,7 @@ Parameters -
 */
 
 module branch_resolution_logic(
-	input clock,
+	//input clock,
 	input [31:0] operation,
 	input [2:0] flags,
 	output reg take_branch_target
@@ -81,6 +81,7 @@ module branch_resolution_logic(
 		end
 	end
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -89,4 +90,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

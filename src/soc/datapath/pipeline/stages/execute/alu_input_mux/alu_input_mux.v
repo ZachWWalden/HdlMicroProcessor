@@ -7,7 +7,7 @@ Parameters -
 */
 
 module alu_input_mux(
-	input clock,
+	//input clock,
 	input [4:0] alu_input_sel_top,
 	input [4:0] alu_input_sel_bot,
 	input [7:0] id_ex_data_top,
@@ -38,6 +38,7 @@ module alu_input_mux(
 	assign alu_data_input_bot[6] = (alu_input_sel_bot[0] & id_ex_data_bot[6]) | (alu_input_sel_bot[1] & ex_mem_top[6]) | (alu_input_sel_bot[2] & ex_mem_bot[6]) | (alu_input_sel_bot[3] & mem_wb_top[6]) | (alu_input_sel_bot[4] & mem_wb_bot[6]);
 	assign alu_data_input_bot[7] = (alu_input_sel_bot[0] & id_ex_data_bot[7]) | (alu_input_sel_bot[1] & ex_mem_top[7]) | (alu_input_sel_bot[2] & ex_mem_bot[7]) | (alu_input_sel_bot[3] & mem_wb_top[7]) | (alu_input_sel_bot[4] & mem_wb_bot[7]);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -46,4 +47,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

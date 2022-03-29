@@ -7,7 +7,7 @@ Parameters -
 */
 
 module mem_wb_data_input_mux(
-	input clock,
+	//input clock,
 	input [3:0] sel_signals_top,
 	input [6:0] sel_signals_bot,
 	input [7:0] sfr_data, 			//SFR data out will always go to MEM/WB data top is it is selected.

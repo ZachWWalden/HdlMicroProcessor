@@ -19,7 +19,7 @@ module mem_wb(
 	input [1:0] reg_file_wen_in, 			//To the register file write port.
 	output reg [1:0] reg_file_wen_out = 0,
 	input [13:0] ret_addr_in, 			//Comes from the memory i/o buffer
-	output reg [13:0] ret_addr_out = 0,
+	output reg [13:0] ret_addr_out = 0
 );
 
 	always @ (posedge clock)

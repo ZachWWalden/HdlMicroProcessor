@@ -6,7 +6,7 @@ Description -
 Parameters -
 */
 
-module new_register_file(
+module register_file(
 	input clock,
 	input nreset,
 	input [1:0] wr_en,
@@ -90,8 +90,8 @@ module new_register_file(
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
-  $dumpfile ("new_register_file.vcd");
-  $dumpvars (0, new_register_file);
+  $dumpfile ("register_file.vcd");
+  $dumpvars (0, register_file);
   #1;
 end
 `endif

@@ -7,7 +7,7 @@ Parameters -
 */
 
 module mem_str_data_sel_mux(
-	input clock,
+	//input clock,
 	input [4:0] sel_signal_top,
 	input [4:0] sel_signal_bot,
 	input [7:0] ex_mem_data_top,
@@ -36,6 +36,7 @@ module mem_str_data_sel_mux(
 	assign mem_data[10] = (sel_signal_top[0] & ex_mem_data_top[2]) | (sel_signal_top[1] & mem_wb_data_top[2]) | (sel_signal_top[2] & mem_wb_data_bot[2]) | (sel_signal_top[3] & mem_wb_tm1_data_top[2]) | (sel_signal_top[4] & mem_wb_tm1_data_bot[2]);
 	assign mem_data[11] = (sel_signal_top[0] & ex_mem_data_top[3]) | (sel_signal_top[1] & mem_wb_data_top[3]) | (sel_signal_top[2] & mem_wb_data_bot[3]) | (sel_signal_top[3] & mem_wb_tm1_data_top[3]) | (sel_signal_top[4] & mem_wb_tm1_data_bot[3]);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -44,4 +45,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

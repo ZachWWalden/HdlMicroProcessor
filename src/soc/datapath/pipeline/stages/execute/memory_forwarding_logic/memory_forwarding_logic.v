@@ -1,13 +1,13 @@
 /*
-Module -
+Module - Memory Forwarding Logic
 Author - Zach Walden
-Last Changed -
-Description -
+Last Changed - 3/21/22
+Description - Checks for pipline hazards relating to stores in either the memory banks or in the sfr.
 Parameters -
 */
 
 module memory_forwarding_logic(
-	input clock,
+	//input clock,
 	input [31:0] instruction,
 	input [31:0] ex_mem_instruction,
 	input [31:0] mem_wb_instruction,
@@ -270,11 +270,11 @@ module memory_forwarding_logic(
 							mem_wb_data_sel_top <= 4'b0001;  		//Simply pass EX/MEM through
 							mem_wb_data_sel_bot <= 7'b0000010;
 						end
-					end
-					//MEM/WB
-					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
-					begin
-						if(instruction[12:8] == mem_wb_instruction[12:8]
+					end0]
+					//M0] EM/WB
+					els0] e if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
+					beg0] in
+					   0]      if(instruction[12:8] == mem_wb_instruction[12:8]
 						begin
 							//Forward MEM/WB tm1 bottom to mem str data bottom
 							sfr_input_sel <= 5'b00001;

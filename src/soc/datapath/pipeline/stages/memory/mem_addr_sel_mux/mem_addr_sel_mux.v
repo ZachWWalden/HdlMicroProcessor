@@ -7,7 +7,7 @@ Parameters -
 */
 
 module mem_addr_sel_mux(
-	input clock,
+	//input clock,
 	input [1:0] sel_signals,
 	input [15:0] x_ptr,
 	input [15:0] y_ptr,
@@ -43,6 +43,7 @@ module mem_addr_sel_mux(
 	assign mem_addr[14] = (sel[0] & x_ptr[14]) | (sel[1] & y_ptr[14]) | (sel[2] & z_ptr[14]) | (sel[3] & stack_ptr[14]);
 	assign mem_addr[15] = (sel[0] & x_ptr[15]) | (sel[1] & y_ptr[15]) | (sel[2] & z_ptr[15]) | (sel[3] & stack_ptr[15]);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -51,4 +52,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

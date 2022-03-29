@@ -8,7 +8,6 @@ Description - This register holds the necessary data to ensure that the correct 
 module id_ex(
 	input clock, 				//System Clock
 	input nreset, 				//System Reset Signal
-	input stall,  				//Stall signal from hazard unit.
 	input [31:0] ex_mem_instruction_in, 	//Passtrough for the opcode in the EX/MEM pipeline register
 	output [31:0] ex_mem_instruction_out,
 	input [4:0] alu_top_select_in,  	//I/O for the alu top input multiplexor selection signals. Consumed in execute
@@ -113,6 +112,7 @@ module id_ex(
 
 	assign ex_mem_instruction_out = ex_mem_instruction_in;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -121,4 +121,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

@@ -46,6 +46,7 @@ module inst_word_input_sel_mux(
 	assign instruction_word[30] = (~sel & prog_mem_out[30]) | (sel ~ hazard_call_instruction[30]);
 	assign instruction_word[31] = (~sel & prog_mem_out[31]) | (sel ~ hazard_call_instruction[31]);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -54,4 +55,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

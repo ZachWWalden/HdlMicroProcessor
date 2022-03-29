@@ -42,6 +42,8 @@ module fetch(
 		.prog_mem_addr_fetch(prog_mem_fetch_read_addr)
 	);
 
+	assign ret_addr_out = next_prog_cntr;
+
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin

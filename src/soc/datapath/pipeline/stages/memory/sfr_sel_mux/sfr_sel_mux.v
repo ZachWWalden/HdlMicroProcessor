@@ -7,7 +7,7 @@ Parameters -
 */
 
 module sfr_sel_mux(
-	input clock,
+	//input clock,
 	input [4:0] sel_signals,
 	input [7:0] ex_mem_data_bot,
 	input [7:0] mem_wb_data_top,
@@ -27,6 +27,7 @@ module sfr_sel_mux(
 	assign sfr_data_input[6] = (sel_signals[0] & ex_mem_data_bot[6]) | (sel_signals[1] & mem_wb_data_top[6]) | (sel_signals[2] & mem_wb_data_bot[6]) | (sel_signals[3] & mem_wb_tm1_data_top[6]) | (sel_signals[4] & mem_wb_tm1_data_bot[6]);
 	assign sfr_data_input[7] = (sel_signals[0] & ex_mem_data_bot[7]) | (sel_signals[1] & mem_wb_data_top[7]) | (sel_signals[2] & mem_wb_data_bot[7]) | (sel_signals[3] & mem_wb_tm1_data_top[7]) | (sel_signals[4] & mem_wb_tm1_data_bot[7]);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -35,4 +36,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

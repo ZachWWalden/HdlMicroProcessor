@@ -7,7 +7,7 @@ Parameters -
 */
 
 module alu_forwarding_logic(
-		input clock,
+		//input clock,
 		input [31:0] instruction,
 		input [31:0] ex_mem_instruction,
 		input [31:0] id_ex_instruction,
@@ -844,7 +844,7 @@ module alu_forwarding_logic(
 		endcase
 	end
 
-
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -853,4 +853,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule
