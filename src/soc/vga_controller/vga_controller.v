@@ -8,6 +8,7 @@ Parameters -
 
 module vga_controller(
 	input clock,
+	input nreset,
 	input [11:0] pixel_data, 		//Output of the framebuffer unit port b.
 	output [16:0] pixel_addr, 		//Framebuffer Port B address.
 	output reg [11:0] pixel = 0,
@@ -15,10 +16,8 @@ module vga_controller(
 	output v_sync,
 	output v_blank_interupt
 );
-    reg nreset = 1;
-    
-    reg vblankint = 1;
-    
+   	reg vblankint = 1;
+
 	reg [16:0] memory_addr = 0;
 
 	reg [16:0] row_addr_cache = 0;
@@ -72,13 +71,13 @@ module vga_controller(
 		end
 		else if(hblank == 1'b1)
 		begin
-                
+
 		end
 		else
 		begin
 			memory_addr <= mem_addr_inc;
 		end
-		
+
 		if(hblank == 1'b0 && vblank == 1'b0)
 		begin
 			pixel <= pixel_data;
@@ -96,11 +95,11 @@ module vga_controller(
 		      vblankint <= 1;
 		end
 	end
-	
+
 	assign v_blank_interupt = vblankint;
 
 	assign mem_addr_inc = memory_addr + 1;
-	
+
 	assign pixel_addr = memory_addr;
 	assign h_sync = hsync;
 	assign v_sync = vsync;

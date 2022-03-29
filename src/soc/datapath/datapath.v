@@ -47,7 +47,7 @@ module datapath(
 	wire [9:0] reg_file_rd_addr;
 	wire [9:0] reg_file_wr_addr;
 	//Istaniate Register File
-	register_file(
+	register_file reg_file(
 		.clock(clock),
 		.nreset(nreset),
 		.wr_en(reg_file_wen),
@@ -188,8 +188,6 @@ module datapath(
 	id_ex id_ex_register(
 		.clock(clock),
 		.nreset(nreset),
-		//.ex_mem_instruction_in(),
-		//.ex_mem_instruction_out(),
 		.alu_top_select_in(alu_top_sel),
 		.alu_top_select_out(alu_top_sel_out),
 		.alu_bot_select_in(alu_bot_sel),
@@ -273,8 +271,6 @@ module datapath(
 	ex_mem ex_mem_register(
 		.clock(clock),
 		.nreset(nreset),
-		//.mem_wb_instruction_in(),
-		//.mem_wb_instruction_out(),
 		.data_top_in(execute_data_out[15:8]),
 		.data_top_out(ex_mem_data_out[15:8]),
 		.data_bot_in(execute_data_out[7:0]),

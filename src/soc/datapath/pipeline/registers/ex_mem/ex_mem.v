@@ -8,8 +8,6 @@ Description - This register holds the necessary data to ensure that the correct 
 module ex_mem(
 	input clock, 				//System Clock
 	input nreset, 				//System Reset Signal
-	input [31:0] mem_wb_instruction_in, 	//passthrough for the instruction stored in the MEM/WB pipeline register.
-	output [31:0] mem_wb_instruction_out,
 	input [7:0] data_top_in, 		//I/O for the top register file operand read.
 	output reg [7:0] data_top_out = 0,
 	input [7:0] data_bot_in, 		//I/O for the bottom register file operand read.
@@ -108,8 +106,7 @@ module ex_mem(
 		end
 	end
 
-	assign mem_wb_instruction_out = mem_wb_instruction_in;
-
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -118,4 +115,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule
