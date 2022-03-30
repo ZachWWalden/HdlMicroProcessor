@@ -81,11 +81,25 @@ module soc(
 	wire [31:0] sfr_input;
 	wire [143:0] sfr_output;
 
-	wire interrupt = 0;
-	wire interrupt_vector_address = 0;
+	wire interrupt;
+	wire interrupt_vector_address;
 	wire [3:0] hazard_control_unit_state;
 	wire illegal_opcode_exception;
+	wire vblank_int;
 	//Instantiate Interrupt Controller
+	interrupt_controller(
+		.clock(core_clk),
+		.nreset(nreset),
+		//BEIGN Interupt Signals
+		.vblank_int(vblank_int),
+		.illegal_opcode_exception(illegal_opcode_exception),
+		//BEIGN Interface with Hazard Control Unit
+		.hazard_unit_state(hazard_control_unit_state),
+		.interrupt(interrupt),
+		.int_vec_addr(interrupt_vector_address),
+		//BEGIN Interface with SFR Conntrol Registers
+		.sfr_output(sfr_output)
+	);
 
 	wire return;
 	wire halt;
@@ -156,17 +170,17 @@ module soc(
 	);
 	//Instantiate VGA Controller
 	vga_controller vga(
-		.clock(core_clk),
+		.clock(vga_clk),
 		.nreset(nreset),
 		.pixel_data(),
 		.pixel_addr(),
-		.pixel(),
-		.h_sync(),
-		.v_sync(),
-		.v_blank_interupt()
+		.pixel(pixel),
+		.h_sync(hsync),
+		.v_sync(vsync),
+		.v_blank_interupt(vblank_int)
 	);
 
-
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -175,4 +189,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

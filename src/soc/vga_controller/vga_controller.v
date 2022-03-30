@@ -16,7 +16,6 @@ module vga_controller(
 	output v_sync,
 	output v_blank_interupt
 );
-   	reg vblankint = 1;
 
 	reg [16:0] memory_addr = 0;
 
@@ -96,7 +95,7 @@ module vga_controller(
 		end
 	end
 
-	assign v_blank_interupt = vblankint;
+	assign v_blank_interupt = vblank;
 
 	assign mem_addr_inc = memory_addr + 1;
 
