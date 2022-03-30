@@ -30,8 +30,8 @@ module datapath(
 	input inst_word_sel,
 	input [31:0] hazard_inst_word,
 	input [13:0] prog_cntr_int_addr,
-	output stall_fetch,
-	output stall_decode,
+	output stall_fetch_req,
+	output stall_decode_req,
 	output halt,
 	output illegal_opcode_exception,
 	output return_in_pipeline,
@@ -157,8 +157,8 @@ module datapath(
 		.id_ex_data_top(id_ex_data[15:0]),
 		.id_ex_data_bot(id_ex_data[7:0]),
 		//BEGIN interface to hazard unit.
-		.stall_fetch(stall_fetch),
-		.stall_decode(stall_decode),
+		.stall_fetch(stall_fetch_req),
+		.stall_decode(stall_decode_req),
 		.halt(halt),
 		.illegal_opcode_exception(illegal_opcode_exception),
 		.return_in_pipeline(return_in_pipeline)
@@ -188,6 +188,7 @@ module datapath(
 	id_ex id_ex_register(
 		.clock(clock),
 		.nreset(nreset),
+		.stall(stall_decode),
 		.alu_top_select_in(alu_top_sel),
 		.alu_top_select_out(alu_top_sel_out),
 		.alu_bot_select_in(alu_bot_sel),

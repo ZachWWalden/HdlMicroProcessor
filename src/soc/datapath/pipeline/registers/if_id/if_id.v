@@ -38,6 +38,7 @@ module if_id(
 
 	assign take_branch_addr_out = take_branch_addr_in;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -46,4 +47,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

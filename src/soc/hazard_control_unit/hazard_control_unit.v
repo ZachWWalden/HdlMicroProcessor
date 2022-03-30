@@ -1,8 +1,8 @@
 /*
-Module -
+Module - Hazard Control Unit.
 Author - Zach Walden
-Last Changed -
-Description -
+Last Changed - 3/28/22
+Description - This Module is a finite state machine that controls the state of operation of the pipeline.
 Parameters -
 */
 

@@ -1,0 +1,95 @@
+$date
+	Tue Mar 29 22:08:49 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module interrupt_controller $end
+$var wire 1 ! clock $end
+$var wire 4 " hazard_unit_state [3:0] $end
+$var wire 1 # illegal_opcode_exception $end
+$var wire 1 $ nreset $end
+$var wire 144 % sfr_output [143:0] $end
+$var wire 1 & vblank_int $end
+$var reg 14 ' int_vec_addr [13:0] $end
+$var reg 1 ( interrupt $end
+$var reg 1 ) ioeint_t $end
+$var reg 1 * ioeint_tm1 $end
+$var reg 1 + state $end
+$var reg 1 , vblankint_t $end
+$var reg 1 - vblankint_tm1 $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0-
+0,
+0+
+0*
+0)
+0(
+b0 '
+z&
+b1 %
+0$
+z#
+b0 "
+1!
+$end
+#5000
+1$
+0&
+0#
+0!
+#10000
+1!
+#15000
+1&
+0!
+#20000
+1(
+1+
+1,
+1!
+#25000
+0!
+#30000
+1-
+1!
+#35000
+b10 "
+0!
+#40000
+0(
+0+
+1!
+#45000
+b0 "
+0&
+0!
+#50000
+0,
+1!
+#55000
+1#
+0!
+#60000
+1(
+1+
+0-
+1)
+1!
+#65000
+b10 "
+0!
+#70000
+0(
+0+
+1*
+1!
+#75000
+0!
+#75001

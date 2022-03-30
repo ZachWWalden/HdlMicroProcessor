@@ -8,6 +8,7 @@ Description - This register holds the necessary data to ensure that the correct 
 module id_ex(
 	input clock, 				//System Clock
 	input nreset, 				//System Reset Signal
+	input stall,
 	input [4:0] alu_top_select_in,  	//I/O for the alu top input multiplexor selection signals. Consumed in execute
 	output reg [4:0] alu_top_select_out = 0,
 	input [4:0] alu_bot_select_in, 		//I/O for the alu bottom input multiplexor selection signals. Consumed in execute

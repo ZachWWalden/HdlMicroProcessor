@@ -148,8 +148,8 @@ module sfr_file(
 	assign stk_ptr_dec = stk_ptr_intermediate - 1;
 
 	//Interrupt Mask Registers.
-	assign sfr_file_out[7:0] = sfr_array[10];
-	assign sfr_file_out[15:8] = sfr_array[11];
+	assign sfr_file_out[7:0] = sfr_array[10]; 		//Interrupt Conntroller Control Register <0> Int Enable Flag
+	assign sfr_file_out[15:8] = sfr_array[11]; 		//GICR <1> illegal_opcode_exception mask, <0> vblank_int mask
 	assign sfr_file_out[23:16] = sfr_array[12];
 	assign sfr_file_out[31:24] = sfr_array[13];
 	//Interrupt Trigger Condition Control Registers.
