@@ -56,24 +56,21 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// vga_pix_clk__12.58649______0.000______50.0______361.670____296.136
+// _vga_clk__12.58849______0.000______50.0______689.039____663.852
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________100.000____________0.010
+// __primary__________12.000____________0.010
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "vga_pix_clk_gen,clk_wiz_v6_0_8_0_0,{component_name=vga_pix_clk_gen,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=10.000,clkin2_period=10.000,use_power_down=false,use_reset=true,use_locked=true,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "vga_pix_clk_gen,clk_wiz_v6_0_8_0_0,{component_name=vga_pix_clk_gen,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,enable_axi=0,feedback_source=FDBK_AUTO,PRIMITIVE=MMCM,num_out_clk=1,clkin1_period=83.333,clkin2_period=10.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,feedback_type=SINGLE,CLOCK_MGR_TYPE=NA,manual_override=false}" *)
 
 module vga_pix_clk_gen 
  (
   // Clock out ports
-  output        vga_pix_clk,
-  // Status and control signals
-  input         reset,
-  output        locked,
+  output        vga_clk,
  // Clock in ports
   input         clk_in1
  );
@@ -81,10 +78,7 @@ module vga_pix_clk_gen
   vga_pix_clk_gen_clk_wiz inst
   (
   // Clock out ports  
-  .vga_pix_clk(vga_pix_clk),
-  // Status and control signals               
-  .reset(reset), 
-  .locked(locked),
+  .vga_clk(vga_clk),
  // Clock in ports
   .clk_in1(clk_in1)
   );

@@ -55,8 +55,6 @@ module id_ex(
 
 			instruction_out <= 0;
 
-			alu_enable_out <= 0;
-
 			mem_wen_out <= 0;
 
 			main_memory_enable_out <= 0;
@@ -65,7 +63,7 @@ module id_ex(
 
 			call_stack_enable_out <= 0;
 
-			prog_mem_enable_out_out <= 0;
+			prog_mem_enable_out <= 0;
 
 			mem_ptr_ctl_out <= 0;
 
@@ -86,8 +84,6 @@ module id_ex(
 			id_ex_bot_out <= id_ex_bot_in;
 
 			instruction_out <= instruction_in;
-
-			alu_enable_out <= alu_enable_in;
 
 			mem_wen_out <= mem_wen_in;
 

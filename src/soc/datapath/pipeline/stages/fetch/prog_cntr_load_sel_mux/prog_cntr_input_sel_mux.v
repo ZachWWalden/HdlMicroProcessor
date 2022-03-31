@@ -31,6 +31,7 @@ module prog_cntr_input_sel_mux(
 	assign prog_cntr_load_val[12] = (sel_signals[1] & next_prog_cntr[12]) | (sel_signals[0] & branch_target_addr[12]) | (sel_signals[2] & int_branch_addr[12]) | (sel_signals[3] & ret_addr[12]);
 	assign prog_cntr_load_val[13] = (sel_signals[1] & next_prog_cntr[13]) | (sel_signals[0] & branch_target_addr[13]) | (sel_signals[2] & int_branch_addr[13]) | (sel_signals[3] & ret_addr[13]);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -39,4 +40,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

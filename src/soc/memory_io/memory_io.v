@@ -79,6 +79,7 @@ module memory_io(
 	assign data_out[11] = fb_en & frame_buf_douta[11];
 
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -87,4 +88,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

@@ -56,12 +56,12 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// vga_pix_clk__12.58649______0.000______50.0______361.670____296.136
+// _vga_clk__12.58849______0.000______50.0______689.039____663.852
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________100.000____________0.010
+// __primary__________12.000____________0.010
 
 `timescale 1ps/1ps
 
@@ -69,10 +69,7 @@ module vga_pix_clk_gen_clk_wiz
 
  (// Clock in ports
   // Clock out ports
-  output        vga_pix_clk,
-  // Status and control signals
-  input         reset,
-  output        locked,
+  output        vga_clk,
   input         clk_in1
  );
   // Input buffering
@@ -93,7 +90,7 @@ wire clk_in2_vga_pix_clk_gen;
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
 
-  wire        vga_pix_clk_vga_pix_clk_gen;
+  wire        vga_clk_vga_pix_clk_gen;
   wire        clk_out2_vga_pix_clk_gen;
   wire        clk_out3_vga_pix_clk_gen;
   wire        clk_out4_vga_pix_clk_gen;
@@ -120,28 +117,27 @@ wire clk_in2_vga_pix_clk_gen;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
   wire        clkinstopped_unused;
-  wire        reset_high;
 
   MMCME2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (5),
-    .CLKFBOUT_MULT_F      (47.750),
+    .DIVCLK_DIVIDE        (1),
+    .CLKFBOUT_MULT_F      (61.500),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (75.875),
+    .CLKOUT0_DIVIDE_F     (58.625),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKIN1_PERIOD        (10.000))
+    .CLKIN1_PERIOD        (83.333))
   mmcm_adv_inst
     // Output clocks
    (
     .CLKFBOUT            (clkfbout_vga_pix_clk_gen),
     .CLKFBOUTB           (clkfboutb_unused),
-    .CLKOUT0             (vga_pix_clk_vga_pix_clk_gen),
+    .CLKOUT0             (vga_clk_vga_pix_clk_gen),
     .CLKOUT0B            (clkout0b_unused),
     .CLKOUT1             (clkout1_unused),
     .CLKOUT1B            (clkout1b_unused),
@@ -176,10 +172,8 @@ wire clk_in2_vga_pix_clk_gen;
     .CLKINSTOPPED        (clkinstopped_unused),
     .CLKFBSTOPPED        (clkfbstopped_unused),
     .PWRDWN              (1'b0),
-    .RST                 (reset_high));
-  assign reset_high = reset; 
+    .RST                 (1'b0));
 
-  assign locked = locked_int;
 // Clock Monitor clock assigning
 //--------------------------------------
  // Output buffering
@@ -195,8 +189,8 @@ wire clk_in2_vga_pix_clk_gen;
 
 
   BUFG clkout1_buf
-   (.O   (vga_pix_clk),
-    .I   (vga_pix_clk_vga_pix_clk_gen));
+   (.O   (vga_clk),
+    .I   (vga_clk_vga_pix_clk_gen));
 
 
 

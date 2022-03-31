@@ -1,7 +1,7 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Sun Jan 16 20:11:49 2022
+// Date        : Tue Mar 29 23:06:25 2022
 // Host        : uberbertha running 64-bit Arch Linux
 // Command     : write_verilog -force -mode funcsim
 //               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_sim_netlist.v
@@ -14,45 +14,31 @@
 
 (* NotValidForBitStream *)
 module vga_pix_clk_gen
-   (vga_pix_clk,
-    reset,
-    locked,
+   (vga_clk,
     clk_in1);
-  output vga_pix_clk;
-  input reset;
-  output locked;
+  output vga_clk;
   input clk_in1;
 
-  (* IBUF_LOW_PWR *) wire clk_in1;
-  wire locked;
-  wire reset;
-  wire vga_pix_clk;
+  (* IBUF_LOW_PWR *) (* RTL_KEEP = "yes" *) wire clk_in1;
+  wire vga_clk;
 
   vga_pix_clk_gen_clk_wiz inst
        (.clk_in1(clk_in1),
-        .locked(locked),
-        .reset(reset),
-        .vga_pix_clk(vga_pix_clk));
+        .vga_clk(vga_clk));
 endmodule
 
 module vga_pix_clk_gen_clk_wiz
-   (vga_pix_clk,
-    reset,
-    locked,
+   (vga_clk,
     clk_in1);
-  output vga_pix_clk;
-  input reset;
-  output locked;
+  output vga_clk;
   input clk_in1;
 
   wire clk_in1;
   wire clk_in1_vga_pix_clk_gen;
   wire clkfbout_buf_vga_pix_clk_gen;
   wire clkfbout_vga_pix_clk_gen;
-  wire locked;
-  wire reset;
-  wire vga_pix_clk;
-  wire vga_pix_clk_vga_pix_clk_gen;
+  wire vga_clk;
+  wire vga_clk_vga_pix_clk_gen;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
@@ -67,6 +53,7 @@ module vga_pix_clk_gen_clk_wiz
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
+  wire NLW_mmcm_adv_inst_LOCKED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_PSDONE_UNCONNECTED;
   wire [15:0]NLW_mmcm_adv_inst_DO_UNCONNECTED;
 
@@ -85,17 +72,17 @@ module vga_pix_clk_gen_clk_wiz
         .O(clk_in1_vga_pix_clk_gen));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG clkout1_buf
-       (.I(vga_pix_clk_vga_pix_clk_gen),
-        .O(vga_pix_clk));
+       (.I(vga_clk_vga_pix_clk_gen),
+        .O(vga_clk));
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(47.750000),
+    .CLKFBOUT_MULT_F(61.500000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
-    .CLKIN1_PERIOD(10.000000),
+    .CLKIN1_PERIOD(83.333000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(75.875000),
+    .CLKOUT0_DIVIDE_F(58.625000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -125,7 +112,7 @@ module vga_pix_clk_gen_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(5),
+    .DIVCLK_DIVIDE(1),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),
@@ -146,7 +133,7 @@ module vga_pix_clk_gen_clk_wiz
         .CLKIN2(1'b0),
         .CLKINSEL(1'b1),
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
-        .CLKOUT0(vga_pix_clk_vga_pix_clk_gen),
+        .CLKOUT0(vga_clk_vga_pix_clk_gen),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
         .CLKOUT1(NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
@@ -164,13 +151,13 @@ module vga_pix_clk_gen_clk_wiz
         .DO(NLW_mmcm_adv_inst_DO_UNCONNECTED[15:0]),
         .DRDY(NLW_mmcm_adv_inst_DRDY_UNCONNECTED),
         .DWE(1'b0),
-        .LOCKED(locked),
+        .LOCKED(NLW_mmcm_adv_inst_LOCKED_UNCONNECTED),
         .PSCLK(1'b0),
         .PSDONE(NLW_mmcm_adv_inst_PSDONE_UNCONNECTED),
         .PSEN(1'b0),
         .PSINCDEC(1'b0),
         .PWRDWN(1'b0),
-        .RST(reset));
+        .RST(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

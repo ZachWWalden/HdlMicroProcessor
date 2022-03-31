@@ -1,0 +1,3 @@
+clk_gen_clk_wiz.v,verilog,xil_defaultlib,../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_clk_wiz.v,incdir="../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen"incdir="../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen"
+clk_gen.v,verilog,xil_defaultlib,../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen.v,incdir="../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen"incdir="../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen"
+glbl.v,Verilog,xil_defaultlib,glbl.v

@@ -32,10 +32,10 @@ module ex_mem(
 	output reg [6:0] mem_wb_data_sel_bot_out = 0,
 	input [4:0] sfr_file_input_sel_in, 		//Consumed in memory.
 	output reg [4:0] sfr_file_input_sel_out = 0,
-	input [3:0] mem_str_data_sel_top_in,  	//this will only be used when writing to the frame buffer.//Consumed in memory.
-	output reg [3:0] mem_str_data_sel_top_out = 0,
-	input [3:0] mem_str_data_sel_bot_in, 	//Memory data in multiplexor selion signals, as well as the comemnt above.//Consumed in memory.
-	output reg [3:0] mem_str_data_sel_bot_out = 0,
+	input [4:0] mem_str_data_sel_top_in,  	//this will only be used when writing to the frame buffer.//Consumed in memory.
+	output reg [4:0] mem_str_data_sel_top_out = 0,
+	input [4:0] mem_str_data_sel_bot_in, 	//Memory data in multiplexor selion signals, as well as the comemnt above.//Consumed in memory.
+	output reg [4:0] mem_str_data_sel_bot_out = 0,
 	input [1:0] reg_file_wen_in, 			//Consumed in writeback
 	output reg [1:0] reg_file_wen_out = 0,
 	input [1:0] sfr_file_wren_in, 			//Consumed in memory.

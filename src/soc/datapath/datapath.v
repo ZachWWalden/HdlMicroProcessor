@@ -62,9 +62,9 @@ module datapath(
 	//Instantiate Instruction Word Selection Mux
 	inst_word_sel_mux fetch_inst_word_sel_mux(
 		.sel(inst_word_sel),
-		.prog_mem_out(mem_fetch_instruction),
-		.hazard_call_instruction(hazard_inst_word),
-		.instruction_word(if_id_inst)
+		.mem_inst_word(mem_fetch_instruction),
+		.hazard_unit_inst_word(hazard_inst_word),
+		.inst_word_out(if_id_inst)
 	);
 
 	wire [3:0] prog_cntr_sel;
@@ -81,7 +81,7 @@ module datapath(
 		.branch_target_address(branch_target_address),
 		.interrupt_branch_addr(prog_cntr_int_addr),
 		.ret_addr_mem(ret_addr_wb),
-		.return_addr_out(fetch_return_address)
+		.ret_addr_out(fetch_return_address)
 	);
 
 	wire take_branch_addr;
@@ -135,7 +135,7 @@ module datapath(
 		//BEGIN interface definition with General Purpose Register File.
 		.reg_file_ren(reg_file_ren),
 		.reg_file_data_top(reg_file_rd_data[15:8]),
-		.reg_file_data_bot(reg_file_data_top[7:0]),
+		.reg_file_data_bot(reg_file_rd_data[7:0]),
 		//BEGIN Interface with IF/ID pipeline register
 		.take_branch_target(take_brach_addr_in),
 		.instruction_word(if_id_inst_out),
@@ -154,7 +154,7 @@ module datapath(
 		.mem_ptr_ctl(mem_ptr_ctl_dec),
 		.reg_file_wen(reg_file_wen_dec),
 		.sfr_file_wren(sfr_wren_dec),
-		.id_ex_data_top(id_ex_data[15:0]),
+		.id_ex_data_top(id_ex_data[15:8]),
 		.id_ex_data_bot(id_ex_data[7:0]),
 		//BEGIN interface to hazard unit.
 		.stall_fetch(stall_fetch_req),
@@ -226,8 +226,8 @@ module datapath(
 	wire [15:0] execute_data_out;
 
 	wire [4:0] sfr_input_sel_ex;
-	wire [3:0] mem_str_data_sel_top_ex;
-	wire [3:0] mem_str_data_sel_bot_ex;
+	wire [4:0] mem_str_data_sel_top_ex;
+	wire [4:0] mem_str_data_sel_bot_ex;
 	wire [3:0] mem_wb_data_sel_top_ex;
 	wire [6:0] mem_wb_data_sel_bot_ex;
 	//Instantiate Execute Stage
@@ -254,8 +254,8 @@ module datapath(
 		.sfr_input_sel(sfr_input_sel_ex),
 		.mem_str_data_sel_top(mem_str_data_sel_top_ex),
 		.mem_str_data_sel_bot(mem_str_data_sel_bot_ex),
-		.mem_wb_data_sel_top(mem_str_data_sel_top_ex),
-		.mem_wb_data_sel_bot(mem_str_data_sel_bot_ex)
+		.mem_wb_data_sel_top(mem_wb_data_sel_top_ex),
+		.mem_wb_data_sel_bot(mem_wb_data_sel_bot_ex)
 	);
 
 	wire [6:0] mem_ptr_ctl_exmem;
@@ -264,8 +264,8 @@ module datapath(
 	wire [1:0] sfr_wren_exmem;
 
 	wire [4:0] sfr_input_sel_exmem;
-	wire [3:0] mem_str_data_sel_top_exmem;
-	wire [3:0] mem_str_data_sel_bot_exmem;
+	wire [4:0] mem_str_data_sel_top_exmem;
+	wire [4:0] mem_str_data_sel_bot_exmem;
 	wire [3:0] mem_wb_data_sel_top_exmem;
 	wire [6:0] mem_wb_data_sel_bot_exmem;
 	//Instantiate EX/MEM Pipeline Register
@@ -366,6 +366,7 @@ module datapath(
 
 	assign reg_file_wr_addr = mem_wb_instruction_out[17:8];
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -374,4 +375,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

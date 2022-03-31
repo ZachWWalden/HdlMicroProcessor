@@ -55,12 +55,12 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// vga_pix_clk__12.58649______0.000______50.0______361.670____296.136
+// _vga_clk__12.58849______0.000______50.0______689.039____663.852
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary_________100.000____________0.010
+// __primary__________12.000____________0.010
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -71,10 +71,7 @@
   vga_pix_clk_gen instance_name
    (
     // Clock out ports
-    .vga_pix_clk(vga_pix_clk),     // output vga_pix_clk
-    // Status and control signals
-    .reset(reset), // input reset
-    .locked(locked),       // output locked
+    .vga_clk(vga_clk),     // output vga_clk
    // Clock in ports
     .clk_in1(clk_in1));      // input clk_in1
 

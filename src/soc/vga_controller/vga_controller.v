@@ -85,14 +85,6 @@ module vga_controller(
 		begin
 			pixel <= 12'h000;
 		end
-		if(frame_done == 1'b1)
-		begin
-		      vblankint <= 0;
-		end
-		else
-		begin
-		      vblankint <= 1;
-		end
 	end
 
 	assign v_blank_interupt = vblank;

@@ -31,16 +31,24 @@ module sfr_file(
 	reg [7:0] sfr_array [0:31];
 	reg [7:0] out_data = 0;
 
-	wire [15:0] x_intermediate = (sfr_array[3] << 8) | sfr_array[2];
+	wire [15:0] x_intermediate;
+	assign x_intermediate[15:8] = sfr_array[3];
+	assign x_intermediate[7:0] = sfr_array[2];
 	wire [15:0] x_inc;
 
-	wire [15:0] y_intermediate = (sfr_array[5] << 8) | sfr_array[4];
+	wire [15:0] y_intermediate;
+	assign y_intermediate[15:8] = sfr_array[5];
+	assign y_intermediate[7:0] = sfr_array[4];
 	wire [15:0] y_inc;
 
-	wire [15:0] z_intermediate = (sfr_array[7] << 8) | sfr_array[6];
+	wire [15:0] z_intermediate;
+	assign z_intermediate[15:8] = sfr_array[7];
+	assign z_intermediate[7:0] = sfr_array[6];
 	wire [15:0] z_inc;
 
-	wire [15:0] stk_ptr_intermediate = (sfr_array[1] << 8) | sfr_array[0];
+	wire [15:0] stk_ptr_intermediate;
+	assign stk_ptr_intermediate[15:8] = sfr_array[1];
+	assign stk_ptr_intermediate[7:0] = sfr_array[0];
 	wire [15:0] stk_ptr_dec;
 	wire [15:0] stk_ptr_inc;
 
@@ -174,6 +182,7 @@ module sfr_file(
 
 	assign read_data = out_data;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -182,4 +191,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

@@ -71,9 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -83,7 +80,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.cache/wt [current_project]
 set_property parent.project_path /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.xpr [current_project]
-set_property XPM_LIBRARIES XPM_MEMORY [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:arty-s7-50:part0:1.0 [current_project]
@@ -91,7 +88,46 @@ set_property ip_output_repo /home/zww/Documents/College/2022SP/HDL/HdlMicroProce
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/new/soc.v
+read_verilog -library xil_defaultlib {
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode_logic/decode_logic.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_sel_mux/sfr_sel_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/alu.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/branch_resolution_logic/branch_resolution_logic.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/id_ex_data_input_mux/id_ex_data_input_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/vga_controller.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_wb_data_input_mux/mem_wb_data_input_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_str_data_sel_mux/mem_str_data_sel_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bitwise_logic_unit/bitwise_logic_unit.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io/memory_io.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/multiplier/multiplier.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/id_ex/id_ex.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/flags_register/flags_register.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/fetch.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/memory_forwarding_logic/memory_forwarding_logic.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/if_id/if_id.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/adder/adder.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu_input_mux/alu_input_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/memory.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/mem_wb/mem_wb.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/vert_cntr/vert_cntr.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/program_counter/program_counter.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/ex_mem_data_input_mux/ex_mem_data_input_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/alu_forwarding_logic/alu_forwarding_logic.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/execute.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/ex_mem/ex_mem.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_addr_sel_mux/mem_addr_sel_mux.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/horiz_cntr/horiz_cntr.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/inst_word_sel_mux/inst_word_sel_mux.v
+}
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/program_memory/program_memory.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/program_memory/program_memory_ooc.xdc]
 
@@ -101,8 +137,18 @@ set_property used_in_implementation false [get_files -all /home/zww/Documents/Co
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/frame_buffer/frame_buffer.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/frame_buffer/frame_buffer_ooc.xdc]
 
-read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen.xci
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_board.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_ooc.xdc]
+
+read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/main_memory/main_memory.xci
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/main_memory/main_memory_ooc.xdc]
+
+read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/clk_gen/clk_gen.xci
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_board.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -113,8 +159,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc
-set_property used_in_implementation false [get_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc]
+read_xdc /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc
+set_property used_in_implementation false [get_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]

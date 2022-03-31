@@ -22,7 +22,7 @@ module memory(
 	input [1:0] sfr_file_wren,
 	//BEGIN interface with MEM/WB pipeline register
 	output [7:0] data_out_top,
-	output [7:0] data_out_bot
+	output [7:0] data_out_bot,
 	input [7:0] mem_wb_top,
 	input [7:0] mem_wb_bot,
 	input [7:0] mem_wb_tm1_top,
@@ -30,7 +30,6 @@ module memory(
 	//BEGIN interface with memory i/o unit
 	output [16:0] address,
 	output [7:0] call_stack_ptr,
-	output [15:0] stack_ptr,
 	input [11:0] mem_read_data, 		//This is assumed to be sign extended.
 	output [11:0] mem_write_data,
 	//BEGIN I/O interface
@@ -91,15 +90,10 @@ module memory(
 		.mem_data(mem_write_data)
 	);
 
-	wire [3:0] mem_addr_sel_signals; //instruction[19:18]
-	assign mem_addr_sel_signals[0] = ~instruction[18] & ~instruction[19];
-	assign mem_addr_sel_signals[0] = instruction[18] & ~instruction[19];
-	assign mem_addr_sel_signals[0] = ~instruction[18] & instruction[19];
-	assign mem_addr_sel_signals[0] = instruction[18] & instruction[19];
 	//instantiate memeory address input mux
 	mem_addr_sel_mux mem_addr_in_mux(
 		//.clock(clock),
-		.sel_signals(mem_addr_sel_signals),
+		.sel_signals(instruction[19:18]),
 		.x_ptr(x_ptr),
 		.y_ptr(y_ptr),
 		.z_ptr(z_ptr),

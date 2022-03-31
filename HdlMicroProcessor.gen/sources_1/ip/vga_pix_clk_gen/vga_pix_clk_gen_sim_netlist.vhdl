@@ -1,7 +1,7 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
--- Date        : Sun Jan 16 20:11:49 2022
+-- Date        : Tue Mar 29 23:06:25 2022
 -- Host        : uberbertha running 64-bit Arch Linux
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_sim_netlist.vhdl
@@ -16,9 +16,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity vga_pix_clk_gen_clk_wiz is
   port (
-    vga_pix_clk : out STD_LOGIC;
-    reset : in STD_LOGIC;
-    locked : out STD_LOGIC;
+    vga_clk : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
 end vga_pix_clk_gen_clk_wiz;
@@ -27,7 +25,7 @@ architecture STRUCTURE of vga_pix_clk_gen_clk_wiz is
   signal clk_in1_vga_pix_clk_gen : STD_LOGIC;
   signal clkfbout_buf_vga_pix_clk_gen : STD_LOGIC;
   signal clkfbout_vga_pix_clk_gen : STD_LOGIC;
-  signal vga_pix_clk_vga_pix_clk_gen : STD_LOGIC;
+  signal vga_clk_vga_pix_clk_gen : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
@@ -42,6 +40,7 @@ architecture STRUCTURE of vga_pix_clk_gen_clk_wiz is
   signal NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DRDY_UNCONNECTED : STD_LOGIC;
+  signal NLW_mmcm_adv_inst_LOCKED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_PSDONE_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DO_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute BOX_TYPE : string;
@@ -71,18 +70,18 @@ clkin1_ibufg: unisim.vcomponents.IBUF
     );
 clkout1_buf: unisim.vcomponents.BUFG
      port map (
-      I => vga_pix_clk_vga_pix_clk_gen,
-      O => vga_pix_clk
+      I => vga_clk_vga_pix_clk_gen,
+      O => vga_clk
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 47.750000,
+      CLKFBOUT_MULT_F => 61.500000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
-      CLKIN1_PERIOD => 10.000000,
+      CLKIN1_PERIOD => 83.333000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 75.875000,
+      CLKOUT0_DIVIDE_F => 58.625000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
@@ -112,7 +111,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT6_PHASE => 0.000000,
       CLKOUT6_USE_FINE_PS => false,
       COMPENSATION => "ZHOLD",
-      DIVCLK_DIVIDE => 5,
+      DIVCLK_DIVIDE => 1,
       IS_CLKINSEL_INVERTED => '0',
       IS_PSEN_INVERTED => '0',
       IS_PSINCDEC_INVERTED => '0',
@@ -134,7 +133,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
-      CLKOUT0 => vga_pix_clk_vga_pix_clk_gen,
+      CLKOUT0 => vga_clk_vga_pix_clk_gen,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
       CLKOUT1 => NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
@@ -152,13 +151,13 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       DO(15 downto 0) => NLW_mmcm_adv_inst_DO_UNCONNECTED(15 downto 0),
       DRDY => NLW_mmcm_adv_inst_DRDY_UNCONNECTED,
       DWE => '0',
-      LOCKED => locked,
+      LOCKED => NLW_mmcm_adv_inst_LOCKED_UNCONNECTED,
       PSCLK => '0',
       PSDONE => NLW_mmcm_adv_inst_PSDONE_UNCONNECTED,
       PSEN => '0',
       PSINCDEC => '0',
       PWRDWN => '0',
-      RST => reset
+      RST => '0'
     );
 end STRUCTURE;
 library IEEE;
@@ -167,9 +166,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity vga_pix_clk_gen is
   port (
-    vga_pix_clk : out STD_LOGIC;
-    reset : in STD_LOGIC;
-    locked : out STD_LOGIC;
+    vga_clk : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -181,8 +178,6 @@ begin
 inst: entity work.vga_pix_clk_gen_clk_wiz
      port map (
       clk_in1 => clk_in1,
-      locked => locked,
-      reset => reset,
-      vga_pix_clk => vga_pix_clk
+      vga_clk => vga_clk
     );
 end STRUCTURE;

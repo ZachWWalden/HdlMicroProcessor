@@ -27,8 +27,8 @@ module execute(
 	output [7:0] data_out_top,
 	output [7:0] data_out_bot,
 	output [4:0] sfr_input_sel,
-	output [3:0] mem_str_data_sel_top,
-	output [3:0] mem_str_data_sel_bot,
+	output [4:0] mem_str_data_sel_top,
+	output [4:0] mem_str_data_sel_bot,
 	output [3:0] mem_wb_data_sel_top,
 	output [6:0] mem_wb_data_sel_bot
 );
@@ -37,13 +37,13 @@ module execute(
 	wire [7:0] alu_data_in_bot;
 	wire [7:0] alu_data_top_inv;
 	//instantiate alu input multiplexor
-	alu_input_mux(
-		.clock(clock),
+	alu_input_mux alu_mux(
+		//.clock(clock),
 		.alu_input_sel_top(alu_top_sel),
 		.alu_input_sel_bot(alu_bot_sel),
 		.id_ex_data_top(data_in_top),
 		.id_ex_data_bot(data_in_bot),
-		,ex_mem_top(ex_mem_data_top),
+		.ex_mem_top(ex_mem_data_top),
 		.ex_mem_bot(ex_mem_data_bot),
 		.mem_wb_top(mem_wb_data_top),
 		.mem_wb_bot(mem_wb_data_bot),
@@ -106,7 +106,7 @@ module execute(
 		.clock(clock),
 		.nreset(nreset),
 		.new_flags(alu_flags_out),
-		.cur_flags(cur_flags);
+		.cur_flags(cur_flags)
 	);
 
 // the "macro" to dump signals

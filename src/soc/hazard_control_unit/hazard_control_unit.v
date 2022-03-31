@@ -29,7 +29,6 @@ module hazard_control_unit(
 	always @ (negedge clock)
 	begin
 		case(state)
-		begin
 			//Normal 4'b0000
 			4'h0 :
 			begin
@@ -233,9 +232,10 @@ module hazard_control_unit(
 				new_inst_word <= 32'h00000000;
 				prog_cntr_int_addr <= 14'h0000;
 			end
-		end
+		endcase
 	end
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -244,4 +244,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

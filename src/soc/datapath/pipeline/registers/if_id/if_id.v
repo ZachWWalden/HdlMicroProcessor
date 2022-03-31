@@ -24,13 +24,13 @@ module if_id(
 	begin
 		if(nreset == 1'b0)
 		begin
-			instruction_word_out <= 32'h00000000;
+			instruction_out <= 32'h00000000;
 
 			return_addr_out <= 0;
 		end
 		else
 		begin
-			instruction_word_out <= instruction_in;
+			instruction_out <= instruction_in;
 
 			return_addr_out <= return_addr_in;
 		end

@@ -7,7 +7,6 @@ Parameters -
 */
 
 module inst_word_sel_mux(
-	input clock,
 	input sel,
 	input [31:0] mem_inst_word,
 	input [31:0] hazard_unit_inst_word,

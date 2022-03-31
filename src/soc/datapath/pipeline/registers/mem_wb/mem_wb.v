@@ -35,8 +35,8 @@ module mem_wb(
 
 			ret_addr_out <= 0;
 
-			data_tm1_top_out <= 0;
-			data_tm1_bot_out <= 0;
+			data_tm1_top <= 0;
+			data_tm1_bot <= 0;
 		end
 		else
 		begin
@@ -49,8 +49,8 @@ module mem_wb(
 
 			ret_addr_out <= ret_addr_in;
 
-			data_tm1_top_out <= data_top;
-			data_tm1_bot_out <= data_bot;
+			data_tm1_top <= data_top_out;
+			data_tm1_bot <= data_bot_out;
 		end
 	end
 
