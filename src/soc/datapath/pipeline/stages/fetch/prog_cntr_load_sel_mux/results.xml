@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1648763086" />
+    <testcase name="test_CHANGE" classname="prog_cntr_input_sel_mux_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux_tb.py" lineno="6" time="0.003014802932739258" sim_time_ns="35.001" ratio_time="11609.714061209963" />
+  </testsuite>
+</testsuites>

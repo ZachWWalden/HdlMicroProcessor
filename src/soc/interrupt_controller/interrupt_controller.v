@@ -59,7 +59,7 @@ module interrupt_controller(
 					//Vblank Interrut
 					state <= 1;
 					interrupt <= 1;
-					int_vec_addr <= 14'h0000;
+					int_vec_addr <= 14'h0001;
 				end
 				//Always Rising Edge
 				else if(ioeint_t == 1'b1 && ioeint_tm1 == 1'b0)
@@ -67,7 +67,7 @@ module interrupt_controller(
 					//Illegal Opcode Exception
 					state <= 1;
 					interrupt <= 1;
-					int_vec_addr <= 14'h0000;
+					int_vec_addr <= 14'h0002;
 				end
 				else
 				begin
@@ -95,7 +95,7 @@ module interrupt_controller(
 	end
 
 
-
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -104,4 +104,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

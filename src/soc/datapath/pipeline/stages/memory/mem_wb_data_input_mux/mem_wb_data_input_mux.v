@@ -13,34 +13,78 @@ module mem_wb_data_input_mux(
 	input [7:0] sfr_data, 			//SFR data out will always go to MEM/WB data top is it is selected.
 	input [7:0] ex_mem_data_top,
 	input [7:0] ex_mem_data_bot,
-	input [7:0] ld_res_top,
+	input [3:0] ld_res_top,
 	input [7:0] ld_res_bot,
 	input [7:0] mem_wb_top,
 	input [7:0] mem_wb_bot,
 	input [7:0] mem_wb_tm1_top,
 	input [7:0] mem_wb_tm1_bot,
-	output [7:0] mem_data_out_top,
-	output [7:0] mem_data_out_bot
+	output reg [7:0] mem_data_out_top,
+	output reg [7:0] mem_data_out_bot
 );
 
-	assign mem_data_out_top[0] = (sel_signals_top[0] & ex_mem_data_top[0]) | (sel_signals_top[1] & ld_res_top[0]) | (sel_signals_top[2] & mem_wb_tm1_top[0]) | (sel_signals_top[3] & mem_wb_tm1_bot[0]);
-	assign mem_data_out_top[1] = (sel_signals_top[0] & ex_mem_data_top[1]) | (sel_signals_top[1] & ld_res_top[1]) | (sel_signals_top[2] & mem_wb_tm1_top[1]) | (sel_signals_top[3] & mem_wb_tm1_bot[1]);
-	assign mem_data_out_top[2] = (sel_signals_top[0] & ex_mem_data_top[2]) | (sel_signals_top[1] & ld_res_top[2]) | (sel_signals_top[2] & mem_wb_tm1_top[2]) | (sel_signals_top[3] & mem_wb_tm1_bot[2]);
-	assign mem_data_out_top[3] = (sel_signals_top[0] & ex_mem_data_top[3]) | (sel_signals_top[1] & ld_res_top[3]) | (sel_signals_top[2] & mem_wb_tm1_top[3]) | (sel_signals_top[3] & mem_wb_tm1_bot[3]);
-	assign mem_data_out_top[4] = (sel_signals_top[0] & ex_mem_data_top[4]) | (sel_signals_top[1] & ld_res_top[4]) | (sel_signals_top[2] & mem_wb_tm1_top[4]) | (sel_signals_top[3] & mem_wb_tm1_bot[4]);
-	assign mem_data_out_top[5] = (sel_signals_top[0] & ex_mem_data_top[5]) | (sel_signals_top[1] & ld_res_top[5]) | (sel_signals_top[2] & mem_wb_tm1_top[5]) | (sel_signals_top[3] & mem_wb_tm1_bot[5]);
-	assign mem_data_out_top[6] = (sel_signals_top[0] & ex_mem_data_top[6]) | (sel_signals_top[1] & ld_res_top[6]) | (sel_signals_top[2] & mem_wb_tm1_top[6]) | (sel_signals_top[3] & mem_wb_tm1_bot[6]);
-	assign mem_data_out_top[7] = (sel_signals_top[0] & ex_mem_data_top[7]) | (sel_signals_top[1] & ld_res_top[7]) | (sel_signals_top[2] & mem_wb_tm1_top[7]) | (sel_signals_top[3] & mem_wb_tm1_bot[7]);
+	always @ (*)
+	begin
+		if(sel_signals_top == 4'b0001)
+		begin
+			mem_data_out_top <= ex_mem_data_top;
+		end
+		else if(sel_signals_top == 4'b0010)
+		begin
+			mem_data_out_top[3:0] <= ld_res_top;
+			mem_data_out_top[7:4] <= 4'h0;
+		end
+		else if(sel_signals_top == 4'b0100)
+		begin
+			mem_data_out_top <= mem_wb_tm1_top;
+		end
+		else if(sel_signals_top == 4'b1000)
+		begin
+			mem_data_out_top <= mem_wb_tm1_bot;
+		end
+		else
+		begin
+			mem_data_out_top <= 8'h00;
+		end
+	end
+
+	always @ (*)
+	begin
+		if(sel_signals_bot == 7'b0000001)
+		begin
+			mem_data_out_bot <= sfr_data;
+		end
+		else if(sel_signals_bot == 7'b0000010)
+		begin
+			mem_data_out_bot <= ex_mem_data_bot;
+		end
+		else if(sel_signals_bot == 7'b0000100)
+		begin
+			mem_data_out_bot <= ld_res_bot;
+		end
+		else if(sel_signals_bot == 7'b0001000)
+		begin
+			mem_data_out_bot <= mem_wb_top;
+		end
+		else if(sel_signals_bot == 7'b0010000)
+		begin
+			mem_data_out_bot <= mem_wb_bot;
+		end
+		else if(sel_signals_bot == 7'b0100000)
+		begin
+			mem_data_out_bot <= mem_wb_tm1_top;
+		end
+		else if(sel_signals_bot == 7'b1000000)
+		begin
+			mem_data_out_bot <= mem_wb_tm1_bot;
+		end
+		else
+		begin
+			mem_data_out_bot <= 8'h00;
+		end
+	end
 
 	// <0> data_bot = sfr_data, <1> data_bot = ex/mem bottom , <2> data_bot = ld_res_bot , <3> data_bot = mem_wb_top , <4> data_bot = mem_wb_bot, <5> data_bot = mem_wb_tm1_top, <6> data_bot = mem_wb_tm1_bot
-	assign mem_data_out_bot[0] = (sel_signals_bot[0] & sfr_data[0]) | (sel_signals_bot[1] & ex_mem_data_bot[0]) | (sel_signals_bot[2] & ld_res_bot[0]) | (sel_signals_bot[3] & mem_wb_top[0]) | (sel_signals_bot[4] & mem_wb_bot[0])| (sel_signals_bot[5] & mem_wb_tm1_top[0]) | (sel_signals_bot[6] & mem_wb_tm1_bot[0]);
-	assign mem_data_out_bot[1] = (sel_signals_bot[0] & sfr_data[1]) | (sel_signals_bot[1] & ex_mem_data_bot[1]) | (sel_signals_bot[2] & ld_res_bot[1]) | (sel_signals_bot[3] & mem_wb_top[1]) | (sel_signals_bot[4] & mem_wb_bot[1])| (sel_signals_bot[5] & mem_wb_tm1_top[1]) | (sel_signals_bot[6] & mem_wb_tm1_bot[1]);
-	assign mem_data_out_bot[2] = (sel_signals_bot[0] & sfr_data[2]) | (sel_signals_bot[1] & ex_mem_data_bot[2]) | (sel_signals_bot[2] & ld_res_bot[2]) | (sel_signals_bot[3] & mem_wb_top[2]) | (sel_signals_bot[4] & mem_wb_bot[2])| (sel_signals_bot[5] & mem_wb_tm1_top[2]) | (sel_signals_bot[6] & mem_wb_tm1_bot[2]);
-	assign mem_data_out_bot[3] = (sel_signals_bot[0] & sfr_data[3]) | (sel_signals_bot[1] & ex_mem_data_bot[3]) | (sel_signals_bot[2] & ld_res_bot[3]) | (sel_signals_bot[3] & mem_wb_top[3]) | (sel_signals_bot[4] & mem_wb_bot[3])| (sel_signals_bot[5] & mem_wb_tm1_top[3]) | (sel_signals_bot[6] & mem_wb_tm1_bot[3]);
-	assign mem_data_out_bot[4] = (sel_signals_bot[0] & sfr_data[4]) | (sel_signals_bot[1] & ex_mem_data_bot[4]) | (sel_signals_bot[2] & ld_res_bot[4]) | (sel_signals_bot[3] & mem_wb_top[4]) | (sel_signals_bot[4] & mem_wb_bot[4])| (sel_signals_bot[5] & mem_wb_tm1_top[4]) | (sel_signals_bot[6] & mem_wb_tm1_bot[4]);
-	assign mem_data_out_bot[5] = (sel_signals_bot[0] & sfr_data[5]) | (sel_signals_bot[1] & ex_mem_data_bot[5]) | (sel_signals_bot[2] & ld_res_bot[5]) | (sel_signals_bot[3] & mem_wb_top[5]) | (sel_signals_bot[4] & mem_wb_bot[5])| (sel_signals_bot[5] & mem_wb_tm1_top[5]) | (sel_signals_bot[6] & mem_wb_tm1_bot[5]);
-	assign mem_data_out_bot[6] = (sel_signals_bot[0] & sfr_data[6]) | (sel_signals_bot[1] & ex_mem_data_bot[6]) | (sel_signals_bot[2] & ld_res_bot[6]) | (sel_signals_bot[3] & mem_wb_top[6]) | (sel_signals_bot[4] & mem_wb_bot[6])| (sel_signals_bot[5] & mem_wb_tm1_top[6]) | (sel_signals_bot[6] & mem_wb_tm1_bot[6]);
-	assign mem_data_out_bot[7] = (sel_signals_bot[0] & sfr_data[7]) | (sel_signals_bot[1] & ex_mem_data_bot[7]) | (sel_signals_bot[2] & ld_res_bot[7]) | (sel_signals_bot[3] & mem_wb_top[7]) | (sel_signals_bot[4] & mem_wb_bot[7])| (sel_signals_bot[5] & mem_wb_tm1_top[7]) | (sel_signals_bot[6] & mem_wb_tm1_bot[7]);
 
 /*
 // the "macro" to dump signals

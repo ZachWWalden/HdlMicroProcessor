@@ -16,27 +16,65 @@ module alu_input_mux(
 	input [7:0] ex_mem_bot,
 	input [7:0] mem_wb_top,
 	input [7:0] mem_wb_bot,
-	output [7:0] alu_data_input_top,
-	output [7:0] alu_data_input_bot
+	output reg [7:0] alu_data_input_top,
+	output reg [7:0] alu_data_input_bot
 );
 
-	assign alu_data_input_top[0] = (alu_input_sel_top[0] & id_ex_data_top[0]) | (alu_input_sel_top[1] & ex_mem_top[0]) | (alu_input_sel_top[2] & ex_mem_bot[0]) | (alu_input_sel_top[3] & mem_wb_top[0]) | (alu_input_sel_top[4] & mem_wb_bot[0]);
-	assign alu_data_input_top[1] = (alu_input_sel_top[0] & id_ex_data_top[1]) | (alu_input_sel_top[1] & ex_mem_top[1]) | (alu_input_sel_top[2] & ex_mem_bot[1]) | (alu_input_sel_top[3] & mem_wb_top[1]) | (alu_input_sel_top[4] & mem_wb_bot[1]);
-	assign alu_data_input_top[2] = (alu_input_sel_top[0] & id_ex_data_top[2]) | (alu_input_sel_top[1] & ex_mem_top[2]) | (alu_input_sel_top[2] & ex_mem_bot[2]) | (alu_input_sel_top[3] & mem_wb_top[2]) | (alu_input_sel_top[4] & mem_wb_bot[2]);
-	assign alu_data_input_top[3] = (alu_input_sel_top[0] & id_ex_data_top[3]) | (alu_input_sel_top[1] & ex_mem_top[3]) | (alu_input_sel_top[2] & ex_mem_bot[3]) | (alu_input_sel_top[3] & mem_wb_top[3]) | (alu_input_sel_top[4] & mem_wb_bot[3]);
-	assign alu_data_input_top[4] = (alu_input_sel_top[0] & id_ex_data_top[4]) | (alu_input_sel_top[1] & ex_mem_top[4]) | (alu_input_sel_top[2] & ex_mem_bot[4]) | (alu_input_sel_top[3] & mem_wb_top[4]) | (alu_input_sel_top[4] & mem_wb_bot[4]);
-	assign alu_data_input_top[5] = (alu_input_sel_top[0] & id_ex_data_top[5]) | (alu_input_sel_top[1] & ex_mem_top[5]) | (alu_input_sel_top[2] & ex_mem_bot[5]) | (alu_input_sel_top[3] & mem_wb_top[5]) | (alu_input_sel_top[4] & mem_wb_bot[5]);
-	assign alu_data_input_top[6] = (alu_input_sel_top[0] & id_ex_data_top[6]) | (alu_input_sel_top[1] & ex_mem_top[6]) | (alu_input_sel_top[2] & ex_mem_bot[6]) | (alu_input_sel_top[3] & mem_wb_top[6]) | (alu_input_sel_top[4] & mem_wb_bot[6]);
-	assign alu_data_input_top[7] = (alu_input_sel_top[0] & id_ex_data_top[7]) | (alu_input_sel_top[1] & ex_mem_top[7]) | (alu_input_sel_top[2] & ex_mem_bot[7]) | (alu_input_sel_top[3] & mem_wb_top[7]) | (alu_input_sel_top[4] & mem_wb_bot[7]);
+	always @ (*)
+	begin
+		if(alu_input_sel_top == 5'b00001)
+		begin
+			alu_data_input_top <= id_ex_data_top;
+		end
+		else if(alu_input_sel_top == 5'b00010)
+		begin
+			alu_data_input_top <= ex_mem_top;
+		end
+		else if(alu_input_sel_top == 5'b00100)
+		begin
+			alu_data_input_top <= ex_mem_bot;
+		end
+		else if(alu_input_sel_top == 5'b01000)
+		begin
+			alu_data_input_top <= mem_wb_top;
+		end
+		else if(alu_input_sel_top == 5'b10000)
+		begin
+			alu_data_input_top <= mem_wb_bot;
+		end
+		else
+		begin
+			alu_data_input_top <= 8'h00;
+		end
+	end
 
-	assign alu_data_input_bot[0] = (alu_input_sel_bot[0] & id_ex_data_bot[0]) | (alu_input_sel_bot[1] & ex_mem_top[0]) | (alu_input_sel_bot[2] & ex_mem_bot[0]) | (alu_input_sel_bot[3] & mem_wb_top[0]) | (alu_input_sel_bot[4] & mem_wb_bot[0]);
-	assign alu_data_input_bot[1] = (alu_input_sel_bot[0] & id_ex_data_bot[1]) | (alu_input_sel_bot[1] & ex_mem_top[1]) | (alu_input_sel_bot[2] & ex_mem_bot[1]) | (alu_input_sel_bot[3] & mem_wb_top[1]) | (alu_input_sel_bot[4] & mem_wb_bot[1]);
-	assign alu_data_input_bot[2] = (alu_input_sel_bot[0] & id_ex_data_bot[2]) | (alu_input_sel_bot[1] & ex_mem_top[2]) | (alu_input_sel_bot[2] & ex_mem_bot[2]) | (alu_input_sel_bot[3] & mem_wb_top[2]) | (alu_input_sel_bot[4] & mem_wb_bot[2]);
-	assign alu_data_input_bot[3] = (alu_input_sel_bot[0] & id_ex_data_bot[3]) | (alu_input_sel_bot[1] & ex_mem_top[3]) | (alu_input_sel_bot[2] & ex_mem_bot[3]) | (alu_input_sel_bot[3] & mem_wb_top[3]) | (alu_input_sel_bot[4] & mem_wb_bot[3]);
-	assign alu_data_input_bot[4] = (alu_input_sel_bot[0] & id_ex_data_bot[4]) | (alu_input_sel_bot[1] & ex_mem_top[4]) | (alu_input_sel_bot[2] & ex_mem_bot[4]) | (alu_input_sel_bot[3] & mem_wb_top[4]) | (alu_input_sel_bot[4] & mem_wb_bot[4]);
-	assign alu_data_input_bot[5] = (alu_input_sel_bot[0] & id_ex_data_bot[5]) | (alu_input_sel_bot[1] & ex_mem_top[5]) | (alu_input_sel_bot[2] & ex_mem_bot[5]) | (alu_input_sel_bot[3] & mem_wb_top[5]) | (alu_input_sel_bot[4] & mem_wb_bot[5]);
-	assign alu_data_input_bot[6] = (alu_input_sel_bot[0] & id_ex_data_bot[6]) | (alu_input_sel_bot[1] & ex_mem_top[6]) | (alu_input_sel_bot[2] & ex_mem_bot[6]) | (alu_input_sel_bot[3] & mem_wb_top[6]) | (alu_input_sel_bot[4] & mem_wb_bot[6]);
-	assign alu_data_input_bot[7] = (alu_input_sel_bot[0] & id_ex_data_bot[7]) | (alu_input_sel_bot[1] & ex_mem_top[7]) | (alu_input_sel_bot[2] & ex_mem_bot[7]) | (alu_input_sel_bot[3] & mem_wb_top[7]) | (alu_input_sel_bot[4] & mem_wb_bot[7]);
+	always @ (*)
+	begin
+		if(alu_data_input_top == 5'b00001)
+		begin
+			alu_data_input_bot <= id_ex_data_bot;
+		end
+		else if(alu_input_sel_bot == 5'b00010)
+		begin
+			alu_data_input_bot <= ex_mem_top;
+		end
+		else if(alu_input_sel_bot == 5'b00100)
+		begin
+			alu_data_input_bot <= ex_mem_bot;
+		end
+		else if(alu_input_sel_bot == 5'b01000)
+		begin
+			alu_data_input_bot <= mem_wb_top;
+		end
+		else if(alu_input_sel_bot == 5'b10000)
+		begin
+			alu_data_input_bot <= mem_wb_bot;
+		end
+		else
+		begin
+			alu_data_input_bot <= 8'h00;
+		end
+	end
 
 /*
 // the "macro" to dump signals

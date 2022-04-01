@@ -17,24 +17,29 @@ module ex_mem_data_input_mux(
 	output [7:0] ex_data_out_bot
 );
 
-	assign ex_data_out_top[0] = (~sel_signals[0] & id_ex_top[0]) | (sel_signals[0] & alu_res_top[0]);
-	assign ex_data_out_top[1] = (~sel_signals[0] & id_ex_top[1]) | (sel_signals[0] & alu_res_top[1]);
-	assign ex_data_out_top[2] = (~sel_signals[0] & id_ex_top[2]) | (sel_signals[0] & alu_res_top[2]);
-	assign ex_data_out_top[3] = (~sel_signals[0] & id_ex_top[3]) | (sel_signals[0] & alu_res_top[3]);
-	assign ex_data_out_top[4] = (~sel_signals[0] & id_ex_top[4]) | (sel_signals[0] & alu_res_top[4]);
-	assign ex_data_out_top[5] = (~sel_signals[0] & id_ex_top[5]) | (sel_signals[0] & alu_res_top[5]);
-	assign ex_data_out_top[6] = (~sel_signals[0] & id_ex_top[6]) | (sel_signals[0] & alu_res_top[6]);
-	assign ex_data_out_top[7] = (~sel_signals[0] & id_ex_top[7]) | (sel_signals[0] & alu_res_top[7]);
+	always @ (*)
+	begin
+		if(sel_signals[0] == 1'b1)
+		begin
+			ex_data_out_top <= alu_res_top;
+		end
+		else
+		begin
+			ex_data_out_top <= id_ex_top;
+		end
+	end
 
-	//sel_signals[1] == 1 -> ex_data_out_bot = id_ex_bot, sel_signals[2] == 1 -> ex_data_out_bot = alu_res_bot, sel_signals[3] == 1 -> ex_data_out_bot = immeadiate
-	assign ex_data_out_bot[0] = (~sel_signals[1] & id_ex_bot[0]) | (sel_signals[1] & alu_res_bot[0]);
-	assign ex_data_out_bot[1] = (~sel_signals[1] & id_ex_bot[1]) | (sel_signals[1] & alu_res_bot[1]);
-	assign ex_data_out_bot[2] = (~sel_signals[1] & id_ex_bot[2]) | (sel_signals[1] & alu_res_bot[2]);
-	assign ex_data_out_bot[3] = (~sel_signals[1] & id_ex_bot[3]) | (sel_signals[1] & alu_res_bot[3]);
-	assign ex_data_out_bot[4] = (~sel_signals[1] & id_ex_bot[4]) | (sel_signals[1] & alu_res_bot[4]);
-	assign ex_data_out_bot[5] = (~sel_signals[1] & id_ex_bot[5]) | (sel_signals[1] & alu_res_bot[5]);
-	assign ex_data_out_bot[6] = (~sel_signals[1] & id_ex_bot[6]) | (sel_signals[1] & alu_res_bot[6]);
-	assign ex_data_out_bot[7] = (~sel_signals[1] & id_ex_bot[7]) | (sel_signals[1] & alu_res_bot[7]);
+	always @ (*)
+	begin
+		if(sel_signals[1] == 1'b1)
+		begin
+			ex_data_out_bot <= alu_res_bot;
+		end
+		else
+		begin
+			ex_data_out_bot <= id_ex_bot;
+		end
+	end
 
 /*
 // the "macro" to dump signals

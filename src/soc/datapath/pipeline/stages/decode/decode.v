@@ -63,7 +63,7 @@ module decode(
 	);
 
 	//instantiate branch_resolution_logic.
-	branch_resolution_logic(
+	branch_resolution_logic branch_resolver(
 		//.clock(clock),
 		.operation(instruction_word),
 		.flags(alu_flags),
@@ -71,7 +71,7 @@ module decode(
 	);
 
 	//instantiate alu forwarding unit.
-	alu_forwarding_logic(
+	alu_forwarding_logic forward_alu(
 		//.clock(),
 		.instruction(instruction_word),
 		.ex_mem_instruction(ex_mem_instruction),

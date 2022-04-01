@@ -7,7 +7,7 @@ Parameters -
 */
 
 module memory_io(
-	input clock,
+	//input clock,
 	//BEGIN interface with the fetch pipeline stage.
 	input [13:0] prog_mem_addr_fetch,
 	output [31:0] prog_mem_instruction,

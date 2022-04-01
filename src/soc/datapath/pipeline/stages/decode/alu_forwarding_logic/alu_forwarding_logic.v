@@ -11,9 +11,9 @@ module alu_forwarding_logic(
 		input [31:0] instruction,
 		input [31:0] ex_mem_instruction,
 		input [31:0] id_ex_instruction,
-		output reg [4:0] alu_top_sel,
-		output reg [4:0] alu_bot_sel,
-		output reg stall_decode
+		output reg [4:0] alu_top_sel = 0,
+		output reg [4:0] alu_bot_sel = 0,
+		output reg stall_decode = 0
 );
 
 	always @ (*)
@@ -163,7 +163,7 @@ module alu_forwarding_logic(
 					end
 				end
 				//MUL, MULI
-				else if(id_ex_instruction == 8'h8E || id_ex_instruction == 8'h9E)
+				else if(id_ex_instruction[7:0] == 8'h8E || id_ex_instruction[7:0] == 8'h9E)
 				begin
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin
@@ -556,7 +556,7 @@ module alu_forwarding_logic(
 					end
 				end
 				//MUL, MULI
-				else if(id_ex_instruction == 8'h8E || id_ex_instruction == 8'h9E)
+				else if(id_ex_instruction[7:0] == 8'h8E || id_ex_instruction[7:0] == 8'h9E)
 				begin
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin

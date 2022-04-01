@@ -111,7 +111,7 @@ module soc(
 	wire [13:0] call_stk_data_out;
 	//Instantiate Memory I/O Buffer
 	memory_io mem_buffer(
-		.clock(core_clk),
+		//.clock(core_clk),
 		//BEGIN interface with the fetch pipeline stage.
 		.prog_mem_addr_fetch(prog_cntr_val),
 		.prog_mem_instruction(prog_mem_instruction),

@@ -23,7 +23,7 @@ module fetch(
 	wire [13:0] prog_cntr_load_val;
 	//instantiate prog_cntr_load_sel_mux
 	prog_cntr_input_sel_mux	input_mux(
-		.clock(clock),
+		//.clock(clock),
 		.sel_signals(prog_cntr_input_sel),
 		.next_prog_cntr(next_prog_cntr),
 		.branch_target_addr(branch_target_address),

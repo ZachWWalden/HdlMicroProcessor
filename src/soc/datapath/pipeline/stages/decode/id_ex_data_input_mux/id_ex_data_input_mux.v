@@ -12,20 +12,24 @@ module id_ex_data_input_mux(
 		input [7:0] reg_file_top,
 		input [7:0] reg_file_bot,
 		output [7:0] id_ex_data_input_top,
-		output [7:0] id_ex_data_input_bot
+		output reg [7:0] id_ex_data_input_bot
 );
 
-	assign id_ex_data_input_bot[0] = (~sel_signal & reg_file_top[0]) | (sel_signal & immeadiate_data[0]);
-	assign id_ex_data_input_bot[1] = (~sel_signal & reg_file_top[1]) | (sel_signal & immeadiate_data[1]);
-	assign id_ex_data_input_bot[2] = (~sel_signal & reg_file_top[2]) | (sel_signal & immeadiate_data[2]);
-	assign id_ex_data_input_bot[3] = (~sel_signal & reg_file_top[3]) | (sel_signal & immeadiate_data[3]);
-	assign id_ex_data_input_bot[4] = (~sel_signal & reg_file_top[4]) | (sel_signal & immeadiate_data[4]);
-	assign id_ex_data_input_bot[5] = (~sel_signal & reg_file_top[5]) | (sel_signal & immeadiate_data[5]);
-	assign id_ex_data_input_bot[6] = (~sel_signal & reg_file_top[6]) | (sel_signal & immeadiate_data[6]);
-	assign id_ex_data_input_bot[7] = (~sel_signal & reg_file_top[7]) | (sel_signal & immeadiate_data[7]);
+	always @ (*)
+	begin
+		if(sel_signal == 1'b1)
+		begin
+			id_ex_data_input_bot <= immeadiate_data;
+		end
+		else
+		begin
+			id_ex_data_input_bot <= reg_file_top;
+		end
+	end
 
 	assign id_ex_data_input_top = reg_file_bot;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -34,4 +38,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

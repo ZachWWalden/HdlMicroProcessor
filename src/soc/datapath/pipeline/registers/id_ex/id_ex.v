@@ -41,6 +41,8 @@ module id_ex(
 	output reg [13:0] call_addr_out = 0
 );
 
+    reg [6:0] mem_ptr_ctl_signals = 0;
+
 	always @ (posedge clock)
 	begin
 		if(nreset == 1'b0 || stall == 1'b1)
@@ -65,6 +67,7 @@ module id_ex(
 
 			prog_mem_enable_out <= 0;
 
+            mem_ptr_ctl_signals <= 0;
 			mem_ptr_ctl_out <= 0;
 
 			reg_file_wen_out <= 0;
@@ -95,7 +98,8 @@ module id_ex(
 
 			prog_mem_enable_out <= prog_mem_enable_in;
 
-			mem_ptr_ctl_out <= mem_ptr_ctl_in;
+			mem_ptr_ctl_signals <= mem_ptr_ctl_in;
+			mem_ptr_ctl_out <= mem_ptr_ctl_signals;
 
 			reg_file_wen_out <= reg_file_wen_in;
 

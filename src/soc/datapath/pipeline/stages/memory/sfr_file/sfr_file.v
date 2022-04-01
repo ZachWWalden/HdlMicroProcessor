@@ -52,6 +52,9 @@ module sfr_file(
 	wire [15:0] stk_ptr_dec;
 	wire [15:0] stk_ptr_inc;
 
+	wire [7:0] call_stk_inc;
+	wire [7:0] call_stk_dec;
+
 	initial
 	begin
 		for(i=0;i<32;i=i+1)
@@ -72,15 +75,6 @@ module sfr_file(
 		end
 		else
 		begin
-			//Memory Pointers
-			stack_ptr[7:0] <= sfr_array[0];
-			stack_ptr[15:8] <= sfr_array[1];
-			x_ptr[7:0] <= sfr_array[2];
-			x_ptr[15:8] <= sfr_array[3];
-			y_ptr[7:0] <= sfr_array[4];
-			y_ptr[15:8] <= sfr_array[5];
-			z_ptr[7:0] <= sfr_array[6];
-			z_ptr[15:8] <= sfr_array[7];
 
 			call_stk_ptr <= sfr_array[9];
 			//wren[0] is write enable
@@ -90,11 +84,56 @@ module sfr_file(
 			end
 			else
 			begin
+				if(mem_ptr_ctl_signals == 7'b0000001 && wren[0] == 1'b0)
+				begin
+					sfr_array[0] = stk_ptr_inc[7:0];
+					sfr_array[1] = stk_ptr_inc[15:8];
+				end
+				else if(mem_ptr_ctl_signals == 7'b0000010 && wren[0] == 1'b0)
+				begin
+					sfr_array[0] = stk_ptr_dec[7:0];
+					sfr_array[1] = stk_ptr_dec[15:8];
+				end
+				else if(mem_ptr_ctl_signals == 7'b0000100 && wren[0] == 1'b0)
+				begin
+					sfr_array[9] = call_stk_inc;
+				end
+				else if(mem_ptr_ctl_signals == 7'b0001000 && wren[0] == 1'b0)
+				begin
+					sfr_array[9] = call_stk_dec;
+				end
+				else if(mem_ptr_ctl_signals == 7'b0010000 && wren[0] == 1'b0)
+				begin
+					sfr_array[2] = x_inc[7:0];
+					sfr_array[3] = x_inc[15:8];
+				end
+				else if(mem_ptr_ctl_signals == 7'b0100000 && wren[0] == 1'b0)
+				begin
+					sfr_array[4] = y_inc[7:0];
+					sfr_array[5] = y_inc[15:8];
+				end
+				else if(mem_ptr_ctl_signals == 7'b1000000 && wren[0] == 1'b0)
+				begin
+					sfr_array[6] = z_inc[7:0];
+					sfr_array[7] = z_inc[15:8];
+				end
+
+							//Memory Pointers
+				stack_ptr[7:0] <= sfr_array[0];
+				stack_ptr[15:8] <= sfr_array[1];
+				x_ptr[7:0] <= sfr_array[2];
+				x_ptr[15:8] <= sfr_array[3];
+				y_ptr[7:0] <= sfr_array[4];
+				y_ptr[15:8] <= sfr_array[5];
+				z_ptr[7:0] <= sfr_array[6];
+				z_ptr[15:8] <= sfr_array[7];
+
 				//read in input values.
 				sfr_array[28] <= sfr_file_in[7:0];
 				sfr_array[29] <= sfr_file_in[15:8];
 				sfr_array[30] <= sfr_file_in[23:16];
 				sfr_array[31] <= sfr_file_in[31:24];
+
 			end
 			if(wren[1] == 1'b1)
 			begin
@@ -107,53 +146,15 @@ module sfr_file(
 		end
 	end
 
-	always @ (negedge clock)
-	begin
-		if(mem_ptr_ctl_signals == 7'b0000001)
-		begin
-			sfr_array[0] <= stk_ptr_inc[7:0];
-			sfr_array[1] <= stk_ptr_inc[15:8];
-		end
-		else if(mem_ptr_ctl_signals == 7'b0000010)
-		begin
-			sfr_array[0] <= stk_ptr_dec[7:0];
-			sfr_array[1] <= stk_ptr_dec[15:8];
-		end
-		else if(mem_ptr_ctl_signals == 7'b0000100)
-		begin
-			sfr_array[9] = sfr_array[9] + 1;
-		end
-		else if(mem_ptr_ctl_signals == 7'b0001000)
-		begin
-			sfr_array[9] = sfr_array[9] - 1;
-		end
-		else if(mem_ptr_ctl_signals == 7'b0010000)
-		begin
-			sfr_array[2] <= x_inc[7:0];
-			sfr_array[3] <= x_inc[15:8];
-		end
-		else if(mem_ptr_ctl_signals == 7'b0100000)
-		begin
-			sfr_array[4] <= y_inc[7:0];
-			sfr_array[5] <= y_inc[15:8];
-		end
-		else if(mem_ptr_ctl_signals == 7'b1000000)
-		begin
-			sfr_array[6] <= z_inc[7:0];
-			sfr_array[7] <= z_inc[15:8];
-		end
-		else
-		begin
-
-		end
-	end
-
 	assign x_inc = x_intermediate + 1;
 	assign y_inc = y_intermediate + 1;
 	assign z_inc = z_intermediate + 1;
 
 	assign stk_ptr_inc = stk_ptr_intermediate + 1;
 	assign stk_ptr_dec = stk_ptr_intermediate - 1;
+
+	assign call_stk_inc = sfr_array[9] + 1;
+	assign call_stk_dec = sfr_array[9] - 1;
 
 	//Interrupt Mask Registers.
 	assign sfr_file_out[7:0] = sfr_array[10]; 		//Interrupt Conntroller Control Register <0> Int Enable Flag

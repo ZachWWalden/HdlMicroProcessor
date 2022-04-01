@@ -7,15 +7,16 @@ Parameters -
 */
 
 module prog_cntr_input_sel_mux(
-	input clock,
+	//input clock,
 	input [3:0] sel_signals,
 	input [13:0] next_prog_cntr,
 	input [13:0] branch_target_addr,
 	input [13:0] int_branch_addr,
 	input [13:0] ret_addr,
-	output [13:0] prog_cntr_load_val
+	output reg [13:0] prog_cntr_load_val
 );
 
+/*
 	assign prog_cntr_load_val[0] = (sel_signals[1] & next_prog_cntr[0]) | (sel_signals[0] & branch_target_addr[0]) | (sel_signals[2] & int_branch_addr[0]) | (sel_signals[3] & ret_addr[0]);
 	assign prog_cntr_load_val[1] = (sel_signals[1] & next_prog_cntr[1]) | (sel_signals[0] & branch_target_addr[1]) | (sel_signals[2] & int_branch_addr[1]) | (sel_signals[3] & ret_addr[1]);
 	assign prog_cntr_load_val[2] = (sel_signals[1] & next_prog_cntr[2]) | (sel_signals[0] & branch_target_addr[2]) | (sel_signals[2] & int_branch_addr[2]) | (sel_signals[3] & ret_addr[2]);
@@ -30,6 +31,31 @@ module prog_cntr_input_sel_mux(
 	assign prog_cntr_load_val[11] = (sel_signals[1] & next_prog_cntr[11]) | (sel_signals[0] & branch_target_addr[11]) | (sel_signals[2] & int_branch_addr[11]) | (sel_signals[3] & ret_addr[11]);
 	assign prog_cntr_load_val[12] = (sel_signals[1] & next_prog_cntr[12]) | (sel_signals[0] & branch_target_addr[12]) | (sel_signals[2] & int_branch_addr[12]) | (sel_signals[3] & ret_addr[12]);
 	assign prog_cntr_load_val[13] = (sel_signals[1] & next_prog_cntr[13]) | (sel_signals[0] & branch_target_addr[13]) | (sel_signals[2] & int_branch_addr[13]) | (sel_signals[3] & ret_addr[13]);
+*/
+
+	always @ (*)
+	begin
+		if(sel_signals == 4'b0001)
+		begin
+			prog_cntr_load_val <= branch_target_addr;
+		end
+		else if(sel_signals == 4'b0010)
+		begin
+			prog_cntr_load_val <= next_prog_cntr;
+		end
+		else if(sel_signals == 4'b0100)
+		begin
+			prog_cntr_load_val <= int_branch_addr;
+		end
+		else if(sel_signals == 4'b1000)
+		begin
+			prog_cntr_load_val <= ret_addr;
+		end
+		else
+		begin
+			prog_cntr_load_val <= 0;
+		end
+	end
 
 /*
 // the "macro" to dump signals

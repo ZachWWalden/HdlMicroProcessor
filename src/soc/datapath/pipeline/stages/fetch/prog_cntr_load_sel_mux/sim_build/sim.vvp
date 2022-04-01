@@ -1,0 +1,89 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/ivl/system.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/ivl/va_math.vpi";
+:vpi_module "/usr/lib/ivl/v2009.vpi";
+S_0x55c344c60870 .scope package, "$unit" "$unit" 2 1;
+ .timescale -9 -12;
+S_0x55c344c60a00 .scope module, "prog_cntr_input_sel_mux" "prog_cntr_input_sel_mux" 3 9;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "clock";
+    .port_info 1 /INPUT 4 "sel_signals";
+    .port_info 2 /INPUT 14 "next_prog_cntr";
+    .port_info 3 /INPUT 14 "branch_target_addr";
+    .port_info 4 /INPUT 14 "int_branch_addr";
+    .port_info 5 /INPUT 14 "ret_addr";
+    .port_info 6 /OUTPUT 14 "prog_cntr_load_val";
+o0x7f7630c60018 .functor BUFZ 14, C4<zzzzzzzzzzzzzz>; HiZ drive
+v0x55c344c49130_0 .net "branch_target_addr", 13 0, o0x7f7630c60018;  0 drivers
+o0x7f7630c60048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55c344c4a0d0_0 .net "clock", 0 0, o0x7f7630c60048;  0 drivers
+o0x7f7630c60078 .functor BUFZ 14, C4<zzzzzzzzzzzzzz>; HiZ drive
+v0x55c344c49e70_0 .net "int_branch_addr", 13 0, o0x7f7630c60078;  0 drivers
+o0x7f7630c600a8 .functor BUFZ 14, C4<zzzzzzzzzzzzzz>; HiZ drive
+v0x55c344c84d10_0 .net "next_prog_cntr", 13 0, o0x7f7630c600a8;  0 drivers
+v0x55c344c84df0_0 .var "prog_cntr_load_val", 13 0;
+o0x7f7630c60108 .functor BUFZ 14, C4<zzzzzzzzzzzzzz>; HiZ drive
+v0x55c344c84f20_0 .net "ret_addr", 13 0, o0x7f7630c60108;  0 drivers
+o0x7f7630c60138 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x55c344c85000_0 .net "sel_signals", 3 0, o0x7f7630c60138;  0 drivers
+E_0x55c344c710f0/0 .event edge, v0x55c344c85000_0, v0x55c344c49130_0, v0x55c344c84d10_0, v0x55c344c49e70_0;
+E_0x55c344c710f0/1 .event edge, v0x55c344c84f20_0;
+E_0x55c344c710f0 .event/or E_0x55c344c710f0/0, E_0x55c344c710f0/1;
+    .scope S_0x55c344c60a00;
+T_0 ;
+    %wait E_0x55c344c710f0;
+    %load/vec4 v0x55c344c85000_0;
+    %cmpi/e 1, 0, 4;
+    %jmp/0xz  T_0.0, 4;
+    %load/vec4 v0x55c344c49130_0;
+    %assign/vec4 v0x55c344c84df0_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0x55c344c85000_0;
+    %cmpi/e 2, 0, 4;
+    %jmp/0xz  T_0.2, 4;
+    %load/vec4 v0x55c344c84d10_0;
+    %assign/vec4 v0x55c344c84df0_0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/vec4 v0x55c344c85000_0;
+    %cmpi/e 4, 0, 4;
+    %jmp/0xz  T_0.4, 4;
+    %load/vec4 v0x55c344c49e70_0;
+    %assign/vec4 v0x55c344c84df0_0, 0;
+    %jmp T_0.5;
+T_0.4 ;
+    %load/vec4 v0x55c344c85000_0;
+    %cmpi/e 8, 0, 4;
+    %jmp/0xz  T_0.6, 4;
+    %load/vec4 v0x55c344c84f20_0;
+    %assign/vec4 v0x55c344c84df0_0, 0;
+    %jmp T_0.7;
+T_0.6 ;
+    %pushi/vec4 0, 0, 14;
+    %assign/vec4 v0x55c344c84df0_0, 0;
+T_0.7 ;
+T_0.5 ;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x55c344c60a00;
+T_1 ;
+    %vpi_call/w 3 63 "$dumpfile", "prog_cntr_input_sel_mux.vcd" {0 0 0};
+    %vpi_call/w 3 64 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55c344c60a00 {0 0 0};
+    %delay 1000, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.v";

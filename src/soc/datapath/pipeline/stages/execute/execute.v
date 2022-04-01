@@ -76,7 +76,7 @@ module execute(
 	assign flags_out = alu_flags_out;
 
 	//instantiate EX/MEM data input multiplexor.
-	ex_mem_data_input_mux(
+	ex_mem_data_input_mux ex_mem_input_mux(
 		//.clock(clock),
 		.sel_signals(ex_mem_data_input_sel),
 		.id_ex_top(data_in_top),
