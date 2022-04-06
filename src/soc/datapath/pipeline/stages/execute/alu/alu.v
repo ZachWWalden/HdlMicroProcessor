@@ -73,6 +73,7 @@ module alu(
 	//bitwise logic oe
 	assign fu_oe[3] = alu_operation[0] & alu_operation[1];
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -81,5 +82,5 @@ initial begin
   #1;
 end
 `endif
-
+*/
 endmodule

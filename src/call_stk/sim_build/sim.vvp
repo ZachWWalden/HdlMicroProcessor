@@ -1,0 +1,116 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/ivl/system.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/ivl/va_math.vpi";
+:vpi_module "/usr/lib/ivl/v2009.vpi";
+S_0x5647cd044080 .scope package, "$unit" "$unit" 2 1;
+ .timescale -9 -12;
+S_0x5647cd0450c0 .scope module, "call_stk" "call_stk" 3 9;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "clka";
+    .port_info 1 /INPUT 1 "nreset";
+    .port_info 2 /INPUT 1 "wea";
+    .port_info 3 /INPUT 8 "addra";
+    .port_info 4 /INPUT 14 "dina";
+    .port_info 5 /OUTPUT 14 "douta";
+o0x7f63866e7018 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x5647cd02de70_0 .net "addra", 7 0, o0x7f63866e7018;  0 drivers
+v0x5647cd06a7b0 .array "call_stk_array", 255 0, 13 0;
+o0x7f63866e7048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x5647cd06a870_0 .net "clka", 0 0, o0x7f63866e7048;  0 drivers
+o0x7f63866e7078 .functor BUFZ 14, C4<zzzzzzzzzzzzzz>; HiZ drive
+v0x5647cd06a910_0 .net "dina", 13 0, o0x7f63866e7078;  0 drivers
+v0x5647cd06a9f0_0 .var "douta", 13 0;
+v0x5647cd06ab20_0 .var/i "i", 31 0;
+o0x7f63866e7108 .functor BUFZ 1, C4<z>; HiZ drive
+v0x5647cd06ac00_0 .net "nreset", 0 0, o0x7f63866e7108;  0 drivers
+o0x7f63866e7138 .functor BUFZ 1, C4<z>; HiZ drive
+v0x5647cd06acc0_0 .net "wea", 0 0, o0x7f63866e7138;  0 drivers
+E_0x5647cd055140 .event negedge, v0x5647cd06a870_0;
+    .scope S_0x5647cd0450c0;
+T_0 ;
+    %pushi/vec4 0, 0, 14;
+    %store/vec4 v0x5647cd06a9f0_0, 0, 14;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x5647cd06ab20_0, 0, 32;
+    %end;
+    .thread T_0, $init;
+    .scope S_0x5647cd0450c0;
+T_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x5647cd06ab20_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v0x5647cd06ab20_0;
+    %cmpi/s 256, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %pushi/vec4 0, 0, 14;
+    %ix/getv/s 4, v0x5647cd06ab20_0;
+    %store/vec4a v0x5647cd06a7b0, 4, 0;
+    %load/vec4 v0x5647cd06ab20_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x5647cd06ab20_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+    .scope S_0x5647cd0450c0;
+T_2 ;
+    %wait E_0x5647cd055140;
+    %load/vec4 v0x5647cd06ac00_0;
+    %cmpi/e 0, 0, 1;
+    %jmp/0xz  T_2.0, 4;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x5647cd06ab20_0, 0, 32;
+T_2.2 ;
+    %load/vec4 v0x5647cd06ab20_0;
+    %cmpi/s 256, 0, 32;
+    %jmp/0xz T_2.3, 5;
+    %pushi/vec4 0, 0, 14;
+    %ix/getv/s 3, v0x5647cd06ab20_0;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x5647cd06a7b0, 0, 4;
+    %load/vec4 v0x5647cd06ab20_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x5647cd06ab20_0, 0, 32;
+    %jmp T_2.2;
+T_2.3 ;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/vec4 v0x5647cd06acc0_0;
+    %cmpi/e 1, 0, 1;
+    %jmp/0xz  T_2.4, 4;
+    %load/vec4 v0x5647cd06a910_0;
+    %load/vec4 v0x5647cd02de70_0;
+    %pad/u 10;
+    %ix/vec4 3;
+    %ix/load 4, 0, 0; Constant delay
+    %assign/vec4/a/d v0x5647cd06a7b0, 0, 4;
+    %jmp T_2.5;
+T_2.4 ;
+    %load/vec4 v0x5647cd02de70_0;
+    %pad/u 10;
+    %ix/vec4 4;
+    %load/vec4a v0x5647cd06a7b0, 4;
+    %assign/vec4 v0x5647cd06a9f0_0, 0;
+T_2.5 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x5647cd0450c0;
+T_3 ;
+    %vpi_call/w 3 56 "$dumpfile", "call_stk.vcd" {0 0 0};
+    %vpi_call/w 3 57 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x5647cd0450c0 {0 0 0};
+    %delay 1000, 0;
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/call_stk/call_stk.v";

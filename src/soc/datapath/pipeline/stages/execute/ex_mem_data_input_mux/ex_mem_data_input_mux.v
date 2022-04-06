@@ -13,8 +13,8 @@ module ex_mem_data_input_mux(
 	input [7:0] id_ex_bot,
 	input [7:0] alu_res_top,
 	input [7:0] alu_res_bot,
-	output [7:0] ex_data_out_top,
-	output [7:0] ex_data_out_bot
+	output reg [7:0] ex_data_out_top,
+	output reg [7:0] ex_data_out_bot
 );
 
 	always @ (*)

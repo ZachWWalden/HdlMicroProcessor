@@ -1,0 +1,5 @@
+	LDI R0 0xFF
+	NOP
+	NOP
+	NOP
+	OUT LED R0

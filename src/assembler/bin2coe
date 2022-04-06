@@ -14,11 +14,11 @@ def main():
     programName = (sys.argv[1].split('.'))[0]
     coeFile = open(programName + ".coe", "w")
 
-    coeFile.write("memory_initialization_radix=10;\nmemory_initialization_vector=\n")
+    coeFile.write("memory_initialization_radix=16;\nmemory_initialization_vector=\n")
 
     for i in range(16384):
         word = struct.unpack('<I', binFile.read(4))[0]
-        fileString = str(word)
+        fileString = (hex(word).split('x'))[1]
         if i == 16383:
             coeFile.write(fileString + ";")
         else:

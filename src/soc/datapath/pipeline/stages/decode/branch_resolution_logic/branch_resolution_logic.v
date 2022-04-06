@@ -1,8 +1,8 @@
 /*
-Module -
+Module - Branch Resolution Logic
 Author - Zach Walden
-Last Changed -
-Description -
+Last Changed - 4/1/22
+Description - This Logic Resolves Whether a Branch Target Address should be taken or not.
 Parameters -
 */
 

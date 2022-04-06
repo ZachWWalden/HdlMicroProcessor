@@ -9,25 +9,25 @@ Parameters -
 module decode_logic(
 	input [31:0] instruction,
 
-	output reg [1:0] reg_file_ren,
-	output reg id_ex_data_input_sel,
+	output reg [1:0] reg_file_ren = 0,
+	output reg id_ex_data_input_sel = 0,
 
-	output reg [1:0] ex_mem_data_input_sel,
+	output reg [1:0] ex_mem_data_input_sel = 0,
 
-	output reg main_memory_enable,
-	output reg frame_buffer_enable,
-	output reg call_stack_enable,
-	output reg prog_mem_enable,
-	output reg [6:0] mem_ptr_ctl,
-	output reg [1:0] sfr_wren,
-	output reg mem_wen,
+	output reg main_memory_enable = 0,
+	output reg frame_buffer_enable = 0,
+	output reg call_stack_enable = 0,
+	output reg prog_mem_enable = 0,
+	output reg [6:0] mem_ptr_ctl = 0,
+	output reg [1:0] sfr_wren = 0,
+	output reg mem_wen = 0,
 
-	output reg [1:0] reg_file_wen,
+	output reg [1:0] reg_file_wen = 0,
 
-	output reg return_in_pipeline, 			//To the Hazard Unit
-	output reg stall_fetch, 			//To the Hazard Unit
-	output reg illegal_opcode_exception, 		//To the Interrupt Contorller.
-	output reg halt 				//To the Hazard Unit
+	output reg return_in_pipeline = 0, 			//To the Hazard Unit
+	output reg stall_fetch = 0, 			//To the Hazard Unit
+	output reg illegal_opcode_exception = 0, 		//To the Interrupt Contorller.
+	output reg halt = 0 				//To the Hazard Unit
 );
 
 	always @ (*)
@@ -388,14 +388,14 @@ module decode_logic(
 					sfr_wren <= 2'b00;
 					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
-				else if(instruction[19:18] == 2'b01)
+				else if(instruction[19:18] == 2'b10)
 				begin
 					//IN.
 					reg_file_ren <= 2'b00; 		//Read Top address from the register file.
 					sfr_wren <= 2'b10;
 					reg_file_wen <= 2'b01;  		//Write the read value to the bottom address. Data values are flipped coming out of the register file, alu resultss are then reflipped. So, only storage data need to be flipped.
 				end
-				else if(instruction[19:18] == 2'b10)
+				else if(instruction[19:18] == 2'b01)
 				begin
 					//OUT.
 					reg_file_ren <= 2'b10; 		//Read Top address from the register file.
@@ -606,6 +606,7 @@ module decode_logic(
 		endcase
 	end
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -614,4 +615,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

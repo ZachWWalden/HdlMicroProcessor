@@ -55,8 +55,9 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// core_clk___5.00000______0.000______50.0______976.103____871.302
-// _mem_clk__50.10417______0.000______50.0______700.942____871.302
+// core_clk___5.00000______0.000______50.0______639.870____354.143
+// _mem_clk__20.00000______0.000______50.0______500.078____354.143
+// _ila_clk__103.33333______0.000______50.0______362.834____354.143
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -74,6 +75,7 @@
     // Clock out ports
     .core_clk(core_clk),     // output core_clk
     .mem_clk(mem_clk),     // output mem_clk
+    .ila_clk(ila_clk),     // output ila_clk
    // Clock in ports
     .clk_in1(clk_in1));      // input clk_in1
 

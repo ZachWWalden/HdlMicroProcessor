@@ -25,13 +25,14 @@ module fetch(
 	prog_cntr_input_sel_mux	input_mux(
 		//.clock(clock),
 		.sel_signals(prog_cntr_input_sel),
+		//.sel_signals(sel_prog_counter),
 		.next_prog_cntr(next_prog_cntr),
 		.branch_target_addr(branch_target_address),
 		.int_branch_addr(interrupt_branch_addr),
 		.ret_addr(ret_addr_mem),
 		.prog_cntr_load_val(prog_cntr_load_val)
 	);
-
+    
 	//Instantiate program_counter
 	program_counter prog_cntr(
 		.clock(clock),
@@ -44,6 +45,7 @@ module fetch(
 
 	assign ret_addr_out = next_prog_cntr;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -52,4 +54,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

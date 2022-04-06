@@ -28,7 +28,7 @@ module memory(
 	input [7:0] mem_wb_tm1_top,
 	input [7:0] mem_wb_tm1_bot,
 	//BEGIN interface with memory i/o unit
-	output [16:0] address,
+	output [15:0] address,
 	output [7:0] call_stack_ptr,
 	input [11:0] mem_read_data, 		//This is assumed to be sign extended.
 	output [11:0] mem_write_data,
@@ -55,7 +55,6 @@ module memory(
 	wire [15:0] y_ptr;
 	wire [15:0] z_ptr;
 	wire [15:0] stack_ptr;
-	wire fb_segment;
 	//instantiate SFR file
 	sfr_file sf_reg_file(
 		.clock(clock),
@@ -70,7 +69,6 @@ module memory(
 		.x_ptr(x_ptr),
 		.y_ptr(y_ptr),
 		.z_ptr(z_ptr),
-		.fb_segment(address[16]),  	//This is now a page address, rather than a segment address.
 		.call_stk_ptr(call_stack_ptr),
 		.sfr_file_in(sfr_file_in),
 		.sfr_file_out(sfr_file_out)
@@ -81,8 +79,8 @@ module memory(
 		//.clock(clock),
 		.sel_signal_top(mem_str_data_input_sel_top),
 		.sel_signal_bot(mem_str_data_input_sel_bot),
-		.ex_mem_data_top(ex_mem_data_top),
-		.ex_mem_data_bot(ex_mem_data_bot),
+		.ex_mem_data_top(data_in_top),
+		.ex_mem_data_bot(data_in_bot),
 		.mem_wb_data_top(mem_wb_top),		//these signals must be connected to the data outputs of the MEM/WB pipeline register.
 		.mem_wb_data_bot(mem_wb_bot),
 		.mem_wb_tm1_data_top(mem_wb_tm1_top),

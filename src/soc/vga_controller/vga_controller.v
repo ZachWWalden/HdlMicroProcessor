@@ -10,20 +10,22 @@ module vga_controller(
 	input clock,
 	input nreset,
 	input [11:0] pixel_data, 		//Output of the framebuffer unit port b.
-	output [16:0] pixel_addr, 		//Framebuffer Port B address.
+	output [14:0] pixel_addr, 		//Framebuffer Port B address.
 	output reg [11:0] pixel = 0,
 	output h_sync,
 	output v_sync,
 	output v_blank_interupt
 );
 
-	reg [16:0] memory_addr = 0;
+	reg [14:0] memory_addr = 0;
 
-	reg [16:0] row_addr_cache = 0;
+	reg [14:0] row_addr_cache = 0;
 
-	reg row_cnt = 0;
+	//reg row_cnt = 0;
+	reg [1:0] row_cnt = 0;
 
-	wire [16:0] mem_addr_inc;
+	wire [14:0] mem_addr_inc;
+	wire [1:0] row_cnt_inc;
 
 	wire hblank;
 	wire hsync;
@@ -58,11 +60,21 @@ module vga_controller(
 		end
 		else if(row_done == 1'b1 && vblank == 1'b0)
 		begin
-			row_cnt = ~row_cnt;
-			if(row_cnt == 1'b1)
+			//row_cnt = ~row_cnt;
+			//if(row_cnt == 1'b1)
+			row_cnt = row_cnt_inc;
+			if(row_cnt == 2'b11)
 			begin
 				memory_addr <= row_addr_cache;
 			end
+			else if(row_cnt == 2'b10)
+			begin
+			    memory_addr <= row_addr_cache;
+			end
+            else if(row_cnt == 2'b01)
+            begin
+                memory_addr <= row_addr_cache;
+            end
 			else
 			begin
 				row_addr_cache <= memory_addr;
@@ -90,6 +102,7 @@ module vga_controller(
 	assign v_blank_interupt = vblank;
 
 	assign mem_addr_inc = memory_addr + 1;
+	assign row_cnt_inc = row_cnt + 1;
 
 	assign pixel_addr = memory_addr;
 	assign h_sync = hsync;

@@ -17,7 +17,7 @@ module datapath(
 	output fb_en,
 	output call_stk_en,
 	output mem_wen,
-	output [16:0] mem_addr,
+	output [15:0] mem_addr,
 	output [7:0] call_stk_addr,
 	output [11:0] write_data,
 	input [11:0] read_data,
@@ -68,7 +68,6 @@ module datapath(
 	);
 
 	wire [3:0] prog_cntr_sel;
-	wire [13:0] branch_target_address;
 	wire [13:0] fetch_return_address;
 	wire [13:0] ret_addr_wb;
 	//Instantiate Fetch Stage
@@ -78,7 +77,7 @@ module datapath(
 		.stall(stall_fetch),
 		.prog_mem_fetch_read_addr(prog_cntr_val),
 		.prog_cntr_input_sel(prog_cntr_sel),
-		.branch_target_address(branch_target_address),
+		.branch_target_address(if_id_inst_out[31:18]),
 		.interrupt_branch_addr(prog_cntr_int_addr),
 		.ret_addr_mem(ret_addr_wb),
 		.ret_addr_out(fetch_return_address)
@@ -358,7 +357,7 @@ module datapath(
 		.instruction_out(mem_wb_instruction_out),
 		.reg_file_wen_in(reg_file_wen_exmem),
 		.reg_file_wen_out(reg_file_wen),
-		.ret_addr_in(call_stk_read_data), 				//From Memory I/O buffer
+		.ret_addr_in(call_stk_read_data), 				//From Call Stk
 		.ret_addr_out(ret_addr_wb)
 	);
 
@@ -366,7 +365,6 @@ module datapath(
 
 	assign reg_file_wr_addr = mem_wb_instruction_out[17:8];
 
-/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -375,5 +373,4 @@ initial begin
   #1;
 end
 `endif
-*/
 endmodule

@@ -18,6 +18,10 @@ module alu_forwarding_logic(
 
 	always @ (*)
 	begin
+		//Default Values
+		alu_top_sel <= 5'b00001;
+		alu_bot_sel <= 5'b00001;
+		stall_decode <= 1'b0;
 		case(instruction[7:0])
 			//Add Immeadiate, Increment, Decrement, Sub Immeadiate, Complement, Invert, Compare Immeadiate, Or Immeadiate, And Immeadiate, Mulitply Immeadiate, Shift Right, Shift Left   CASES DONE
 			8'hBC, 8'h9E, 8'h9B, 8'hA5 :

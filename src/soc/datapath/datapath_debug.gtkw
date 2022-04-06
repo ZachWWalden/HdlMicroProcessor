@@ -1,0 +1,89 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Tue Apr  5 19:54:06 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.vcd"
+[dumpfile_mtime] "Sun Apr  3 02:46:08 2022"
+[dumpfile_size] 121212
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath_debug.gtkw"
+[timestart] 0
+[size] 1898 1037
+[pos] -3 -3
+*-14.000000 44720 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] datapath.
+[treeopen] datapath.memory_stage.
+[sst_width] 294
+[signals_width] 339
+[sst_expanded] 1
+[sst_vpaned_height] 141
+@28
+datapath.clock
+datapath.nreset
+@22
+datapath.prog_cntr_val[13:0]
+datapath.mem_fetch_instruction[31:0]
+datapath.if_id_inst_out[31:0]
+datapath.id_ex_instruction_out[31:0]
+datapath.ex_mem_instruction_out[31:0]
+datapath.mem_wb_instruction_out[31:0]
+datapath.mem_addr[15:0]
+@c00022
+datapath.write_data[11:0]
+@28
+(0)datapath.write_data[11:0]
+(1)datapath.write_data[11:0]
+(2)datapath.write_data[11:0]
+(3)datapath.write_data[11:0]
+(4)datapath.write_data[11:0]
+(5)datapath.write_data[11:0]
+(6)datapath.write_data[11:0]
+(7)datapath.write_data[11:0]
+(8)datapath.write_data[11:0]
+(9)datapath.write_data[11:0]
+(10)datapath.write_data[11:0]
+(11)datapath.write_data[11:0]
+@1401200
+-group_end
+@22
+datapath.mem_str_data_sel_top_ex[4:0]
+datapath.mem_str_data_sel_top_exmem[4:0]
+datapath.mem_str_data_sel_bot_ex[4:0]
+datapath.mem_str_data_sel_bot_exmem[4:0]
+datapath.reg_file_rd_data[15:0]
+datapath.id_ex_data_out[15:0]
+datapath.ex_mem_data_out[15:0]
+datapath.mem_wb_data_out[15:0]
+datapath.reg_file_wr_data[15:0]
+datapath.mem_str_data_sel_top_exmem[4:0]
+@28
+datapath.mem_wen
+datapath.main_mem_en
+datapath.call_stk_en
+datapath.fb_en
+datapath.prog_mem_en
+@22
+datapath.reg_file_rd_addr[9:0]
+datapath.reg_file_rd_data[15:0]
+@28
+datapath.reg_file_ren[1:0]
+@22
+datapath.mem_wb_instruction_out[31:0]
+@c00028
+datapath.reg_file_wen[1:0]
+@28
+(0)datapath.reg_file_wen[1:0]
+(1)datapath.reg_file_wen[1:0]
+@1401200
+-group_end
+@22
+datapath.memory_stage.mem_data_in_mux.ex_mem_data_bot[7:0]
+datapath.memory_stage.mem_data_in_mux.ex_mem_data_top[7:0]
+datapath.ex_mem_register.data_top_out[7:0]
+datapath.memory_stage.data_in_top[7:0]
+datapath.ex_mem_register.data_bot_out[7:0]
+datapath.memory_stage.data_in_bot[7:0]
+datapath.if_id_register.return_addr_out[13:0]
+datapath.id_ex_register.call_addr_out[13:0]
+datapath.ex_mem_register.call_addr_out[13:0]
+[pattern_trace] 1
+[pattern_trace] 0

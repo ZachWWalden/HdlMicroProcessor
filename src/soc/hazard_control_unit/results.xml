@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1649128072" />
+    <testcase name="test_hazard_control_unit" classname="hazard_control_unit_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit_tb.py" lineno="6" time="0.006252765655517578" sim_time_ns="120.001" ratio_time="19191.667593380615" />
+  </testsuite>
+</testsuites>

@@ -1,0 +1,231 @@
+$date
+	Sat Apr  2 19:35:57 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module datapath $end
+$scope module execute_stage $end
+$var wire 3 ! alu_flags_out [2:0] $end
+$var wire 16 " alu_out [15:0] $end
+$var wire 1 # clock $end
+$var wire 8 $ data_in_bot [7:0] $end
+$var wire 8 % data_in_top [7:0] $end
+$var wire 8 & ex_mem_data_bot [7:0] $end
+$var wire 8 ' ex_mem_data_top [7:0] $end
+$var wire 32 ( ex_mem_operation [31:0] $end
+$var wire 3 ) flags_out [2:0] $end
+$var wire 8 * mem_wb_data_bot [7:0] $end
+$var wire 8 + mem_wb_data_top [7:0] $end
+$var wire 1 , nreset $end
+$var wire 5 - sfr_input_sel [4:0] $end
+$var wire 32 . mem_wb_operation [31:0] $end
+$var wire 4 / mem_wb_data_sel_top [3:0] $end
+$var wire 7 0 mem_wb_data_sel_bot [6:0] $end
+$var wire 5 1 mem_str_data_sel_top [4:0] $end
+$var wire 5 2 mem_str_data_sel_bot [4:0] $end
+$var wire 32 3 instruction [31:0] $end
+$var wire 2 4 ex_mem_data_input_sel [1:0] $end
+$var wire 8 5 data_out_top [7:0] $end
+$var wire 8 6 data_out_bot [7:0] $end
+$var wire 3 7 cur_flags [2:0] $end
+$var wire 5 8 alu_top_sel [4:0] $end
+$var wire 8 9 alu_data_top_inv [7:0] $end
+$var wire 8 : alu_data_in_top [7:0] $end
+$var wire 8 ; alu_data_in_bot [7:0] $end
+$var wire 5 < alu_bot_sel [4:0] $end
+$scope module alu $end
+$var wire 3 = alu_flags [2:0] $end
+$var wire 2 > alu_operation [1:0] $end
+$var wire 1 ? alu_operation_select $end
+$var wire 16 @ alu_out [15:0] $end
+$var wire 1 # clock $end
+$var wire 4 A fu_oe [3:0] $end
+$var wire 1 , nreset $end
+$var wire 8 B top_operand [7:0] $end
+$var wire 8 C bottom_operand [7:0] $end
+$scope module add_unit $end
+$var wire 1 ? add_sub $end
+$var wire 1 # clock $end
+$var wire 3 D flags [2:0] $end
+$var wire 1 , nreset $end
+$var wire 1 E oe $end
+$var wire 8 F primary_operand [7:0] $end
+$var wire 8 G secondary_operand [7:0] $end
+$var wire 8 H result [7:0] $end
+$var wire 3 I flag_result [2:0] $end
+$var reg 9 J value [8:0] $end
+$upscope $end
+$scope module bitwise $end
+$var wire 1 ? and_or $end
+$var wire 1 # clock $end
+$var wire 3 K flags [2:0] $end
+$var wire 1 , nreset $end
+$var wire 1 L oe $end
+$var wire 8 M primary_operand [7:0] $end
+$var wire 8 N secondary_operand [7:0] $end
+$var wire 8 O result [7:0] $end
+$var wire 3 P flags_result [2:0] $end
+$var reg 8 Q value [7:0] $end
+$upscope $end
+$scope module multiply_unit $end
+$var wire 1 # clock $end
+$var wire 3 R flags [2:0] $end
+$var wire 16 S mult_out [15:0] $end
+$var wire 1 , nreset $end
+$var wire 1 T oe $end
+$var wire 8 U primary_operand [7:0] $end
+$var wire 8 V secondary_operand [7:0] $end
+$var wire 3 W flags_result [2:0] $end
+$var reg 16 X result [15:0] $end
+$upscope $end
+$scope module shifter $end
+$var wire 1 # clock $end
+$var wire 3 Y flags [2:0] $end
+$var wire 1 , nreset $end
+$var wire 1 Z oe $end
+$var wire 8 [ primary_operand [7:0] $end
+$var wire 1 ? right_left $end
+$var wire 8 \ result [7:0] $end
+$var wire 3 ] flags_value [2:0] $end
+$var reg 8 ^ value [7:0] $end
+$var integer 32 _ Index [31:0] $end
+$upscope $end
+$upscope $end
+$scope module alu_mux $end
+$var wire 8 ` ex_mem_bot [7:0] $end
+$var wire 8 a ex_mem_top [7:0] $end
+$var wire 8 b id_ex_data_bot [7:0] $end
+$var wire 8 c id_ex_data_top [7:0] $end
+$var wire 8 d mem_wb_bot [7:0] $end
+$var wire 8 e mem_wb_top [7:0] $end
+$var wire 5 f alu_input_sel_top [4:0] $end
+$var wire 5 g alu_input_sel_bot [4:0] $end
+$var reg 8 h alu_data_input_bot [7:0] $end
+$var reg 8 i alu_data_input_top [7:0] $end
+$upscope $end
+$scope module ex_mem_input_mux $end
+$var wire 8 j alu_res_bot [7:0] $end
+$var wire 8 k alu_res_top [7:0] $end
+$var wire 8 l id_ex_bot [7:0] $end
+$var wire 8 m id_ex_top [7:0] $end
+$var wire 2 n sel_signals [1:0] $end
+$var reg 8 o ex_data_out_bot [7:0] $end
+$var reg 8 p ex_data_out_top [7:0] $end
+$upscope $end
+$scope module flags_reg $end
+$var wire 1 # clock $end
+$var wire 3 q new_flags [2:0] $end
+$var wire 1 , nreset $end
+$var reg 3 r cur_flags [2:0] $end
+$upscope $end
+$scope module mem_frwd $end
+$var wire 32 s ex_mem_instruction [31:0] $end
+$var wire 32 t mem_wb_instruction [31:0] $end
+$var wire 32 u instruction [31:0] $end
+$var reg 7 v mem_wb_data_sel_bot [6:0] $end
+$var reg 4 w mem_wb_data_sel_top [3:0] $end
+$var reg 5 x mem_write_data_sel_bot [4:0] $end
+$var reg 5 y mem_write_data_sel_top [4:0] $end
+$var reg 5 z sfr_input_sel [4:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx z
+bx y
+bx x
+bx w
+bx v
+b0 u
+bx t
+b0 s
+b0 r
+b1 q
+b0 p
+b0 o
+b0 n
+b0 m
+b0 l
+b0 k
+b0 j
+bx i
+bx h
+b0 g
+b0 f
+bx e
+bx d
+b0 c
+b0 b
+b0 a
+b0 `
+bx _
+b0 ^
+bx01 ]
+bz \
+bx [
+0Z
+b1 Y
+b0 X
+b1 W
+bx V
+bx U
+0T
+b0 S
+b1 R
+b0 Q
+b1 P
+bz O
+bx N
+bx M
+0L
+b1 K
+b0 J
+b1 I
+b0 H
+bx G
+bx F
+1E
+b1 D
+bx C
+bx B
+b1 A
+b0 @
+0?
+b0 >
+b1 =
+b0 <
+bx ;
+bx :
+bx 9
+b0 8
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+bx -
+z,
+bx +
+bx *
+b1 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+z#
+b0 "
+b1 !
+$end
+#1

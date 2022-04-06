@@ -13,10 +13,16 @@ module horiz_cntr(
 	output reg hblank = 0,
 	output row_done
 );
-
+/*
+    9 bits are required for 320 x 240
 	reg [8:0] value = 0;
 
 	wire [8:0] value_inc;
+*/
+    // 8-bits for 160 x 120
+    reg [7:0] value = 0;
+
+	wire [7:0] value_inc;
 
 	wire set_hblank;
 	wire set_hsync;
@@ -70,17 +76,30 @@ module horiz_cntr(
 
 	assign value_inc = value + 1;
 
-
-	assign set_hblank = value[0] & value[1] & value[2] & value[3] & value[4] & value[5] & ~value[6] & ~value[7] & value[8]; 	//319
+/*
+    //Constants for 320 x 240
+	assign set_hblank = value[0] & value[1] & value[2] & value[3] & value[4] & value[5] & ~value[6] & ~value[7] & value[8]; 	//319 -> 159
 //	assign set_hsync = value[0] & value[1] & value[2] & ~value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//327
 //	assign clear_hsync = value[0] & value[1] & value[2] & ~value[3] & value[4] & value[5] & value[6] & ~value[7] & value[8]; 	//375
 //	assign row_done = value[0] & value[1] & value[2] & value[3] & ~value[4] & ~value[5] & ~value[6] & value[7] & value[8]; 	//399
 
 
-//	assign set_hblank = ~value[0] & ~value[1] & ~value[2] & ~value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//320
-	assign set_hsync = ~value[0] & ~value[1] & ~value[2] & value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//328
-	assign clear_hsync = ~value[0] & ~value[1] & ~value[2] & value[3] & value[4] & value[5] & value[6] & ~value[7] & value[8]; 	//376
-	assign row_done = ~value[0] & ~value[1] & ~value[2] & ~value[3] & value[4] & ~value[5] & ~value[6] & value[7] & value[8]; 	//400
+//	assign set_hblank = ~value[0] & ~value[1] & ~value[2] & ~value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//320 -> 160
+	assign set_hsync = ~value[0] & ~value[1] & ~value[2] & value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//328 -> 164
+	assign clear_hsync = ~value[0] & ~value[1] & ~value[2] & value[3] & value[4] & value[5] & value[6] & ~value[7] & value[8]; 	//376 -> 188
+	assign row_done = ~value[0] & ~value[1] & ~value[2] & ~value[3] & value[4] & ~value[5] & ~value[6] & value[7] & value[8]; 	//400 -> 200
+*/	
+		assign set_hblank = value[0] & value[1] & value[2] & value[3] & value[4] & ~value[5] & ~value[6] & value[7]; 	//319 -> 159
+//	assign set_hsync = value[0] & value[1] & value[2] & ~value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//327
+//	assign clear_hsync = value[0] & value[1] & value[2] & ~value[3] & value[4] & value[5] & value[6] & ~value[7] & value[8]; 	//375
+//	assign row_done = value[0] & value[1] & value[2] & value[3] & ~value[4] & ~value[5] & ~value[6] & value[7] & value[8]; 	//399
+
+
+//	assign set_hblank = ~value[0] & ~value[1] & ~value[2] & ~value[3] & ~value[4] & ~value[5] & value[6] & ~value[7] & value[8]; 	//320 -> 160
+	assign set_hsync = ~value[0] & ~value[1] & value[2] & ~value[3] & ~value[4] & value[5] & ~value[6] & value[7]; 	//328 -> 164
+	assign clear_hsync = ~value[0] & ~value[1] & value[2] & value[3] & value[4] & value[5] & ~value[6] & value[7]; 	//376 -> 188
+	assign row_done = ~value[0] & ~value[1] & ~value[2] & value[3] & ~value[4] & ~value[5] & value[6] & value[7]; 	//400 -> 200
+
 
 /*
 // the "macro" to dump signals

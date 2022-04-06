@@ -3,9 +3,9 @@ import cv2
 import numpy
 
 def main():
-    img = cv2.imread("f224096.jpg")
+    img = cv2.imread("f22160120.jpg")
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    file = open("f22.coe", "w")
+    file = open("f22160120.coe", "w")
     file.write("memory_initialization_radix=16;\nmemory_initialization_vector=\n")
 
     i = 0
@@ -22,7 +22,7 @@ def main():
                 hex_str = hex(pix_val)
                 string+= hex_str[2]
             i += 1
-            if i == 76800:
+            if i == 19200:
                 file.write(string + ";")
             else:
                 file.write(string + ",\n")

@@ -109,6 +109,7 @@ module execute(
 		.cur_flags(cur_flags)
 	);
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -117,4 +118,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

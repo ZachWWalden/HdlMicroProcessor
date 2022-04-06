@@ -1,0 +1,156 @@
+$date
+	Mon Apr  4 22:07:52 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module hazard_control_unit $end
+$var wire 1 ! clock $end
+$var wire 3 " control_state [2:0] $end
+$var wire 1 # dec_stl_req $end
+$var wire 1 $ fetch_stl_req $end
+$var wire 1 % halt $end
+$var wire 1 & interrupt $end
+$var wire 14 ' interrupt_vector_address [13:0] $end
+$var wire 1 ( nreset $end
+$var wire 1 ) ret $end
+$var reg 1 * inst_word_sel $end
+$var reg 32 + new_inst_word [31:0] $end
+$var reg 3 , next_state [2:0] $end
+$var reg 14 - prog_cntr_int_addr [13:0] $end
+$var reg 3 . prog_cntr_load_sel [2:0] $end
+$var reg 1 / stall_decode $end
+$var reg 1 0 stall_fetch $end
+$var reg 3 1 state [2:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 1
+00
+0/
+b1 .
+b0 -
+b0 ,
+b0 +
+0*
+0)
+1(
+b11111111111111 '
+0&
+0%
+0$
+0#
+b0 "
+1!
+$end
+#5000
+0!
+#10000
+b101 ,
+1)
+1!
+#15000
+b110 ,
+1*
+10
+b101 "
+b101 1
+0!
+#20000
+0)
+1&
+1!
+#25000
+b111 ,
+b110 "
+b110 1
+0!
+#30000
+1!
+#35000
+b0 ,
+b100 .
+b111 "
+b111 1
+0!
+#40000
+1!
+#45000
+b10 ,
+0*
+b1 .
+00
+b0 "
+b0 1
+0!
+#50000
+1!
+#55000
+b0 ,
+b11111111111111 -
+b11111111111111000000000001000010 +
+1*
+b10 .
+b10 "
+b10 1
+0!
+#60000
+0&
+1%
+1!
+#65000
+b1 ,
+b0 -
+b0 +
+0*
+b1 .
+b0 "
+b0 1
+0!
+#70000
+1!
+#75000
+1*
+10
+b1 "
+b1 1
+0!
+#80000
+0%
+1$
+1!
+#85000
+0!
+#90000
+0$
+1#
+1!
+#95000
+0!
+#100000
+0#
+1)
+1!
+#105000
+0!
+#110000
+b10 ,
+0)
+1&
+1!
+#115000
+b0 ,
+b11111111111111 -
+b11111111111111000000000001000010 +
+b10 .
+00
+b10 "
+b10 1
+0!
+#120000
+1!
+#120001

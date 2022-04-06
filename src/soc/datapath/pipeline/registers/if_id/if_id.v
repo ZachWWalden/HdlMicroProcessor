@@ -1,3 +1,6 @@
+
+//Implements Strangely.
+
 /*
 Module - Instruction Fetch/Instruction Decode Pipeline Register.
 Author - Zach Walden

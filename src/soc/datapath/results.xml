@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1648953968" />
+    <testcase name="test_datapath" classname="datapath_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath_tb.py" lineno="6" time="0.07201433181762695" sim_time_ns="2505.001" ratio_time="34784.75654462507" />
+  </testsuite>
+</testsuites>

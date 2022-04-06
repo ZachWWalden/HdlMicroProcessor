@@ -1,7 +1,7 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Thu Mar 31 13:01:12 2022
+// Date        : Sat Apr  2 19:24:43 2022
 // Host        : uberbertha running 64-bit Arch Linux
 // Command     : write_verilog -force -mode funcsim
 //               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_sim_netlist.v
@@ -16,27 +16,33 @@
 module clk_gen
    (core_clk,
     mem_clk,
+    ila_clk,
     clk_in1);
   output core_clk;
   output mem_clk;
+  output ila_clk;
   input clk_in1;
 
   (* IBUF_LOW_PWR *) (* RTL_KEEP = "yes" *) wire clk_in1;
   wire core_clk;
+  wire ila_clk;
   wire mem_clk;
 
   clk_gen_clk_wiz inst
        (.clk_in1(clk_in1),
         .core_clk(core_clk),
+        .ila_clk(ila_clk),
         .mem_clk(mem_clk));
 endmodule
 
 module clk_gen_clk_wiz
    (core_clk,
     mem_clk,
+    ila_clk,
     clk_in1);
   output core_clk;
   output mem_clk;
+  output ila_clk;
   input clk_in1;
 
   wire clk_in1;
@@ -45,6 +51,8 @@ module clk_gen_clk_wiz
   wire clkfbout_clk_gen;
   wire core_clk;
   wire core_clk_clk_gen;
+  wire ila_clk;
+  wire ila_clk_clk_gen;
   wire mem_clk;
   wire mem_clk_clk_gen;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
@@ -52,7 +60,6 @@ module clk_gen_clk_wiz
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED;
@@ -86,22 +93,26 @@ module clk_gen_clk_wiz
        (.I(mem_clk_clk_gen),
         .O(mem_clk));
   (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFG clkout3_buf
+       (.I(ila_clk_clk_gen),
+        .O(ila_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(60.125000),
+    .CLKFBOUT_MULT_F(31.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(120.250000),
+    .CLKOUT0_DIVIDE_F(124.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(12),
+    .CLKOUT1_DIVIDE(31),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
-    .CLKOUT2_DIVIDE(1),
+    .CLKOUT2_DIVIDE(6),
     .CLKOUT2_DUTY_CYCLE(0.500000),
     .CLKOUT2_PHASE(0.000000),
     .CLKOUT2_USE_FINE_PS("FALSE"),
@@ -123,7 +134,7 @@ module clk_gen_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(10),
+    .DIVCLK_DIVIDE(5),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),
@@ -148,7 +159,7 @@ module clk_gen_clk_wiz
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
         .CLKOUT1(mem_clk_clk_gen),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
-        .CLKOUT2(NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED),
+        .CLKOUT2(ila_clk_clk_gen),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
         .CLKOUT3(NLW_mmcm_adv_inst_CLKOUT3_UNCONNECTED),
         .CLKOUT3B(NLW_mmcm_adv_inst_CLKOUT3B_UNCONNECTED),

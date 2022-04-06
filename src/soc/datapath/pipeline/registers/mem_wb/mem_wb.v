@@ -9,23 +9,24 @@ module mem_wb(
 	input clock, 				//System Clock
 	input nreset, 				//System Reset Signal
 	input [7:0] data_top_in, 		//I/O for the top register file operand read.
-	output reg [7:0] data_top_out = 0,
+	output reg [7:0] data_top_out,
 	input [7:0] data_bot_in, 		//I/O for the bottom register file operand read.
-	output reg [7:0] data_bot_out = 0,
-	output reg [7:0] data_tm1_top = 0,
-	output reg [7:0] data_tm1_bot = 0,
+	output reg [7:0] data_bot_out,
+	output reg [7:0] data_tm1_top,
+	output reg [7:0] data_tm1_bot,
 	input [31:0] instruction_in, 		//I/O for the instruction word.
-	output reg [31:0] instruction_out = 0,
+	output reg [31:0] instruction_out,
 	input [1:0] reg_file_wen_in, 			//To the register file write port.
-	output reg [1:0] reg_file_wen_out = 0,
+	output reg [1:0] reg_file_wen_out,
 	input [13:0] ret_addr_in, 			//Comes from the memory i/o buffer
-	output reg [13:0] ret_addr_out = 0
+	output reg [13:0] ret_addr_out
 );
 
 	always @ (posedge clock)
 	begin
 		if(nreset == 1'b0)
 		begin
+
 			data_top_out <= 0;
 			data_bot_out <= 0;
 
@@ -54,6 +55,9 @@ module mem_wb(
 		end
 	end
 
+
+
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -62,4 +66,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

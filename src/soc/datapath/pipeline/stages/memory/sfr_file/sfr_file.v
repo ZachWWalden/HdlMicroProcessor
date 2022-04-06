@@ -20,7 +20,6 @@ module sfr_file(
 	output reg [15:0] x_ptr,
 	output reg [15:0] y_ptr,
 	output reg [15:0] z_ptr,
-	output fb_segment,
 	output reg [7:0] call_stk_ptr,
 	input [31:0] sfr_file_in,
 	output [143:0] sfr_file_out
@@ -61,6 +60,11 @@ module sfr_file(
 		begin
 			sfr_array[i] <= 0;
 		end
+		stack_ptr <= 0;
+		x_ptr <= 0;
+		y_ptr <= 0;
+		z_ptr <= 0;
+		call_stk_ptr <= 0;
 	end
 
 
@@ -72,6 +76,11 @@ module sfr_file(
 			begin
 				sfr_array[i] <= 0;
 			end
+			stack_ptr <= 0;
+			x_ptr <= 0;
+			y_ptr <= 0;
+			z_ptr <= 0;
+			call_stk_ptr <= 0;
 		end
 		else
 		begin
@@ -179,7 +188,6 @@ module sfr_file(
 	assign sfr_file_out[135:128] = sfr_array[26];
 	assign sfr_file_out[143:136] = sfr_array[27];
 	//Memory Pointers
-	assign fb_segment = sfr_array[8][1];
 
 	assign read_data = out_data;
 

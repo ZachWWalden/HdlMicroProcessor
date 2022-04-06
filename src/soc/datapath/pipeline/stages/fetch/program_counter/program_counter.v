@@ -1,7 +1,7 @@
 /*
 Module - Program Counter
 Author - Zach Walden
-Last Changed - 2/1/22
+Last Changed - 2/1/22, 4/1/22
 Description - Program Counter, If fetch is not being stalled by the hazard controller, it increments the address every cycle "fetching" the next instruction. It is resettable. It also supports a parallel load feature. The parallel load bus will be connected to the output of a multiplexor to that, if a load is required, selects a new input from the decode pipeline stage or from the output of the call stack.
 Parameters - input stall - stall signal. This signal will prevent an increment if asserted, thus "stalling" the fetch stage.
 	     input take_branch_target - This signal in combination with a 2X14 to 1 multiplexor to select the proper new program counter.
@@ -19,18 +19,16 @@ module program_counter(
 );
 
 	reg [13:0] value = 0;
-	reg [13:0] next_value = 0;
+	wire [13:0] next_value;
 
 	always @ (posedge clock)
 	begin
 		if(nreset == 1'b0)
 		begin
 			value <= 0;
-			next_value <= 0;
 		end
 		else if(stall == 1'b0)
 		begin
-			next_value <= value + 1;
 			value <= load_value;
 		end
 		else
@@ -39,9 +37,11 @@ module program_counter(
 		end
 	end
 
-	assign next_prog_cntr = next_value;
+    assign next_value = value + 1;
+    assign next_prog_cntr = next_value;
 	assign prog_mem_addr_fetch = value;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -50,4 +50,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

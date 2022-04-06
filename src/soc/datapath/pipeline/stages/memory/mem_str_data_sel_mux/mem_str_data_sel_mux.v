@@ -43,7 +43,7 @@ module mem_str_data_sel_mux(
 		end
 		else
 		begin
-			mem_data[11:8] <= 4'h0;
+			mem_data[11:8] <= 0;
 		end
 	end
 
@@ -71,7 +71,7 @@ module mem_str_data_sel_mux(
 		end
 		else
 		begin
-			mem_data[7:0] <= 8'h00;
+			mem_data[7:0] <= 0;
 		end
 	end
 

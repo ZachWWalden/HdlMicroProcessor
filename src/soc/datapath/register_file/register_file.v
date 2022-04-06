@@ -39,7 +39,7 @@ module register_file(
 		begin
 			for(i=0;i<32;i=i+1)
 			begin
-				reg_file[i] = 0;
+				reg_file[i] <= 0;
 			end
 		end
 		else
@@ -87,6 +87,7 @@ module register_file(
 	assign data_out[7:0] = rd_en_int[0] ? reg_file[rd_addr[4:0]] : 8'h00;
 	assign data_out[15:8] = rd_en_int[1] ? reg_file[rd_addr[9:5]] : 8'h00;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -95,4 +96,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule
