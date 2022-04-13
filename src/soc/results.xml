@@ -1,6 +1,8 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1649813703" />
-    <testcase name="test_cpu" classname="cpu_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu_tb.py" lineno="6" time="0.13909530639648438" sim_time_ns="2505.001" ratio_time="18009.24175586211" />
+    <property name="random_seed" value="1649816920" />
+    <testcase name="test_cpu" classname="cpu_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu_tb.py" lineno="6" time="0.030104875564575195" sim_time_ns="95.001" ratio_time="3155.668250354402">
+      <failure />
+    </testcase>
   </testsuite>
 </testsuites>

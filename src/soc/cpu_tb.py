@@ -55,6 +55,8 @@ async def test_cpu(dut):
     for i in range(19200):
         frame_buf.append(0)
 
+    testProg.close()
+
     #Begin testing
     dut.nreset.value = 0
 

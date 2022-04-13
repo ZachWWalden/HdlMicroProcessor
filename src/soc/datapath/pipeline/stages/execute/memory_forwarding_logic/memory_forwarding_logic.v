@@ -101,7 +101,7 @@ module memory_forwarding_logic(
 						end
 					end
 					//MEM/WB
-					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (ex_mem_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
+					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (mem_wb_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
 					begin
 						if(instruction[17:13] == mem_wb_instruction[12:8])
 						begin
@@ -272,7 +272,7 @@ module memory_forwarding_logic(
 						end
 					end
 					//MEM/WB
-					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (ex_mem_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
+					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (mem_wb_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
 					begin
 					    if(instruction[12:8] == mem_wb_instruction[12:8])
 						begin
@@ -458,7 +458,7 @@ module memory_forwarding_logic(
 						end
 					end
 					//MEM/WB
-					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (ex_mem_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
+					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (mem_wb_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
 					begin
 						if(instruction[17:13] == mem_wb_instruction[12:8])
 						begin
@@ -579,7 +579,7 @@ module memory_forwarding_logic(
 						end
 					end
 					//MEM/WB
-					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (ex_mem_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
+					else if((mem_wb_instruction[7:0] == 8'hBC) || (mem_wb_instruction[7:0] == 8'h80) || (mem_wb_instruction[7:0] == 8'h97) || (mem_wb_instruction[7:0] == 8'h9B) || (mem_wb_instruction[7:0] == 8'hA5) || (mem_wb_instruction[7:0] == 8'hFB && mem_wb_instruction[20] == 1'b1) || (mem_wb_instruction[7:0] == 8'hF9)  || (mem_wb_instruction[7:0] == 8'hF8) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b00) || (mem_wb_instruction[7:0] == 8'h9C && mem_wb_instruction[19:18] == 2'b01))
 					begin
 						if(instruction[17:13] == mem_wb_instruction[12:8])
 						begin
