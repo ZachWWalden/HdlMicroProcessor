@@ -9,7 +9,7 @@ Parameters -
 module soc(
 //	input clk,
 	input clk100M,
-	input nreset,
+	//input nreset,
 	output [3:0] led
 /*
 	output hsync,
@@ -19,6 +19,8 @@ module soc(
 	output [3:0] blue
 */
 );
+
+    reg nreset = 1;
 
 	//Instantiate Clock Generation Modules
 	wire mem_clk;
@@ -160,10 +162,11 @@ module soc(
 	wire halt;
 	wire fetch_stl_req;
 	wire dec_stl_req;
+	wire take_branch_target;
 
 	wire stall_fetch;
 	wire stall_decode;
-	wire [2:0] prog_cntr_load_sel;
+	wire [3:0] prog_cntr_load_sel;
 	wire inst_word_sel;
 	wire [31:0] hazard_instruction;
 	wire [13:0] hazard_int_addr;
@@ -177,6 +180,7 @@ module soc(
 		.halt(halt),
 		.fetch_stl_req(fetch_stl_req),
 		.dec_stl_req(dec_stl_req),
+		.take_branch_target(take_branch_target),
 		.interrupt(interrupt),
 		.interrupt_vector_address(interrupt_vector_address),
 		//Outputs
@@ -190,10 +194,15 @@ module soc(
 		.control_state(hazard_control_unit_state)
 	);
 
+    wire [15:0] memwb_data;
+    wire [31:0] decode_instruction;
 	//Instantiate Data Path
 	datapath pipeline(
 		.clock(core_clk),
 		.nreset(nreset),
+		//ila interface
+		.ifid_instruction_out(decode_instruction),
+		.memwb_data(memwb_data),
 		//Memory Interface
 		.prog_cntr_val(prog_mem_addra),
 		.mem_fetch_instruction(prog_mem_douta),
@@ -214,10 +223,11 @@ module soc(
 		.hazard_prog_cntr_sel(prog_cntr_load_sel),
 		.inst_word_sel(inst_word_sel),
 		.hazard_inst_word(hazard_instruction),
-		.prog_cntr_int_addr(prog_cntr_int_addr),
+		.prog_cntr_int_addr(hazard_int_addr),
 		.stall_fetch_req(fetch_stl_req),
 		.stall_decode_req(dec_stl_req),
 		.halt(halt),
+		.take_branch_target(take_branch_target),
 		.illegal_opcode_exception(illegal_opcode_exception),  			//To Interrupt Controller
 		.return_in_pipeline(ret),
 		//SFR I/O Interface
@@ -227,13 +237,17 @@ module soc(
 	
 	assign led = sfr_output[3:0];
 
-	ila_0 logic_analyzer(
+ila_0 ila(
 	.clk(ila_clk), // input wire clk
 
 
-	.probe0(prog_mem_douta), // input wire [31:0]  probe0  
-	.probe1(prog_mem_addra), // input wire [13:0]  probe1
-	.probe2(core_clk)
+	.probe0(prog_cntr_load_sel), // input wire [3:0]  probe0  
+	.probe1(prog_mem_addra), // input wire [13:0]  probe1 
+	.probe2(prog_mem_douta[10:0]),
+	.probe3(decode_instruction),
+	.probe4(memwb_data),
+	.probe5(take_branch_target), // input wire [0:0]  probe2 
+	.probe6(core_clk) // input wire [0:0]  probe3
 );
 
 /*

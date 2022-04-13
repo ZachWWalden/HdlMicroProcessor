@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Sat Apr  2 19:24:43 2022
+| Date         : Wed Apr  6 19:53:22 2022
 | Host         : uberbertha running 64-bit Arch Linux
 | Command      : report_utilization -file clk_gen_utilization_synth.rpt -pb clk_gen_utilization_synth.pb
 | Design       : clk_gen
@@ -33,8 +33,8 @@ Table of Contents
 | Slice LUTs*             |    0 |     0 |          0 |     32600 |  0.00 |
 |   LUT as Logic          |    0 |     0 |          0 |     32600 |  0.00 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         |    0 |     0 |          0 |     65200 |  0.00 |
-|   Register as Flip Flop |    0 |     0 |          0 |     65200 |  0.00 |
+| Slice Registers         |   24 |     0 |          0 |     65200 |  0.04 |
+|   Register as Flip Flop |   24 |     0 |          0 |     65200 |  0.04 |
 |   Register as Latch     |    0 |     0 |          0 |     65200 |  0.00 |
 | F7 Muxes                |    0 |     0 |          0 |     16300 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
@@ -57,7 +57,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 0     |          Yes |       Reset |            - |
+| 24    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -117,7 +117,7 @@ Table of Contents
 | MMCME2_ADV |    1 |     0 |          0 |         5 | 20.00 |
 | PLLE2_ADV  |    0 |     0 |          0 |         5 |  0.00 |
 | BUFMRCE    |    0 |     0 |          0 |        10 |  0.00 |
-| BUFHCE     |    0 |     0 |          0 |        72 |  0.00 |
+| BUFHCE     |    3 |     0 |          0 |        72 |  4.17 |
 | BUFR       |    0 |     0 |          0 |        20 |  0.00 |
 +------------+------+-------+------------+-----------+-------+
 
@@ -145,9 +145,12 @@ Table of Contents
 +------------+------+---------------------+
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
-| BUFG       |    4 |               Clock |
+| FDRE       |   24 |        Flop & Latch |
+| BUFH       |    3 |               Clock |
+| BUFGCTRL   |    3 |               Clock |
 | MMCME2_ADV |    1 |               Clock |
 | IBUF       |    1 |                  IO |
+| BUFG       |    1 |               Clock |
 +------------+------+---------------------+
 
 

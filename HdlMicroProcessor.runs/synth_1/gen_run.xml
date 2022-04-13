@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1649130404">
+<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1649552933">
   <File Type="VDS-TIMING-PB" Name="soc_timing_summary_synth.pb"/>
   <File Type="VDS-TIMINGSUMMARY" Name="soc_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="soc.dcp"/>
@@ -318,6 +318,12 @@
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/src/demos/branchTest/branchTest.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>

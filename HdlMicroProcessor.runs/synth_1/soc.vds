@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Mon Apr  4 22:46:47 2022
-# Process ID: 3398753
+# Start of session at: Sat Apr  9 20:08:56 2022
+# Process ID: 310542
 # Current directory: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1
 # Command line: vivado -log soc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc.tcl
 # Log file: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/soc.vds
@@ -17,28 +17,27 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
 INFO: [Device 21-403] Loading part xc7s50csga324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 3398942
+INFO: [Synth 8-7075] Helper process launched with PID 310741
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2548.793 ; gain = 0.000 ; free physical = 1057 ; free virtual = 16346
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2548.805 ; gain = 0.000 ; free physical = 2384 ; free virtual = 24035
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'soc' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:9]
-INFO: [Synth 8-6157] synthesizing module 'clk_gen' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/clk_gen_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (1#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/clk_gen_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'program_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/program_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'program_memory' (2#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/program_memory_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'frame_buffer' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/frame_buffer_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'frame_buffer' (3#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/frame_buffer_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'call_stack' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/call_stack_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'call_stack' (4#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/call_stack_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'main_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/main_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'main_memory' (5#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/main_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_gen' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/clk_gen_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (1#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/clk_gen_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'program_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'program_memory' (2#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'frame_buffer' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/frame_buffer_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'frame_buffer' (3#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/frame_buffer_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'call_stack' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/call_stack_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'call_stack' (4#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/call_stack_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'main_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/main_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'main_memory' (5#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/main_memory_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'memory_io' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io/memory_io.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'memory_io' (6#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io/memory_io.v:9]
 INFO: [Synth 8-6157] synthesizing module 'interrupt_controller' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'interrupt_controller' (7#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v:9]
 INFO: [Synth 8-6157] synthesizing module 'hazard_control_unit' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'hazard_control_unit' (8#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.v:9]
-WARNING: [Synth 8-689] width (4) of port connection 'control_state' does not match port width (3) of module 'hazard_control_unit' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:190]
 INFO: [Synth 8-6157] synthesizing module 'datapath' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.v:9]
 INFO: [Synth 8-6157] synthesizing module 'register_file' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v:9]
 INFO: [Synth 8-6155] done synthesizing module 'register_file' (9#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v:9]
@@ -101,29 +100,29 @@ INFO: [Synth 8-6155] done synthesizing module 'memory' (37#1) [/home/zww/Documen
 INFO: [Synth 8-6157] synthesizing module 'mem_wb' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/mem_wb/mem_wb.v:8]
 INFO: [Synth 8-6155] done synthesizing module 'mem_wb' (38#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/mem_wb/mem_wb.v:8]
 INFO: [Synth 8-6155] done synthesizing module 'datapath' (39#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.v:9]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:230]
-INFO: [Synth 8-6157] synthesizing module 'ila_0' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/ila_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'ila_0' (40#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-3398753-uberbertha/realtime/ila_0_stub.v:6]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'prog_mem'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:53]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'logic_analyzer'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:230]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'pipeline'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:194]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'sys_clk_gen'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:29]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'hazard_unit'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:172]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'int_controller'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:145]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:240]
+INFO: [Synth 8-6157] synthesizing module 'ila_0' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'ila_0' (40#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-310542-uberbertha/realtime/ila_0_stub.v:6]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'hazard_unit'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:175]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:240]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'pipeline'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:200]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'prog_mem'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:55]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'sys_clk_gen'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:31]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'int_controller'. This will prevent further optimization [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:147]
 INFO: [Synth 8-6155] done synthesizing module 'soc' (41#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:9]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2548.793 ; gain = 0.000 ; free physical = 1549 ; free virtual = 16434
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2548.805 ; gain = 0.000 ; free physical = 2383 ; free virtual = 24035
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2548.793 ; gain = 0.000 ; free physical = 1551 ; free virtual = 16436
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2548.805 ; gain = 0.000 ; free physical = 2385 ; free virtual = 24038
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2548.793 ; gain = 0.000 ; free physical = 1551 ; free virtual = 16436
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2548.805 ; gain = 0.000 ; free physical = 2385 ; free virtual = 24038
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2548.793 ; gain = 0.000 ; free physical = 1548 ; free virtual = 16432
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2548.805 ; gain = 0.000 ; free physical = 2382 ; free virtual = 24034
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -138,8 +137,8 @@ Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMi
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen/clk_gen_in_context.xdc] for cell 'sys_clk_gen'
 Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/program_memory/program_memory/program_memory_in_context.xdc] for cell 'prog_mem'
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/program_memory/program_memory/program_memory_in_context.xdc] for cell 'prog_mem'
-Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'logic_analyzer'
-Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'logic_analyzer'
+Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila'
+Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/ila_0/ila_0/ila_0_in_context.xdc] for cell 'ila'
 Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc]
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/soc_propImpl.xdc].
@@ -148,21 +147,21 @@ Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMi
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.590 ; gain = 0.000 ; free physical = 1414 ; free virtual = 16329
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.598 ; gain = 0.000 ; free physical = 2284 ; free virtual = 23936
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2612.590 ; gain = 0.000 ; free physical = 1414 ; free virtual = 16329
-WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'logic_analyzer' at clock pin 'clk' is different from the actual clock period '9.677', this can lead to different synthesis results.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2612.598 ; gain = 0.000 ; free physical = 2284 ; free virtual = 23936
+WARNING: [Timing 38-316] Clock period '10.000' specified during out-of-context synthesis of instance 'ila' at clock pin 'clk' is different from the actual clock period '9.677', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1539 ; free virtual = 16401
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2358 ; free virtual = 24010
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1539 ; free virtual = 16401
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2358 ; free virtual = 24010
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -174,12 +173,12 @@ Applied set_property KEEP_HIERARCHY = SOFT for frame_buf. (constraint file  auto
 Applied set_property KEEP_HIERARCHY = SOFT for main_mem. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for sys_clk_gen. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for prog_mem. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for logic_analyzer. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for ila. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1539 ; free virtual = 16401
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2358 ; free virtual = 24010
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1523 ; free virtual = 16390
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2348 ; free virtual = 24001
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -198,20 +197,20 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 76    
 	                7 Bit    Registers := 4     
 	                5 Bit    Registers := 5     
-	                4 Bit    Registers := 1     
-	                3 Bit    Registers := 2     
+	                4 Bit    Registers := 2     
+	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 7     
 	                1 Bit    Registers := 14    
 +---Multipliers : 
 	                8x8  Multipliers := 1     
 +---Muxes : 
-	   8 Input   32 Bit        Muxes := 1     
+	  10 Input   32 Bit        Muxes := 1     
 	   2 Input   32 Bit        Muxes := 1     
 	   2 Input   16 Bit        Muxes := 1     
 	   4 Input   16 Bit        Muxes := 1     
 	   2 Input   14 Bit        Muxes := 2     
 	   3 Input   14 Bit        Muxes := 2     
-	   8 Input   14 Bit        Muxes := 1     
+	  10 Input   14 Bit        Muxes := 1     
 	   2 Input    9 Bit        Muxes := 1     
 	   2 Input    8 Bit        Muxes := 113   
 	   5 Input    8 Bit        Muxes := 1     
@@ -230,8 +229,8 @@ Detailed RTL Component Info :
 	   5 Input    5 Bit        Muxes := 4     
 	   6 Input    5 Bit        Muxes := 1     
 	   2 Input    4 Bit        Muxes := 11    
-	   5 Input    3 Bit        Muxes := 1     
-	   8 Input    3 Bit        Muxes := 2     
+	   6 Input    4 Bit        Muxes := 1     
+	  10 Input    4 Bit        Muxes := 2     
 	   2 Input    3 Bit        Muxes := 13    
 	   3 Input    3 Bit        Muxes := 1     
 	   2 Input    2 Bit        Muxes := 10    
@@ -240,7 +239,7 @@ Detailed RTL Component Info :
 	  18 Input    2 Bit        Muxes := 3     
 	   5 Input    2 Bit        Muxes := 1     
 	   2 Input    1 Bit        Muxes := 56    
-	   8 Input    1 Bit        Muxes := 3     
+	  10 Input    1 Bit        Muxes := 3     
 	  18 Input    1 Bit        Muxes := 10    
 	   3 Input    1 Bit        Muxes := 7     
 	   4 Input    1 Bit        Muxes := 4     
@@ -261,19 +260,19 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1246 ; free virtual = 16362
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2319 ; free virtual = 23978
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1164 ; free virtual = 16263
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2210 ; free virtual = 23869
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:40 ; elapsed = 00:00:43 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1135 ; free virtual = 16255
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2202 ; free virtual = 23861
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -286,19 +285,19 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v:42]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1155 ; free virtual = 16249
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2203 ; free virtual = 23862
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1155 ; free virtual = 16249
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2203 ; free virtual = 23862
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1154 ; free virtual = 16248
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2203 ; free virtual = 23863
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -327,39 +326,40 @@ Report Cell Usage:
 |5     |main_memory    |     1|
 |6     |program_memory |     1|
 |7     |CARRY4         |    41|
-|8     |LUT1           |    87|
-|9     |LUT2           |   168|
-|10    |LUT3           |   169|
-|11    |LUT4           |    79|
-|12    |LUT5           |   391|
-|13    |LUT6           |   698|
+|8     |LUT1           |    78|
+|9     |LUT2           |   165|
+|10    |LUT3           |   152|
+|11    |LUT4           |    85|
+|12    |LUT5           |   400|
+|13    |LUT6           |   691|
 |14    |MUXF7          |    84|
 |15    |MUXF8          |    17|
-|16    |FDRE           |   948|
-|17    |IBUF           |     1|
-|18    |OBUF           |     4|
+|16    |FDRE           |   949|
+|17    |OBUF           |     4|
 +------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1154 ; free virtual = 16248
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2203 ; free virtual = 23863
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:41 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.590 ; gain = 0.000 ; free physical = 1205 ; free virtual = 16299
-Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 2612.590 ; gain = 63.797 ; free physical = 1205 ; free virtual = 16299
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2612.598 ; gain = 0.000 ; free physical = 2256 ; free virtual = 23916
+Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.598 ; gain = 63.793 ; free physical = 2256 ; free virtual = 23916
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2612.590 ; gain = 0.000 ; free physical = 1293 ; free virtual = 16395
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2612.598 ; gain = 0.000 ; free physical = 2350 ; free virtual = 24009
 INFO: [Netlist 29-17] Analyzing 142 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.590 ; gain = 0.000 ; free physical = 1242 ; free virtual = 16332
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.598 ; gain = 0.000 ; free physical = 2294 ; free virtual = 23953
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: 80abb4a0
+Synth Design complete, checksum: 6e0762c0
 INFO: [Common 17-83] Releasing license: Synthesis
-103 Infos, 4 Warnings, 0 Critical Warnings and 0 Errors encountered.
+103 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:54 ; elapsed = 00:00:51 . Memory (MB): peak = 2612.590 ; gain = 64.031 ; free physical = 1382 ; free virtual = 16473
+synth_design: Time (s): cpu = 00:00:52 ; elapsed = 00:00:48 . Memory (MB): peak = 2612.598 ; gain = 64.031 ; free physical = 2442 ; free virtual = 24101
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.collectionResultDisplayLimit
 INFO: [Common 17-1381] The checkpoint '/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/soc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file soc_utilization_synth.rpt -pb soc_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Apr  4 22:47:53 2022...
+INFO: [Common 17-206] Exiting Vivado at Sat Apr  9 20:09:59 2022...

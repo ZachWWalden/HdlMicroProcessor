@@ -9,6 +9,9 @@ Parameters -
 module datapath(
 	input clock,
 	input nreset,
+	//ila interface
+	output [31:0] ifid_instruction_out,
+	output [15:0] memwb_data,
 	//Memory Interface
 	output [13:0] prog_cntr_val,
 	input [31:0] mem_fetch_instruction,
@@ -26,13 +29,14 @@ module datapath(
 	//Hazard Unit Interface
 	input stall_fetch,
 	input stall_decode,
-	input [2:0] hazard_prog_cntr_sel,
+	input [3:0] hazard_prog_cntr_sel,
 	input inst_word_sel,
 	input [31:0] hazard_inst_word,
 	input [13:0] prog_cntr_int_addr,
 	output stall_fetch_req,
 	output stall_decode_req,
 	output halt,
+	output take_branch_target,
 	output illegal_opcode_exception,
 	output return_in_pipeline,
 	//SFR I/O Interface
@@ -67,7 +71,6 @@ module datapath(
 		.inst_word_out(if_id_inst)
 	);
 
-	wire [3:0] prog_cntr_sel;
 	wire [13:0] fetch_return_address;
 	wire [13:0] ret_addr_wb;
 	//Instantiate Fetch Stage
@@ -76,15 +79,13 @@ module datapath(
 		.nreset(nreset),
 		.stall(stall_fetch),
 		.prog_mem_fetch_read_addr(prog_cntr_val),
-		.prog_cntr_input_sel(prog_cntr_sel),
+		.prog_cntr_input_sel(hazard_prog_cntr_sel),
 		.branch_target_address(if_id_inst_out[31:18]),
 		.interrupt_branch_addr(prog_cntr_int_addr),
 		.ret_addr_mem(ret_addr_wb),
 		.ret_addr_out(fetch_return_address)
 	);
 
-	wire take_branch_addr;
-	wire take_brach_addr_in;
 	wire [31:0] if_id_inst_out;
 
 	wire [13:0] if_id_ret_addr;
@@ -92,15 +93,13 @@ module datapath(
 	if_id if_id_register(
 		.clock(clock),
 		.nreset(nreset),
-		.take_branch_addr_in(take_brach_addr_in), 				//From the Decode Stage
-		.take_branch_addr_out(take_branch_addr),
 		.instruction_in(if_id_inst),
 		.instruction_out(if_id_inst_out),
 		.return_addr_in(fetch_return_address),
 		.return_addr_out(if_id_ret_addr)
 	);
-	assign prog_cntr_sel[0] = take_branch_addr;
-	assign prog_cntr_sel[3:1] = hazard_prog_cntr_sel;
+
+	assign ifid_instruction_out = if_id_inst_out;
 
 	assign reg_file_rd_addr = if_id_inst_out[17:8];
 
@@ -136,7 +135,7 @@ module datapath(
 		.reg_file_data_top(reg_file_rd_data[15:8]),
 		.reg_file_data_bot(reg_file_rd_data[7:0]),
 		//BEGIN Interface with IF/ID pipeline register
-		.take_branch_target(take_brach_addr_in),
+		.take_branch_target(take_branch_target),
 		.instruction_word(if_id_inst_out),
 		//BEGIN Interface with ID/EX pipeline register.
 		.id_ex_instruction(id_ex_instruction_out),
@@ -362,9 +361,11 @@ module datapath(
 	);
 
 	assign reg_file_wr_data = mem_wb_data_out;
+	assign memwb_data = mem_wb_data_out;
 
 	assign reg_file_wr_addr = mem_wb_instruction_out[17:8];
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -373,4 +374,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

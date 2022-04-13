@@ -15,8 +15,6 @@ Parameters - 	clock - System Clock.
 module if_id(
 	input clock,
 	input nreset,
-	input take_branch_addr_in,
-	output take_branch_addr_out,
 	input [31:0] instruction_in,
 	output reg [31:0] instruction_out = 0,
 	input [13:0] return_addr_in,
@@ -38,8 +36,6 @@ module if_id(
 			return_addr_out <= return_addr_in;
 		end
 	end
-
-	assign take_branch_addr_out = take_branch_addr_in;
 
 /*
 // the "macro" to dump signals

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date                      : Mon Apr  4 22:50:07 2022
+| Date                      : Sat Apr  9 20:11:59 2022
 | Host                      : uberbertha running 64-bit Arch Linux
 | Command                   : report_io -file soc_io_placed.rpt
 | Design                    : soc
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|             6 |
+|             5 |
 +---------------+
 
 
@@ -157,7 +157,7 @@ Table of Contents
 | G12        |             |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
 | G13        |             | High Range | IO_0_15                      | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | G14        |             |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |          |                  |              |                   |              |
-| G15        | nreset      | High Range | IO_L18N_T2_15                | INPUT       | LVCMOS33    |      15 |            |      |                     |                 NONE |         | FIXED      |           |          |          | NONE             |              |                   |              |
+| G15        |             | High Range | IO_L18N_T2_15                | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | G16        |             | High Range | IO_L14P_T2_SRCC_15           | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | G17        |             | High Range | IO_L14N_T2_SRCC_15           | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |
 | G18        |             | High Range | IO_L21N_T3_DQS_15            | User IO     |             |      15 |            |      |                     |                      |         |            |           |          |          |                  |              |                   |              |

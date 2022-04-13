@@ -36,7 +36,7 @@ module prog_cntr_input_sel_mux(
 		end
 		else
 		begin
-			prog_cntr_load_val <= 0;
+			prog_cntr_load_val <= next_prog_cntr;
 		end
 	end
 

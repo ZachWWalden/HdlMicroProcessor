@@ -87,7 +87,8 @@ class Assembler():
             elif(line == '\n'):
                 pass
             else:
-                self.address += 0x4
+                self.address += 0x1
+        print(self.labels)
         #Loop through to assemble
         self.address = 0x0
         #Re Loop through the lines to assemble the instructions.

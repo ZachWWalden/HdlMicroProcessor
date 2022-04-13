@@ -119,6 +119,15 @@ wire clk_in2_clk_gen;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
   wire        clkinstopped_unused;
+  (* KEEP = "TRUE" *) 
+  (* ASYNC_REG = "TRUE" *)
+  reg  [7 :0] seq_reg1 = 0;
+  (* KEEP = "TRUE" *) 
+  (* ASYNC_REG = "TRUE" *)
+  reg  [7 :0] seq_reg2 = 0;
+  (* KEEP = "TRUE" *) 
+  (* ASYNC_REG = "TRUE" *)
+  reg  [7 :0] seq_reg3 = 0;
 
   MMCME2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
@@ -198,18 +207,45 @@ wire clk_in2_clk_gen;
 
 
 
-  BUFG clkout1_buf
+
+  BUFGCE clkout1_buf
    (.O   (core_clk),
+    .CE  (seq_reg1[7]),
     .I   (core_clk_clk_gen));
 
+  BUFH clkout1_buf_en
+   (.O   (core_clk_clk_gen_en_clk),
+    .I   (core_clk_clk_gen));
+  always @(posedge core_clk_clk_gen_en_clk)
+        seq_reg1 <= {seq_reg1[6:0],locked_int};
 
-  BUFG clkout2_buf
+
+  BUFGCE clkout2_buf
    (.O   (mem_clk),
+    .CE  (seq_reg2[7]),
     .I   (mem_clk_clk_gen));
+ 
+  BUFH clkout2_buf_en
+   (.O   (mem_clk_clk_gen_en_clk),
+    .I   (mem_clk_clk_gen));
+ 
+  always @(posedge mem_clk_clk_gen_en_clk)
+        seq_reg2 <= {seq_reg2[6:0],locked_int};
 
-  BUFG clkout3_buf
+
+  BUFGCE clkout3_buf
    (.O   (ila_clk),
+    .CE  (seq_reg3[7]),
     .I   (ila_clk_clk_gen));
+ 
+  BUFH clkout3_buf_en
+   (.O   (ila_clk_clk_gen_en_clk),
+    .I   (ila_clk_clk_gen));
+ 
+  always @(posedge ila_clk_clk_gen_en_clk)
+        seq_reg3 <= {seq_reg3[6:0],locked_int};
+
+
 
 
 

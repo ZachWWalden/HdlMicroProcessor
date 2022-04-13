@@ -1,0 +1,19 @@
+[('INIT\n', 3),
+('MAIN\n', 7),
+('delay_ret\n', 8),
+('multest_call\n', 16), //0x10
+('mulltest_ret\n', 17), //0x11
+('add_sub_test_call\n', 18),//0x12
+('add_sub_test_ret\n', 19),//0x13
+('shift_test_call\n', 20),//0x14
+('shift_test_ret\n', 21),//0x15
+('bitwise_test_call\n', 22),//0x16
+('bitwise_test_ret\n', 23),//0x17
+('MULT_TEST\n', 24),//0x18
+('ADD_TEST\n', 30),//0x1E
+('SHIFT_TEST\n', 36),//0x24
+('BITWISE_TEST\n', 44),//0x2c
+('DELAY\n', 49),//0x31
+('lop1\n', 50),//0x32
+('lop2\n', 51),//0x33
+('lop3\n', 52)]//0x34

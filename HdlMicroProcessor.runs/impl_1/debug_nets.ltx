@@ -15,7 +15,7 @@
                     },
                     {
                         "type": "ILA_V3",
-                        "name": "logic_analyzer",
+                        "name": "ila",
                         "spec": "labtools_ila_v6",
                         "ipName": "ila",
                         "core_location": {
@@ -23,7 +23,7 @@
                             "slave_index": 0,
                             "bscan_switch_index": 0
                         },
-                        "uuid": "68A7444DF109599681C51EDD77596622",
+                        "uuid": "901A5F558B2950A88131F43987F6BE78",
                         "pins": [
                             {
                                 "name": "probe0",
@@ -32,108 +32,24 @@
                                 "direction": "IN",
                                 "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 31,
+                                "rightIndex": 3,
                                 "portIndex": 0,
                                 "nets": [
                                     {
-                                        "name": "prog_mem_douta",
+                                        "name": "prog_cntr_load_sel",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "prog_mem_douta[31]"
+                                                "name": "prog_cntr_load_sel[3]"
                                             },
                                             {
-                                                "name": "prog_mem_douta[30]"
+                                                "name": "prog_cntr_load_sel[2]"
                                             },
                                             {
-                                                "name": "prog_mem_douta[29]"
+                                                "name": "prog_cntr_load_sel[1]"
                                             },
                                             {
-                                                "name": "prog_mem_douta[28]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[27]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[26]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[25]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[24]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[23]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[22]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[21]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[20]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[19]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[18]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[17]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[16]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[15]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[14]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[13]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[12]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[11]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[10]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[9]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[8]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[7]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[6]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[5]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[4]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[3]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[2]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[1]"
-                                            },
-                                            {
-                                                "name": "prog_mem_douta[0]"
+                                                "name": "prog_cntr_load_sel[0]"
                                             }
                                         ]
                                     }
@@ -204,10 +120,257 @@
                                 "id": 2,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 10,
+                                "portIndex": 2,
+                                "nets": [
+                                    {
+                                        "name": "prog_mem_douta",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "prog_mem_douta[10]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[9]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[8]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[7]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[6]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[5]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[4]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[3]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[2]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[1]"
+                                            },
+                                            {
+                                                "name": "prog_mem_douta[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe3",
+                                "id": 3,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 3,
+                                "nets": [
+                                    {
+                                        "name": "decode_instruction",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "decode_instruction[31]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[30]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[29]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[28]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[27]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[26]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[25]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[24]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[23]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[22]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[21]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[20]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[19]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[18]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[17]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[16]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[15]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[14]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[13]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[12]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[11]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[10]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[9]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[8]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[7]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[6]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[5]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[4]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[3]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[2]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[1]"
+                                            },
+                                            {
+                                                "name": "decode_instruction[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe4",
+                                "id": 4,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 15,
+                                "portIndex": 4,
+                                "nets": [
+                                    {
+                                        "name": "memwb_data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "memwb_data[15]"
+                                            },
+                                            {
+                                                "name": "memwb_data[14]"
+                                            },
+                                            {
+                                                "name": "memwb_data[13]"
+                                            },
+                                            {
+                                                "name": "memwb_data[12]"
+                                            },
+                                            {
+                                                "name": "memwb_data[11]"
+                                            },
+                                            {
+                                                "name": "memwb_data[10]"
+                                            },
+                                            {
+                                                "name": "memwb_data[9]"
+                                            },
+                                            {
+                                                "name": "memwb_data[8]"
+                                            },
+                                            {
+                                                "name": "memwb_data[7]"
+                                            },
+                                            {
+                                                "name": "memwb_data[6]"
+                                            },
+                                            {
+                                                "name": "memwb_data[5]"
+                                            },
+                                            {
+                                                "name": "memwb_data[4]"
+                                            },
+                                            {
+                                                "name": "memwb_data[3]"
+                                            },
+                                            {
+                                                "name": "memwb_data[2]"
+                                            },
+                                            {
+                                                "name": "memwb_data[1]"
+                                            },
+                                            {
+                                                "name": "memwb_data[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe5",
+                                "id": 5,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
                                 "isVector": false,
                                 "leftIndex": 0,
                                 "rightIndex": 0,
-                                "portIndex": 2,
+                                "portIndex": 5,
+                                "nets": [
+                                    {
+                                        "name": "take_branch_target",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe6",
+                                "id": 6,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 6,
                                 "nets": [
                                     {
                                         "name": "core_clk",
