@@ -9,13 +9,12 @@ async def test_alu_input_mux(dut):
     cocotb.start_soon(clock.start())
 
     await FallingEdge(dut.clock)
-    dut.reg_file_top.value = 0x0FF
-    dut.reg_file_bot.value = 0x0FF
+    dut.id_ex_data_top.value = 0x0FF
+    dut.id_ex_data_bot.value = 0x0FF
     dut.ex_mem_top.value = 0x0EE
     dut.ex_mem_bot.value = 0x0EF
     dut.mem_wb_top.value = 0x0DD
     dut.mem_wb_bot.value = 0x0DF
-    dut.immeadiate.value = 0x0CC
 
     dut.alu_input_sel_top.value = 1
     dut.alu_input_sel_bot.value = 1
@@ -51,10 +50,3 @@ async def test_alu_input_mux(dut):
     await FallingEdge(dut.clock)
     assert dut.alu_data_input_top.value == 0x0DF, f"Mux Failed on mem_wb_bot inputs"
     assert dut.alu_data_input_bot.value == 0x0DF, f"Mux failed on mem_wb_bot inputs"
-
-    dut.alu_input_sel_top.value = 16
-    dut.alu_input_sel_bot.value = 32
-
-    await FallingEdge(dut.clock)
-    assert dut.alu_data_input_top.value == 0x0DF, f"Mux Failed on mem_wb_bot inputs"
-    assert dut.alu_data_input_bot.value == 0x0CC, f"Mux failed on immeadiate data input"

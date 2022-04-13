@@ -3,7 +3,7 @@ WAVES=1
 GUI=1
 
 ifeq ($(TOPLEVEL_LANG),verilog)
-	VERILOG_SOURCES = $(shell pwd)/alu.v $(shell pwd)/adder.v $(shell pwd)/multiplier.v $(shell pwd)/bit_shifter.v $(shell pwd)/bitwise_logic_unit.v
+	VERILOG_SOURCES = $(shell pwd)/alu.v $(shell pwd)/adder/adder.v $(shell pwd)/multiplier/multiplier.v $(shell pwd)/bit_shifter/bit_shifter.v $(shell pwd)/bitwise_logic_unit/bitwise_logic_unit.v
 else ifeq ($(TOPLEVEL_LANG), vhdl)
 	VHDL_SOURCES = $(shell pwd)/alu.vhdl
 endif

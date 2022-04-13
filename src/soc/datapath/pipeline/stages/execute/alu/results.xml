@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1649825640" />
+    <testcase name="test_alu" classname="alu_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/alu_tb.py" lineno="6" time="0.006445407867431641" sim_time_ns="285.001" ratio_time="44217.68270710956" />
+  </testsuite>
+</testsuites>

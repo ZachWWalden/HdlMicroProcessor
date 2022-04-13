@@ -25,35 +25,24 @@ module adder(
 );
 
 	wire [2:0] flag_result;
-	reg [8:0] value = 0;
+	reg [8:0] value;
 
-	always @ (posedge clock)
+	always @ (*)
 	begin
-		if(nreset ==1'b0)
+		if(add_sub == 1'b1)
 		begin
-			value <= 9'b000000000;
+			value <= primary_operand + secondary_operand;
 		end
-		else
+		else if(add_sub == 1'b0)
 		begin
-			if(add_sub == 1'b1)
-			begin
-				value = primary_operand + secondary_operand;
-			end
-			else if(add_sub == 1'b0)
-			begin
-				value = primary_operand - secondary_operand;
-			end
-			else
-			begin
-				value = value;
-			end
+			value <= primary_operand - secondary_operand;
 		end
 	end
 
     assign flag_result[0] = (value[7:0] == 8'h00) ? 1'b1 : 1'b0;
     assign flag_result[1] = value[7] ? 1'b1 : 1'b0;
     assign flag_result[2] = value[8];
-    
+
 	assign flags = oe ? flag_result : 3'bzzz;
 	assign result = oe ? value[7:0] : 8'hZZ;
 

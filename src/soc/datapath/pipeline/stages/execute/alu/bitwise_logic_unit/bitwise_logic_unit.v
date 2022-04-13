@@ -17,31 +17,24 @@ module bitwise_logic_unit(
 		output [7:0] result
 );
 
-	reg [7:0] value = 0;
+	reg [7:0] value;
 	wire [2:0] flags_result;
 
-	always @ (posedge clock)
+	always @ (*)
 	begin
-		if(nreset == 1'b0)
+		if(and_or == 1'b1)
 		begin
-			value <= 0;
+			value = primary_operand & secondary_operand;
 		end
 		else
 		begin
-			if(and_or == 1'b1)
-			begin
-				value = primary_operand & secondary_operand;
-			end
-			else
-			begin
-				value = primary_operand | secondary_operand;
-			end
+			value = primary_operand | secondary_operand;
 		end
 	end
 
     assign flags_result[0] = (value == 8'h00) ? 1'b1 : 1'b0;
     assign flags_result[1] = value[7] ? 1'b1 : 1'b0;
-    assign flags_result[2] = 0;  //there will never be a carry set when performing bitwise logic.  
+    assign flags_result[2] = 0;  //there will never be a carry set when performing bitwise logic.
 
 	assign result = oe ? value : 8'hZZ;
 	assign flags = oe ? flags_result : 3'bzzz;

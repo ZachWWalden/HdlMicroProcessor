@@ -1,5 +1,5 @@
 $date
-	Thu Feb 17 21:08:23 2022
+	Tue Apr 12 23:08:18 2022
 $end
 $version
 	Icarus Verilog
@@ -8,25 +8,23 @@ $timescale
 	1ps
 $end
 $scope module alu_input_mux $end
-$var wire 6 ! alu_input_sel_bot [5:0] $end
+$var wire 5 ! alu_input_sel_bot [4:0] $end
 $var wire 5 " alu_input_sel_top [4:0] $end
 $var wire 1 # clock $end
 $var wire 8 $ ex_mem_bot [7:0] $end
 $var wire 8 % ex_mem_top [7:0] $end
-$var wire 8 & immeadiate [7:0] $end
-$var wire 8 ' mem_wb_bot [7:0] $end
-$var wire 8 ( mem_wb_top [7:0] $end
-$var wire 8 ) reg_file_bot [7:0] $end
-$var wire 8 * reg_file_top [7:0] $end
-$var wire 8 + alu_data_input_top [7:0] $end
-$var wire 8 , alu_data_input_bot [7:0] $end
+$var wire 8 & id_ex_data_bot [7:0] $end
+$var wire 8 ' id_ex_data_top [7:0] $end
+$var wire 8 ( mem_wb_bot [7:0] $end
+$var wire 8 ) mem_wb_top [7:0] $end
+$var reg 8 * alu_data_input_bot [7:0] $end
+$var reg 8 + alu_data_input_top [7:0] $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx ,
-bx +
-bz *
+b0 +
+b0 *
 bz )
 bz (
 bz '
@@ -38,58 +36,51 @@ bz "
 bz !
 $end
 #5000
-b11111111 ,
 b11111111 +
 b11111111 *
-b11111111 )
+b11111111 '
+b11111111 &
 b11101110 %
 b11101111 $
-b11011101 (
-b11011111 '
-b11001100 &
+b11011101 )
+b11011111 (
 b1 "
 b1 !
 0#
 #10000
 1#
 #15000
-b11101110 ,
 b11101110 +
+b11101110 *
 b10 "
 b10 !
 0#
 #20000
 1#
 #25000
-b11101111 ,
 b11101111 +
+b11101111 *
 b100 "
 b100 !
 0#
 #30000
 1#
 #35000
-b11011101 ,
 b11011101 +
+b11011101 *
 b1000 "
 b1000 !
 0#
 #40000
 1#
 #45000
-b11011111 ,
 b11011111 +
+b11011111 *
 b10000 "
 b10000 !
 0#
 #50000
 1#
 #55000
-b11001100 ,
-b100000 !
 0#
-#60000
-1#
-#65000
-0#
-#65001
+#55001

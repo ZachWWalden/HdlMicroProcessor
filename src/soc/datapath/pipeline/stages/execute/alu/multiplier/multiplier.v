@@ -21,19 +21,12 @@ module multiplier(
 	output [15:0] mult_out
 );
 
-	reg [15:0] result = 0;
+	reg [15:0] result;
 	wire [2:0] flags_result;
 
-	always @ (posedge clock)
+	always @ (*)
 	begin
-		if(nreset == 1'b0)
-		begin
-			result <= 0;
-		end
-		else
-		begin
-			result = primary_operand * secondary_operand;
-		end
+		result <= primary_operand * secondary_operand;
 	end
 
     assign flags_result[0] = (result == 16'h0000) ? 1'b1 : 1'b0;

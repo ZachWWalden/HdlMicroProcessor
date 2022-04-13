@@ -83,7 +83,7 @@ module alu_forwarding_logic(
 						//Forward ex/mem data bottom on to alu top
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -138,7 +138,7 @@ module alu_forwarding_logic(
 						//Forward EX/MEM data bottom to alu top
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -156,7 +156,7 @@ module alu_forwarding_logic(
 						//Forward EX/MEM data bottom to alu top
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin

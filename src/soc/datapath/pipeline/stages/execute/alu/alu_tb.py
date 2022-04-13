@@ -82,7 +82,7 @@ async def test_alu(dut):
     await FallingEdge(dut.clock)
 
     #Test Multiplier (tests for negative & zero)
-    dut.alu_operation.value = 1 & 0x3
+    dut.alu_operation.value = 2 & 0x3
 
     dut.top_operand.value = 0x0FF
     dut.bottom_operand.value = 0x0FF
@@ -111,7 +111,7 @@ async def test_alu(dut):
     assert dut.alu_flags.value == 0, f"flags not set properly in 15*15 multiplication"
 
     #Test Shifter (tests for negative(SHL) & zero)
-    dut.alu_operation.value = 2 & 0x3
+    dut.alu_operation.value = 1 & 0x3
 
     #test Shift right. NOTE negative flag can never be high.
     dut.alu_operation_select.value = 1

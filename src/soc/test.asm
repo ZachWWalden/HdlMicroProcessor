@@ -15,7 +15,6 @@
 	LDI R16 0x00
 
 :MAIN
-	INC R16
 	;JMP DELAY
 :delay_ret
 	CPI R16 0x00
@@ -43,6 +42,7 @@
 	LDI R16 0x00
 	JMP BITWISE_TEST
 :bitwise_test_ret
+	INC R16
 	JMP MAIN
 
 :MULT_TEST

@@ -56,20 +56,12 @@ module alu(
 		.result(alu_out[7:0])
 		);
 
-	always @ (posedge clock)
-	begin
-		if(nreset == 1'b1)
-		begin
-
-		end
-	end
-
 	//adder oe.
 	assign fu_oe[0] = ~alu_operation[0] & ~alu_operation[1];
 	//multiplier oe
-	assign fu_oe[1] = alu_operation[0] & ~alu_operation[1];
+	assign fu_oe[1] = ~alu_operation[0] & alu_operation[1];
 	//bit shifter oe
-	assign fu_oe[2] = ~alu_operation[0] & alu_operation[1];
+	assign fu_oe[2] = alu_operation[0] & ~alu_operation[1];
 	//bitwise logic oe
 	assign fu_oe[3] = alu_operation[0] & alu_operation[1];
 

@@ -83,4 +83,5 @@ async def test_cpu(dut):
         if dut.fb_wena.value == 1:
             frame_buf[dut.addr_in.value & 0x7FFF] = dut.data_in.value
         else:
-            dut.fb_douta.value = frame_buf[dut.addr_in.value & 0x7FFF]
+            #dut.fb_douta.value = frame_buf[(dut.addr_in.value) & 0x7FFF]
+            pass

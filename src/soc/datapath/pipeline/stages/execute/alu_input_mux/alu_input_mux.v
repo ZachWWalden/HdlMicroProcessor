@@ -50,7 +50,7 @@ module alu_input_mux(
 
 	always @ (*)
 	begin
-		if(alu_data_input_top == 5'b00001)
+		if(alu_input_sel_bot == 5'b00001)
 		begin
 			alu_data_input_bot <= id_ex_data_bot;
 		end
