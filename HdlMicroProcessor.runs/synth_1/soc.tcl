@@ -72,7 +72,6 @@ proc create_report { reportName command } {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
 set_param xicom.use_bs_reader 1
-set_param tcl.collectionResultDisplayLimit 0
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -96,6 +95,7 @@ add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/demos/fir
 add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/f22160120.coe
 add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/assembler/sfrWrite.coe
 add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/demos/branchTest/branchTest.coe
+add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/test.coe
 read_verilog -library xil_defaultlib {
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v

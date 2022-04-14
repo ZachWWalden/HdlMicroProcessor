@@ -124,7 +124,6 @@ set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 2
   set_param xicom.use_bs_reader 1
-  set_param tcl.collectionResultDisplayLimit 0
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7s50csga324-1
   set_property board_part digilentinc.com:arty-s7-50:part0:1.0 [current_project]

@@ -236,7 +236,7 @@ module soc(
 	);
 	
 	assign led = sfr_output[3:0];
-
+/*
 ila_0 ila(
 	.clk(ila_clk), // input wire clk
 
@@ -249,7 +249,7 @@ ila_0 ila(
 	.probe5(take_branch_target), // input wire [0:0]  probe2 
 	.probe6(core_clk) // input wire [0:0]  probe3
 );
-
+*/
 /*
 	//Instantiate VGA Controller
 	wire [11:0] pixel_switch;

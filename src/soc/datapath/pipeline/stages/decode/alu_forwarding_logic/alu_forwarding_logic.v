@@ -235,7 +235,7 @@ module alu_forwarding_logic(
 						//Forward EX/MEM data bottom to alu top
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -292,6 +292,24 @@ module alu_forwarding_logic(
 							alu_bot_sel <= 5'b00001;
 							stall_decode <= 1'b0;
 						end
+					end
+				end
+				//Load Immeadiate, This could never cause a stall
+				else if(ex_mem_instruction[7:0] == 8'hF8)
+				begin
+					if(instruction[12:8] == ex_mem_instruction[12:8])
+					begin
+						//Forward mem/wb data bottom on to alu top
+						alu_top_sel <= 5'b10000;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
+					end
+					else
+					begin
+						//No forward necessary
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
 					end
 				end
 				//Load Program Memory
@@ -439,15 +457,15 @@ module alu_forwarding_logic(
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin
 						//Forward ex/mem data bottom on to alu top
-						alu_top_sel <= 5'b10000;
+						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
 						stall_decode <= 1'b0;
 					end
 					else if(instruction[17:13] == id_ex_instruction[12:8])
 					begin
 						//Forward ex/mem data bottom to alu bottom
-						alu_top_sel <= 5'b10001;
-						alu_bot_sel <= 5'b10000;
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b00100;
 						stall_decode <= 1'b0;
 					end
 					else
@@ -778,6 +796,31 @@ module alu_forwarding_logic(
 							alu_bot_sel <= 5'b00001;
 							stall_decode <= 1'b0;
 						end
+					end
+				end
+				//Load Immeadiate, This could never cause a stall
+				else if(ex_mem_instruction[7:0] == 8'hF8)
+				begin
+					if(instruction[12:8] == ex_mem_instruction[12:8])
+					begin
+						//Forward mem/wb data bottom on to alu top
+						alu_top_sel <= 5'b10000;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
+					end
+					else if(instruction[17:13] == ex_mem_instruction[12:8])
+					begin
+						//Forward mem/wb data bottom to alu bottom
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b10000;
+						stall_decode <= 1'b0;
+					end
+					else
+					begin
+						//No forward necessary
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
 					end
 				end
 				//Load Program Memory

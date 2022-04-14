@@ -12,11 +12,11 @@ set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc
+# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_late.xdc
+# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
@@ -31,10 +31,10 @@ set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc
+# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
-# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_late.xdc
+# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet

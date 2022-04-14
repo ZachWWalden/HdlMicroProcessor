@@ -17,51 +17,33 @@ module bit_shifter(
 );
 
     integer Index;
-    
-	wire [2:0] flags_value;
-	reg [7:0] value = 0;
 
-	always @ (posedge clock)
+	wire [2:0] flags_value;
+	reg [7:0] value;
+
+	always @ (*)
 	begin
-		if(nreset == 1'b0)
+		if(right_left == 1'b1)
 		begin
-			value <= 8'b00000000;
+			//shift right
+			value[6:0] <= primary_operand[7:1];
+			value[7] <= 1'b0;
 		end
-		else
+		else if (right_left == 1'b0)
 		begin
-		    value = primary_operand;
-			if(right_left == 1'b1)
-			begin
-				//shift right
-				for(Index=0 ; Index < 6 ; Index=Index+1)
-				begin
-					value[Index] = value[Index + 1];
-				end
-				value[7] = 1'b0;
-			end
-			else if (right_left == 1'b0)
-			begin
-				//shift left
-				for(Index=7; Index>0; Index=Index-1)
-				begin
-					value[Index] = value[Index - 1];
-				end
-				value[0] = 1'b0;
-			end
-			else
-			begin
-				value <= 8'b00000000;
-			end
+			//shift left
+			value[7:1] <= primary_operand[6:0];
+			value[0] <= 1'b0;
 		end
 	end
-	
+
 	//assign the zero flag
     assign flags_value[0] = (value[7:0] == 8'h00) ? 1'b1 : 1'b0;
-    //assign the negative flag 
+    //assign the negative flag
     assign flags_value[1] = value[7] ? 1'b1 : 1'b0;
     //if shift left carry flag == high bit, if shift right, carry flag = low bit. both of the input operand.
     assign flags_value[2] = (primary_operand[7] & ~right_left) | (primary_operand[0] & right_left);
-    
+
 	assign result = oe ? value : 8'hZZ;
 	assign flags = oe ? flags_value : 3'bzzz;
 

@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Wed Apr  6 19:53:22 2022
+| Date         : Wed Apr 13 18:55:56 2022
 | Host         : uberbertha running 64-bit Arch Linux
 | Command      : report_utilization -file clk_gen_utilization_synth.rpt -pb clk_gen_utilization_synth.pb
 | Design       : clk_gen

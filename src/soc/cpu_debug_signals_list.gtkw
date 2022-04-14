@@ -1,0 +1,90 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 13 23:40:34 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu.vcd"
+[dumpfile_mtime] "Wed Apr 13 23:37:42 2022"
+[dumpfile_size] 454552
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu_debug_signals_list.gtkw"
+[timestart] 404100
+[size] 3814 2113
+[pos] -1 -1
+*-15.000000 600000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] cpu.
+[treeopen] cpu.pipeline.
+[treeopen] cpu.pipeline.decode_stage.
+[treeopen] cpu.pipeline.execute_stage.alu.
+[sst_width] 203
+[signals_width] 279
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+cpu.clock
+@22
+cpu.prog_mem_addra[13:0]
+cpu.prog_mem_douta[31:0]
+cpu.pipeline.if_id_inst_out[31:0]
+@c00022
+cpu.pipeline.id_ex_instruction_out[31:0]
+@28
+(0)cpu.pipeline.id_ex_instruction_out[31:0]
+(1)cpu.pipeline.id_ex_instruction_out[31:0]
+(2)cpu.pipeline.id_ex_instruction_out[31:0]
+(3)cpu.pipeline.id_ex_instruction_out[31:0]
+(4)cpu.pipeline.id_ex_instruction_out[31:0]
+(5)cpu.pipeline.id_ex_instruction_out[31:0]
+(6)cpu.pipeline.id_ex_instruction_out[31:0]
+(7)cpu.pipeline.id_ex_instruction_out[31:0]
+(8)cpu.pipeline.id_ex_instruction_out[31:0]
+(9)cpu.pipeline.id_ex_instruction_out[31:0]
+(10)cpu.pipeline.id_ex_instruction_out[31:0]
+(11)cpu.pipeline.id_ex_instruction_out[31:0]
+(12)cpu.pipeline.id_ex_instruction_out[31:0]
+(13)cpu.pipeline.id_ex_instruction_out[31:0]
+(14)cpu.pipeline.id_ex_instruction_out[31:0]
+(15)cpu.pipeline.id_ex_instruction_out[31:0]
+(16)cpu.pipeline.id_ex_instruction_out[31:0]
+(17)cpu.pipeline.id_ex_instruction_out[31:0]
+(18)cpu.pipeline.id_ex_instruction_out[31:0]
+(19)cpu.pipeline.id_ex_instruction_out[31:0]
+(20)cpu.pipeline.id_ex_instruction_out[31:0]
+(21)cpu.pipeline.id_ex_instruction_out[31:0]
+(22)cpu.pipeline.id_ex_instruction_out[31:0]
+(23)cpu.pipeline.id_ex_instruction_out[31:0]
+(24)cpu.pipeline.id_ex_instruction_out[31:0]
+(25)cpu.pipeline.id_ex_instruction_out[31:0]
+(26)cpu.pipeline.id_ex_instruction_out[31:0]
+(27)cpu.pipeline.id_ex_instruction_out[31:0]
+(28)cpu.pipeline.id_ex_instruction_out[31:0]
+(29)cpu.pipeline.id_ex_instruction_out[31:0]
+(30)cpu.pipeline.id_ex_instruction_out[31:0]
+(31)cpu.pipeline.id_ex_instruction_out[31:0]
+@1401200
+-group_end
+@22
+cpu.pipeline.id_ex_data_out[15:0]
+@28
+cpu.hazard_unit.take_branch_target
+@22
+cpu.pipeline.ex_mem_instruction_out[31:0]
+cpu.pipeline.ex_mem_data_out[15:0]
+cpu.pipeline.mem_wb_instruction_out[31:0]
+cpu.pipeline.memory_stage.sf_reg_file.write_data[7:0]
+@28
+cpu.pipeline.memory_stage.sf_reg_file.wren[1:0]
+@22
+cpu.pipeline.mem_wb_data_out[15:0]
+@28
+cpu.pipeline.mem_wb_register.reg_file_wen_out[1:0]
+cpu.pipeline.execute_stage.alu.alu_operation[1:0]
+cpu.pipeline.execute_stage.alu.alu_operation_select
+@22
+cpu.pipeline.execute_stage.alu.alu_out[15:0]
+cpu.pipeline.execute_stage.alu_mux.alu_data_input_top[7:0]
+cpu.pipeline.execute_stage.alu_mux.alu_data_input_bot[7:0]
+cpu.pipeline.execute_stage.alu_mux.alu_input_sel_top[4:0]
+cpu.pipeline.execute_stage.alu_mux.alu_input_sel_bot[4:0]
+@28
+cpu.pipeline.decode_stage.branch_resolver.flags[2:0]
+[pattern_trace] 1
+[pattern_trace] 0
