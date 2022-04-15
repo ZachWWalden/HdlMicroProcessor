@@ -7,17 +7,14 @@ Parameters -
 */
 
 module soc(
-//	input clk,
 	input clk100M,
-	//input nreset,
-	output [3:0] led
-/*
+	output [3:0] led,
 	output hsync,
 	output vsync,
 	output [3:0] red,
 	output [3:0] green,
 	output [3:0] blue
-*/
+
 );
 
     reg nreset = 1;
@@ -25,7 +22,8 @@ module soc(
 	//Instantiate Clock Generation Modules
 	wire mem_clk;
 	wire core_clk;
-	//wire vga_clk;
+	wire vga_clk;
+	wire vga_mem_clk;
 	wire ila_clk;
 
 	clk_gen sys_clk_gen(
@@ -36,14 +34,15 @@ module soc(
         	// Clock in ports
         	.clk_in1(clk100M)
     	);      	// input clk_in1
-/*
+
     	vga_pix_clk_gen vga_clk_gen(
         	// Clock out ports
         	.vga_clk(vga_clk),     // output vga_clk
+        	.vga_mem_clk(vga_mem_clk),     // output vga_mem_clk
         	// Clock in ports
-        	.clk_in1(clk)
+        	.clk_in1(ila_clk)
     	);
-*/
+
 
     wire [11:0] data_in;
     wire [15:0] addr_in;
@@ -64,9 +63,9 @@ module soc(
 	wire fb_wena;
 	wire [11:0] fb_douta;
 	wire fb_wenb = 0;
-	wire [14:0] fb_addrb = 0;
+	wire [14:0] fb_addrb;
 	wire [11:0] fb_dinb = 0;
-	wire [11:0] fb_doutb = 0;
+	wire [11:0] fb_doutb;
 
     	frame_buffer frame_buf(
         	.clka(mem_clk),    // input wire clka
@@ -74,7 +73,7 @@ module soc(
         	.addra(addr_in[14:0]),  // input wire [14 : 0] addra
         	.dina(data_in),    // input wire [11 : 0] dina
         	.douta(fb_douta),  // output wire [11 : 0] douta
-        	.clkb(mem_clk),    // input wire clkb
+        	.clkb(vga_mem_clk),   // input wire clkb
         	.web(fb_wenb),      // input wire [0 : 0] web
         	.addrb(fb_addrb),  // input wire [14 : 0] addrb
         	.dinb(fb_dinb),    // input wire [11 : 0] dinb
@@ -250,7 +249,7 @@ ila_0 ila(
 	.probe6(core_clk) // input wire [0:0]  probe3
 );
 */
-/*
+
 	//Instantiate VGA Controller
 	wire [11:0] pixel_switch;
 	vga_controller vga(
@@ -267,7 +266,7 @@ ila_0 ila(
     assign red = pixel_switch[11:8];
     assign blue = pixel_switch[7:4];
     assign green = pixel_switch[3:0];
-*/
+
 /*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM

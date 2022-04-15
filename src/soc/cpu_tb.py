@@ -63,7 +63,7 @@ async def test_cpu(dut):
     await FallingEdge(dut.clock)
     dut.nreset.value = 1
 
-    for i in range(250):
+    for i in range(1000):
         dut.prog_mem_douta.value = prog_mem_fetch[dut.prog_mem_addra.value]
         await FallingEdge(dut.clock)
         #perform any memory reads or writes;

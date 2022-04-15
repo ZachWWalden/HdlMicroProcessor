@@ -1,7 +1,7 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Fri Apr  1 14:13:02 2022
+// Date        : Thu Apr 14 00:39:49 2022
 // Host        : uberbertha running 64-bit Arch Linux
 // Command     : write_verilog -force -mode funcsim
 //               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_sim_netlist.v
@@ -15,35 +15,47 @@
 (* NotValidForBitStream *)
 module vga_pix_clk_gen
    (vga_clk,
+    vga_mem_clk,
     clk_in1);
   output vga_clk;
+  output vga_mem_clk;
   input clk_in1;
 
-  (* IBUF_LOW_PWR *) (* RTL_KEEP = "yes" *) wire clk_in1;
+  (* IBUF_LOW_PWR *) wire clk_in1;
   wire vga_clk;
+  wire vga_mem_clk;
 
   vga_pix_clk_gen_clk_wiz inst
        (.clk_in1(clk_in1),
-        .vga_clk(vga_clk));
+        .vga_clk(vga_clk),
+        .vga_mem_clk(vga_mem_clk));
 endmodule
 
 module vga_pix_clk_gen_clk_wiz
    (vga_clk,
+    vga_mem_clk,
     clk_in1);
   output vga_clk;
+  output vga_mem_clk;
   input clk_in1;
 
   wire clk_in1;
   wire clk_in1_vga_pix_clk_gen;
   wire clkfbout_buf_vga_pix_clk_gen;
   wire clkfbout_vga_pix_clk_gen;
+  wire locked_int;
+  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg1;
+  (* RTL_KEEP = "true" *) (* async_reg = "true" *) wire [7:0]seq_reg2;
   wire vga_clk;
   wire vga_clk_vga_pix_clk_gen;
+  wire vga_clk_vga_pix_clk_gen_en_clk;
+  wire vga_mem_clk;
+  wire vga_mem_clk_vga_pix_clk_gen;
+  wire vga_mem_clk_vga_pix_clk_gen_en_clk;
   wire NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED;
@@ -53,7 +65,6 @@ module vga_pix_clk_gen_clk_wiz
   wire NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED;
   wire NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED;
   wire NLW_mmcm_adv_inst_DRDY_UNCONNECTED;
-  wire NLW_mmcm_adv_inst_LOCKED_UNCONNECTED;
   wire NLW_mmcm_adv_inst_PSDONE_UNCONNECTED;
   wire [15:0]NLW_mmcm_adv_inst_DO_UNCONNECTED;
 
@@ -71,22 +82,62 @@ module vga_pix_clk_gen_clk_wiz
        (.I(clk_in1),
         .O(clk_in1_vga_pix_clk_gen));
   (* BOX_TYPE = "PRIMITIVE" *) 
-  BUFG clkout1_buf
+  (* XILINX_LEGACY_PRIM = "BUFGCE" *) 
+  (* XILINX_TRANSFORM_PINMAP = "CE:CE0 I:I0" *) 
+  BUFGCTRL #(
+    .INIT_OUT(0),
+    .PRESELECT_I0("TRUE"),
+    .PRESELECT_I1("FALSE"),
+    .SIM_DEVICE("7SERIES")) 
+    clkout1_buf
+       (.CE0(seq_reg1[7]),
+        .CE1(1'b0),
+        .I0(vga_clk_vga_pix_clk_gen),
+        .I1(1'b1),
+        .IGNORE0(1'b0),
+        .IGNORE1(1'b1),
+        .O(vga_clk),
+        .S0(1'b1),
+        .S1(1'b0));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFH clkout1_buf_en
        (.I(vga_clk_vga_pix_clk_gen),
-        .O(vga_clk));
+        .O(vga_clk_vga_pix_clk_gen_en_clk));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  (* XILINX_LEGACY_PRIM = "BUFGCE" *) 
+  (* XILINX_TRANSFORM_PINMAP = "CE:CE0 I:I0" *) 
+  BUFGCTRL #(
+    .INIT_OUT(0),
+    .PRESELECT_I0("TRUE"),
+    .PRESELECT_I1("FALSE"),
+    .SIM_DEVICE("7SERIES")) 
+    clkout2_buf
+       (.CE0(seq_reg2[7]),
+        .CE1(1'b0),
+        .I0(vga_mem_clk_vga_pix_clk_gen),
+        .I1(1'b1),
+        .IGNORE0(1'b0),
+        .IGNORE1(1'b1),
+        .O(vga_mem_clk),
+        .S0(1'b1),
+        .S1(1'b0));
+  (* BOX_TYPE = "PRIMITIVE" *) 
+  BUFH clkout2_buf_en
+       (.I(vga_mem_clk_vga_pix_clk_gen),
+        .O(vga_mem_clk_vga_pix_clk_gen_en_clk));
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(62.000000),
+    .CLKFBOUT_MULT_F(56.375000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
-    .CLKIN1_PERIOD(83.333000),
+    .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(118.250000),
+    .CLKOUT0_DIVIDE_F(127.875000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(1),
+    .CLKOUT1_DIVIDE(32),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),
@@ -112,7 +163,7 @@ module vga_pix_clk_gen_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(1),
+    .DIVCLK_DIVIDE(7),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),
@@ -135,7 +186,7 @@ module vga_pix_clk_gen_clk_wiz
         .CLKINSTOPPED(NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED),
         .CLKOUT0(vga_clk_vga_pix_clk_gen),
         .CLKOUT0B(NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED),
-        .CLKOUT1(NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED),
+        .CLKOUT1(vga_mem_clk_vga_pix_clk_gen),
         .CLKOUT1B(NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED),
         .CLKOUT2(NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED),
         .CLKOUT2B(NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED),
@@ -151,13 +202,173 @@ module vga_pix_clk_gen_clk_wiz
         .DO(NLW_mmcm_adv_inst_DO_UNCONNECTED[15:0]),
         .DRDY(NLW_mmcm_adv_inst_DRDY_UNCONNECTED),
         .DWE(1'b0),
-        .LOCKED(NLW_mmcm_adv_inst_LOCKED_UNCONNECTED),
+        .LOCKED(locked_int),
         .PSCLK(1'b0),
         .PSDONE(NLW_mmcm_adv_inst_PSDONE_UNCONNECTED),
         .PSEN(1'b0),
         .PSINCDEC(1'b0),
         .PWRDWN(1'b0),
         .RST(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[0] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(locked_int),
+        .Q(seq_reg1[0]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[1] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[0]),
+        .Q(seq_reg1[1]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[2] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[1]),
+        .Q(seq_reg1[2]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[3] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[2]),
+        .Q(seq_reg1[3]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[4] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[3]),
+        .Q(seq_reg1[4]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[5] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[4]),
+        .Q(seq_reg1[5]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[6] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[5]),
+        .Q(seq_reg1[6]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg1_reg[7] 
+       (.C(vga_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg1[6]),
+        .Q(seq_reg1[7]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[0] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(locked_int),
+        .Q(seq_reg2[0]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[1] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[0]),
+        .Q(seq_reg2[1]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[2] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[1]),
+        .Q(seq_reg2[2]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[3] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[2]),
+        .Q(seq_reg2[3]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[4] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[3]),
+        .Q(seq_reg2[4]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[5] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[4]),
+        .Q(seq_reg2[5]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[6] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[5]),
+        .Q(seq_reg2[6]),
+        .R(1'b0));
+  (* ASYNC_REG *) 
+  (* KEEP = "yes" *) 
+  FDRE #(
+    .INIT(1'b0)) 
+    \seq_reg2_reg[7] 
+       (.C(vga_mem_clk_vga_pix_clk_gen_en_clk),
+        .CE(1'b1),
+        .D(seq_reg2[6]),
+        .Q(seq_reg2[7]),
+        .R(1'b0));
 endmodule
 `ifndef GLBL
 `define GLBL

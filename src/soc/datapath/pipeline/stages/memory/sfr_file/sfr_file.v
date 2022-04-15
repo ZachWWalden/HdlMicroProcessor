@@ -105,11 +105,11 @@ module sfr_file(
 				end
 				else if(mem_ptr_ctl_signals == 7'b0000100 && wren[0] == 1'b0)
 				begin
-					sfr_array[9] = call_stk_inc;
+					sfr_array[9] = call_stk_dec;
 				end
 				else if(mem_ptr_ctl_signals == 7'b0001000 && wren[0] == 1'b0)
 				begin
-					sfr_array[9] = call_stk_dec;
+					sfr_array[9] = call_stk_inc;
 				end
 				else if(mem_ptr_ctl_signals == 7'b0010000 && wren[0] == 1'b0)
 				begin

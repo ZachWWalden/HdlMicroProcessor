@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Fri Apr  1 14:12:27 2022
-# Process ID: 557431
+# Start of session at: Thu Apr 14 00:39:14 2022
+# Process ID: 311969
 # Current directory: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/vga_pix_clk_gen_synth_1
 # Command line: vivado -log vga_pix_clk_gen.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_pix_clk_gen.tcl
 # Log file: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/vga_pix_clk_gen_synth_1/vga_pix_clk_gen.vds

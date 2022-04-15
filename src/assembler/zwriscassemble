@@ -171,6 +171,7 @@ class Assembler():
             assert inList, (line[1] + " is not a valid register, Line: " + str(self.count))
             regOperand = regOperand[1]
             immeadiate = int(line[2], 16)
+            immeadiate &= 0x0FF
             instructionWord = instructionWord | (regOperand << 8 & self.REG_LOW) | (immeadiate << 24 & self.IMMEADIATE)
         elif item[0] == "cp":
             instructionWord = item[1]
@@ -321,6 +322,7 @@ class Assembler():
             instructionWord = instructionWord | (regOperand1 << 8 & self.REG_LOW) | (regOperand2 << 13 & self.REG_HIGH) | (ptrAddr << 18 & self.MEM_PTR_ADDR) | (postInc << 22 & self.POST_INC)
         elif item[0] == "mov":
             #This instruction will overwrite R0
+            inList, item = self.isInList("ld", self.instructions)
             instructionWord = item[1]
             inList, item = self.isInList(line[2].lower(), self.ptrOptions)
             assert inList, (line[2] + " Is not a valid pointer option, Line: " + str(self.count))

@@ -1,7 +1,7 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
--- Date        : Fri Apr  1 14:13:02 2022
+-- Date        : Thu Apr 14 00:39:49 2022
 -- Host        : uberbertha running 64-bit Arch Linux
 -- Command     : write_vhdl -force -mode funcsim
 --               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_sim_netlist.vhdl
@@ -17,6 +17,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity vga_pix_clk_gen_clk_wiz is
   port (
     vga_clk : out STD_LOGIC;
+    vga_mem_clk : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
 end vga_pix_clk_gen_clk_wiz;
@@ -25,12 +26,23 @@ architecture STRUCTURE of vga_pix_clk_gen_clk_wiz is
   signal clk_in1_vga_pix_clk_gen : STD_LOGIC;
   signal clkfbout_buf_vga_pix_clk_gen : STD_LOGIC;
   signal clkfbout_vga_pix_clk_gen : STD_LOGIC;
+  signal locked_int : STD_LOGIC;
+  signal seq_reg1 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute RTL_KEEP : string;
+  attribute RTL_KEEP of seq_reg1 : signal is "true";
+  attribute async_reg : string;
+  attribute async_reg of seq_reg1 : signal is "true";
+  signal seq_reg2 : STD_LOGIC_VECTOR ( 7 downto 0 );
+  attribute RTL_KEEP of seq_reg2 : signal is "true";
+  attribute async_reg of seq_reg2 : signal is "true";
   signal vga_clk_vga_pix_clk_gen : STD_LOGIC;
+  signal vga_clk_vga_pix_clk_gen_en_clk : STD_LOGIC;
+  signal vga_mem_clk_vga_pix_clk_gen : STD_LOGIC;
+  signal vga_mem_clk_vga_pix_clk_gen_en_clk : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED : STD_LOGIC;
-  signal NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED : STD_LOGIC;
@@ -40,7 +52,6 @@ architecture STRUCTURE of vga_pix_clk_gen_clk_wiz is
   signal NLW_mmcm_adv_inst_CLKOUT5_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKOUT6_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DRDY_UNCONNECTED : STD_LOGIC;
-  signal NLW_mmcm_adv_inst_LOCKED_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_PSDONE_UNCONNECTED : STD_LOGIC;
   signal NLW_mmcm_adv_inst_DO_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
   attribute BOX_TYPE : string;
@@ -53,7 +64,50 @@ architecture STRUCTURE of vga_pix_clk_gen_clk_wiz is
   attribute IFD_DELAY_VALUE : string;
   attribute IFD_DELAY_VALUE of clkin1_ibufg : label is "AUTO";
   attribute BOX_TYPE of clkout1_buf : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM : string;
+  attribute XILINX_LEGACY_PRIM of clkout1_buf : label is "BUFGCE";
+  attribute XILINX_TRANSFORM_PINMAP : string;
+  attribute XILINX_TRANSFORM_PINMAP of clkout1_buf : label is "CE:CE0 I:I0";
+  attribute BOX_TYPE of clkout1_buf_en : label is "PRIMITIVE";
+  attribute BOX_TYPE of clkout2_buf : label is "PRIMITIVE";
+  attribute XILINX_LEGACY_PRIM of clkout2_buf : label is "BUFGCE";
+  attribute XILINX_TRANSFORM_PINMAP of clkout2_buf : label is "CE:CE0 I:I0";
+  attribute BOX_TYPE of clkout2_buf_en : label is "PRIMITIVE";
   attribute BOX_TYPE of mmcm_adv_inst : label is "PRIMITIVE";
+  attribute ASYNC_REG_boolean : boolean;
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[0]\ : label is std.standard.true;
+  attribute KEEP : string;
+  attribute KEEP of \seq_reg1_reg[0]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[1]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[1]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[2]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[2]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[3]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[3]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[4]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[4]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[5]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[5]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[6]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[6]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg1_reg[7]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg1_reg[7]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[0]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[0]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[1]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[1]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[2]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[2]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[3]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[3]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[4]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[4]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[5]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[5]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[6]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[6]\ : label is "yes";
+  attribute ASYNC_REG_boolean of \seq_reg2_reg[7]\ : label is std.standard.true;
+  attribute KEEP of \seq_reg2_reg[7]\ : label is "yes";
 begin
 clkf_buf: unisim.vcomponents.BUFG
      port map (
@@ -68,24 +122,65 @@ clkin1_ibufg: unisim.vcomponents.IBUF
       I => clk_in1,
       O => clk_in1_vga_pix_clk_gen
     );
-clkout1_buf: unisim.vcomponents.BUFG
+clkout1_buf: unisim.vcomponents.BUFGCTRL
+    generic map(
+      INIT_OUT => 0,
+      PRESELECT_I0 => true,
+      PRESELECT_I1 => false,
+      SIM_DEVICE => "7SERIES"
+    )
+        port map (
+      CE0 => seq_reg1(7),
+      CE1 => '0',
+      I0 => vga_clk_vga_pix_clk_gen,
+      I1 => '1',
+      IGNORE0 => '0',
+      IGNORE1 => '1',
+      O => vga_clk,
+      S0 => '1',
+      S1 => '0'
+    );
+clkout1_buf_en: unisim.vcomponents.BUFH
      port map (
       I => vga_clk_vga_pix_clk_gen,
-      O => vga_clk
+      O => vga_clk_vga_pix_clk_gen_en_clk
+    );
+clkout2_buf: unisim.vcomponents.BUFGCTRL
+    generic map(
+      INIT_OUT => 0,
+      PRESELECT_I0 => true,
+      PRESELECT_I1 => false,
+      SIM_DEVICE => "7SERIES"
+    )
+        port map (
+      CE0 => seq_reg2(7),
+      CE1 => '0',
+      I0 => vga_mem_clk_vga_pix_clk_gen,
+      I1 => '1',
+      IGNORE0 => '0',
+      IGNORE1 => '1',
+      O => vga_mem_clk,
+      S0 => '1',
+      S1 => '0'
+    );
+clkout2_buf_en: unisim.vcomponents.BUFH
+     port map (
+      I => vga_mem_clk_vga_pix_clk_gen,
+      O => vga_mem_clk_vga_pix_clk_gen_en_clk
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 62.000000,
+      CLKFBOUT_MULT_F => 56.375000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
-      CLKIN1_PERIOD => 83.333000,
+      CLKIN1_PERIOD => 10.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 118.250000,
+      CLKOUT0_DIVIDE_F => 127.875000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 1,
+      CLKOUT1_DIVIDE => 32,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
@@ -111,7 +206,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKOUT6_PHASE => 0.000000,
       CLKOUT6_USE_FINE_PS => false,
       COMPENSATION => "ZHOLD",
-      DIVCLK_DIVIDE => 1,
+      DIVCLK_DIVIDE => 7,
       IS_CLKINSEL_INVERTED => '0',
       IS_PSEN_INVERTED => '0',
       IS_PSINCDEC_INVERTED => '0',
@@ -135,7 +230,7 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
       CLKOUT0 => vga_clk_vga_pix_clk_gen,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => NLW_mmcm_adv_inst_CLKOUT1_UNCONNECTED,
+      CLKOUT1 => vga_mem_clk_vga_pix_clk_gen,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
@@ -151,13 +246,189 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       DO(15 downto 0) => NLW_mmcm_adv_inst_DO_UNCONNECTED(15 downto 0),
       DRDY => NLW_mmcm_adv_inst_DRDY_UNCONNECTED,
       DWE => '0',
-      LOCKED => NLW_mmcm_adv_inst_LOCKED_UNCONNECTED,
+      LOCKED => locked_int,
       PSCLK => '0',
       PSDONE => NLW_mmcm_adv_inst_PSDONE_UNCONNECTED,
       PSEN => '0',
       PSINCDEC => '0',
       PWRDWN => '0',
       RST => '0'
+    );
+\seq_reg1_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => locked_int,
+      Q => seq_reg1(0),
+      R => '0'
+    );
+\seq_reg1_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(0),
+      Q => seq_reg1(1),
+      R => '0'
+    );
+\seq_reg1_reg[2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(1),
+      Q => seq_reg1(2),
+      R => '0'
+    );
+\seq_reg1_reg[3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(2),
+      Q => seq_reg1(3),
+      R => '0'
+    );
+\seq_reg1_reg[4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(3),
+      Q => seq_reg1(4),
+      R => '0'
+    );
+\seq_reg1_reg[5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(4),
+      Q => seq_reg1(5),
+      R => '0'
+    );
+\seq_reg1_reg[6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(5),
+      Q => seq_reg1(6),
+      R => '0'
+    );
+\seq_reg1_reg[7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg1(6),
+      Q => seq_reg1(7),
+      R => '0'
+    );
+\seq_reg2_reg[0]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => locked_int,
+      Q => seq_reg2(0),
+      R => '0'
+    );
+\seq_reg2_reg[1]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(0),
+      Q => seq_reg2(1),
+      R => '0'
+    );
+\seq_reg2_reg[2]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(1),
+      Q => seq_reg2(2),
+      R => '0'
+    );
+\seq_reg2_reg[3]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(2),
+      Q => seq_reg2(3),
+      R => '0'
+    );
+\seq_reg2_reg[4]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(3),
+      Q => seq_reg2(4),
+      R => '0'
+    );
+\seq_reg2_reg[5]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(4),
+      Q => seq_reg2(5),
+      R => '0'
+    );
+\seq_reg2_reg[6]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(5),
+      Q => seq_reg2(6),
+      R => '0'
+    );
+\seq_reg2_reg[7]\: unisim.vcomponents.FDRE
+    generic map(
+      INIT => '0'
+    )
+        port map (
+      C => vga_mem_clk_vga_pix_clk_gen_en_clk,
+      CE => '1',
+      D => seq_reg2(6),
+      Q => seq_reg2(7),
+      R => '0'
     );
 end STRUCTURE;
 library IEEE;
@@ -167,6 +438,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity vga_pix_clk_gen is
   port (
     vga_clk : out STD_LOGIC;
+    vga_mem_clk : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
@@ -178,6 +450,7 @@ begin
 inst: entity work.vga_pix_clk_gen_clk_wiz
      port map (
       clk_in1 => clk_in1,
-      vga_clk => vga_clk
+      vga_clk => vga_clk,
+      vga_mem_clk => vga_mem_clk
     );
 end STRUCTURE;

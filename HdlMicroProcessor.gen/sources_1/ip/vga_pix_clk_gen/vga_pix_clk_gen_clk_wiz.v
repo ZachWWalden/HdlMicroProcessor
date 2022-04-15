@@ -56,12 +56,13 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// _vga_clk___6.29175______0.000______50.0______767.393____676.539
+// _vga_clk___6.29800______0.000______50.0______554.487____490.831
+// vga_mem_clk__25.16741______0.000______50.0______453.170____490.831
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary__________12.000____________0.010
+// __primary_____________100____________0.010
 
 `timescale 1ps/1ps
 
@@ -70,6 +71,7 @@ module vga_pix_clk_gen_clk_wiz
  (// Clock in ports
   // Clock out ports
   output        vga_clk,
+  output        vga_mem_clk,
   input         clk_in1
  );
   // Input buffering
@@ -91,7 +93,7 @@ wire clk_in2_vga_pix_clk_gen;
   //    * Unused outputs are labeled unused
 
   wire        vga_clk_vga_pix_clk_gen;
-  wire        clk_out2_vga_pix_clk_gen;
+  wire        vga_mem_clk_vga_pix_clk_gen;
   wire        clk_out3_vga_pix_clk_gen;
   wire        clk_out4_vga_pix_clk_gen;
   wire        clk_out5_vga_pix_clk_gen;
@@ -106,7 +108,6 @@ wire clk_in2_vga_pix_clk_gen;
   wire        clkfbout_buf_vga_pix_clk_gen;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
-   wire clkout1_unused;
    wire clkout1b_unused;
    wire clkout2_unused;
    wire clkout2b_unused;
@@ -117,21 +118,31 @@ wire clk_in2_vga_pix_clk_gen;
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
   wire        clkinstopped_unused;
+  (* KEEP = "TRUE" *) 
+  (* ASYNC_REG = "TRUE" *)
+  reg  [7 :0] seq_reg1 = 0;
+  (* KEEP = "TRUE" *) 
+  (* ASYNC_REG = "TRUE" *)
+  reg  [7 :0] seq_reg2 = 0;
 
   MMCME2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (1),
-    .CLKFBOUT_MULT_F      (62.000),
+    .DIVCLK_DIVIDE        (7),
+    .CLKFBOUT_MULT_F      (56.375),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (118.250),
+    .CLKOUT0_DIVIDE_F     (127.875),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKIN1_PERIOD        (83.333))
+    .CLKOUT1_DIVIDE       (32),
+    .CLKOUT1_PHASE        (0.000),
+    .CLKOUT1_DUTY_CYCLE   (0.500),
+    .CLKOUT1_USE_FINE_PS  ("FALSE"),
+    .CLKIN1_PERIOD        (10.000))
   mmcm_adv_inst
     // Output clocks
    (
@@ -139,7 +150,7 @@ wire clk_in2_vga_pix_clk_gen;
     .CLKFBOUTB           (clkfboutb_unused),
     .CLKOUT0             (vga_clk_vga_pix_clk_gen),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clkout1_unused),
+    .CLKOUT1             (vga_mem_clk_vga_pix_clk_gen),
     .CLKOUT1B            (clkout1b_unused),
     .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
@@ -188,9 +199,31 @@ wire clk_in2_vga_pix_clk_gen;
 
 
 
-  BUFG clkout1_buf
+
+  BUFGCE clkout1_buf
    (.O   (vga_clk),
+    .CE  (seq_reg1[7]),
     .I   (vga_clk_vga_pix_clk_gen));
+
+  BUFH clkout1_buf_en
+   (.O   (vga_clk_vga_pix_clk_gen_en_clk),
+    .I   (vga_clk_vga_pix_clk_gen));
+  always @(posedge vga_clk_vga_pix_clk_gen_en_clk)
+        seq_reg1 <= {seq_reg1[6:0],locked_int};
+
+
+  BUFGCE clkout2_buf
+   (.O   (vga_mem_clk),
+    .CE  (seq_reg2[7]),
+    .I   (vga_mem_clk_vga_pix_clk_gen));
+ 
+  BUFH clkout2_buf_en
+   (.O   (vga_mem_clk_vga_pix_clk_gen_en_clk),
+    .I   (vga_mem_clk_vga_pix_clk_gen));
+ 
+  always @(posedge vga_mem_clk_vga_pix_clk_gen_en_clk)
+        seq_reg2 <= {seq_reg2[6:0],locked_int};
+
 
 
 

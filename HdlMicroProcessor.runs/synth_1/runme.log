@@ -16,103 +16,111 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
 INFO: [Device 21-403] Loading part xc7s50csga324-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 170459
+INFO: [Synth 8-7075] Helper process launched with PID 316054
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 4875 ; free virtual = 25405
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 5125 ; free virtual = 25372
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'soc' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:9]
-INFO: [Synth 8-6157] synthesizing module 'clk_gen' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/clk_gen_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (1#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/clk_gen_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'program_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/program_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'program_memory' (2#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/program_memory_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'frame_buffer' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/frame_buffer_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'frame_buffer' (3#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/frame_buffer_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'call_stack' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/call_stack_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'call_stack' (4#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/call_stack_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'main_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/main_memory_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'main_memory' (5#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-170297-uberbertha/realtime/main_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_gen' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/clk_gen_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_gen' (1#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/clk_gen_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'vga_pix_clk_gen' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/vga_pix_clk_gen_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'vga_pix_clk_gen' (2#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/vga_pix_clk_gen_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'program_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'program_memory' (3#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/program_memory_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'frame_buffer' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/frame_buffer_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'frame_buffer' (4#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/frame_buffer_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'call_stack' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/call_stack_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'call_stack' (5#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/call_stack_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'main_memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/main_memory_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'main_memory' (6#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/.Xil/Vivado-315902-uberbertha/realtime/main_memory_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'memory_io' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io/memory_io.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'memory_io' (6#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io/memory_io.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'memory_io' (7#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/memory_io/memory_io.v:9]
 INFO: [Synth 8-6157] synthesizing module 'interrupt_controller' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'interrupt_controller' (7#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'interrupt_controller' (8#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/interrupt_controller/interrupt_controller.v:9]
 INFO: [Synth 8-6157] synthesizing module 'hazard_control_unit' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'hazard_control_unit' (8#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'hazard_control_unit' (9#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.v:9]
 INFO: [Synth 8-6157] synthesizing module 'datapath' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.v:9]
 INFO: [Synth 8-6157] synthesizing module 'register_file' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'register_file' (9#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'register_file' (10#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v:9]
 INFO: [Synth 8-6157] synthesizing module 'inst_word_sel_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/inst_word_sel_mux/inst_word_sel_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'inst_word_sel_mux' (10#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/inst_word_sel_mux/inst_word_sel_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'inst_word_sel_mux' (11#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/inst_word_sel_mux/inst_word_sel_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'fetch' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/fetch.v:9]
 INFO: [Synth 8-6157] synthesizing module 'prog_cntr_input_sel_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'prog_cntr_input_sel_mux' (11#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'prog_cntr_input_sel_mux' (12#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'program_counter' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/program_counter/program_counter.v:12]
-INFO: [Synth 8-6155] done synthesizing module 'program_counter' (12#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/program_counter/program_counter.v:12]
-INFO: [Synth 8-6155] done synthesizing module 'fetch' (13#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/fetch.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'program_counter' (13#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/program_counter/program_counter.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'fetch' (14#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/fetch.v:9]
 INFO: [Synth 8-6157] synthesizing module 'if_id' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/if_id/if_id.v:15]
-INFO: [Synth 8-6155] done synthesizing module 'if_id' (14#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/if_id/if_id.v:15]
+INFO: [Synth 8-6155] done synthesizing module 'if_id' (15#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/if_id/if_id.v:15]
 INFO: [Synth 8-6157] synthesizing module 'decode' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode.v:9]
 INFO: [Synth 8-6157] synthesizing module 'decode_logic' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode_logic/decode_logic.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'decode_logic' (15#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode_logic/decode_logic.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'decode_logic' (16#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode_logic/decode_logic.v:9]
 INFO: [Synth 8-6157] synthesizing module 'branch_resolution_logic' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/branch_resolution_logic/branch_resolution_logic.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'branch_resolution_logic' (16#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/branch_resolution_logic/branch_resolution_logic.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'branch_resolution_logic' (17#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/branch_resolution_logic/branch_resolution_logic.v:9]
 INFO: [Synth 8-6157] synthesizing module 'alu_forwarding_logic' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/alu_forwarding_logic/alu_forwarding_logic.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'alu_forwarding_logic' (17#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/alu_forwarding_logic/alu_forwarding_logic.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'alu_forwarding_logic' (18#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/alu_forwarding_logic/alu_forwarding_logic.v:9]
 INFO: [Synth 8-6157] synthesizing module 'id_ex_data_input_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/id_ex_data_input_mux/id_ex_data_input_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'id_ex_data_input_mux' (18#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/id_ex_data_input_mux/id_ex_data_input_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'decode' (19#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'id_ex_data_input_mux' (19#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/id_ex_data_input_mux/id_ex_data_input_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'decode' (20#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/decode/decode.v:9]
 INFO: [Synth 8-6157] synthesizing module 'id_ex' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/id_ex/id_ex.v:8]
-INFO: [Synth 8-6155] done synthesizing module 'id_ex' (20#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/id_ex/id_ex.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'id_ex' (21#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/id_ex/id_ex.v:8]
 INFO: [Synth 8-6157] synthesizing module 'execute' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/execute.v:9]
 INFO: [Synth 8-6157] synthesizing module 'alu_input_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu_input_mux/alu_input_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'alu_input_mux' (21#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu_input_mux/alu_input_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'alu_input_mux' (22#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu_input_mux/alu_input_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'alu' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/alu.v:3]
 INFO: [Synth 8-6157] synthesizing module 'adder' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/adder/adder.v:16]
-INFO: [Synth 8-6155] done synthesizing module 'adder' (22#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/adder/adder.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'adder' (23#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/adder/adder.v:16]
 INFO: [Synth 8-6157] synthesizing module 'multiplier' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/multiplier/multiplier.v:14]
-INFO: [Synth 8-6155] done synthesizing module 'multiplier' (23#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/multiplier/multiplier.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'multiplier' (24#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/multiplier/multiplier.v:14]
 INFO: [Synth 8-6157] synthesizing module 'bit_shifter' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'bit_shifter' (24#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'bit_shifter' (25#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v:9]
 INFO: [Synth 8-6157] synthesizing module 'bitwise_logic_unit' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bitwise_logic_unit/bitwise_logic_unit.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'bitwise_logic_unit' (25#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bitwise_logic_unit/bitwise_logic_unit.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'alu' (26#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/alu.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'bitwise_logic_unit' (26#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bitwise_logic_unit/bitwise_logic_unit.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (27#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/alu.v:3]
 INFO: [Synth 8-6157] synthesizing module 'ex_mem_data_input_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/ex_mem_data_input_mux/ex_mem_data_input_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'ex_mem_data_input_mux' (27#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/ex_mem_data_input_mux/ex_mem_data_input_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'ex_mem_data_input_mux' (28#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/ex_mem_data_input_mux/ex_mem_data_input_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'memory_forwarding_logic' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/memory_forwarding_logic/memory_forwarding_logic.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'memory_forwarding_logic' (28#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/memory_forwarding_logic/memory_forwarding_logic.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'memory_forwarding_logic' (29#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/memory_forwarding_logic/memory_forwarding_logic.v:9]
 INFO: [Synth 8-6157] synthesizing module 'flags_register' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/flags_register/flags_register.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'flags_register' (29#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/flags_register/flags_register.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'execute' (30#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/execute.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'flags_register' (30#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/flags_register/flags_register.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'execute' (31#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/execute.v:9]
 INFO: [Synth 8-6157] synthesizing module 'ex_mem' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/ex_mem/ex_mem.v:8]
-INFO: [Synth 8-6155] done synthesizing module 'ex_mem' (31#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/ex_mem/ex_mem.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'ex_mem' (32#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/ex_mem/ex_mem.v:8]
 INFO: [Synth 8-6157] synthesizing module 'memory' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/memory.v:9]
 INFO: [Synth 8-6157] synthesizing module 'sfr_sel_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_sel_mux/sfr_sel_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'sfr_sel_mux' (32#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_sel_mux/sfr_sel_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'sfr_sel_mux' (33#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_sel_mux/sfr_sel_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'sfr_file' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file.v:10]
-INFO: [Synth 8-6155] done synthesizing module 'sfr_file' (33#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'sfr_file' (34#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file.v:10]
 INFO: [Synth 8-6157] synthesizing module 'mem_str_data_sel_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_str_data_sel_mux/mem_str_data_sel_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'mem_str_data_sel_mux' (34#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_str_data_sel_mux/mem_str_data_sel_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mem_str_data_sel_mux' (35#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_str_data_sel_mux/mem_str_data_sel_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'mem_addr_sel_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_addr_sel_mux/mem_addr_sel_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'mem_addr_sel_mux' (35#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_addr_sel_mux/mem_addr_sel_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mem_addr_sel_mux' (36#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_addr_sel_mux/mem_addr_sel_mux.v:9]
 INFO: [Synth 8-6157] synthesizing module 'mem_wb_data_input_mux' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_wb_data_input_mux/mem_wb_data_input_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'mem_wb_data_input_mux' (36#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_wb_data_input_mux/mem_wb_data_input_mux.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'memory' (37#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/memory.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mem_wb_data_input_mux' (37#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/mem_wb_data_input_mux/mem_wb_data_input_mux.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'memory' (38#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/memory.v:9]
 INFO: [Synth 8-6157] synthesizing module 'mem_wb' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/mem_wb/mem_wb.v:8]
-INFO: [Synth 8-6155] done synthesizing module 'mem_wb' (38#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/mem_wb/mem_wb.v:8]
-INFO: [Synth 8-6155] done synthesizing module 'datapath' (39#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'soc' (40#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'mem_wb' (39#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/registers/mem_wb/mem_wb.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'datapath' (40#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/datapath.v:9]
+INFO: [Synth 8-6157] synthesizing module 'vga_controller' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/vga_controller.v:9]
+INFO: [Synth 8-6157] synthesizing module 'horiz_cntr' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/horiz_cntr/horiz_cntr.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'horiz_cntr' (41#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/horiz_cntr/horiz_cntr.v:9]
+INFO: [Synth 8-6157] synthesizing module 'vert_cntr' [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/vert_cntr/vert_cntr.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'vert_cntr' (42#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/vert_cntr/vert_cntr.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'vga_controller' (43#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/vga_controller.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'soc' (44#1) [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/soc.v:9]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 4864 ; free virtual = 25396
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 5111 ; free virtual = 25358
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 4865 ; free virtual = 25397
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 5112 ; free virtual = 25358
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 4865 ; free virtual = 25397
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 5112 ; free virtual = 25358
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 4862 ; free virtual = 25393
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2548.801 ; gain = 0.000 ; free physical = 5108 ; free virtual = 25355
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -121,6 +129,8 @@ Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMi
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/call_stack_1/call_stack/call_stack_in_context.xdc] for cell 'call_stk'
 Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/frame_buffer/frame_buffer/frame_buffer_in_context.xdc] for cell 'frame_buf'
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/frame_buffer/frame_buffer/frame_buffer_in_context.xdc] for cell 'frame_buf'
+Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen/vga_pix_clk_gen_in_context.xdc] for cell 'vga_clk_gen'
+Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen/vga_pix_clk_gen_in_context.xdc] for cell 'vga_clk_gen'
 Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/main_memory/main_memory/main_memory_in_context.xdc] for cell 'main_mem'
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/main_memory/main_memory/main_memory_in_context.xdc] for cell 'main_mem'
 Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen/clk_gen_in_context.xdc] for cell 'sys_clk_gen'
@@ -135,20 +145,20 @@ Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMi
 Finished Parsing XDC File [/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 4763 ; free virtual = 25293
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 5006 ; free virtual = 25253
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 4763 ; free virtual = 25293
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 5006 ; free virtual = 25253
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4833 ; free virtual = 25363
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 5083 ; free virtual = 25330
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4833 ; free virtual = 25363
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 5083 ; free virtual = 25330
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -157,14 +167,15 @@ Applied set_property IO_BUFFER_TYPE = NONE for clk100M. (constraint file  /home/
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk100M. (constraint file  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen/clk_gen_in_context.xdc, line 6).
 Applied set_property KEEP_HIERARCHY = SOFT for call_stk. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for frame_buf. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for vga_clk_gen. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for main_mem. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for sys_clk_gen. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for prog_mem. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4833 ; free virtual = 25363
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 5083 ; free virtual = 25330
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4821 ; free virtual = 25353
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 5076 ; free virtual = 25324
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -173,19 +184,24 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input   16 Bit       Adders := 5     
 	   2 Input   14 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
 	   3 Input    9 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 2     
+	   2 Input    2 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 4     
 	               16 Bit    Registers := 4     
+	               15 Bit    Registers := 1     
 	               14 Bit    Registers := 6     
-	                8 Bit    Registers := 74    
+	               12 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 75    
 	                7 Bit    Registers := 4     
 	                5 Bit    Registers := 5     
 	                4 Bit    Registers := 2     
 	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 7     
-	                1 Bit    Registers := 14    
+	                2 Bit    Registers := 8     
+	                1 Bit    Registers := 18    
 +---Multipliers : 
 	                8x8  Multipliers := 1     
 +---Muxes : 
@@ -193,9 +209,11 @@ Detailed RTL Component Info :
 	   2 Input   32 Bit        Muxes := 1     
 	   2 Input   16 Bit        Muxes := 1     
 	   4 Input   16 Bit        Muxes := 1     
+	   4 Input   15 Bit        Muxes := 1     
 	   2 Input   14 Bit        Muxes := 2     
 	   3 Input   14 Bit        Muxes := 2     
 	  10 Input   14 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 1     
 	   2 Input    9 Bit        Muxes := 1     
 	   2 Input    8 Bit        Muxes := 112   
 	   6 Input    8 Bit        Muxes := 2     
@@ -221,7 +239,7 @@ Detailed RTL Component Info :
 	   4 Input    2 Bit        Muxes := 1     
 	  18 Input    2 Bit        Muxes := 3     
 	   5 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 58    
+	   2 Input    1 Bit        Muxes := 65    
 	  10 Input    1 Bit        Muxes := 3     
 	  18 Input    1 Bit        Muxes := 10    
 	   3 Input    1 Bit        Muxes := 8     
@@ -243,19 +261,19 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4788 ; free virtual = 25325
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 5053 ; free virtual = 25307
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4685 ; free virtual = 25222
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4943 ; free virtual = 25197
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4672 ; free virtual = 25209
+Finished Technology Mapping : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4931 ; free virtual = 25185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -267,77 +285,80 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4663 ; free virtual = 25201
+Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4931 ; free virtual = 25185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4663 ; free virtual = 25201
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4931 ; free virtual = 25185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4663 ; free virtual = 25201
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4931 ; free virtual = 25185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+------+---------------+----------+
-|      |BlackBox name  |Instances |
-+------+---------------+----------+
-|1     |clk_gen        |         1|
-|2     |program_memory |         1|
-|3     |frame_buffer   |         1|
-|4     |call_stack     |         1|
-|5     |main_memory    |         1|
-+------+---------------+----------+
++------+----------------+----------+
+|      |BlackBox name   |Instances |
++------+----------------+----------+
+|1     |clk_gen         |         1|
+|2     |vga_pix_clk_gen |         1|
+|3     |program_memory  |         1|
+|4     |frame_buffer    |         1|
+|5     |call_stack      |         1|
+|6     |main_memory     |         1|
++------+----------------+----------+
 
 Report Cell Usage: 
-+------+---------------+------+
-|      |Cell           |Count |
-+------+---------------+------+
-|1     |call_stack     |     1|
-|2     |clk_gen        |     1|
-|3     |frame_buffer   |     1|
-|4     |main_memory    |     1|
-|5     |program_memory |     1|
-|6     |CARRY4         |    41|
-|7     |LUT1           |    78|
-|8     |LUT2           |   161|
-|9     |LUT3           |   157|
-|10    |LUT4           |    92|
-|11    |LUT5           |   401|
-|12    |LUT6           |   691|
-|13    |MUXF7          |    84|
-|14    |MUXF8          |    17|
-|15    |FDRE           |   909|
-|16    |OBUF           |     4|
-+------+---------------+------+
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |call_stack      |     1|
+|2     |clk_gen         |     1|
+|3     |frame_buffer    |     1|
+|4     |main_memory     |     1|
+|5     |program_memory  |     1|
+|6     |vga_pix_clk_gen |     1|
+|7     |CARRY4          |    45|
+|8     |LUT1            |    80|
+|9     |LUT2            |   166|
+|10    |LUT3            |   164|
+|11    |LUT4            |   117|
+|12    |LUT5            |   428|
+|13    |LUT6            |   704|
+|14    |MUXF7           |    84|
+|15    |MUXF8           |    17|
+|16    |FDRE            |   975|
+|17    |FDSE            |     2|
+|18    |OBUF            |    18|
++------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:39 ; elapsed = 00:00:40 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4663 ; free virtual = 25201
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4931 ; free virtual = 25185
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 4719 ; free virtual = 25256
-Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4719 ; free virtual = 25256
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 4986 ; free virtual = 25241
+Synthesis Optimization Complete : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 2612.594 ; gain = 63.793 ; free physical = 4986 ; free virtual = 25241
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 4803 ; free virtual = 25341
-INFO: [Netlist 29-17] Analyzing 142 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 5081 ; free virtual = 25335
+INFO: [Netlist 29-17] Analyzing 146 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 4752 ; free virtual = 25289
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2612.594 ; gain = 0.000 ; free physical = 5027 ; free virtual = 25282
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: cf757470
+Synth Design complete, checksum: 11a0d81d
 INFO: [Common 17-83] Releasing license: Synthesis
-95 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+103 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.594 ; gain = 64.031 ; free physical = 4893 ; free virtual = 25430
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:44 . Memory (MB): peak = 2612.594 ; gain = 64.031 ; free physical = 5168 ; free virtual = 25422
 INFO: [Common 17-1381] The checkpoint '/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/synth_1/soc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file soc_utilization_synth.rpt -pb soc_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 13 18:57:29 2022...
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 14 00:46:19 2022...

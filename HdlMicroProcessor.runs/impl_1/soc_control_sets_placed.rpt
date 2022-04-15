@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Wed Apr 13 18:58:23 2022
+| Date         : Thu Apr 14 00:49:10 2022
 | Host         : uberbertha running 64-bit Arch Linux
 | Command      : report_control_sets -verbose -file soc_control_sets_placed.rpt
 | Design       : soc
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    32 |
-|    Minimum number of control sets                        |    32 |
+| Total control sets                                       |    45 |
+|    Minimum number of control sets                        |    45 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    20 |
+| Unused register locations in slices containing registers |    65 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    32 |
-| >= 0 to < 4        |     0 |
+| Total control sets |    45 |
+| >= 0 to < 4        |     5 |
 | >= 4 to < 6        |     0 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |    25 |
-| >= 10 to < 12      |     1 |
-| >= 12 to < 14      |     1 |
-| >= 14 to < 16      |     1 |
-| >= 16              |     4 |
+| >= 8 to < 10       |    29 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     2 |
+| >= 16              |     5 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,53 +58,66 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             579 |          222 |
+| No           | No                    | No                     |             612 |          221 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              95 |           40 |
-| Yes          | No                    | No                     |             266 |           88 |
+| No           | Yes                   | No                     |             125 |           53 |
+| Yes          | No                    | No                     |             266 |          101 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | Yes                   | No                     |              44 |           20 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------------------------+------------------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
-|                Clock Signal               |                        Enable Signal                       |              Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
-+-------------------------------------------+------------------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
-|  sys_clk_gen/inst/core_clk                |                                                            | pipeline/memory_stage/sf_reg_file/out_data |                5 |              8 |         1.60 |
-|  sys_clk_gen/inst/core_clk_clk_gen_en_clk |                                                            |                                            |                1 |              8 |         8.00 |
-|  sys_clk_gen/inst/mem_clk_clk_gen_en_clk  |                                                            |                                            |                1 |              8 |         8.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[30][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[31][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[21][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[22][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[23][7]_i_1_n_0 |                                            |                5 |              8 |         1.60 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[24][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[25][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[26][7]_i_1_n_0 |                                            |                5 |              8 |         1.60 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[27][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[28][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[29][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[8][7]_i_1_n_0  |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[19][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[18][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[13][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[17][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[16][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[15][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[14][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[20][7]_i_1_n_0 |                                            |                1 |              8 |         8.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[12][7]_i_1_n_0 |                                            |                1 |              8 |         8.00 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[11][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
-|  sys_clk_gen/inst/mem_clk                 |                                                            |                                            |               10 |             11 |         1.10 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array[10][3]_i_1_n_0 |                                            |                4 |             12 |         3.00 |
-|  sys_clk_gen/inst/core_clk                | hazard_unit/stall_fetch                                    |                                            |                6 |             14 |         2.33 |
-|  sys_clk_gen/inst/core_clk                | pipeline/memory_stage/sf_reg_file/sfr_array2               |                                            |               26 |             64 |         2.46 |
-|  sys_clk_gen/inst/core_clk                |                                                            | hazard_unit/stall_decode                   |               35 |             87 |         2.49 |
-| ~sys_clk_gen/inst/core_clk                |                                                            |                                            |               96 |            262 |         2.73 |
-|  sys_clk_gen/inst/core_clk                |                                                            |                                            |              114 |            290 |         2.54 |
-+-------------------------------------------+------------------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
++------------------------------------------------------+------------------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
+|                     Clock Signal                     |                        Enable Signal                       |              Set/Reset Signal              | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------------------------------------------+------------------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
+|  vga_clk_gen/inst/vga_clk                            | vga/horizontal_cntr/set_hsync                              | vga/horizontal_cntr/clear_hsync            |                1 |              1 |         1.00 |
+| ~vga/horizontal_cntr/row_done                        | vga/vertical_cnter/set_vsync                               | vga/vertical_cnter/clear_vsync             |                1 |              1 |         1.00 |
+| ~vga/horizontal_cntr/row_done                        |                                                            |                                            |                1 |              1 |         1.00 |
+|  vga_clk_gen/inst/vga_mem_clk                        |                                                            |                                            |                2 |              3 |         1.50 |
+|  vga_clk_gen/inst/vga_clk                            |                                                            |                                            |                2 |              3 |         1.50 |
+|  sys_clk_gen/inst/mem_clk_clk_gen_en_clk             |                                                            |                                            |                1 |              8 |         8.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[27][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[25][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[22][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[11][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[24][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[26][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[23][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk_clk_gen_en_clk            |                                                            |                                            |                1 |              8 |         8.00 |
+|  sys_clk_gen/inst/ila_clk_clk_gen_en_clk             |                                                            |                                            |                1 |              8 |         8.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[8][7]_i_1_n_0  |                                            |                3 |              8 |         2.67 |
+|  vga_clk_gen/inst/vga_clk                            |                                                            | vga/horizontal_cntr/row_done               |                2 |              8 |         4.00 |
+|  vga_clk_gen/inst/vga_clk_vga_pix_clk_gen_en_clk     |                                                            |                                            |                1 |              8 |         8.00 |
+|  vga_clk_gen/inst/vga_mem_clk_vga_pix_clk_gen_en_clk |                                                            |                                            |                1 |              8 |         8.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[30][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           |                                                            | pipeline/memory_stage/sf_reg_file/out_data |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[28][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[29][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[17][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[18][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[16][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[12][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[15][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[14][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[13][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[20][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[21][7]_i_1_n_0 |                                            |                4 |              8 |         2.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[19][7]_i_1_n_0 |                                            |                2 |              8 |         4.00 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[31][7]_i_1_n_0 |                                            |                3 |              8 |         2.67 |
+| ~vga/horizontal_cntr/row_done                        |                                                            | vga/vertical_cnter/frm_done                |                3 |             10 |         3.33 |
+|  sys_clk_gen/inst/mem_clk                            |                                                            |                                            |                8 |             11 |         1.38 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array[10][3]_i_1_n_0 |                                            |                5 |             12 |         2.40 |
+|  vga_clk_gen/inst/vga_clk                            |                                                            | vga/pixel[11]_i_1_n_0                      |                9 |             12 |         1.33 |
+|  sys_clk_gen/inst/core_clk                           | hazard_unit/stall_fetch                                    |                                            |                5 |             14 |         2.80 |
+|  vga_clk_gen/inst/vga_clk                            | vga/horizontal_cntr/row_done                               | vga/memory_addr[14]_i_1_n_0                |                6 |             15 |         2.50 |
+|  vga_clk_gen/inst/vga_clk                            | vga/memory_addr[14]_i_2_n_0                                | vga/memory_addr[14]_i_1_n_0                |               12 |             27 |         2.25 |
+|  sys_clk_gen/inst/core_clk                           | pipeline/memory_stage/sf_reg_file/sfr_array2               |                                            |               21 |             64 |         3.05 |
+|  sys_clk_gen/inst/core_clk                           |                                                            | hazard_unit/stall_decode                   |               36 |             87 |         2.42 |
+| ~sys_clk_gen/inst/core_clk                           |                                                            |                                            |               89 |            262 |         2.94 |
+|  sys_clk_gen/inst/core_clk                           |                                                            |                                            |              114 |            292 |         2.56 |
++------------------------------------------------------+------------------------------------------------------------+--------------------------------------------+------------------+----------------+--------------+
 
 

@@ -55,12 +55,13 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// _vga_clk___6.29175______0.000______50.0______767.393____676.539
+// _vga_clk___6.29800______0.000______50.0______554.487____490.831
+// vga_mem_clk__25.16741______0.000______50.0______453.170____490.831
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
 //----------------------------------------------------------------------------
-// __primary__________12.000____________0.010
+// __primary_____________100____________0.010
 
 // The following must be inserted into your Verilog file for this
 // core to be instantiated. Change the instance name and port connections
@@ -72,6 +73,7 @@
    (
     // Clock out ports
     .vga_clk(vga_clk),     // output vga_clk
+    .vga_mem_clk(vga_mem_clk),     // output vga_mem_clk
    // Clock in ports
     .clk_in1(clk_in1));      // input clk_in1
 

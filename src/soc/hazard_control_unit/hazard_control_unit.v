@@ -186,7 +186,7 @@ module hazard_control_unit(
 			4'h7 :
 			begin
 				//Outputs
-				stall_fetch <= 1'b1;
+				stall_fetch <= 1'b0;
 				stall_decode <= 1'b0;
 				prog_cntr_load_sel <= 4'b1000;
 				inst_word_sel <= 1'b1;

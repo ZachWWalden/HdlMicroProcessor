@@ -16,6 +16,10 @@ set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 # XDC: The top module name and the constraint reference have the same name: 'vga_pix_clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
+# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_late.xdc
+# XDC: The top module name and the constraint reference have the same name: 'vga_pix_clk_gen'. Do not add the DONT_TOUCH constraint.
+#dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
+
 # IP: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen.xci
 # IP: The module: 'vga_pix_clk_gen' is the root of the design. Do not add the DONT_TOUCH constraint.
 
@@ -28,5 +32,9 @@ set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
 
 # XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_ooc.xdc
+# XDC: The top module name and the constraint reference have the same name: 'vga_pix_clk_gen'. Do not add the DONT_TOUCH constraint.
+#dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
+
+# XDC: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_late.xdc
 # XDC: The top module name and the constraint reference have the same name: 'vga_pix_clk_gen'. Do not add the DONT_TOUCH constraint.
 #dup# set_property KEEP_HIERARCHY SOFT [get_cells inst -quiet] -quiet
