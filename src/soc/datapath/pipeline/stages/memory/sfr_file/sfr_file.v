@@ -11,6 +11,7 @@ module sfr_file(
 	input clock,
 	input nreset,
 	input [6:0] mem_ptr_ctl_signals,  	//<6> Z inc, <5> Y inc, <4> X inc, <3> call stack ptr inc,<2> call stack ptr dec ,<1> stack_ptr inc,<0> stack_ptr dec
+	input call_stk_addr_sel,
 	input [1:0] wren,
 	input [4:0] wr_addr,
 	input [7:0] write_data,
@@ -20,7 +21,7 @@ module sfr_file(
 	output reg [15:0] x_ptr,
 	output reg [15:0] y_ptr,
 	output reg [15:0] z_ptr,
-	output reg [7:0] call_stk_ptr,
+	output [7:0] call_stk_ptr,
 	input [31:0] sfr_file_in,
 	output [143:0] sfr_file_out
 );
@@ -64,7 +65,6 @@ module sfr_file(
 		x_ptr <= 0;
 		y_ptr <= 0;
 		z_ptr <= 0;
-		call_stk_ptr <= 0;
 	end
 
 
@@ -80,12 +80,9 @@ module sfr_file(
 			x_ptr <= 0;
 			y_ptr <= 0;
 			z_ptr <= 0;
-			call_stk_ptr <= 0;
 		end
 		else
 		begin
-
-			call_stk_ptr <= sfr_array[9];
 			//wren[0] is write enable
 			if(wren[0] == 1'b1)
 			begin
@@ -164,6 +161,8 @@ module sfr_file(
 
 	assign call_stk_inc = sfr_array[9] + 1;
 	assign call_stk_dec = sfr_array[9] - 1;
+
+	assign call_stk_ptr = call_stk_addr_sel ? call_stk_dec : sfr_array[9];
 
 	//Interrupt Mask Registers.
 	assign sfr_file_out[7:0] = sfr_array[10]; 		//Interrupt Conntroller Control Register <0> Int Enable Flag

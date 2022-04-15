@@ -173,6 +173,7 @@ module datapath(
 	wire prog_mem_en_idex;
 
 	wire [6:0] mem_ptr_ctl_idex;
+	wire call_stk_addr_sel_idex;
 
 	wire [1:0] ex_mem_data_input_sel_idex;
 
@@ -209,6 +210,8 @@ module datapath(
 		.prog_mem_enable_out(prog_mem_en_idex),
 		.mem_ptr_ctl_in(mem_ptr_ctl_dec),
 		.mem_ptr_ctl_out(mem_ptr_ctl_idex),
+		.call_stk_addr_sel_in(mem_ptr_ctl_dec[2]),
+		.call_stk_addr_sel_out(call_stk_addr_sel_idex),
 		.ex_mem_data_input_sel_in(ex_mem_data_input_sel_dec),
 		.ex_mem_data_input_sel_out(ex_mem_data_input_sel_idex),
 		.reg_file_wen_in(reg_file_wen_dec),
@@ -257,6 +260,7 @@ module datapath(
 	);
 
 	wire [6:0] mem_ptr_ctl_exmem;
+	wire call_stk_addr_sel_exmem;
 
 	wire [1:0] reg_file_wen_exmem;
 	wire [1:0] sfr_wren_exmem;
@@ -288,6 +292,8 @@ module datapath(
 		.prog_mem_enable_out(prog_mem_en),
 		.mem_ptr_ctl_in(mem_ptr_ctl_idex),
 		.mem_ptr_ctl_out(mem_ptr_ctl_exmem),
+		.call_stk_addr_sel_in(call_stk_addr_sel_idex),
+		.call_stk_addr_sel_out(call_stk_addr_sel_exmem),
 		.mem_wb_data_sel_top_in(mem_wb_data_sel_top_ex),
 		.mem_wb_data_sel_top_out(mem_wb_data_sel_top_exmem),
 		.mem_wb_data_sel_bot_in(mem_wb_data_sel_bot_ex),
@@ -320,6 +326,7 @@ module datapath(
 		.mem_wb_data_input_sel_bot(mem_wb_data_sel_bot_exmem),
 		.sfr_file_input_sel(sfr_input_sel_exmem),
 		.mem_ptr_ctl(mem_ptr_ctl_exmem),
+		.call_stk_addr_sel(call_stk_addr_sel_exmem),
 		.mem_str_data_input_sel_top(mem_str_data_sel_top_exmem),
 		.mem_str_data_input_sel_bot(mem_str_data_sel_bot_exmem),
 		.sfr_file_wren(sfr_wren_exmem),

@@ -17,6 +17,7 @@ module memory(
 	input [6:0] mem_wb_data_input_sel_bot,
 	input [4:0] sfr_file_input_sel,
 	input [6:0] mem_ptr_ctl,
+	input call_stk_addr_sel,
 	input [4:0] mem_str_data_input_sel_top,
 	input [4:0] mem_str_data_input_sel_bot,
 	input [1:0] sfr_file_wren,
@@ -60,6 +61,7 @@ module memory(
 		.clock(clock),
 		.nreset(nreset),
 		.mem_ptr_ctl_signals(mem_ptr_ctl), 	//Add to control signal list
+		.call_stk_addr_sel(call_stk_addr_sel),
 		.wren(sfr_file_wren),
 		.wr_addr(instruction[12:8]),
 		.write_data(sfr_input),
