@@ -19,41 +19,43 @@
 	LDI R30 0x00 ;This register will be used to track which test the program may fail on.
 
 :MAIN
-	CALL TEST_INC ;LED = 0x00
-	CALL TEST_DEC ;LED = 0x01
-	CALL TEST_ADD ;LED = 0x02
-	CALL TEST_ADDI ;LED = 0x03
-	CALL TEST_SUB ;LED = 0x04
-	CALL TEST_SUBI ;LED = 0x05
-	CALL TEST_CP ;LED = 0x06
-	CALL TEST_CPI ;LED = 0x07
-	CALL TEST_MUL ;LED = 0x08
-	CALL TEST_MULI ;LED = 0x09
-	CALL TEST_AND ;LED = 0x0A
-	CALL TEST_ANDI ;LED = 0x0B
-	CALL TEST_OR  ;LED = 0x0C
-	CALL TEST_ORI ;LED = 0x0D
-	CALL TEST_SHL ;LED = 0x0E
-	CALL TEST_SHR ;LED = 0x0F
-	CALL TEST_COM ;LED = 0x10
-	CALL TEST_INV ;LED = 0x11
-	CALL TEST_LDI ;LED = 0x12
-	CALL TEST_LPM ;LED = 0x13
-	CALL TEST_STR_LD ;LED = 0x14
-	CALL TEST_STFB_LDFB ;LED = 0x15
-	CALL TEST_PUSH_POP ;LED = 0x16
-	CALL TEST_MOV ;LED = 0x17
-	CALL TEST_MOVR ;LED = 0x18
-	CALL TEST_OUT_IN ;LED = 0x19
-	CALL TEST_JMP ;LED = 0x1A
-	CALL TEST_BRCS ;LED = 0x1B
-	CALL TEST_BRCC ;LED = 0x1C
-	CALL TEST_BREQ ;LED = 0x1D
-	CALL TEST_BRNE ;LED = 0x1E
-	CALL TEST_BRNG ;LED = 0x1F
-	CALL TEST_BRPS ;LED = 0x20
+	CALL TEST_INC ;LED = 0x01
+	CALL TEST_DEC ;LED = 0x02
+	CALL TEST_ADD ;LED = 0x03
+	CALL TEST_ADDI ;LED = 0x04
+	CALL TEST_SUB ;LED = 0x05
+	CALL TEST_SUBI ;LED = 0x06
+	CALL TEST_CP ;LED = 0x07
+	CALL TEST_CPI ;LED = 0x08
+	CALL TEST_MUL ;LED = 0x09
+	CALL TEST_MULI ;LED = 0x0A
+	CALL TEST_AND ;LED = 0x0B
+	CALL TEST_ANDI ;LED = 0x0C
+	CALL TEST_OR  ;LED = 0x0D
+	CALL TEST_ORI ;LED = 0x0E
+	CALL TEST_SHL ;LED = 0x0F
+	CALL TEST_SHR ;LED = 0x10
+	CALL TEST_COM ;LED = 0x11
+	CALL TEST_INV ;LED = 0x12
+	CALL TEST_LDI ;LED = 0x13
+	CALL TEST_LPM ;LED = 0x14
+	CALL TEST_STR_LD ;LED = 0x15
+	CALL TEST_STFB_LDFB ;LED = 0x16
+	CALL TEST_PUSH_POP ;LED = 0x17
+	CALL TEST_MOV ;LED = 0x18
+	CALL TEST_MOVR ;LED = 0x19
+	CALL TEST_OUT_IN ;LED = 0x1A
+	CALL TEST_JMP ;LED = 0x1B
+	CALL TEST_BRCS ;LED = 0x1C
+	CALL TEST_BRCC ;LED = 0x1D
+	CALL TEST_BREQ ;LED = 0x1E
+	CALL TEST_BRNE ;LED = 0x1F
+	CALL TEST_BRNG ;LED = 0x20
+	CALL TEST_BRPS ;LED = 0x21
 
 :vga_out
+	OUT LED R30
+	OUT LED R30
 	CALL WRITE_VGA
 :halt_execution
 	OUT LED R30
@@ -69,6 +71,7 @@
 	CALL TEST_FAILED
 :test_inc_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Decrement Instruction
@@ -79,6 +82,7 @@
 	CALL TEST_FAILED
 :test_dec_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Addition Instruction.
@@ -93,6 +97,7 @@
 	CALL TEST_FAILED
 :test_add_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Add Immeadiate Instruction
@@ -104,6 +109,7 @@
 	CALL TEST_FAILED
 :test_addi_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Subtract Instruction
@@ -118,6 +124,7 @@
 	CALL TEST_FAILED
 :test_sub_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Immeadiate Subtraction
@@ -129,6 +136,7 @@
 	CALL TEST_FAILED
 :test_subi_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Register to Register Compare
@@ -150,6 +158,7 @@
 	CALL TEST_FAILED
 :test_cp_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Compare Immeadiate Instruction
@@ -165,6 +174,7 @@
 	CALL TEST_FAILED
 :test_cpi_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Multiply Instruction
@@ -183,6 +193,7 @@
 	CALL TEST_FAILED
 :test_mul_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Multiply Immeadiate Instruction
@@ -198,6 +209,7 @@
 	CALL TEST_FAILED
 :test_mul_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test And Immeadiate Instruction
@@ -212,6 +224,7 @@
 	CALL TEST_FAILED
 :test_and_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Immeadiate Bitwise And Instruction
@@ -223,6 +236,7 @@
 	CALL TEST_FAILED
 :test_andi_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Or Instruction
@@ -237,6 +251,7 @@
 	CALL TEST_FAILED
 :test_or_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Or Immeadiate Instruction
@@ -248,6 +263,7 @@
 	CALL TEST_FAILED
 :test_or_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Shift Right Instruction
@@ -259,6 +275,7 @@
 	CALL TEST_FAILED
 :test_shr_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Shift Left Instruction
@@ -270,6 +287,7 @@
 	CALL TEST_FAILED
 :test_shl_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test 2's Complement Instruction
@@ -281,6 +299,7 @@
 	CALL TEST_FAILED
 :test_com_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Bit Inversion Instruction
@@ -292,6 +311,7 @@
 	CALL TEST_FAILED
 :test_inv_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Load Immeadiate Instruction Test
@@ -304,6 +324,7 @@
 	CALL TEST_FAILED
 :test_ldi_ret
 	INC R30
+	OUT LED R30
 	RET
 
 :TEST_LPM
@@ -317,6 +338,7 @@
 	CALL TEST_FAILED
 :test_lpm_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;This Tests LD, STR and each memory Pointer and Its post Increments.
@@ -392,6 +414,7 @@
 	CALL TEST_FAILED
 :test_str_ld_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Load & Store to Framebuffer
@@ -416,6 +439,7 @@
 	CALL TEST_FAILED
 :test_stfb_ldfb_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Push and Pop
@@ -444,6 +468,7 @@
 	CALL TEST_FAILED
 :test_push_pop_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test the move assembler alias this is implemented as a LD R0 ptr1 STR ptr2 R0, thus destroying the contents of R0
@@ -463,6 +488,7 @@
 	CALL TEST_FAILED
 :test_mov_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Moving of a register value
@@ -474,6 +500,7 @@
 	CALL TEST_FAILED
 :test_movr_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test in and out instructions
@@ -486,6 +513,7 @@
 	CALL TEST_FAILED
 :test_out_in_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test jump instruciton
@@ -494,6 +522,7 @@
 	CALL TEST_FAILED
 :test_jmp_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Branch if Carry Set
@@ -510,6 +539,7 @@
 	BRCS brcs_2
 :test_brcs_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Branch if Carry Clear
@@ -526,6 +556,7 @@
 	BRCC brcc_2
 :test_brcc_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Branch if Equal i.e. Zero flag = 1 for taken, 0 for not taken.
@@ -542,6 +573,7 @@
 	BREQ test_breq_2
 :test_breq_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Branch if Not Equal i.e. Zero flag = 1 for not taken, 0 for taken.
@@ -558,6 +590,7 @@
 	BRNE test_brne_2
 :test_brne_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Branch if Negative i.e. Negative Flag = 1 for taken, 0 for not taken.
@@ -574,6 +607,7 @@
 	BRNG test_brng_2
 :test_brng_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;Test Branch if Positive i.e. Negative Flag = 0 for taken, 1 for not taken.
@@ -590,6 +624,7 @@
 	BRPS test_brps_2
 :test_brps_ret
 	INC R30
+	OUT LED R30
 	RET
 
 ;If any of the tests fails, this subroutine is called and the global fail flag is set thus, when the processor finishes execution, all red will be written to the framebuffer rather than all green.

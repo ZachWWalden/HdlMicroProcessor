@@ -52,7 +52,7 @@ async def test_cpu(dut):
 
     frame_buf = []
     #Define The Framebuffer
-    for i in range(19200):
+    for i in range(32768):
         frame_buf.append(0)
 
     testProg.close()
@@ -83,5 +83,4 @@ async def test_cpu(dut):
         if dut.fb_wena.value == 1:
             frame_buf[dut.addr_in.value & 0x7FFF] = dut.data_in.value
         else:
-            #dut.fb_douta.value = frame_buf[(dut.addr_in.value) & 0x7FFF]
-            pass
+            dut.fb_douta.value = frame_buf[(dut.addr_in.value) & 0x7FFF]

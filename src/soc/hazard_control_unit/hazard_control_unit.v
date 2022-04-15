@@ -1,7 +1,7 @@
 /*
 Module - Hazard Control Unit.
 Author - Zach Walden
-Last Changed - 3/28/22, 4/4/22
+Last Changed - 3/28/22, 4/4/22, 4/14/22
 Description - This Module is a finite state machine that controls the state of operation of the pipeline.
 Parameters -
 */
@@ -65,7 +65,7 @@ module hazard_control_unit(
 				end
 				else if(take_branch_target == 1'b1)
 				begin
-					next_state <= 4'b1000;
+					next_state <= 4'b1001;
 				end
 				else if(fetch_stl_req == 1'b1)
 				begin
@@ -186,6 +186,19 @@ module hazard_control_unit(
 			4'h7 :
 			begin
 				//Outputs
+				stall_fetch <= 1'b1;
+				stall_decode <= 1'b0;
+				prog_cntr_load_sel <= 4'b0010;
+				inst_word_sel <= 1'b1;
+				new_inst_word <= 32'h00000000;
+				prog_cntr_int_addr <= 14'h0000;
+				//To Normal
+				next_state <= 4'b1000;
+			end
+			//Return 4 4'b1000
+			4'h8 :
+			begin
+				//Outputs
 				stall_fetch <= 1'b0;
 				stall_decode <= 1'b0;
 				prog_cntr_load_sel <= 4'b1000;
@@ -195,8 +208,8 @@ module hazard_control_unit(
 				//To Normal
 				next_state <= 4'b0000;
 			end
-			//Take Branch Target
-			4'h8 :
+			//Take Branch Target 4'b1001
+			4'h9 :
 			begin
 				//Outputs
 				stall_fetch <= 1'b0;
