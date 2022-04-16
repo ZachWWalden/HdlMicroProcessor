@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1650133982" />
+    <testcase name="test_timer" classname="timer_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/timer/timer_tb.py" lineno="6" time="0.05977344512939453" sim_time_ns="4015.001" ratio_time="67170.31269167319" />
+  </testsuite>
+</testsuites>

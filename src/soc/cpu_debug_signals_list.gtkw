@@ -1,23 +1,20 @@
 [*]
 [*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
-[*] Thu Apr 14 02:08:50 2022
+[*] Fri Apr 15 19:09:24 2022
 [*]
 [dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu.vcd"
-[dumpfile_mtime] "Wed Apr 13 23:37:42 2022"
-[dumpfile_size] 454552
+[dumpfile_mtime] "Fri Apr 15 05:22:15 2022"
+[dumpfile_size] 1432346
 [savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu_debug_signals_list.gtkw"
-[timestart] 404100
-[size] 1033 1033
-[pos] -1921 -1
-*-15.000000 600000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[timestart] 3704130
+[size] 3814 2113
+[pos] -1 -1
+*-14.000000 3460000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] cpu.
-[treeopen] cpu.pipeline.
-[treeopen] cpu.pipeline.decode_stage.
-[treeopen] cpu.pipeline.execute_stage.alu.
 [sst_width] 203
 [signals_width] 279
 [sst_expanded] 1
-[sst_vpaned_height] 128
+[sst_vpaned_height] 289
 @28
 cpu.clock
 @22
@@ -69,22 +66,57 @@ cpu.hazard_unit.take_branch_target
 cpu.pipeline.ex_mem_instruction_out[31:0]
 cpu.pipeline.ex_mem_data_out[15:0]
 cpu.pipeline.mem_wb_instruction_out[31:0]
-cpu.pipeline.memory_stage.sf_reg_file.write_data[7:0]
-@28
-cpu.pipeline.memory_stage.sf_reg_file.wren[1:0]
-@22
 cpu.pipeline.mem_wb_data_out[15:0]
 @28
 cpu.pipeline.mem_wb_register.reg_file_wen_out[1:0]
-cpu.pipeline.execute_stage.alu.alu_operation[1:0]
-cpu.pipeline.execute_stage.alu.alu_operation_select
 @22
-cpu.pipeline.execute_stage.alu.alu_out[15:0]
-cpu.pipeline.execute_stage.alu_mux.alu_data_input_top[7:0]
-cpu.pipeline.execute_stage.alu_mux.alu_data_input_bot[7:0]
-cpu.pipeline.execute_stage.alu_mux.alu_input_sel_top[4:0]
-cpu.pipeline.execute_stage.alu_mux.alu_input_sel_bot[4:0]
+cpu.pipeline.memory_stage.sf_reg_file.write_data[7:0]
 @28
-cpu.pipeline.decode_stage.branch_resolver.flags[2:0]
+cpu.pipeline.memory_stage.sf_reg_file.wren[1:0]
+cpu.hazard_unit.fetch_stl_req
+cpu.hazard_unit.dec_stl_req
+cpu.hazard_unit.ret
+cpu.hazard_unit.stall_fetch
+cpu.hazard_unit.stall_decode
+@22
+cpu.hazard_unit.control_state[3:0]
+cpu.hazard_unit.prog_cntr_load_sel[3:0]
+cpu.call_stk_din[13:0]
+@28
+cpu.call_stk_wen
+@22
+cpu.call_stk_dout[13:0]
+cpu.pipeline.fetch_stage.input_mux.sel_signals[3:0]
+cpu.pipeline.fetch_stage.input_mux.branch_target_addr[13:0]
+cpu.pipeline.fetch_stage.input_mux.next_prog_cntr[13:0]
+cpu.pipeline.fetch_stage.input_mux.int_branch_addr[13:0]
+cpu.pipeline.fetch_stage.input_mux.ret_addr[13:0]
+cpu.pipeline.fetch_stage.prog_cntr.value[13:0]
+@28
+cpu.hazard_unit.take_branch_target
+cpu.mem_wen
+cpu.call_stk_en
+cpu.fb_en
+cpu.main_mem_en
+cpu.prog_mem_en
+@22
+cpu.pipeline.memory_stage.sf_reg_file.x_ptr[15:0]
+cpu.pipeline.memory_stage.sf_reg_file.y_ptr[15:0]
+cpu.pipeline.memory_stage.sf_reg_file.z_ptr[15:0]
+cpu.pipeline.memory_stage.sf_reg_file.stack_ptr[15:0]
+cpu.pipeline.memory_stage.sfr_in_sel.sel_signals[4:0]
+cpu.call_stk_addr[7:0]
+cpu.call_stk_din[13:0]
+cpu.call_stk_dout[13:0]
+cpu.addr_in[15:0]
+cpu.data_in[11:0]
+cpu.main_mem_dout[7:0]
+cpu.addr_in[15:0]
+cpu.data_in[11:0]
+cpu.fb_douta[11:0]
+cpu.addr_in[15:0]
+cpu.prog_mem_doutb[7:0]
+@23
+cpu.data_out[11:0]
 [pattern_trace] 1
 [pattern_trace] 0
