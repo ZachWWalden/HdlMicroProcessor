@@ -31,8 +31,10 @@ module id_ex(
 	output reg prog_mem_enable_out = 0,
 	input [6:0] mem_ptr_ctl_in, 				//Consumed in memory
 	output reg [6:0] mem_ptr_ctl_out = 0,
-	input call_stk_addr_sel_in, 		//Consumed in memory
+	input call_stk_addr_sel_in, 				//Consumed in memory
 	output reg call_stk_addr_sel_out = 0,
+	input stk_addr_sel_in, 					//Consumed in memory
+	output reg stk_addr_sel_out = 0,
 	input [1:0] ex_mem_data_input_sel_in, 			//Consumed in execute
 	output reg [1:0] ex_mem_data_input_sel_out = 0,
 	input [1:0] reg_file_wen_in, 				//Consumed in memory
@@ -69,9 +71,9 @@ module id_ex(
 
 			prog_mem_enable_out <= 0;
 
-        		mem_ptr_ctl_signals <= 0;
-			mem_ptr_ctl_out <= 0;
+        		mem_ptr_ctl_out <= 0;
 			call_stk_addr_sel_out <= 0;
+			stk_addr_sel_out <= 0;
 
 			reg_file_wen_out <= 0;
 
@@ -104,6 +106,7 @@ module id_ex(
 			mem_ptr_ctl_signals <= mem_ptr_ctl_in;
 			mem_ptr_ctl_out <= mem_ptr_ctl_signals;
 			call_stk_addr_sel_out <= call_stk_addr_sel_in;
+			stk_addr_sel_out <= stk_addr_sel_in;
 
 			reg_file_wen_out <= reg_file_wen_in;
 

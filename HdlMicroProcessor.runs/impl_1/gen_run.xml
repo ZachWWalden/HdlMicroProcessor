@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7s50csga324-1" LaunchTime="1649915292">
+<GenRun Id="impl_1" LaunchPart="xc7s50csga324-1" LaunchTime="1650168862">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="BITSTR-SYSDEF" Name="soc.sysdef"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
@@ -22,6 +22,7 @@
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="soc_bus_skew_postroute_physopted.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="soc_bus_skew_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="soc_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="soc_timing_summary_postroute_physopted.rpx"/>
   <File Type="RDI-RDI" Name="soc.vdi"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="soc_timing_summary_postroute_physopted.pb"/>
   <File Type="POSTROUTE-PHYSOPT-TIMING" Name="soc_timing_summary_postroute_physopted.rpt"/>
@@ -74,8 +75,6 @@
   <File Type="REPORTS-TCL" Name="soc_reports.tcl"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="soc_bus_skew_routed.pb"/>
   <File Type="PA-TCL" Name="soc.tcl"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="soc_timing_summary_postroute_physopted.rpx"/>
-  <File Type="PA-DCP" Name="soc.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v">
@@ -397,6 +396,19 @@
     <File Path="$PPRDIR/src/soc/test.coe">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/src/demos/Test Programs/finalTestProgram.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/src/soc/timer/timer.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>

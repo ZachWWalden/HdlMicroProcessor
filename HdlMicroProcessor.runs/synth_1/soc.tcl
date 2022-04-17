@@ -96,6 +96,7 @@ add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_c
 add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/assembler/sfrWrite.coe
 add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/demos/branchTest/branchTest.coe
 add_files /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/test.coe
+add_files {{/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/demos/Test Programs/finalTestProgram.coe}}
 read_verilog -library xil_defaultlib {
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/execute/alu/bit_shifter/bit_shifter.v
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/register_file/register_file.v
@@ -136,6 +137,7 @@ read_verilog -library xil_defaultlib {
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/vga_controller/horiz_cntr/horiz_cntr.v
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/fetch/inst_word_sel_mux/inst_word_sel_mux.v
   /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/call_stk/call_stk.v
+  /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/timer/timer.v
 }
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/call_stack_1/call_stack.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/call_stack_1/call_stack_ooc.xdc]
@@ -146,8 +148,8 @@ set_property used_in_implementation false [get_files -all /home/zww/Documents/Co
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_board.xdc]
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen.xdc]
-set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_ooc.xdc]
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_late.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen/vga_pix_clk_gen_ooc.xdc]
 
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/main_memory/main_memory.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/main_memory/main_memory_ooc.xdc]

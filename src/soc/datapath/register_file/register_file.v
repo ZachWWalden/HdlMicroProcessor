@@ -1,8 +1,8 @@
 /*
-Module -
+Module - Register File
 Author - Zach Walden
-Last Changed -
-Description -
+Last Changed - 4/16/22
+Description - 32 8-Bit Registers 2 reads and 2 writes each cycle
 Parameters -
 */
 
@@ -28,12 +28,8 @@ module register_file(
 		end
 	end
 
-	reg [15:0] read_data = 0;
-	reg [1:0] rd_en_int = 0;
-
 	always @ (negedge clock)
 	begin
-		rd_en_int <= rd_en;
 		//handle writes
 		if(nreset == 1'b0)
 		begin
@@ -46,46 +42,29 @@ module register_file(
 		begin
 			if(wr_en[0] == 1'b1)
 			begin
-				reg_file[wr_addr[4:0]] = data_in[7:0];
+				reg_file[wr_addr[4:0]] <= data_in[7:0];
 			end
+			/*
 			else
 			begin
-				reg_file[wr_addr[4:0]] = reg_file[wr_addr[4:0]];
+				reg_file[wr_addr[4:0]] <= reg_file[wr_addr[4:0]];
 			end
+			*/
 			if(wr_en[1] == 1'b1)
 			begin
-				reg_file[wr_addr[9:5]] = data_in[15:8];
+				reg_file[wr_addr[9:5]] <= data_in[15:8];
 			end
+			/*
 			else
 			begin
-				reg_file[wr_addr[9:5]] = reg_file[wr_addr[9:5]];
+				reg_file[wr_addr[9:5]] <= reg_file[wr_addr[9:5]];
 			end
+			*/
 		end
 	end
-/*
-	always @ (negedge clock)
-	begin
-		//handle reads
-		if(rd_en[0] == 1'b1)
-		begin
-			read_data[7:0] = reg_file[rd_addr[4:0]];
-		end
-		else
-		begin
-			read_data[7:0] <= 8'h00;
-		end
-		if(rd_en[1] == 1'b1)
-		begin
-			read_data[15:8] = reg_file[rd_addr[9:5]];
-		end
-		else
-		begin
-			read_data[15:8] <= 8'h00;
-		end
-	end
-*/
-	assign data_out[7:0] = rd_en_int[0] ? reg_file[rd_addr[4:0]] : 8'h00;
-	assign data_out[15:8] = rd_en_int[1] ? reg_file[rd_addr[9:5]] : 8'h00;
+
+	assign data_out[7:0] = rd_en[0] ? reg_file[rd_addr[4:0]] : 8'h00;
+	assign data_out[15:8] = rd_en[1] ? reg_file[rd_addr[9:5]] : 8'h00;
 
 /*
 // the "macro" to dump signals

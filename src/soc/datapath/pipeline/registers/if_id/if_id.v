@@ -15,6 +15,7 @@ Parameters - 	clock - System Clock.
 module if_id(
 	input clock,
 	input nreset,
+	input stall,
 	input [31:0] instruction_in,
 	output reg [31:0] instruction_out = 0,
 	input [13:0] return_addr_in,
@@ -29,7 +30,7 @@ module if_id(
 
 			return_addr_out <= 0;
 		end
-		else
+		else if(stall == 1'b0)
 		begin
 			instruction_out <= instruction_in;
 

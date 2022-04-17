@@ -111,8 +111,8 @@ module alu_forwarding_logic(
 						stall_decode <= 1'b0;
 					end
 				end
-				//In, MOVR
-				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b10 || id_ex_instruction[19:18] == 2'b00))
+				//In
+				else if( id_ex_instruction[7:0] == 8'h9C && id_ex_instruction[19:18] == 2'b10)
 				begin
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin
@@ -120,6 +120,24 @@ module alu_forwarding_logic(
 						alu_top_sel <= 5'b10000;
 						alu_bot_sel <= 5'b00001;
 						stall_decode <= 1'b1;
+					end
+					else
+					begin
+						//No forward necessary
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
+					end
+				end
+				//MOVR
+				else if( id_ex_instruction[7:0] == 8'h9C && id_ex_instruction[19:18] == 2'b00)
+				begin
+					if(instruction[12:8] == id_ex_instruction[12:8])
+					begin
+						//forward ex/mem data bottom to the alu top
+						alu_top_sel <= 5'b00100;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -174,14 +192,14 @@ module alu_forwarding_logic(
 						//Forward EX/MEM data bottom to alu top.
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else if(instruction[12:8] == id_ex_instruction[17:13])
 					begin
 						//Forward EX/MEM data top to alu top
 						alu_top_sel <= 5'b00010;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -199,7 +217,7 @@ module alu_forwarding_logic(
 						//Forward EX/MEM data bottom to alu top
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -217,7 +235,7 @@ module alu_forwarding_logic(
 						//Forward EX/MEM data bottom to alu top
 						alu_top_sel <= 5'b00100;
 						alu_bot_sel <= 5'b00001;
-						stall_decode <= 1'b1;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -331,7 +349,7 @@ module alu_forwarding_logic(
 					end
 				end
 				//In, Move Register
-				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b10 || id_ex_instruction[19:18] == 2'b00))
+				else if( ex_mem_instruction[7:0] == 8'h9C && (ex_mem_instruction[19:18] == 2'b10 || ex_mem_instruction[19:18] == 2'b00))
 				begin
 					if(instruction[12:8] == ex_mem_instruction[12:8])
 					begin
@@ -501,8 +519,8 @@ module alu_forwarding_logic(
 						stall_decode <= 1'b0;
 					end
 				end
-				//In, Move Register
-				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b10 || id_ex_instruction[19:18] == 2'b00))
+				//In
+				else if( id_ex_instruction[7:0] == 8'h9C && id_ex_instruction[19:18] == 2'b10)
 				begin
 					if(instruction[12:8] == id_ex_instruction[12:8])
 					begin
@@ -517,6 +535,31 @@ module alu_forwarding_logic(
 						alu_top_sel <= 5'b00001;
 						alu_bot_sel <= 5'b10000;
 						stall_decode <= 1'b1;
+					end
+					else
+					begin
+						//No forward necessary
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
+					end
+				end
+				//Move Register
+				else if( id_ex_instruction[7:0] == 8'h9C && id_ex_instruction[19:18] == 2'b00)
+				begin
+					if(instruction[12:8] == id_ex_instruction[12:8])
+					begin
+						//forward ex/mem data bottom to the alu top
+						alu_top_sel <= 5'b00100;
+						alu_bot_sel <= 5'b00001;
+						stall_decode <= 1'b0;
+					end
+					else if (instruction[17:13] == id_ex_instruction[12:8])
+					begin
+						//Forward ex/mem data bottom to alu bottom
+						alu_top_sel <= 5'b00001;
+						alu_bot_sel <= 5'b00100;
+						stall_decode <= 1'b0;
 					end
 					else
 					begin
@@ -849,18 +892,18 @@ module alu_forwarding_logic(
 					end
 				end
 				//In, Move Register
-				else if( id_ex_instruction[7:0] == 8'h9C && (id_ex_instruction[19:18] == 2'b10 || id_ex_instruction[19:18] == 2'b00))
+				else if( ex_mem_instruction[7:0] == 8'h9C && (ex_mem_instruction[19:18] == 2'b10 || ex_mem_instruction[19:18] == 2'b00))
 				begin
 					if(instruction[12:8] == ex_mem_instruction[12:8])
 					begin
-						//forward load result top to the alu top
-						alu_top_sel <= 5'b01000;
+						//forward mem_wb data bottom to the alu top
+						alu_top_sel <= 5'b10000;
 						alu_bot_sel <= 5'b00001;
 						stall_decode <= 1'b0;
 					end
 					else if(instruction[17:13] == ex_mem_instruction[12:8])
 					begin
-						//Forward ex/mem data bottom to alu bottom
+						//Forward mem/wb data bottom to alu bottom
 						alu_top_sel <= 5'b00001;
 						alu_bot_sel <= 5'b10000;
 						stall_decode <= 1'b0;

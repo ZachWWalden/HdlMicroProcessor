@@ -144,7 +144,7 @@ module hazard_control_unit(
 				stall_fetch <= 1'b1;
 				stall_decode <= 1'b1;
 				prog_cntr_load_sel <= 4'b0010;
-				inst_word_sel <= 1'b1;
+				inst_word_sel <= 1'b0;
 				new_inst_word <= 32'h00000000;
 				prog_cntr_int_addr <= 14'h0000;
 				if(interrupt == 1'b1)

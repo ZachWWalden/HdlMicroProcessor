@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1647416470" />
-    <testcase name="test_sfr_file" classname="sfr_file_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file_tb.py" lineno="6" time="0.015591144561767578" sim_time_ns="1055.001" ratio_time="67666.68064813285" />
+    <property name="random_seed" value="1650158728" />
+    <testcase name="test_sfr_file" classname="sfr_file_tb" file="/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/datapath/pipeline/stages/memory/sfr_file/sfr_file_tb.py" lineno="6" time="0.01915597915649414" sim_time_ns="1055.001" ratio_time="55074.240339332384" />
   </testsuite>
 </testsuites>

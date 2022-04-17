@@ -8,16 +8,18 @@ Parameters -
 
 module soc(
 	input clk100M,
-	output [3:0] led,
+	input [7:0] prta_in,
+	output [7:0] led,
 	output hsync,
 	output vsync,
 	output [3:0] red,
 	output [3:0] green,
-	output [3:0] blue
-
+	output [3:0] blue,
+	output [7:0] prta_out,
+	output [7:0] prtb_out
 );
 
-    reg nreset = 1;
+	reg nreset = 1;
 
 	//Instantiate Clock Generation Modules
 	wire mem_clk;
@@ -44,9 +46,9 @@ module soc(
     	);
 
 
-    wire [11:0] data_in;
-    wire [15:0] addr_in;
-    
+	wire [11:0] data_in;
+	wire [15:0] addr_in;
+
 	//Instantiate Memory Blocks
 	wire [13:0] prog_mem_addra;
 	wire [31:0] prog_mem_douta;
@@ -83,18 +85,18 @@ module soc(
     	wire call_stk_wen;
     	wire [7:0] call_stk_addr;
     	wire [13:0] call_stk_din;
-   	    wire [13:0] call_stk_dout;
-   	    
+   	wire [13:0] call_stk_dout;
+
     	call_stack call_stk(
-            //.clock(mem_clk),    // input wire clka
-            //.nreset(nreset),
-            .clka(mem_clk),
-            .wea(call_stk_wen),      // input wire [0 : 0] wea
-            .addra(call_stk_addr),  // input wire [7 : 0] addra
-            .dina(call_stk_din),    // input wire [13 : 0] dina
-            .douta(call_stk_dout)  // output wire [13 : 0] douta
+        	//.clock(mem_clk),    // input wire clka
+		//.nreset(nreset),
+		.clka(mem_clk),
+		.wea(call_stk_wen),      // input wire [0 : 0] wea
+        	.addra(call_stk_addr),  // input wire [7 : 0] addra
+        	.dina(call_stk_din),    // input wire [13 : 0] dina
+        	.douta(call_stk_dout)  // output wire [13 : 0] douta
         );
-        
+
     	wire main_mem_wen;
     	wire [7:0] main_mem_dout;
     	main_memory main_mem(
@@ -133,8 +135,11 @@ module soc(
 		.frame_buf_douta(fb_douta)
 	);
 
-	wire [31:0] sfr_input;
-	wire [143:0] sfr_output;
+	wire [71:0] sfr_input;
+	wire [111:0] sfr_output;
+	assign sfr_input[7:0] = prta_in;
+	assign prta_out = sfr_output[103:96];
+	assign prtb_out = sfr_output[95:88];
 
 	wire interrupt;
 	wire [13:0] interrupt_vector_address ;
@@ -142,6 +147,7 @@ module soc(
 	wire [3:0] hazard_control_unit_state;
 	wire illegal_opcode_exception;
 	wire vblank_int;
+	wire timer_compare_match;
 	//Instantiate Interrupt Controller
 	interrupt_controller int_controller(
 		.clock(core_clk),
@@ -149,12 +155,14 @@ module soc(
 		//BEIGN Interupt Signals
 		.vblank_int(vblank_int),
 		.illegal_opcode_exception(illegal_opcode_exception),
+		.timer_compare_match(),
 		//BEIGN Interface with Hazard Control Unit
 		.hazard_unit_state(hazard_control_unit_state),
 		.interrupt(interrupt),
 		.int_vec_addr(interrupt_vector_address),
 		//BEGIN Interface with SFR Conntrol Registers
-		.sfr_output(sfr_output)
+		.control_reg(sfr_output[15:8]),
+		.mask_reg(sfr_output[23:16])
 	);
 
 	wire ret;
@@ -169,7 +177,7 @@ module soc(
 	wire inst_word_sel;
 	wire [31:0] hazard_instruction;
 	wire [13:0] hazard_int_addr;
-	
+
 	//Instantiate Hazard Control Unit
 	hazard_control_unit hazard_unit(
 		.clock(core_clk),
@@ -193,8 +201,18 @@ module soc(
 		.control_state(hazard_control_unit_state)
 	);
 
-    wire [15:0] memwb_data;
-    wire [31:0] decode_instruction;
+	//Instantiate 64-Bit Timer
+	timer hardware_timer(
+		.clock(core_clk),
+		.nreset(nreset),
+		.control_reg(sfr_output[111:104]),
+		.timer_compare_value(sfr_output[87:24]),
+		.timer_compare_match(timer_compare_match),
+		.timer_value(sfr_input[71:8])
+	);
+
+	wire [15:0] memwb_data;
+	wire [31:0] decode_instruction;
 	//Instantiate Data Path
 	datapath pipeline(
 		.clock(core_clk),
@@ -233,19 +251,19 @@ module soc(
 		.sfr_file_in(sfr_input),
 		.sfr_file_out(sfr_output)
 	);
-	
-	assign led = sfr_output[3:0];
+
+	assign led = sfr_output[7:0];
 /*
 ila_0 ila(
 	.clk(ila_clk), // input wire clk
 
 
-	.probe0(prog_cntr_load_sel), // input wire [3:0]  probe0  
-	.probe1(prog_mem_addra), // input wire [13:0]  probe1 
+	.probe0(prog_cntr_load_sel), // input wire [3:0]  probe0
+	.probe1(prog_mem_addra), // input wire [13:0]  probe1
 	.probe2(prog_mem_douta[10:0]),
 	.probe3(decode_instruction),
 	.probe4(memwb_data),
-	.probe5(take_branch_target), // input wire [0:0]  probe2 
+	.probe5(take_branch_target), // input wire [0:0]  probe2
 	.probe6(core_clk) // input wire [0:0]  probe3
 );
 */
@@ -263,9 +281,9 @@ ila_0 ila(
 		.v_blank_interupt(vblank_int)
 	);
 
-    assign red = pixel_switch[11:8];
-    assign blue = pixel_switch[7:4];
-    assign green = pixel_switch[3:0];
+	assign red = pixel_switch[11:8];
+	assign green = pixel_switch[7:4];
+	assign blue = pixel_switch[3:0];
 
 /*
 // the "macro" to dump signals

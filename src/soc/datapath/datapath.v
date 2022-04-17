@@ -40,8 +40,8 @@ module datapath(
 	output illegal_opcode_exception,
 	output return_in_pipeline,
 	//SFR I/O Interface
-	input [31:0] sfr_file_in,
-	output [143:0] sfr_file_out
+	input [71:0] sfr_file_in,
+	output [111:0] sfr_file_out
 );
 
 	wire [1:0] reg_file_wen;
@@ -89,10 +89,13 @@ module datapath(
 	wire [31:0] if_id_inst_out;
 
 	wire [13:0] if_id_ret_addr;
+	wire stall_ifid;
+	assign stall_ifid = stall_fetch & ~inst_word_sel;
 	//Instantiate IF/ID Pipeline Register
 	if_id if_id_register(
 		.clock(clock),
 		.nreset(nreset),
+		.stall(stall_ifid),
 		.instruction_in(if_id_inst),
 		.instruction_out(if_id_inst_out),
 		.return_addr_in(fetch_return_address),
@@ -174,6 +177,7 @@ module datapath(
 
 	wire [6:0] mem_ptr_ctl_idex;
 	wire call_stk_addr_sel_idex;
+	wire stk_addr_sel_idex;
 
 	wire [1:0] ex_mem_data_input_sel_idex;
 
@@ -210,6 +214,8 @@ module datapath(
 		.prog_mem_enable_out(prog_mem_en_idex),
 		.mem_ptr_ctl_in(mem_ptr_ctl_dec),
 		.mem_ptr_ctl_out(mem_ptr_ctl_idex),
+		.stk_addr_sel_in(mem_ptr_ctl_dec[1]),
+		.stk_addr_sel_out(stk_addr_sel_idex),
 		.call_stk_addr_sel_in(mem_ptr_ctl_dec[2]),
 		.call_stk_addr_sel_out(call_stk_addr_sel_idex),
 		.ex_mem_data_input_sel_in(ex_mem_data_input_sel_dec),
@@ -261,6 +267,7 @@ module datapath(
 
 	wire [6:0] mem_ptr_ctl_exmem;
 	wire call_stk_addr_sel_exmem;
+	wire stk_addr_sel_exmem;
 
 	wire [1:0] reg_file_wen_exmem;
 	wire [1:0] sfr_wren_exmem;
@@ -294,6 +301,8 @@ module datapath(
 		.mem_ptr_ctl_out(mem_ptr_ctl_exmem),
 		.call_stk_addr_sel_in(call_stk_addr_sel_idex),
 		.call_stk_addr_sel_out(call_stk_addr_sel_exmem),
+		.stk_addr_sel_in(stk_addr_sel_idex),
+		.stk_addr_sel_out(stk_addr_sel_exmem),
 		.mem_wb_data_sel_top_in(mem_wb_data_sel_top_ex),
 		.mem_wb_data_sel_top_out(mem_wb_data_sel_top_exmem),
 		.mem_wb_data_sel_bot_in(mem_wb_data_sel_bot_ex),
@@ -327,6 +336,7 @@ module datapath(
 		.sfr_file_input_sel(sfr_input_sel_exmem),
 		.mem_ptr_ctl(mem_ptr_ctl_exmem),
 		.call_stk_addr_sel(call_stk_addr_sel_exmem),
+		.stk_addr_sel(stk_addr_sel_exmem),
 		.mem_str_data_input_sel_top(mem_str_data_sel_top_exmem),
 		.mem_str_data_input_sel_bot(mem_str_data_sel_bot_exmem),
 		.sfr_file_wren(sfr_wren_exmem),

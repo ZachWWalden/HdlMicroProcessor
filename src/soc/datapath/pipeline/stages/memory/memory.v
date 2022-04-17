@@ -18,6 +18,7 @@ module memory(
 	input [4:0] sfr_file_input_sel,
 	input [6:0] mem_ptr_ctl,
 	input call_stk_addr_sel,
+	input stk_addr_sel,
 	input [4:0] mem_str_data_input_sel_top,
 	input [4:0] mem_str_data_input_sel_bot,
 	input [1:0] sfr_file_wren,
@@ -34,8 +35,8 @@ module memory(
 	input [11:0] mem_read_data, 		//This is assumed to be sign extended.
 	output [11:0] mem_write_data,
 	//BEGIN I/O interface
-	input [31:0] sfr_file_in,
-	output [143:0] sfr_file_out
+	input [71:0] sfr_file_in,
+	output [111:0] sfr_file_out
 );
 
 	wire [7:0] sfr_input;
@@ -62,6 +63,7 @@ module memory(
 		.nreset(nreset),
 		.mem_ptr_ctl_signals(mem_ptr_ctl), 	//Add to control signal list
 		.call_stk_addr_sel(call_stk_addr_sel),
+		.stk_addr_sel(stk_addr_sel),
 		.wren(sfr_file_wren),
 		.wr_addr(instruction[12:8]),
 		.write_data(sfr_input),
@@ -98,7 +100,7 @@ module memory(
 		.y_ptr(y_ptr),
 		.z_ptr(z_ptr),
 		.stack_ptr(stack_ptr),
-		.mem_addr(address[15:0])
+		.mem_addr(address)
 	);
 
 	//instantiate MEM/WB data input mux

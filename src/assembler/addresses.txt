@@ -1,0 +1,968 @@
+[('INIT\n', 3), ('MAIN\n', 10), ('vga_out\n', 11), ('halt_execution\n', 13), ('TEST_INC\n', 15), ('test_inc_ret\n', 20), ('TEST_DEC\n', 23), ('test_dec_ret\n', 27), ('TEST_ADD\n', 30), ('test_add_ret\n', 38), ('TEST_ADDI\n', 41), ('test_addi_ret\n', 46), ('TEST_SUB\n', 49), ('test_sub_ret\n', 57), ('TEST_SUBI\n', 60), ('test_subi_ret\n', 65), ('TEST_CP\n', 68), ('test_cp_2\n', 75), ('test_cp_ret\n', 82), ('TEST_CPI\n', 85), ('test_cpi_2\n', 89), ('test_cpi_ret\n', 93), ('TEST_MUL\n', 96), ('test_mul_chk_hb\n', 104), ('test_mul_ret\n', 107), ('TEST_MULI\n', 110), ('test_mul_chk_hb\n', 115), ('test_mul_ret\n', 118), ('TEST_AND\n', 121), ('test_and_ret\n', 129), ('TEST_ANDI\n', 132), ('test_andi_ret\n', 137), ('TEST_OR\n', 140), ('test_or_ret\n', 148), ('TEST_ORI\n', 151), ('test_or_ret\n', 156), ('TEST_SHR\n', 159), ('test_shr_ret\n', 164), ('TEST_SHL\n', 167), ('test_shl_ret\n', 172), ('TEST_COM\n', 175), ('test_com_ret\n', 180), ('TEST_INV\n', 183), ('test_inv_ret\n', 188), ('TEST_LDI\n', 191), ('test_ldi_ret\n', 197), ('TEST_LPM\n', 200), ('test_lpm_ret\n', 207), ('TEST_STR_LD\n', 210), ('yl_inc_test\n', 234), ('zl_inc_test\n', 237), ('load_test_begin\n', 240), ('test_ld_1\n', 248), ('test_ld_2\n', 252), ('test_ld_3\n', 256), ('test_ld_4\n', 260), ('test_ld_5\n', 264), ('test_str_ld_ret\n', 268), ('TEST_STFB_LDFB\n', 271), ('test_ldfb_h\n', 283), ('test_stfb_ldfb_ret\n', 286), ('TEST_PUSH_POP\n', 289), ('test_pop\n', 299), ('test_push_pop_ptr_inc\n', 303), ('test_push_pop_ret\n', 307), ('TEST_MOV\n', 310), ('test_mov_ret\n', 322), ('TEST_MOVR\n', 325), ('test_movr_ret\n', 330), ('TEST_OUT_IN\n', 333), ('test_out_in_ret\n', 339), ('TEST_JMP\n', 342), ('test_jmp_ret\n', 344), ('TEST_BRCS\n', 347), ('brcs_2\n', 350), ('test_brcs_1\n', 352), ('test_brcs_ret\n', 355), ('TEST_BRCC\n', 358), ('brcc_2\n', 361), ('test_brcc_1\n', 363), ('test_brcc_ret\n', 366), ('TEST_BREQ\n', 369), ('test_breq_2\n', 372), ('test_breq_1\n', 374), ('test_breq_ret\n', 377), ('TEST_BRNE\n', 380), ('test_brne_2\n', 383), ('test_brne_1\n', 385), ('test_brne_ret\n', 388), ('TEST_BRNG\n', 391), ('test_brng_2\n', 394), ('test_brng_1\n', 396), ('test_brng_ret\n', 399), ('TEST_BRPS\n', 402), ('test_brps_2\n', 405), ('test_brps_1\n', 407), ('test_brps_ret\n', 410), ('TEST_FAILED\n', 413), ('TEST_CALL\n', 415), ('TEST_RET\n', 415), ('TEST_RETI\n', 415), ('TEST_HLT\n', 415), ('WRITE_VGA\n', 415), ('green\n', 420), ('write_fb\n', 422), ('fb_lop_2\n', 423), ('fb_lop_1\n', 424)]
+['\tJMP', 'INIT\n']
+0x0
+['\tJMP', 'halt_execution\n']
+0x1
+['\tJMP', 'MAIN\n']
+0x2
+Label: :INIT 0x3
+['\tLDI', 'R0', '0xFF\n']
+0x3
+['\tOUT', 'SPH', 'R0\n']
+0x4
+['\tOUT', 'SPL', 'R0\n']
+0x5
+['\tLDI', 'R0', '0x00\n']
+0x6
+['\tOUT', 'CSP', 'R0\n']
+0x7
+['\tLDI', 'R31', '0x00', ';Set', 'up', 'sucess', 'flag\n']
+0x8
+['\tLDI', 'R30', '0x00', ';This', 'register', 'will', 'be', 'used', 'to', 'track', 'which', 'test', 'the', 'program', 'may', 'fail', 'on.\n']
+0x9
+Label: :MAIN 0xa
+['\tCALL', 'TEST_STFB_LDFB', ';LED', '=', '0x16\n']
+0xa
+Label: :vga_out 0xb
+['\tOUT', 'LED', 'R30\n']
+0xb
+['\tOUT', 'LED', 'R30\n']
+0xc
+Label: :halt_execution 0xd
+['\tOUT', 'LED', 'R30\n']
+0xd
+['\tHLT\n']
+0xe
+Label: :TEST_INC 0xf
+['\tLDI', 'R0', '0x00\n']
+0xf
+['\tINC', 'R0\n']
+0x10
+['\tCPI', 'R0', '0x01\n']
+0x11
+['\tBREQ', 'test_inc_ret\n']
+0x12
+['\tCALL', 'TEST_FAILED\n']
+0x13
+Label: :test_inc_ret 0x14
+['\tINC', 'R30\n']
+0x14
+['\tOUT', 'LED', 'R30\n']
+0x15
+['\tRET\n']
+0x16
+Label: :TEST_DEC 0x17
+['\tLDI', 'R0', '0x01\n']
+0x17
+['\tDEC', 'R0\n']
+0x18
+['\tBREQ', 'test_dec_ret\n']
+0x19
+['\tCALL', 'TEST_FAILED\n']
+0x1a
+Label: :test_dec_ret 0x1b
+['\tINC', 'R30\n']
+0x1b
+['\tOUT', 'LED', 'R30\n']
+0x1c
+['\tRET\n']
+0x1d
+Label: :TEST_ADD 0x1e
+['\tLDI', 'R0', '0x5A\n']
+0x1e
+['\tLDI', 'R1', '0xA5\n']
+0x1f
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x20
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x21
+['\tADD', 'R1', 'R0\n']
+0x22
+['\tCPI', 'R1', '0xFF\n']
+0x23
+['\tBREQ', 'test_add_ret\n']
+0x24
+['\tCALL', 'TEST_FAILED\n']
+0x25
+Label: :test_add_ret 0x26
+['\tINC', 'R30\n']
+0x26
+['\tOUT', 'LED', 'R30\n']
+0x27
+['\tRET\n']
+0x28
+Label: :TEST_ADDI 0x29
+['\tLDI', 'R0', '0x5A\n']
+0x29
+['\tADDI', 'R0', '0xA5\n']
+0x2a
+['\tCPI', 'R0', '0xFF\n']
+0x2b
+['\tBREQ', 'test_addi_ret\n']
+0x2c
+['\tCALL', 'TEST_FAILED\n']
+0x2d
+Label: :test_addi_ret 0x2e
+['\tINC', 'R30\n']
+0x2e
+['\tOUT', 'LED', 'R30\n']
+0x2f
+['\tRET\n']
+0x30
+Label: :TEST_SUB 0x31
+['\tLDI', 'R0', '0xFF\n']
+0x31
+['\tLDI', 'R1', '0x0F\n']
+0x32
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x33
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x34
+['\tSUB', 'R0', 'R1\n']
+0x35
+['\tCPI', 'R0', '0xF0\n']
+0x36
+['\tBREQ', 'test_sub_ret\n']
+0x37
+['\tCALL', 'TEST_FAILED\n']
+0x38
+Label: :test_sub_ret 0x39
+['\tINC', 'R30\n']
+0x39
+['\tOUT', 'LED', 'R30\n']
+0x3a
+['\tRET\n']
+0x3b
+Label: :TEST_SUBI 0x3c
+['\tLDI', 'R0', '0xFF\n']
+0x3c
+['\tSUBI', 'R0', '0x0F\n']
+0x3d
+['\tCPI', 'R0', '0xF0\n']
+0x3e
+['\tBREQ', 'test_subi_ret\n']
+0x3f
+['\tCALL', 'TEST_FAILED\n']
+0x40
+Label: :test_subi_ret 0x41
+['\tINC', 'R30\n']
+0x41
+['\tOUT', 'LED', 'R30\n']
+0x42
+['\tRET\n']
+0x43
+Label: :TEST_CP 0x44
+['\tLDI', 'R0', '0xFF\n']
+0x44
+['\tLDI', 'R1', '0xF0\n']
+0x45
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x46
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x47
+['\tCP', 'R0', 'R1\n']
+0x48
+['\tBRNE', 'test_cp_2\n']
+0x49
+['\tCALL', 'TEST_FAILED\n']
+0x4a
+Label: :test_cp_2 0x4b
+['\tLDI', 'R0', '0xFF\n']
+0x4b
+['\tLDI', 'R1', '0xFF\n']
+0x4c
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x4d
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x4e
+['\tCP', 'R0', 'R1\n']
+0x4f
+['\tBREQ', 'test_cp_ret\n']
+0x50
+['\tCALL', 'TEST_FAILED\n']
+0x51
+Label: :test_cp_ret 0x52
+['\tINC', 'R30\n']
+0x52
+['\tOUT', 'LED', 'R30\n']
+0x53
+['\tRET\n']
+0x54
+Label: :TEST_CPI 0x55
+['\tLDI', 'R0', '0xFF\n']
+0x55
+['\tCPI', 'R0', '0xF0\n']
+0x56
+['\tBRNE', 'test_cpi_2\n']
+0x57
+['\tCALL', 'TEST_FAILED\n']
+0x58
+Label: :test_cpi_2 0x59
+['\tLDI', 'R0', '0xFF\n']
+0x59
+['\tCPI', 'R0', '0xFF\n']
+0x5a
+['\tBREQ', 'test_cpi_ret\n']
+0x5b
+['\tCALL', 'TEST_FAILED\n']
+0x5c
+Label: :test_cpi_ret 0x5d
+['\tINC', 'R30\n']
+0x5d
+['\tOUT', 'LED', 'R30\n']
+0x5e
+['\tRET\n']
+0x5f
+Label: :TEST_MUL 0x60
+['\tLDI', 'R0', '0xFF\n']
+0x60
+['\tLDI', 'R1', '0x03\n']
+0x61
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x62
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x63
+['\tMUL', 'R0', 'R1\n']
+0x64
+['\tCPI', 'R0', '0xFD\n']
+0x65
+['\tBREQ', 'test_mul_chk_hb\n']
+0x66
+['\tCALL', 'TEST_FAILED\n']
+0x67
+Label: :test_mul_chk_hb 0x68
+['\tCPI', 'R1', '0x02\n']
+0x68
+['\tBREQ', 'test_mul_ret\n']
+0x69
+['\tCALL', 'TEST_FAILED\n']
+0x6a
+Label: :test_mul_ret 0x6b
+['\tINC', 'R30\n']
+0x6b
+['\tOUT', 'LED', 'R30\n']
+0x6c
+['\tRET\n']
+0x6d
+Label: :TEST_MULI 0x6e
+['\tLDI', 'R0', '0xFF\n']
+0x6e
+['\tMULI', 'R0', 'R1', '0x03\n']
+0x6f
+['\tCPI', 'R0', '0xFD\n']
+0x70
+['\tBREQ', 'test_mul_chk_hb\n']
+0x71
+['\tCALL', 'TEST_FAILED\n']
+0x72
+Label: :test_mul_chk_hb 0x73
+['\tCPI', 'R1', '0x02\n']
+0x73
+['\tBREQ', 'test_mul_ret\n']
+0x74
+['\tCALL', 'TEST_FAILED\n']
+0x75
+Label: :test_mul_ret 0x76
+['\tINC', 'R30\n']
+0x76
+['\tOUT', 'LED', 'R30\n']
+0x77
+['\tRET\n']
+0x78
+Label: :TEST_AND 0x79
+['\tLDI', 'R0', '0xFF\n']
+0x79
+['\tLDI', 'R1', '0x0F\n']
+0x7a
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x7b
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x7c
+['\tAND', 'R1', 'R0\n']
+0x7d
+['\tCPI', 'R1', '0x0F\n']
+0x7e
+['\tBREQ', 'test_and_ret\n']
+0x7f
+['\tCALL', 'TEST_FAILED\n']
+0x80
+Label: :test_and_ret 0x81
+['\tINC', 'R30\n']
+0x81
+['\tOUT', 'LED', 'R30\n']
+0x82
+['\tRET\n']
+0x83
+Label: :TEST_ANDI 0x84
+['\tLDI', 'R0', '0xFF\n']
+0x84
+['\tANDI', 'R0', '0x0F\n']
+0x85
+['\tCPI', 'R0', '0x0F\n']
+0x86
+['\tBREQ', 'test_andi_ret\n']
+0x87
+['\tCALL', 'TEST_FAILED\n']
+0x88
+Label: :test_andi_ret 0x89
+['\tINC', 'R30\n']
+0x89
+['\tOUT', 'LED', 'R30\n']
+0x8a
+['\tRET\n']
+0x8b
+Label: :TEST_OR 0x8c
+['\tLDI', 'R0', '0xF0\n']
+0x8c
+['\tLDI', 'R1', '0x0F\n']
+0x8d
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x8e
+['\tNOP', ';Prevent', 'Data', 'Hazard', 'Side', 'Effect\n']
+0x8f
+['\tOR', 'R1', 'R0\n']
+0x90
+['\tCPI', 'R1', '0xFF\n']
+0x91
+['\tBREQ', 'test_or_ret\n']
+0x92
+['\tCALL', 'TEST_FAILED\n']
+0x93
+Label: :test_or_ret 0x94
+['\tINC', 'R30\n']
+0x94
+['\tOUT', 'LED', 'R30\n']
+0x95
+['\tRET\n']
+0x96
+Label: :TEST_ORI 0x97
+['\tLDI', 'R0', '0xF0\n']
+0x97
+['\tORI', 'R1', '0x0F\n']
+0x98
+['\tCPI', 'R1', '0xFF\n']
+0x99
+['\tBREQ', 'test_or_ret\n']
+0x9a
+['\tCALL', 'TEST_FAILED\n']
+0x9b
+Label: :test_or_ret 0x9c
+['\tINC', 'R30\n']
+0x9c
+['\tOUT', 'LED', 'R30\n']
+0x9d
+['\tRET\n']
+0x9e
+Label: :TEST_SHR 0x9f
+['\tLDI', 'R0', '0xFF\n']
+0x9f
+['\tSHR', 'R0\n']
+0xa0
+['\tCPI', 'R0', '0x7F\n']
+0xa1
+['\tBREQ', 'test_shr_ret\n']
+0xa2
+['\tCALL', 'TEST_FAILED\n']
+0xa3
+Label: :test_shr_ret 0xa4
+['\tINC', 'R30\n']
+0xa4
+['\tOUT', 'LED', 'R30\n']
+0xa5
+['\tRET\n']
+0xa6
+Label: :TEST_SHL 0xa7
+['\tLDI', 'R0', '0xFF\n']
+0xa7
+['\tSHL', 'R0\n']
+0xa8
+['\tCPI', 'R0', '0xFE\n']
+0xa9
+['\tBREQ', 'test_shl_ret\n']
+0xaa
+['\tCALL', 'TEST_FAILED\n']
+0xab
+Label: :test_shl_ret 0xac
+['\tINC', 'R30\n']
+0xac
+['\tOUT', 'LED', 'R30\n']
+0xad
+['\tRET\n']
+0xae
+Label: :TEST_COM 0xaf
+['\tLDI', 'R0', '0x01\n']
+0xaf
+['\tCOM', 'R0\n']
+0xb0
+['\tCPI', 'R0', '0xFF\n']
+0xb1
+['\tBREQ', 'test_com_ret\n']
+0xb2
+['\tCALL', 'TEST_FAILED\n']
+0xb3
+Label: :test_com_ret 0xb4
+['\tINC', 'R30\n']
+0xb4
+['\tOUT', 'LED', 'R30\n']
+0xb5
+['\tRET\n']
+0xb6
+Label: :TEST_INV 0xb7
+['\tLDI', 'R0', '0x00\n']
+0xb7
+['\tINV', 'R0\n']
+0xb8
+['\tCPI', 'R0', '0xFF\n']
+0xb9
+['\tBREQ', 'test_inv_ret\n']
+0xba
+['\tCALL', 'TEST_FAILED\n']
+0xbb
+Label: :test_inv_ret 0xbc
+['\tINC', 'R30\n']
+0xbc
+['\tOUT', 'LED', 'R30\n']
+0xbd
+['\tRET\n']
+0xbe
+Label: :TEST_LDI 0xbf
+['\tLDI', 'R0', '0x4B\n']
+0xbf
+['\tNOP', ';These', 'two', 'nops', 'are', 'not', 'neccessary', 'for', 'correct', 'execution,', 'but', 'by', 'placing', 'them', 'after', 'the', 'immeadiate', 'load,', 'it', 'will', 'insure', 'that', 'the', 'value', 'of', 'R0', 'read', 'from', 'the', 'register', 'file', 'is', 'compared', 'to', 'the', 'imemadiate', 'constant', 'in', 'the', 'CPI', 'Instruction.\n']
+0xc0
+['\tNOP\n']
+0xc1
+['\tCPI', 'R0', '0x4B\n']
+0xc2
+['\tBREQ', 'test_ldi_ret\n']
+0xc3
+['\tCALL', 'TEST_FAILED\n']
+0xc4
+Label: :test_ldi_ret 0xc5
+['\tINC', 'R30\n']
+0xc5
+['\tOUT', 'LED', 'R30\n']
+0xc6
+['\tRET\n']
+0xc7
+Label: :TEST_LPM 0xc8
+['\tLDI', 'R0', '0x00\n']
+0xc8
+['\tOUT', 'ZH', 'R0\n']
+0xc9
+['\tOUT', 'ZL', 'R0\n']
+0xca
+['\tLPM', 'R1', 'Z', ';This', 'and', 'the', 'next', 'instruction', 'will', 'cause', 'a', 'pipeline', 'stall', 'and', 'then', 'a', 'forwarding', 'of', 'the', 'bottom', 'data', 'word', 'in', 'MEM/WB', 'to', 'the', 'top/primary', 'input', 'of', 'the', 'alu.\n']
+0xcb
+['\tCPI', 'R1', '0x38\n']
+0xcc
+['\tBREQ', 'test_lpm_ret\n']
+0xcd
+['\tCALL', 'TEST_FAILED\n']
+0xce
+Label: :test_lpm_ret 0xcf
+['\tINC', 'R30\n']
+0xcf
+['\tOUT', 'LED', 'R30\n']
+0xd0
+['\tRET\n']
+0xd1
+Label: :TEST_STR_LD 0xd2
+['\tLDI', 'R0', '0x0F\n']
+0xd2
+['\tOUT', 'XH', 'R0\n']
+0xd3
+['\tOUT', 'XL', 'R0\n']
+0xd4
+['\tLDI', 'R10', '0x0D\n']
+0xd5
+['\tOUT', 'YH', 'R0\n']
+0xd6
+['\tOUT', 'YL', 'R10\n']
+0xd7
+['\tLDI', 'R11', '0x0B\n']
+0xd8
+['\tOUT', 'ZH', 'R0\n']
+0xd9
+['\tOUT', 'ZL', 'R11\n']
+0xda
+['\tLDI', 'R1', '0x72\n']
+0xdb
+['\tLDI', 'R2', '0x71\n']
+0xdc
+['\tLDI', 'R3', '0x70\n']
+0xdd
+['\tSTR', 'X+', 'R1\n']
+0xde
+['\tSTR', 'X', 'R1\n']
+0xdf
+['\tSTR', 'Y+', 'R2\n']
+0xe0
+['\tSTR', 'Y', 'R2\n']
+0xe1
+['\tSTR', 'Z+', 'R3\n']
+0xe2
+['\tSTR', 'Z', 'R3\n']
+0xe3
+['\tIN', 'R4', 'XL\n']
+0xe4
+['\tIN', 'R5', 'YL\n']
+0xe5
+['\tIN', 'R6', 'ZL\n']
+0xe6
+['\tCPI', 'R4', '0x10\n']
+0xe7
+['\tBREQ', 'yl_inc_test\n']
+0xe8
+['\tCALL', 'TEST_FAILED\n']
+0xe9
+Label: :yl_inc_test 0xea
+['\tCPI', 'R5', '0x0E\n']
+0xea
+['\tBREQ', 'zl_inc_test\n']
+0xeb
+['\tCALL', 'TEST_FAILED\n']
+0xec
+Label: :zl_inc_test 0xed
+['\tCPI', 'R6', '0x0C\n']
+0xed
+['\tBREQ', 'load_test_begin\n']
+0xee
+['\tCALL', 'TEST_FAILED\n']
+0xef
+Label: :load_test_begin 0xf0
+['\tLDI', 'R0', '0x0F\n']
+0xf0
+['\tLDI', 'R11', '0x0B\n']
+0xf1
+['\tOUT', 'ZH', 'R0\n']
+0xf2
+['\tOUT', 'ZL', 'R11\n']
+0xf3
+['\tLD', 'R4', 'Z+\n']
+0xf4
+['\tCP', 'R4', 'R3\n']
+0xf5
+['\tBREQ', 'test_ld_1\n']
+0xf6
+['\tCALL', 'TEST_FAILED\n']
+0xf7
+Label: :test_ld_1 0xf8
+['\tLD', 'R4', 'Z+\n']
+0xf8
+['\tCP', 'R4', 'R3\n']
+0xf9
+['\tBREQ', 'test_ld_2\n']
+0xfa
+['\tCALL', 'TEST_FAILED\n']
+0xfb
+Label: :test_ld_2 0xfc
+['\tLD', 'R4', 'Z+\n']
+0xfc
+['\tCP', 'R4', 'R2\n']
+0xfd
+['\tBREQ', 'test_ld_3\n']
+0xfe
+['\tCALL', 'TEST_FAILED\n']
+0xff
+Label: :test_ld_3 0x100
+['\tLD', 'R4', 'Z+\n']
+0x100
+['\tCP', 'R4', 'R2\n']
+0x101
+['\tBREQ', 'test_ld_4\n']
+0x102
+['\tCALL', 'TEST_FAILED\n']
+0x103
+Label: :test_ld_4 0x104
+['\tLD', 'R4', 'Z+\n']
+0x104
+['\tCP', 'R4', 'R1\n']
+0x105
+['\tBREQ', 'test_ld_5\n']
+0x106
+['\tCALL', 'TEST_FAILED\n']
+0x107
+Label: :test_ld_5 0x108
+['\tLD', 'R4', 'Z+\n']
+0x108
+['\tCP', 'R4', 'R1\n']
+0x109
+['\tBREQ', 'test_str_ld_ret\n']
+0x10a
+['\tCALL', 'TEST_FAILED\n']
+0x10b
+Label: :test_str_ld_ret 0x10c
+['\tINC', 'R30\n']
+0x10c
+['\tOUT', 'LED', 'R30\n']
+0x10d
+['\tRET\n']
+0x10e
+Label: :TEST_STFB_LDFB 0x10f
+['\tLDI', 'R1', '0xFF\n']
+0x10f
+['\tLDI', 'R2', '0xFF\n']
+0x110
+['\tOUT', 'LED', 'R1\n']
+0x111
+['\tOUT', 'LED', 'R2\n']
+0x112
+['\tLDI', 'R0', '0xAA\n']
+0x113
+['\tOUT', 'ZH', 'R0\n']
+0x114
+['\tOUT', 'ZL', 'R0\n']
+0x115
+['\tSTFB', 'Z', 'R1', 'R2\n']
+0x116
+['\tLDFB', 'R3', 'R4', 'Z\n']
+0x117
+['\tCP', 'R3', 'R2\n']
+0x118
+['\tBREQ', 'test_ldfb_h\n']
+0x119
+['\tCALL', 'TEST_FAILED\n']
+0x11a
+Label: :test_ldfb_h 0x11b
+['\tCPI', 'R4', '0x0F', ';', 'Framebuffer', 'is', 'only', '12', 'bits', 'wide', 'thus', 'top', 'nibble', 'get', 'zeroed', 'out', 'when', 'reading', 'in.\n']
+0x11b
+['\tBREQ', 'test_stfb_ldfb_ret\n']
+0x11c
+['\tCALL', 'TEST_FAILED\n']
+0x11d
+Label: :test_stfb_ldfb_ret 0x11e
+['\tINC', 'R30\n']
+0x11e
+['\tOUT', 'LED', 'R30\n']
+0x11f
+['\tRET\n']
+0x120
+Label: :TEST_PUSH_POP 0x121
+['\tLDI', 'R0', '0xFF\n']
+0x121
+['\tOUT', 'SPH', 'R0\n']
+0x122
+['\tOUT', 'SPL', 'R0\n']
+0x123
+['\tLDI', 'R1', '0x56\n']
+0x124
+['\tPUSH', 'R1\n']
+0x125
+['\tNOP', ';Nop', 'For', 'safety\n']
+0x126
+['\tIN', 'R1', 'SPL\n']
+0x127
+['\tCPI', 'R1', '0xFE\n']
+0x128
+['\tBREQ', 'test_pop\n']
+0x129
+['\tCALL', 'TEST_FAILED\n']
+0x12a
+Label: :test_pop 0x12b
+['\tPOP', 'R1\n']
+0x12b
+['\tCPI', 'R1', '0x56', ';Stall', 'and', 'forward', 'should', 'occur', 'here.\n']
+0x12c
+['\tBREQ', 'test_push_pop_ptr_inc\n']
+0x12d
+['\tCALL', 'TEST_FAILED\n']
+0x12e
+Label: :test_push_pop_ptr_inc 0x12f
+['\tIN', 'R1', 'SPL\n']
+0x12f
+['\tCPI', 'R1', '0xFF\n']
+0x130
+['\tBREQ', 'test_push_pop_ret\n']
+0x131
+['\tCALL', 'TEST_FAILED\n']
+0x132
+Label: :test_push_pop_ret 0x133
+['\tINC', 'R30\n']
+0x133
+['\tOUT', 'LED', 'R30\n']
+0x134
+['\tRET\n']
+0x135
+Label: :TEST_MOV 0x136
+['\tLDI', 'R0', '0xAA\n']
+0x136
+['\tOUT', 'ZH', 'R0\n']
+0x137
+['\tOUT', 'ZL', 'R0\n']
+0x138
+['\tLDI', 'R1', '0xBB\n']
+0x139
+['\tOUT', 'YH', 'R1\n']
+0x13a
+['\tOUT', 'YL', 'R1\n']
+0x13b
+['\tSTR', 'Z', 'R1\n']
+0x13c
+['\tMOV', 'Y', 'Z', ';Move', 'the', 'value', 'pointed', 'to', 'by', 'Z', 'to', 'the', 'memory', 'pointed', 'to', 'by', 'Y\n']
+0x13d
+['\tLD', 'R0', 'Y\n']
+0x13f
+['\tCP', 'R0', 'R1', ';This', 'should', 'stall', 'then', 'forward.\n']
+0x140
+['\tBREQ', 'test_mov_ret\n']
+0x141
+['\tCALL', 'TEST_FAILED\n']
+0x142
+Label: :test_mov_ret 0x143
+['\tINC', 'R30\n']
+0x143
+['\tOUT', 'LED', 'R30\n']
+0x144
+['\tRET\n']
+0x145
+Label: :TEST_MOVR 0x146
+['\tLDI', 'R0', '0x37\n']
+0x146
+['\tMOVR', 'R1', 'R0\n']
+0x147
+['\tCP', 'R1', 'R0\n']
+0x148
+['\tBREQ', 'test_movr_ret\n']
+0x149
+['\tCALL', 'TEST_FAILED\n']
+0x14a
+Label: :test_movr_ret 0x14b
+['\tINC', 'R30\n']
+0x14b
+['\tOUT', 'LED', 'R30\n']
+0x14c
+['\tRET\n']
+0x14d
+Label: :TEST_OUT_IN 0x14e
+['\tLDI', 'R0', '0xA3\n']
+0x14e
+['\tOUT', 'LED', 'R0\n']
+0x14f
+['\tIN', 'R1', 'LED\n']
+0x150
+['\tCP', 'R1', 'R0\n']
+0x151
+['\tBREQ', 'test_out_in_ret\n']
+0x152
+['\tCALL', 'TEST_FAILED\n']
+0x153
+Label: :test_out_in_ret 0x154
+['\tINC', 'R30\n']
+0x154
+['\tOUT', 'LED', 'R30\n']
+0x155
+['\tRET\n']
+0x156
+Label: :TEST_JMP 0x157
+['\tJMP', 'test_jmp_ret\n']
+0x157
+['\tCALL', 'TEST_FAILED\n']
+0x158
+Label: :test_jmp_ret 0x159
+['\tINC', 'R30\n']
+0x159
+['\tOUT', 'LED', 'R30\n']
+0x15a
+['\tRET\n']
+0x15b
+Label: :TEST_BRCS 0x15c
+['\tLDI', 'R0', '0x01\n']
+0x15c
+['\tADDI', 'R0', '0xFF\n']
+0x15d
+['\tBRCS', 'test_brcs_1\n']
+0x15e
+Label: :brcs_2 0x15f
+['\tCALL', 'TEST_FAILED\n']
+0x15f
+['\tJMP', 'test_brcs_ret\n']
+0x160
+Label: :test_brcs_1 0x161
+['\tLDI', 'R0', '0x00\n']
+0x161
+['\tADDI', 'R0', '0x0A\n']
+0x162
+['\tBRCS', 'brcs_2\n']
+0x163
+Label: :test_brcs_ret 0x164
+['\tINC', 'R30\n']
+0x164
+['\tOUT', 'LED', 'R30\n']
+0x165
+['\tRET\n']
+0x166
+Label: :TEST_BRCC 0x167
+['\tLDI', 'R0', '0x00\n']
+0x167
+['\tADDI', 'R0', '0x0A\n']
+0x168
+['\tBRCC', 'test_brcc_1\n']
+0x169
+Label: :brcc_2 0x16a
+['\tCALL', 'TEST_FAILED\n']
+0x16a
+['\tJMP', 'test_brcc_ret\n']
+0x16b
+Label: :test_brcc_1 0x16c
+['\tLDI', 'R0', '0x01\n']
+0x16c
+['\tADDI', 'R0', '0xFF\n']
+0x16d
+['\tBRCC', 'brcc_2\n']
+0x16e
+Label: :test_brcc_ret 0x16f
+['\tINC', 'R30\n']
+0x16f
+['\tOUT', 'LED', 'R30\n']
+0x170
+['\tRET\n']
+0x171
+Label: :TEST_BREQ 0x172
+['\tLDI', 'R0', '0xFF\n']
+0x172
+['\tADDI', 'R0', '0x01\n']
+0x173
+['\tBREQ', 'test_breq_1\n']
+0x174
+Label: :test_breq_2 0x175
+['\tCALL', 'TEST_FAILED\n']
+0x175
+['\tJMP', 'test_breq_ret\n']
+0x176
+Label: :test_breq_1 0x177
+['\tLDI', 'R0', '0x0A\n']
+0x177
+['\tADDI', 'R0', '0x01\n']
+0x178
+['\tBREQ', 'test_breq_2\n']
+0x179
+Label: :test_breq_ret 0x17a
+['\tINC', 'R30\n']
+0x17a
+['\tOUT', 'LED', 'R30\n']
+0x17b
+['\tRET\n']
+0x17c
+Label: :TEST_BRNE 0x17d
+['\tLDI', 'R0', '0x0A\n']
+0x17d
+['\tADDI', 'R0', '0x01\n']
+0x17e
+['\tBRNE', 'test_brne_1\n']
+0x17f
+Label: :test_brne_2 0x180
+['\tCALL', 'TEST_FAILED\n']
+0x180
+['\tJMP', 'test_brne_ret\n']
+0x181
+Label: :test_brne_1 0x182
+['\tLDI', 'R0', '0xFF\n']
+0x182
+['\tADDI', 'R0', '0x01\n']
+0x183
+['\tBRNE', 'test_brne_2\n']
+0x184
+Label: :test_brne_ret 0x185
+['\tINC', 'R30\n']
+0x185
+['\tOUT', 'LED', 'R30\n']
+0x186
+['\tRET\n']
+0x187
+Label: :TEST_BRNG 0x188
+['\tLDI', 'R0', '0x7F\n']
+0x188
+['\tADDI', 'R0', '0x01\n']
+0x189
+['\tBRNG', 'test_brng_1\n']
+0x18a
+Label: :test_brng_2 0x18b
+['\tCALL', 'TEST_FAILED\n']
+0x18b
+['\tJMP', 'test_brng_ret\n']
+0x18c
+Label: :test_brng_1 0x18d
+['\tLDI', 'R0', '0x7E\n']
+0x18d
+['\tADDI', 'R0', '0x01\n']
+0x18e
+['\tBRNG', 'test_brng_2\n']
+0x18f
+Label: :test_brng_ret 0x190
+['\tINC', 'R30\n']
+0x190
+['\tOUT', 'LED', 'R30\n']
+0x191
+['\tRET\n']
+0x192
+Label: :TEST_BRPS 0x193
+['\tLDI', 'R0', '0x7E\n']
+0x193
+['\tADDI', 'R0', '0x01\n']
+0x194
+['\tBRPS', 'test_brps_1\n']
+0x195
+Label: :test_brps_2 0x196
+['\tCALL', 'TEST_FAILED\n']
+0x196
+['\tJMP', 'test_brps_ret\n']
+0x197
+Label: :test_brps_1 0x198
+['\tLDI', 'R0', '0x7F\n']
+0x198
+['\tADDI', 'R0', '0x01\n']
+0x199
+['\tBRPS', 'test_brps_2\n']
+0x19a
+Label: :test_brps_ret 0x19b
+['\tINC', 'R30\n']
+0x19b
+['\tOUT', 'LED', 'R30\n']
+0x19c
+['\tRET\n']
+0x19d
+Label: :TEST_FAILED 0x19e
+['\tLDI', 'R31', '0xFF\n']
+0x19e
+['\tJMP', 'vga_out\n']
+0x19f
+Label: :TEST_CALL 0x1a0
+Label: :TEST_RET 0x1a0
+Label: :TEST_RETI 0x1a0
+Label: :TEST_HLT 0x1a0
+Label: :WRITE_VGA 0x1a0
+['\tCPI', 'R31', '0x00\n']
+0x1a0
+['\tBRNE', 'green\n']
+0x1a1
+['\tLDI', 'R4', '0x00\n']
+0x1a2
+['\tLDI', 'R5', '0x0F\n']
+0x1a3
+['\tJMP', 'write_fb\n']
+0x1a4
+Label: :green 0x1a5
+['\tLDI', 'R4', '0xF0\n']
+0x1a5
+['\tLDI', 'R5', '0x00\n']
+0x1a6
+Label: :write_fb 0x1a7
+['\tLDI', 'R0', '0x80\n']
+0x1a7
+Label: :fb_lop_2 0x1a8
+['\tLDI', 'R1', '0x96\n']
+0x1a8
+Label: :fb_lop_1 0x1a9
+['\tSTFB', 'Z+', 'R4', 'R5\n']
+0x1a9
+['\tDEC', 'R1\n']
+0x1aa
+['\tBRNE', 'fb_lop_1\n']
+0x1ab
+['\tDEC', 'R0\n']
+0x1ac
+['\tBRNE', 'fb_lop_2\n']
+0x1ad
+['\tRET\n']
+0x1ae

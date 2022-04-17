@@ -28,6 +28,8 @@ module ex_mem(
 	output reg [6:0] mem_ptr_ctl_out = 0,
 	input call_stk_addr_sel_in, 		//Consumed in memory
 	output reg call_stk_addr_sel_out = 0,
+	input stk_addr_sel_in, 			//Consumed in memory
+	output reg stk_addr_sel_out = 0,
 	input [3:0] mem_wb_data_sel_top_in, 	//Consumed in memory.
 	output reg [3:0] mem_wb_data_sel_top_out = 0,
 	input [6:0] mem_wb_data_sel_bot_in, 	//Consumed in memory.
@@ -64,6 +66,7 @@ module ex_mem(
 
 			mem_ptr_ctl_out <= 0;
 			call_stk_addr_sel_out <= 0;
+			stk_addr_sel_out <= 0;
 
 			mem_wb_data_sel_top_out <= 0;
 			mem_wb_data_sel_bot_out <= 0;
@@ -94,6 +97,7 @@ module ex_mem(
 
 			mem_ptr_ctl_out <= mem_ptr_ctl_in;
 			call_stk_addr_sel_out <= call_stk_addr_sel_in;
+			stk_addr_sel_out <= stk_addr_sel_in;
 
 			mem_wb_data_sel_top_out <= mem_wb_data_sel_top_in;
 			mem_wb_data_sel_bot_out <= mem_wb_data_sel_bot_in;

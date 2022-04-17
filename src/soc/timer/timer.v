@@ -10,6 +10,8 @@ module timer(
 	input clock,
 	input nreset,
 	input [7:0] control_reg, //<7> ,<6> ,<5> ,<4> ,<3> ,<2> ,<1> Clear 1 = Reset, 0 = Normal,<0> Timer Enable 1 = run, 0 = stop
+	input [63:0] timer_compare_value,
+	output reg timer_compare_match,
 	output reg [63:0] timer_value = 0
 );
 
@@ -25,10 +27,23 @@ module timer(
 		begin
 			timer_value <= timer_inc;
 		end
+		else
+		begin
+		    timer_value <= timer_value;
+		end
+		if(timer_value == timer_compare_value)
+		begin
+			timer_compare_match <= 1'b1;
+		end
+		else
+		begin
+			timer_compare_match <= 1'b0;
+		end
 	end
 
 	assign timer_inc = timer_value + 1;
 
+/*
 // the "macro" to dump signals
 `ifdef COCOTB_SIM
 initial begin
@@ -37,4 +52,5 @@ initial begin
   #1;
 end
 `endif
+*/
 endmodule

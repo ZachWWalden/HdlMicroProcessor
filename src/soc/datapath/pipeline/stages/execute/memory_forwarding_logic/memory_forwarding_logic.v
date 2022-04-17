@@ -26,7 +26,7 @@ module memory_forwarding_logic(
 			begin
 				sfr_input_sel <= 5'b00001;
 				mem_write_data_sel_top <= 5'b00001;
-				mem_write_data_sel_bot <= 5'b00100;
+				mem_write_data_sel_bot <= 5'b00001;
 				mem_wb_data_sel_top <= 4'b0010;  		//Select both load results for simplicity.
 				mem_wb_data_sel_bot <= 7'b0000100;
 			end
@@ -35,7 +35,7 @@ module memory_forwarding_logic(
 			begin
 				sfr_input_sel <= 5'b00001;
 				mem_write_data_sel_top <= 5'b00001;
-				mem_write_data_sel_bot <= 5'b00100;
+				mem_write_data_sel_bot <= 5'b00001;
 				mem_wb_data_sel_top <= 4'b0001;  		//Select load bottom result
 				mem_wb_data_sel_bot <= 7'b0000100;
 			end

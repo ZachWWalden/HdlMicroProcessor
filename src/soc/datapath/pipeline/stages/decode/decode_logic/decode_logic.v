@@ -288,8 +288,8 @@ module decode_logic(
 			//Store, Store Framebuffer, Push   DONE
 			8'hC6 :
 			begin
-				reg_file_ren[0] <= instruction[21];  					//Read Load Result Bottom is the Write Result Bit is set in the instruciton word.
-				reg_file_ren[1] <= (~instruction[20] & instruction[21]);  		//Read Load Result Top if this is a LDFB and Wrtie Result is set.
+				reg_file_ren[0] <= ~instruction[20];  					//Read Register Address Bottom if a Load Framebuffer
+				reg_file_ren[1] <= 1'b1;  						//Read Register Address Top Always
 
 				id_ex_data_input_sel <= 1'b0;
 				ex_mem_data_input_sel <= 2'b00;

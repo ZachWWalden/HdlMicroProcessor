@@ -18,6 +18,9 @@
 	LDI R31 0x00 ;Set up sucess flag
 	LDI R30 0x00 ;This register will be used to track which test the program may fail on.
 
+	LDI R0 0xFF
+	OUT T1CR R0
+
 :MAIN
 	CALL TEST_INC ;LED = 0x01
 	CALL TEST_DEC ;LED = 0x02
@@ -54,8 +57,8 @@
 	CALL TEST_BRPS ;LED = 0x21
 
 :vga_out
-	OUT LED R30
-	OUT LED R30
+	LDI R0 0x00
+	OUT T1CR R0
 	CALL WRITE_VGA
 :halt_execution
 	OUT LED R30
@@ -357,10 +360,10 @@
 	LDI R2 0x71
 	LDI R3 0x70
 	STR X+ R1
-	STR X R1
 	STR Y+ R2
-	STR Y R2
 	STR Z+ R3
+	STR X R1
+	STR Y R2
 	STR Z R3
 	;Check Pointer Post Increments
 	IN R4 XL
@@ -420,14 +423,16 @@
 ;Test Load & Store to Framebuffer
 :TEST_STFB_LDFB
 	;Initialize register with a write value.
-	LDI R0 0xFF
+	LDI R1 0xFF
 	LDI R2 0xFF
+	OUT LED R1
+	OUT LED R2
 	;Initialize Memory Pointer
-	LDI R1 0x00
-	OUT ZH R1
-	OUT ZL R1
+	LDI R0 0xAA
+	OUT ZH R0
+	OUT ZL R0
 	;STFB The Data
-	STR Z R0 R2
+	STFB Z R1 R2
 	;LDFB The Data
 	LDFB R3 R4 Z
 	CP R3 R2
@@ -632,13 +637,17 @@
 	LDI R31 0xFF
 	JMP vga_out
 
-;These Do not get their Own tests as the program puts these instructions through their paces.
+;These Do not get their Own tests as the program puts these instructions through their paces
 :TEST_CALL
 :TEST_RET
 :TEST_RETI
 :TEST_HLT
 
 :WRITE_VGA
+	;Initialize Memory Pointer
+	LDI R0 0x00
+	OUT ZH R0
+	OUT ZL R0
 	CPI R31 0x00
 	BRNE green
 ;Red
