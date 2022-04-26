@@ -1,0 +1,40 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Mon Apr 25 23:52:14 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/finalhardtest.vcd"
+[dumpfile_mtime] "Mon Apr 25 21:08:29 2022"
+[dumpfile_size] 77608
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/hardware_validate.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-5.000000 6120 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 306
+@28
+dut.core_clk
+dut.nreset
+@22
+dut.prog_mem_addra[13:0]
+dut.prog_mem_douta[31:0]
+@28
+dut.mem_wen
+dut.prog_mem_en
+dut.main_mem_en
+dut.fb_en
+dut.call_stk_en
+@23
+dut.addr_in[15:0]
+@22
+dut.data_in[11:0]
+dut.led_OBUF[7:0]
+dut.memwb_data[15:0]
+@28
+dut.reg_file_wen[1:0]
+@22
+dut.mem_wb_opcode[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

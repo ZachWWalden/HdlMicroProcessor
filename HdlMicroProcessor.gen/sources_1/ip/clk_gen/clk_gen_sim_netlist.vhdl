@@ -1,10 +1,10 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
--- Date        : Sun Apr 17 00:21:45 2022
+-- Date        : Wed Apr 13 18:55:56 2022
 -- Host        : uberbertha running 64-bit Arch Linux
--- Command     : write_vhdl -force -mode funcsim
---               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top clk_gen -prefix
+--               clk_gen_ clk_gen_sim_netlist.vhdl
 -- Design      : clk_gen
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -14,16 +14,16 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity clk_gen_clk_wiz is
+entity clk_gen_clk_gen_clk_wiz is
   port (
     core_clk : out STD_LOGIC;
     mem_clk : out STD_LOGIC;
     ila_clk : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-end clk_gen_clk_wiz;
+end clk_gen_clk_gen_clk_wiz;
 
-architecture STRUCTURE of clk_gen_clk_wiz is
+architecture STRUCTURE of clk_gen_clk_gen_clk_wiz is
   signal clk_in1_clk_gen : STD_LOGIC;
   signal clkfbout_buf_clk_gen : STD_LOGIC;
   signal clkfbout_clk_gen : STD_LOGIC;
@@ -224,11 +224,11 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 10.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 10.000000,
+      CLKOUT0_DIVIDE_F => 100.000000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 5,
+      CLKOUT1_DIVIDE => 50,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
@@ -584,7 +584,7 @@ end clk_gen;
 
 architecture STRUCTURE of clk_gen is
 begin
-inst: entity work.clk_gen_clk_wiz
+inst: entity work.clk_gen_clk_gen_clk_wiz
      port map (
       clk_in1 => clk_in1,
       core_clk => core_clk,

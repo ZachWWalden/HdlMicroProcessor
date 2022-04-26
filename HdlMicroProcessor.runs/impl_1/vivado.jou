@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Mon Apr 25 01:07:01 2022
+# Process ID: 142941
+# Current directory: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/impl_1
+# Command line: vivado -log soc.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source soc.tcl -notrace
+# Log file: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/impl_1/soc.vdi
+# Journal file: /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source soc.tcl -notrace

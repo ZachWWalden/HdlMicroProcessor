@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -142,6 +140,12 @@ read_verilog -library xil_defaultlib {
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/call_stack_1/call_stack.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/call_stack_1/call_stack_ooc.xdc]
 
+read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/clk_gen/clk_gen.xci
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_board.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_late.xdc]
+set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc]
+
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/frame_buffer/frame_buffer.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/frame_buffer/frame_buffer_ooc.xdc]
 
@@ -153,12 +157,6 @@ set_property used_in_implementation false [get_files -all /home/zww/Documents/Co
 
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/main_memory/main_memory.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/main_memory/main_memory_ooc.xdc]
-
-read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/clk_gen/clk_gen.xci
-set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_board.xdc]
-set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen.xdc]
-set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_late.xdc]
-set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_ooc.xdc]
 
 read_ip -quiet /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/sources_1/ip/program_memory/program_memory.xci
 set_property used_in_implementation false [get_files -all /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/program_memory/program_memory_ooc.xdc]

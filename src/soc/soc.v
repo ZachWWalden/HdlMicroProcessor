@@ -8,6 +8,7 @@ Parameters -
 
 module soc(
 	input clk100M,
+	input nreset_sel,
 	input [7:0] prta_in,
 	output [7:0] led,
 	output hsync,
@@ -18,8 +19,6 @@ module soc(
 	output [7:0] prta_out,
 	output [7:0] prtb_out
 );
-
-	reg nreset = 1;
 
 	//Instantiate Clock Generation Modules
 	wire mem_clk;
@@ -134,6 +133,19 @@ module soc(
 		.frame_buf_wena(fb_wena),
 		.frame_buf_douta(fb_douta)
 	);
+	
+	reg nreset = 0;
+	always @ (posedge core_clk)
+    begin
+        if(nreset_sel == 1'b1)
+        begin
+            nreset <= 0;
+        end
+        else
+        begin
+            nreset <= 1;
+        end    
+    end
 
 	wire [71:0] sfr_input;
 	wire [111:0] sfr_output;
@@ -141,6 +153,7 @@ module soc(
 	assign prta_out = sfr_output[103:96];
 	assign prtb_out = sfr_output[95:88];
 
+    wire mem_wb_reti_bit;
 	wire interrupt;
 	wire [13:0] interrupt_vector_address ;
 
@@ -212,14 +225,18 @@ module soc(
 	);
 
 	wire [15:0] memwb_data;
-	wire [31:0] decode_instruction;
+	wire [7:0] mem_wb_opcode;
+	wire [1:0] reg_file_wen;
+	
 	//Instantiate Data Path
 	datapath pipeline(
 		.clock(core_clk),
 		.nreset(nreset),
 		//ila interface
-		.ifid_instruction_out(decode_instruction),
+		.mem_wb_opcode(mem_wb_opcode),
+		.mem_wb_reti_bit(mem_wb_reti_bit),
 		.memwb_data(memwb_data),
+		.reg_file_wen_ext(reg_file_wen),
 		//Memory Interface
 		.prog_cntr_val(prog_mem_addra),
 		.mem_fetch_instruction(prog_mem_douta),
@@ -253,26 +270,36 @@ module soc(
 	);
 
 	assign led = sfr_output[7:0];
-/*
+    wire trig_ack;
 ila_0 ila(
 	.clk(ila_clk), // input wire clk
 
 
-	.probe0(prog_cntr_load_sel), // input wire [3:0]  probe0
-	.probe1(prog_mem_addra), // input wire [13:0]  probe1
-	.probe2(prog_mem_douta[10:0]),
-	.probe3(decode_instruction),
-	.probe4(memwb_data),
-	.probe5(take_branch_target), // input wire [0:0]  probe2
-	.probe6(core_clk) // input wire [0:0]  probe3
+	.trig_in(nreset_sel),// input wire trig_in 
+	.trig_in_ack(trig_ack),// output wire trig_in_ack 
+	.probe0(prog_mem_addra), // input wire [13:0]  probe0  
+	.probe1(prog_mem_douta), // input wire [31:0]  probe1 
+	.probe2(mem_wen), // input wire [0:0]  probe2 
+	.probe3(call_stk_en), // input wire [0:0]  probe3 
+	.probe4(main_mem_en), // input wire [0:0]  probe4 
+	.probe5(fb_en), // input wire [0:0]  probe5 
+	.probe6(prog_mem_en), // input wire [0:0]  probe6 
+	.probe7(addr_in), // input wire [15:0]  probe7 
+	.probe8(data_in), // input wire [11:0]  probe8 
+	.probe9(led), // input wire [7:0]  probe9 
+	.probe10(memwb_data), // input wire [15:0]  probe10 
+	.probe11(reg_file_wen), // input wire [1:0]  probe11 
+	.probe12(mem_wb_opcode), // input wire [7:0]  probe12 
+	.probe13(nreset), // input wire [0:0]  probe13 
+	.probe14(core_clk) // input wire [0:0]  probe14
 );
-*/
 
+    wire vga_nreset = 1;
 	//Instantiate VGA Controller
 	wire [11:0] pixel_switch;
 	vga_controller vga(
 		.clock(vga_clk),
-		.nreset(nreset),
+		.nreset(vga_nreset),
 		.pixel_data(fb_doutb),
 		.pixel_addr(fb_addrb),
 		.pixel(pixel_switch),

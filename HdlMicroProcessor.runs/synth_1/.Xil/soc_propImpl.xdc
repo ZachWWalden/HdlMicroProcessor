@@ -1,6 +1,8 @@
 set_property SRC_FILE_INFO {cfile:/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc rfile:../../../HdlMicroProcessor.srcs/constrs_1/imports/HdlMicroProcessor.constraints/Arty-S7-50-Master.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:9 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN R2 IOSTANDARD SSTL135} [get_ports clk100M]
+set_property src_info {type:XDC file:1 line:13 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN H14   IOSTANDARD LVCMOS33 } [get_ports { nreset_sel }]; #IO_L20N_T3_A19_15 Sch=sw[0]
 set_property src_info {type:XDC file:1 line:19 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { led[4] }]; #IO_L23N_T3_FWE_B_15 Sch=led0_r
 set_property src_info {type:XDC file:1 line:21 export:INPUT save:INPUT read:READ} [current_design]

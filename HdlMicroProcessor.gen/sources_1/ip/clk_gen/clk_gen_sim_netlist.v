@@ -1,10 +1,10 @@
 // Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-// Date        : Sun Apr 17 00:21:45 2022
+// Date        : Wed Apr 13 18:55:56 2022
 // Host        : uberbertha running 64-bit Arch Linux
-// Command     : write_verilog -force -mode funcsim
-//               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top clk_gen -prefix
+//               clk_gen_ clk_gen_sim_netlist.v
 // Design      : clk_gen
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -28,14 +28,14 @@ module clk_gen
   wire ila_clk;
   wire mem_clk;
 
-  clk_gen_clk_wiz inst
+  clk_gen_clk_gen_clk_wiz inst
        (.clk_in1(clk_in1),
         .core_clk(core_clk),
         .ila_clk(ila_clk),
         .mem_clk(mem_clk));
 endmodule
 
-module clk_gen_clk_wiz
+module clk_gen_clk_gen_clk_wiz
    (core_clk,
     mem_clk,
     ila_clk,
@@ -164,11 +164,11 @@ module clk_gen_clk_wiz
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(10.000000),
+    .CLKOUT0_DIVIDE_F(100.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
-    .CLKOUT1_DIVIDE(5),
+    .CLKOUT1_DIVIDE(50),
     .CLKOUT1_DUTY_CYCLE(0.500000),
     .CLKOUT1_PHASE(0.000000),
     .CLKOUT1_USE_FINE_PS("FALSE"),

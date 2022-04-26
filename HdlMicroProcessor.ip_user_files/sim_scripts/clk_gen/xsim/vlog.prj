@@ -1,4 +1,4 @@
-verilog xil_defaultlib --include "../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen" --include "../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen" \
+verilog xil_defaultlib --include "../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen" --include "../../../../HdlMicroProcessor.gen/sources_1/ip/vga_pix_clk_gen" \
 "../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_clk_wiz.v" \
 "../../../../HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen.v" \
 

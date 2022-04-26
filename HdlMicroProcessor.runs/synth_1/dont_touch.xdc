@@ -5,3 +5,6 @@
 
 # IP: ip/call_stack_1/call_stack.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==call_stack || ORIG_REF_NAME==call_stack} -quiet] -quiet
+
+# IP: ip/clk_gen/clk_gen.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==clk_gen || ORIG_REF_NAME==clk_gen} -quiet] -quiet

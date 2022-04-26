@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1650321121">
+<GenRun Id="synth_1" LaunchPart="xc7s50csga324-1" LaunchTime="1650866738">
   <File Type="VDS-TIMING-PB" Name="soc_timing_summary_synth.pb"/>
   <File Type="VDS-TIMINGSUMMARY" Name="soc_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="soc.dcp"/>
@@ -346,6 +346,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/ip/clk_gen/clk_gen.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="soc"/>
@@ -373,20 +380,17 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Flow_PerfThresholdCarry" Flow="Vivado Synthesis 2021">
-      <Desc>Default options plus the FewerCarryChains directive for less inference of carry chains, turning off the LUT combining, resource sharing off, retaining equivalent registers</Desc>
-    </StratHandle>
+    <StratHandle Name="Flow_PerfThresholdCarry" Flow="Vivado Synthesis 2021"/>
     <Step Id="synth_design">
-      <Option Id="ResourceSharing">2</Option>
       <Option Id="FlattenHierarchy">1</Option>
+      <Option Id="ResourceSharing">2</Option>
       <Option Id="Directive">6</Option>
-      <Option Id="KeepEquivalentRegisters">1</Option>
       <Option Id="NoCombineLuts">1</Option>
+      <Option Id="KeepEquivalentRegisters">1</Option>
     </Step>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="ila_0"/>
   <BlockFileSet Type="BlockSrcs" Name="program_memory"/>
-  <BlockFileSet Type="BlockSrcs" Name="clk_gen"/>
   <BlockFileSet Type="BlockSrcs" Name="main_memory"/>
   <BlockFileSet Type="BlockSrcs" Name="vga_pix_clk_gen"/>
   <BlockFileSet Type="BlockSrcs" Name="frame_buffer"/>

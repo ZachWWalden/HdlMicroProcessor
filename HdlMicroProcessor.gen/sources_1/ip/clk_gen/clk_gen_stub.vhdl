@@ -1,10 +1,10 @@
 -- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
--- Date        : Sun Apr 17 00:21:45 2022
+-- Date        : Wed Apr 13 18:55:56 2022
 -- Host        : uberbertha running 64-bit Arch Linux
--- Command     : write_vhdl -force -mode synth_stub
---               /home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/HdlMicroProcessor.gen/sources_1/ip/clk_gen/clk_gen_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top clk_gen -prefix
+--               clk_gen_ clk_gen_stub.vhdl
 -- Design      : clk_gen
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7s50csga324-1

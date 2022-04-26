@@ -10,8 +10,10 @@ module datapath(
 	input clock,
 	input nreset,
 	//ila interface
-	output [31:0] ifid_instruction_out,
+	output [7:0] mem_wb_opcode,
+	output mem_wb_reti_bit,
 	output [15:0] memwb_data,
+	output [1:0] reg_file_wen_ext,
 	//Memory Interface
 	output [13:0] prog_cntr_val,
 	input [31:0] mem_fetch_instruction,
@@ -101,8 +103,6 @@ module datapath(
 		.return_addr_in(fetch_return_address),
 		.return_addr_out(if_id_ret_addr)
 	);
-
-	assign ifid_instruction_out = if_id_inst_out;
 
 	assign reg_file_rd_addr = if_id_inst_out[17:8];
 
@@ -379,8 +379,12 @@ module datapath(
 
 	assign reg_file_wr_data = mem_wb_data_out;
 	assign memwb_data = mem_wb_data_out;
+	assign reg_file_wen_ext = reg_file_wen; 
 
 	assign reg_file_wr_addr = mem_wb_instruction_out[17:8];
+	
+	assign mem_wb_opcode = mem_wb_instruction_out[7:0];
+	assign mem_wb_reti_bit = mem_wb_instruction_out[20];
 
 /*
 // the "macro" to dump signals
