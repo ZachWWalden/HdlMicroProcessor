@@ -1,0 +1,34 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Tue Apr  5 19:54:01 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_control_unit.vcd"
+[dumpfile_mtime] "Tue Apr  5 03:07:52 2022"
+[dumpfile_size] 1440
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/hazard_control_unit/hazard_unit_debug_signals.gtkw"
+[timestart] 0
+[size] 1898 1037
+[pos] -1 -1
+*-13.000000 45420 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 214
+[sst_expanded] 1
+[sst_vpaned_height] 290
+@28
+hazard_control_unit.clock
+@29
+hazard_control_unit.next_state[2:0]
+@28
+hazard_control_unit.control_state[2:0]
+hazard_control_unit.dec_stl_req
+hazard_control_unit.fetch_stl_req
+hazard_control_unit.halt
+hazard_control_unit.interrupt
+hazard_control_unit.ret
+hazard_control_unit.nreset
+hazard_control_unit.inst_word_sel
+hazard_control_unit.stall_decode
+hazard_control_unit.stall_fetch
+hazard_control_unit.prog_cntr_load_sel[2:0]
+[pattern_trace] 1
+[pattern_trace] 0

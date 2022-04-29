@@ -1,6 +1,6 @@
 [*]
 [*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
-[*] Mon Apr 25 20:58:16 2022
+[*] Wed Apr 27 06:13:46 2022
 [*]
 [dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/soc/cpu.vcd"
 [dumpfile_mtime] "Sun Apr 17 02:36:37 2022"
@@ -9,7 +9,7 @@
 [timestart] 0
 [size] 3814 2113
 [pos] -1 -1
-*-14.000000 4980000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-15.000000 4070000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] cpu.
 [treeopen] cpu.pipeline.
 [treeopen] cpu.pipeline.decode_stage.
@@ -28,7 +28,9 @@ cpu.prog_mem_douta[31:0]
 cpu.mem_wen
 cpu.prog_mem_en
 cpu.main_mem_en
+@29
 cpu.fb_en
+@28
 cpu.call_stk_en
 @22
 cpu.addr_in[15:0]
@@ -41,7 +43,7 @@ cpu.pipeline.memory_stage.sf_reg_file.wren[1:0]
 cpu.pipeline.mem_wb_data_out[15:0]
 @28
 cpu.pipeline.mem_wb_register.reg_file_wen_out[1:0]
-@23
+@22
 cpu.pipeline.mem_wb_instruction_out[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

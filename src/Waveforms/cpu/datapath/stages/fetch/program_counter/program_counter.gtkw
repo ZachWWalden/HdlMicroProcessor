@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:05:43 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/fetch/program_counter/program_counter.vcd"
+[dumpfile_mtime] "Mon Feb 21 00:20:28 2022"
+[dumpfile_size] 579
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/fetch/program_counter/program_counter.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-13.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 230
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+program_counter.clock
+program_counter.nreset
+program_counter.stall
+@22
+program_counter.branch_target[13:0]
+program_counter.prog_mem_addr_fetch[13:0]
+@28
+program_counter.take_branch_target
+@23
+program_counter.value[13:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -45,7 +45,7 @@ class Assembler():
                         ("mov", 0x00000000),
                         ("in",  0x0028009C),
                         ("out", 0x0024009C),
-                        ("jmp",0x00000438),
+                        ("jmp", 0x00000438),
                         ("brcs",0x00000538),
                         ("brcc",0x00000138),
                         ("breq",0x00000638),
@@ -87,7 +87,8 @@ class Assembler():
                 self.labels.append((splitStr[0], self.address))
             elif(test[0] == '.'):
                 #If a .org change address to .org.
-                pass
+                if(test[3:0] == ".ORG":
+                    self.address = int(line.split(' ')[1], 16)
             elif(line == '\n'):
                 pass
             else:
@@ -119,7 +120,8 @@ class Assembler():
                 elif item[0] == ".equ":
                     pass
                 elif item[0] == ".dw":
-                    pass
+                    dataWord = int(line.split(' ')[1], 16)
+                    self.writeInstructionWord(dataWord)
             #Is line a Label?
             if(cont and tmp[0] == ':'):
                 cont = False

@@ -1,0 +1,30 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:06:18 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/decode/alu_forwarding_logic/alu_forwarding_logic.vcd"
+[dumpfile_mtime] "Sat Mar 19 23:43:45 2022"
+[dumpfile_size] 1355
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/decode/alu_forwarding_logic/alu_forwarding_logic.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-14.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 222
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+alu_forwarding_logic.clock
+@22
+alu_forwarding_logic.instruction[31:0]
+alu_forwarding_logic.id_ex_instruction[31:0]
+alu_forwarding_logic.ex_mem_instruction[31:0]
+@28
+alu_forwarding_logic.stall_decode
+@22
+alu_forwarding_logic.alu_top_sel[4:0]
+@23
+alu_forwarding_logic.alu_bot_sel[4:0]
+[pattern_trace] 1
+[pattern_trace] 0

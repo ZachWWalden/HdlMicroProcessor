@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 07:59:03 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/vga_controller/horiz_cntr/horiz_cntr.vcd"
+[dumpfile_mtime] "Tue Mar 15 00:45:41 2022"
+[dumpfile_size] 19671
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/vga_controller/horiz_cntr/horiz_cntr.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-17.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+horiz_cntr.clock
+@22
+horiz_cntr.value[8:0]
+@28
+horiz_cntr.hsync
+horiz_cntr.hblank
+horiz_cntr.row_done
+[pattern_trace] 1
+[pattern_trace] 0

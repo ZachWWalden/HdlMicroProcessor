@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:01:30 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/interrupt_controller/interrupt_controller.vcd"
+[dumpfile_mtime] "Wed Mar 30 03:08:49 2022"
+[dumpfile_size] 876
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/interrupt_controller/interrupt_controller.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-14.000000 75000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 222
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+interrupt_controller.clock
+interrupt_controller.nreset
+@22
+interrupt_controller.sfr_output[143:0]
+interrupt_controller.hazard_unit_state[3:0]
+@28
+interrupt_controller.interrupt
+@23
+interrupt_controller.int_vec_addr[13:0]
+@28
+interrupt_controller.illegal_opcode_exception
+interrupt_controller.vblank_int
+[pattern_trace] 1
+[pattern_trace] 0

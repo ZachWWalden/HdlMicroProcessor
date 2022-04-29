@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:05:19 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.vcd"
+[dumpfile_mtime] "Thu Mar 31 21:44:46 2022"
+[dumpfile_size] 655
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/fetch/prog_cntr_load_sel_mux/prog_cntr_input_sel_mux.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-14.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 222
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+prog_cntr_input_sel_mux.clock
+@22
+prog_cntr_input_sel_mux.sel_signals[3:0]
+prog_cntr_input_sel_mux.ret_addr[13:0]
+prog_cntr_input_sel_mux.branch_target_addr[13:0]
+prog_cntr_input_sel_mux.int_branch_addr[13:0]
+prog_cntr_input_sel_mux.next_prog_cntr[13:0]
+@23
+prog_cntr_input_sel_mux.prog_cntr_load_val[13:0]
+[pattern_trace] 1
+[pattern_trace] 0

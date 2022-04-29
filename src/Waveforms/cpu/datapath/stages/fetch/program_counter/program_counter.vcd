@@ -1,0 +1,53 @@
+$date
+	Tue Feb  1 21:50:01 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module program_counter $end
+$var wire 14 ! branch_target [13:0] $end
+$var wire 1 " clock $end
+$var wire 1 # nreset $end
+$var wire 14 $ prog_mem_addr_fetch [13:0] $end
+$var wire 1 % stall $end
+$var wire 1 & take_branch_target $end
+$var reg 14 ' value [13:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100000 '
+1&
+0%
+b100000 $
+1#
+1"
+b100000 !
+$end
+#5000
+b10000 !
+0&
+0"
+#10000
+b100001 $
+b100001 '
+1"
+#15000
+1%
+0"
+#20000
+1"
+#25000
+0#
+1&
+0"
+#30000
+b0 $
+b0 '
+1"
+#35000
+0"
+#35001

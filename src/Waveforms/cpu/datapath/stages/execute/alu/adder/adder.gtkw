@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:09:03 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/execute/alu/adder/adder.vcd"
+[dumpfile_mtime] "Wed Apr 27 07:25:48 2022"
+[dumpfile_size] 29994
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/execute/alu/adder/adder.gtkw"
+[timestart] 4880300
+[size] 1894 1033
+[pos] -1 -1
+*-15.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 206
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+adder.clock
+adder.nreset
+adder.add_sub
+adder.oe
+adder.flag_result[2:0]
+@22
+adder.primary_operand[7:0]
+adder.secondary_operand[7:0]
+@23
+adder.result[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:07:12 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/decode/branch_resolution_logic/branch_resolution_logic.vcd"
+[dumpfile_mtime] "Sat Mar  5 03:23:16 2022"
+[dumpfile_size] 959
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/stages/decode/branch_resolution_logic/branch_resolution_logic.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-15.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 174
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+branch_resolution_logic.clock
+@22
+branch_resolution_logic.operation[7:0]
+@28
+branch_resolution_logic.flags[2:0]
+@29
+branch_resolution_logic.take_branch_target
+[pattern_trace] 1
+[pattern_trace] 0

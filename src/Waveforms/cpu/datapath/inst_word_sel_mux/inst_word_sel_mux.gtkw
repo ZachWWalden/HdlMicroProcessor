@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 08:03:20 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/inst_word_sel_mux/inst_word_sel_mux.vcd"
+[dumpfile_mtime] "Sat Mar 12 07:12:51 2022"
+[dumpfile_size] 546
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/datapath/inst_word_sel_mux/inst_word_sel_mux.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-12.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 203
+[signals_width] 246
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+inst_word_sel_mux.clock
+inst_word_sel_mux.sel
+@22
+inst_word_sel_mux.hazard_unit_inst_word[31:0]
+inst_word_sel_mux.mem_inst_word[31:0]
+@23
+inst_word_sel_mux.inst_word_out[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

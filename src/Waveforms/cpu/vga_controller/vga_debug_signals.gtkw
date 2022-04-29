@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.111 (w)1999-2020 BSI
+[*] Wed Apr 27 07:58:01 2022
+[*]
+[dumpfile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/vga_controller/vga_controller.vcd"
+[dumpfile_mtime] "Tue Mar 15 04:49:25 2022"
+[dumpfile_size] 25596661
+[savefile] "/home/zww/Documents/College/2022SP/HDL/HdlMicroProcessor/src/Waveforms/cpu/vga_controller/vga_debug_signals.gtkw"
+[timestart] 0
+[size] 1894 1033
+[pos] -1 -1
+*-32.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] vga_controller.
+[sst_width] 203
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@28
+vga_controller.clock
+@22
+vga_controller.memory_addr[16:0]
+vga_controller.row_addr_cache[16:0]
+vga_controller.pixel_data[11:0]
+vga_controller.pixel[11:0]
+@28
+vga_controller.frame_done
+vga_controller.h_blank
+vga_controller.h_sync
+@29
+vga_controller.v_sync
+[pattern_trace] 1
+[pattern_trace] 0
