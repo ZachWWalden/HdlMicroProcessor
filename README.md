@@ -187,9 +187,9 @@ This instruction performs a bitwise or between either two registers or a registe
 ### Errata
 In the case of instructions that require two register operands, if each of the two instructions preceding it have exactly 1 unique dependency for the originally mentioned instruction, the hazard detection and forwarding units will not detect the hazard and thus the chance for incorrect execution is almost guaranteed unless two NOPS are inserted between the final dependent instruction and the two preceding hazardous writes.
 
-	Any pointer increment or decrement does not take effect until the next cycle. Thus, it is advised that the programmer not write sequential memory instructions with increments on the same pointer. They should either add a single NOP, or, if they can perform interleaving of independent memory accesses.3.36.1 Stack Pointer Low (SPL)
+Any pointer increment or decrement does not take effect until the next cycle. Thus, it is advised that the programmer not write sequential memory instructions with increments on the same pointer. They should either add a single NOP, or, if they can perform interleaving of independent memory accesses use that.
 
-It should be noted that is the CPU were to interrupt between any instruction that affects the flags and an instuction that uses those results, upon return from that interrupt, correct program execution would be lost. <br>
+It should be noted that if the CPU were to interrupt  when any instruction that affects the flags is being fetched from Program Memory, and an instuction that uses those results directly follows the original instruction, upon return from that interrupt, correct program execution will be lost. This occurs because, I do not save the flags rather, any instruction that utilizes the information contained in those flags is resolved by the end of the negative edge of the clock. To resolve this issue, a flags register stack must be implemented. A push will occur when the interrupt inserted call reaches the execute stage and vice versa.
 
 
 
