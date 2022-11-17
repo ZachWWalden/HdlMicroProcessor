@@ -56,105 +56,105 @@ This stage is quite simple relative to the Execute and Memory stages. It simply 
 	Rx <- Rx - 1 <br>
 4. Add - ADD Rx, Ry - ADDI Rx, k <br>
 	This instruction either adds two registers or an immediate value to a register. The effective cycle latency is 1 Cycle. <br>
-	Rx <- Rx + Ry
-	Rx <- Rx + k
-5. Subtract - SUB Rx, Ry - SUBI Rx, k
-	This instruction subtracts two registers or a register and an immediate value. The effective cycle latency is 1 Cycle.
-	Rx <- Rx - Ry
-	Rx <- Rx - k
-6. Compare - CP Rx, Ry - CPI Rx, k
-	This instruction subtracts the second operand from the first, but does not store the result. Thus only relevant flags are produced for any subsequent control flow instruction to make use of. The effective cycle latency is 1 Cycle.
-7. Multiply - MUL Rx, Ry - MULI Rx, Rx1,  k
-	This instruction multiplies either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle.
-	Rx, Ry <- Rx * Ry
-	Rx, Ry <- Rx * k
-8. And - AND Rx, Ry - ANDI Rx, k
-	This instruction performs a bitwise and between either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle.
-	Rx <- Rx & Ry
-	Rx <- Rx & k
-9. Or - OR Rx, Ry - ORI Rx, k
-This instruction performs a bitwise or between either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle.
-	Rx <- Rx | Ry
-	Rx <- Rx | k
-10. Shift Right - SHR Rx
-	This instruction shifts the source register right by a single bit storing the result in the destination register. A zero is shifted into the high bit, which is not shifted into the carry flag. The effective cycle latency is 1 Cycle.
-	Rx <- Rx >> 1
-11. Shift Left - SHL Rx
-	This instruction shifts the source register left by a single bit storing the result in the destination register. A zero is shifted into the lowbit, which is not shifted into the carry flag. The effective cycle latency is 1 Cycle.
-	Rx <- Rx << 1
-12. Complement - COM Rx
-	This instruction will take the two’s complement of a given register. The effective cycle latency is 1 Cycle.
-	Rx <- ~Rx + 1
-13. Invert - INV Rx
-	This instruction inverts all the bits in a given register. The effective cycle latency is 1 Cycle.
-	Rx <- ~Rx
-14. Load - LD Rx, (addr) - LDFB Rx, Ry (addr)
-	This instruction loads a value from a specific memory address into a register or register pair. The effective cycle latency is 1 Cycle.
-	Rx <- (ptr)
-	Rx, Ry <- (ptr) (For LDFB 12 bits are loaded, the top byte is zero extended to 16-Bits)
-15. Load Immediate - LDI Rx, k
-	This instruction stores an 8-Bit immediate data value into the specified register. The effective cycle latency is 1 Cycle.
-	Rx <- k
-16. Load From Program Memory - LPM Rx, Z
-	This instruction loads the contents of program memory pointed by the value in the Z register and writes it to register Rx. The effective cycle latency is 1 Cycle.
-	Rx <- (ptr)
-17. Store - ST (addr), Rx - STFB (addr) Rx, Ry
-	This instruction stores the value in the source register into the destination register. The effective cycle latency is 1 Cycle.
-	(addr) <- Rx
-	(addr) <- Rx, Ry
-18. Move - MOVR Rx, Ry - MOV (addr0), (addr1)
-	This instruction moves a value between two addresses in data memory or two registers. The effective cycle latency is 1 Cycle.
-	Rx <- Ry
-	(addr0) <- (addr1)
-19. In - IN Rx, SFRy
-	This instruction reads in a value from one of the 32 special function registers into a general purpose register. The effective cycle latency is 1 Cycle.
-	Rx <- SFRx
-20. Out - OUT SFRx, Rx
-	This instruction stores the values in a specified GPR into the specified SFR. The effective cycle latency is 1 Cycle.
-	SFRx <- Rx
-21. Jump - JMP apma					(absolute program memory address)
-	This instruction changes the program counter to the absolute program memory address provided in an immediate fashion. The effective cycle latency is 2 Cycles.
-	PC <- apma
-22. Branch If Carry Set - BRCS apma
-	This instruction sets the program counter to the specified absolute program memory address if the carry flag is set. The effective cycle latency is 2 Cycles.
-	Carry flag ? PC <- apma : PC <- PC
-23. Branch If Carry Clear - BRCC apma
-	This instruction sets the program counter to the specified absolute program memory address if the carry flag is cleared. The effective cycle latency is 2 Cycles.
-	Carry flag ? PC <- PC : PC <- apma
-24. Branch If Equal - BREQ apma
-	This instruction sets the program counter to the specified absolute program memory address if the zero flag is set. The effective cycle latency is 2 Cycles.
-	Z flag ? PC <- apma : PC <- PC
-25. Branch If Not Equal - BRNE apma
-	This instruction sets the program counter to the specified absolute program memory address if the zero flag is cleared. The effective cycle latency is 2 Cycles.
-	Z flag ? PC <- PC : PC <- apma
-26. Branch If Negative - BRNQ apma
-	This instruction sets the program counter to the specified absolute program memory address if the negative flag is set. The effective cycle latency is 2 Cycles.
-	Negative flag ? PC <- apma : PC <- PC
-27. Branch If Positive - BRPS apma
-	This instruction sets the program counter to the specified absolute program memory address if the negative flag is cleared. The effective cycle latency is 2 Cycles.
-	Negative flag ? PC <- PC : PC <- apma
-28. Call - CALL apma
-	This instruction pushes the address of the next instruction onto the stack and then loads the absolute program memory address into the Program Counter. The effective cycle latency is 2 Cycles.
-	(CSP) <- PC + 1
-	 CSP  <- CSP + 1
-	 PC  <- apma
-29. Return - RET
-	This instruction pops the previously pushed return address into the program counter. The effective cycle latency is 5 Cycles.
-	PC <- (CSP)
-	CSP <- CSP - 1
-30. Return From Interrupt - RETI
-	This instruction is identical to return except it alerts the interrupt controller that the program has left its interrupt service routine. This allows for nested interrupts. The effective cycle latency is 5 Cycles.
-	PC <- (CSP)
-	CSP <- CSP - 1
-31. Push - PUSH Rx
-	This instruction pushes the contents of register Rx onto the stack. The effective cycle latency is 1 Cycle.
-	(SP) <- Rx
-	SP <- SP - 1 (8-bit registers)
-32. Pop - POP Rx
-	This instruction pops the contents of memory pointed to by the stack pointer and places that value in register Rx. The effective cycle latency is 1 Cycle.
-	Rx <- (SP)
-	SP <- SP + 1
-33. Halt - HLT
-	This instruction halts the processor. Only a reset or interrupt can restore the cpu to operation. The effective cycle latency is 1 Cycle.
+	Rx <- Rx + Ry <br>
+	Rx <- Rx + k <br>
+5. Subtract - SUB Rx, Ry - SUBI Rx, k <br>
+	This instruction subtracts two registers or a register and an immediate value. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx - Ry <br>
+	Rx <- Rx - k <br>
+6. Compare - CP Rx, Ry - CPI Rx, k <br>
+	This instruction subtracts the second operand from the first, but does not store the result. Thus only relevant flags are produced for any subsequent control flow instruction to make use of. The effective cycle latency is 1 Cycle. <br>
+7. Multiply - MUL Rx, Ry - MULI Rx, Rx1,  k <br>
+	This instruction multiplies either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle. <br>
+	Rx, Ry <- Rx * Ry <br>
+	Rx, Ry <- Rx * k <br>
+8. And - AND Rx, Ry - ANDI Rx, k <br>
+	This instruction performs a bitwise and between either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx & Ry <br>
+	Rx <- Rx & k <br>
+9. Or - OR Rx, Ry - ORI Rx, k <br>
+This instruction performs a bitwise or between either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx | Ry <br>
+	Rx <- Rx | k <br>
+10. Shift Right - SHR Rx <br>
+	This instruction shifts the source register right by a single bit storing the result in the destination register. A zero is shifted into the high bit, which is not shifted into the carry flag. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx >> 1 <br>
+11. Shift Left - SHL Rx <br>
+	This instruction shifts the source register left by a single bit storing the result in the destination register. A zero is shifted into the lowbit, which is not shifted into the carry flag. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx << 1 <br>
+12. Complement - COM Rx <br>
+	This instruction will take the two’s complement of a given register. The effective cycle latency is 1 Cycle. <br>
+	Rx <- ~Rx + 1 <br>
+13. Invert - INV Rx <br>
+	This instruction inverts all the bits in a given register. The effective cycle latency is 1 Cycle. <br>
+	Rx <- ~Rx <br>
+14. Load - LD Rx, (addr) - LDFB Rx, Ry (addr) <br>
+	This instruction loads a value from a specific memory address into a register or register pair. The effective cycle latency is 1 Cycle. <br>
+	Rx <- (ptr) <br>
+	Rx, Ry <- (ptr) (For LDFB 12 bits are loaded, the top byte is zero extended to 16-Bits) <br>
+15. Load Immediate - LDI Rx, k <br>
+	This instruction stores an 8-Bit immediate data value into the specified register. The effective cycle latency is 1 Cycle. <br>
+	Rx <- k <br>
+16. Load From Program Memory - LPM Rx, Z <br>
+	This instruction loads the contents of program memory pointed by the value in the Z register and writes it to register Rx. The effective cycle latency is 1 Cycle. <br>
+	Rx <- (ptr) <br>
+17. Store - ST (addr), Rx - STFB (addr) Rx, Ry <br>
+	This instruction stores the value in the source register into the destination register. The effective cycle latency is 1 Cycle. <br>
+	(addr) <- Rx <br>
+	(addr) <- Rx, Ry <br>
+18. Move - MOVR Rx, Ry - MOV (addr0), (addr1) <br>
+	This instruction moves a value between two addresses in data memory or two registers. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Ry <br>
+	(addr0) <- (addr1) <br>
+19. In - IN Rx, SFRy <br>
+	This instruction reads in a value from one of the 32 special function registers into a general purpose register. The effective cycle latency is 1 Cycle. <br>
+	Rx <- SFRx <br>
+20. Out - OUT SFRx, Rx <br>
+	This instruction stores the values in a specified GPR into the specified SFR. The effective cycle latency is 1 Cycle. <br>
+	SFRx <- Rx <br>
+21. Jump - JMP apma					(absolute program memory address) <br>
+	This instruction changes the program counter to the absolute program memory address provided in an immediate fashion. The effective cycle latency is 2 Cycles. <br>
+	PC <- apma <br>
+22. Branch If Carry Set - BRCS apma <br>
+	This instruction sets the program counter to the specified absolute program memory address if the carry flag is set. The effective cycle latency is 2 Cycles. <br>
+	Carry flag ? PC <- apma : PC <- PC <br>
+23. Branch If Carry Clear - BRCC apma <br>
+	This instruction sets the program counter to the specified absolute program memory address if the carry flag is cleared. The effective cycle latency is 2 Cycles. <br>
+	Carry flag ? PC <- PC : PC <- apma <br>
+24. Branch If Equal - BREQ apma <br>
+	This instruction sets the program counter to the specified absolute program memory address if the zero flag is set. The effective cycle latency is 2 Cycles. <br>
+	Z flag ? PC <- apma : PC <- PC <br>
+25. Branch If Not Equal - BRNE apma <br>
+	This instruction sets the program counter to the specified absolute program memory address if the zero flag is cleared. The effective cycle latency is 2 Cycles. <br>
+	Z flag ? PC <- PC : PC <- apma <br>
+26. Branch If Negative - BRNQ apma <br>
+	This instruction sets the program counter to the specified absolute program memory address if the negative flag is set. The effective cycle latency is 2 Cycles. <br>
+	Negative flag ? PC <- apma : PC <- PC <br>
+27. Branch If Positive - BRPS apma <br>
+	This instruction sets the program counter to the specified absolute program memory address if the negative flag is cleared. The effective cycle latency is 2 Cycles. <br>
+	Negative flag ? PC <- PC : PC <- apma <br>
+28. Call - CALL apma <br>
+	This instruction pushes the address of the next instruction onto the stack and then loads the absolute program memory address into the Program Counter. The effective cycle latency is 2 Cycles. <br>
+	(CSP) <- PC + 1 <br>
+	 CSP  <- CSP + 1 <br>
+	 PC  <- apma <br>
+29. Return - RET <br>
+	This instruction pops the previously pushed return address into the program counter. The effective cycle latency is 5 Cycles. <br>
+	PC <- (CSP) <br>
+	CSP <- CSP - 1 <br>
+30. Return From Interrupt - RETI <br>
+	This instruction is identical to return except it alerts the interrupt controller that the program has left its interrupt service routine. This allows for nested interrupts. The effective cycle latency is 5 Cycles. <br>
+	PC <- (CSP) <br>
+	CSP <- CSP - 1 <br>
+31. Push - PUSH Rx <br>
+	This instruction pushes the contents of register Rx onto the stack. The effective cycle latency is 1 Cycle. <br>
+	(SP) <- Rx <br>
+	SP <- SP - 1 (8-bit registers) <br>
+32. Pop - POP Rx <br>
+	This instruction pops the contents of memory pointed to by the stack pointer and places that value in register Rx. The effective cycle latency is 1 Cycle. <br>
+	Rx <- (SP) <br>
+	SP <- SP + 1 <br>
+33. Halt - HLT <br>
+	This instruction halts the processor. Only a reset or interrupt can restore the cpu to operation. The effective cycle latency is 1 Cycle. <br>
 
 ### Register Descriptions
