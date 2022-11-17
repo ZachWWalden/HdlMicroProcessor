@@ -46,16 +46,16 @@ This stage is quite simple relative to the Execute and Memory stages. It simply 
 4. MEM/WB. This module stores the instruction word previously in EX/MEM, and the address read out of the call stack. It also stores the data outputs of the memory stage and the values previously stored in itself.
 ## Programmers Model
 ### Instruction Set
-1. No Operation - NOP
-	Simply wastes 1 instruction cycle. This will be the same number of clock cycles as the quickest instruction that actually does something. The effective cycle latency is 1 Cycle.
-2. Increment - INC Rx
-	This instruction increments the given register. The effective cycle latency is 1 Cycle.
-	Rx <- Rx + 1
-3. Decrement - DEC Rx
-	This instruction decrements the given register. The effective cycle latency is 1 Cycle.
-	Rx <- Rx - 1
-4. Add - ADD Rx, Ry - ADDI Rx, k
-	This instruction either adds two registers or an immediate value to a register. The effective cycle latency is 1 Cycle.
+1. No Operation - NOP <br>
+	Simply wastes 1 instruction cycle. This will be the same number of clock cycles as the quickest instruction that actually does something. The effective cycle latency is 1 Cycle. <br>
+2. Increment - INC Rx <br>
+	This instruction increments the given register. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx + 1 <br>
+3. Decrement - DEC Rx <br>
+	This instruction decrements the given register. The effective cycle latency is 1 Cycle. <br>
+	Rx <- Rx - 1 <br>
+4. Add - ADD Rx, Ry - ADDI Rx, k <br>
+	This instruction either adds two registers or an immediate value to a register. The effective cycle latency is 1 Cycle. <br>
 	Rx <- Rx + Ry
 	Rx <- Rx + k
 5. Subtract - SUB Rx, Ry - SUBI Rx, k
