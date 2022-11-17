@@ -13,9 +13,20 @@
 ![microarch](images/microarchitecture_high_res.jpg)
 
 ### Memory Architecture
-
+My processor has a Harvard memory architecture. What that means is that the data and instruction memories are split. In my case, I have one ROM that stores the instructions and any constant data baked into a program. The other parts of the memory structure are the Framebuffer and Main memory. These are both RAM’s that are used for two separate things, which I will dive into shortly. All memories can complete a read and write within a single CPU cycle. This is achieved by running the memory clock at exactly twice the frequency of the core. This happens to be the number one performance bottleneck in this architecture.
+#### Program Memory
+The program will be loaded into an FPGA block ram at program time then accessed by the pipeline. This memory is a dual ported 64 kB BRAM. The fetch port will have a 32 bit data bus and a 14 bit address bus. The memory access unit port will have an 8 bit data bus and a 16 bit address bus.
+#### Data Memory
+64 kB of RAM. This is stored on the FPGA. It has a single access port with a 16-bit address bus and an 8-bit data bus. This can only be accessed by the cpu.
+#### Call Stack
+The call stack is a small block ram that stores return addresses. These are 14-bit words. In total, this memory can store up to 256 of those return addresses. Thus it is indexed by an 8-but stack pointer register. Because this memory will only store the call stack, the pointer register shall count up from address 0 which will be clocked in on system reset.
+#### Frame Buffer
+This is a dual ported memory that stores exactly enough data to store a single 160x120 frame with 12-bit per pixel color data. This will be read by the VGA controller and drawn to a display. It will be read and written to by the cpu using load and store instructions.
 ### Pipeline
-
+My processor utilizes a 5-stage execution pipeline to increase total instruction throughput, and thus overall performance relative to a sequential or single cycle machine. The five stages are, in this order, Fetch, Decode, Execute, Memory, and Writeback. A special register, called a pipeline register, separates each stage of the pipeline. These registers store every control signal, or data value needed for an instruction to execute properly in the next stage. With that said, I will go into more detailed descriptions of each pipeline stage.
+#### Functional Units
+1. Instruction Word Selection Multiplexor. This module allows the hazard control unit to select between either the output of the fetch port of program memory or its own 32-Bit instruction bus as inputs into the first pipeline register, IF/ID. This feature is used for coordinating stalls and interrupts. Say we need to stall the fetch stage for a cycle, we do not want whatever instruction was being fetched from program memory by the program counter that cycle to enter the pipeline. So, by asserting this multiplexor’s select signal, the hazard control unit can insert a nop into the pipeline. It can also insert a call instruction in the case of an interrupt.
+2. Register File. This module is a 32 entry 8-Bit register file. It has two read ports, as well as two write ports. This is a reasonably sized register file allowing for longer programs that do not have to touch memory for full operation, improving speed of hand optimized assembly and potentially compiled code without the need to implement the complex hardware algorithms for register renaming.
 #### Fetch Stage
 ![fetch](images/fetch.jpg) <br>
 The fetch stage is one of the simpler stages. It only has two modules within it. The program counter, and a multiplexor, controlled by the cpu control state machine, selects the next value of the program counter. There are four: the current value incremented, a return address, a branch target address, or an interrupt vector address. The program counter can also be stalled. In this case it simply keeps the same value.
