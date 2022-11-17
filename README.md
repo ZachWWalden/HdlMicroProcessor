@@ -158,3 +158,67 @@ This instruction performs a bitwise or between either two registers or a registe
 	This instruction halts the processor. Only a reset or interrupt can restore the cpu to operation. The effective cycle latency is 1 Cycle. <br>
 
 ### Register Descriptions
+1. Stack Pointer Low (SPL) <br>
+Low byte of the 16-Bit stack pointer. <br>
+2. Stack Pointer High (SPH) <br>
+High Byte of the 16-Bit stack pointer. <br>
+3. X Pointer Low (XL) <br>
+Low byte of the 16-Bit X pointer. <br>
+4. X Pointer High (XH) <br>
+High byte of the 16-Bit X pointer. <br>
+5. Y Pointer Low (YL) <br>
+Low byte of the 16-Bit Y pointer. <br>
+6. Y Pointer High (YH) <br>
+High byte of the 16-Bit Y pointer. <br>
+7. Z Pointer Low (ZL) <br>
+Low byte of the 16-Bit Z pointer. <br>
+8. Z Pointer High (ZH) <br>
+High byte of the 16-Bit Z pointer. <br>
+9. Timer One Control Register (T1CR) <br>
+Bit <0> is a timer enable bit. If it is set, the timer will increment on every clock cycle. Bit <1> is a clear bit. If set, it will clear the value in the timer. <br>
+10. Call Stack Pointer (CSP) <br>
+8-Bit call stack pointer. The user can set this, but it does not actually matter so long as no function calls go more than 256 deep. <br>
+11. LED (LED) <br>
+This register is directly connected to LED on the board of the Arty S7. <br>
+12. Interrupt Controller Control Register (ICCR) <br>
+This register controls the operation of the interrupt controller. If bit <0> is set, the interrupt controller will accept interrupts, otherwise it will ignore any detected interrupt conditions. <br>
+13. General Interrupt Control Register (GICR) <br>
+This register is used as a mask register. If bit <0> is set, the interrupt controller will look for interrupt conditions on the vblank interrupt line. If bit <1> is set, the interrupt controller will look for interrupt conditions coming from an illegal opcode exception. If bit <2> is set, the interrupt controller will look for interrupt conditions on the timer compare match line. <br>
+14. Timer Compare Byte 0 (TCB0) <br>
+Byte 0 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+15. Timer Compare Byte 1 (TCB1) <br>
+Byte 1 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+16. Timer Compare Byte 2 (TCB2) <br>
+Byte 2 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+17. Timer Compare Byte 3 (TCB3) <br>
+Byte 3 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+18. Timer Compare Byte 4 (TCB4) <br>
+Byte 4 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+19. Timer Compare Byte 5 (TCB5) <br>
+Byte 5 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+20. Timer Compare Byte 6 (TCB6) <br>
+Byte 6 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+21. Timer Compare Byte 7 (TCB7) <br>
+Byte 7 of the value that is compared to the timer value in the timer. The full value is 64-Bits. <br>
+22. Port B Out (PBOUT) <br>
+The value stored in this register is output onto 8 pins external to the FPGA. It is used for general purpose output. <br>
+23. Port A Out (PAOUT) <br>
+The value stored in this register is output onto 8 pins external to the FPGA. It is used for general purpose output. <br>
+24. Port A In (PAIN) <br>
+The value stored in this register is read in from 8 pins external to the FPGA. It is used for general purpose input. It is read in on any cycle that an SFR is not written to. <br>
+25. Timer Byte 0 (TB0) <br>
+This register is Byte 0 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+26. Timer Byte 1 (TB1) <br>
+This register is Byte 1 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+27. Timer Byte 2 (TB2) <br>
+This register is Byte 2 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+28. Timer Byte 3 (TB3) <br>
+This register is Byte 3 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+29. Timer Byte 4 (TB4) <br>
+This register is Byte 4 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+30. Timer Byte 5 (TB5) <br>
+This register is Byte 5 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+31. Timer Byte 6 (TB6) <br>
+This register is Byte 6 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
+32. Timer Byte 7 (TB7) <br>
+This register is Byte 7 of the timer’s value. It is read in on any cycle that an SFR is not written to. <br>
