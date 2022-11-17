@@ -3,12 +3,17 @@
 
 ## Project Goals
 
-## Design Retrospective
+## Design Overview
+My processor utilizes a 5 stage pipeline to increase the performance of the processor. This was done mainly because I wanted to design something more complex to challenge myself and reinforce advanced topics in computer architecture. This resulted in a full System on Chip that includes a VGA controller that outputs a 160x120 progressive signal at 12-Bits per pixel and uses a framebuffer tightly coupled to the core. A 64-Bit timer for simple performance evaluation and future plans for PWM modules. My design also contains an interrupt controller for I/O and ensures that the framebuffer is only written to during the vertical blanking period for prevention of screen tearing. Delving into the core, there are five pipeline stages: fetch decode, execute, memory, and writeback. The core is mostly bypassed due to a few oversights on my part when writing the pipeline hazard detection and avoidance modules. Pipelining allows for significantly higher clock frequencies than a single cycle design while maintaining the effective execution latency of the single cycle design.
 
-## Issues
-1. Interrupt Oversight
-2. Bypassing Oversight
-3.
+## Design Retrospective
+Using the modern FPGA rather than the old lattice part allows a much more integrated fast system. Based on static timing analysis, the highest clock speed this design would reach is approximately 50 MHz. Most instructions will work well over a hundred MHz, but due to a misguided design decision, any branch occurring directly after an arithmetic instruction creates a massive time constraint as it forces the branch resolution logic data outputs to be valid before the negative edge of the clock to ensure the hazard unit sequences a taken branch correctly. Because, I designed the Branch Resolution logic to simply look at the flags asynchronously in the decode stage, while the arithmetic instruction executes in the execute stage, I made it to where every arithmetic operation has be be finished before the negative edge of the clock. This greatly increases cycle time in order to ensure correct operation of branches following arithmetic. I made this decision because it reduced the taken branch penalty to a single cycle, while allowing not taken branches to have no penalty. There are two solutions to this problem. The first, which I would choose, is to move the branch resolution logic to the execute stage and read from the flags register. This has one disadvantage in making the penalty for a taken branch 2 cycles rather than 1 a 50% increase on the effective latency of that instruction, but granting a much lower cycle time. To facilitate this change some slight modifications must be made to the hazard control unit for sequencing the a taken branch and invalidating the two instructions fetch directly after the taken branch. The second option, which is more time and resource intensive, is to add a second ALU into the decode stage and reject the use of a condition code register all together. This would match RISC-V’s implementation of branch instructions. It would leave taken branches with a penalty with a penalty of two cycles because two register values would have to be read, operated on, than the results would have to be examined, a lengthy process with high latency. This solution would work well on deeper pipelines that split decode into multiple stages.
+
+The second big issue with my design that limits clock speed is how I access memory. My design must run the memory at twice the frequency of the core to ensure single cycle latency for reads. This means that I limited in core frequency by the fundamental limit of the memory blocks on the Spartan 7 FPGA of around 300 MHz. To improve clock speed each stage that access memory would have to be pipelined, bringing the total depth of the integer pipeline to 7 stages. It would also increase the taken branch penalty to 3 cycles, a serious limiter of performance. Adding the extra memory stages would not be a performance issue as a new address would be able to be issued to the memory unit every cycle, results would not be valid for one extra cycle but the throughput would remain identical to the current implementation ignoring taken branches which would invalidate three instructions rather than just one. Moving to the data memory access stages, unlike the fetch port, would not lose any throughput as accesses will still be pipelined. Although arithmetic stalls would incur a two cycle penalty rather than one. Overall, these changes would reduce Instructions Per Clock, but the frequency increases greatly outweigh that loss, conservatively increasing the performance of the core by 50%.
+
+I would highly recommend the Xilinx hardware. The simplicity of having a single board with no external wires that can greatly outperform the older system is excellent. On top of that, the solutions are significantly cheaper. I think the school should should move to the use of Digilent’s Basys 3 board which uses a slightly smaller then my Spartan 7 50, Artix 7 35. The basys has a VGA connector built in, a 4 digit 7-segment display, tons of switches, and four pmod connectors, allowing for great flexibility in projects for digital labs. The one downside is the sheer size of the Vivado toolchain which comes in at around 60 GB, and requires 100 GB to be free in order to install it. Overall, switching from the old Lattice parts to Xilinx would bring our students into contact with tools they are significantly more likely to encounter in their future careers.
+
+To wrap up, I am glad I went with the pipelined design. It presented my with a significant challenge, while also spicing up my semester. I would call this project a success, though, I wish I had written more demos to show off my VGA controller, but alas. That is what the summer is for. I may even write a C compiler backend. Thanks for offering the class Professor Maher.
 ## Microarchitecture
 ![microarch](images/microarchitecture_high_res.jpg)
 
@@ -179,7 +184,17 @@ This instruction performs a bitwise or between either two registers or a registe
 33. Halt - HLT <br>
 	This instruction halts the processor. Only a reset or interrupt can restore the cpu to operation. The effective cycle latency is 1 Cycle. <br>
 
+### Errata
+In the case of instructions that require two register operands, if each of the two instructions preceding it have exactly 1 unique dependency for the originally mentioned instruction, the hazard detection and forwarding units will not detect the hazard and thus the chance for incorrect execution is almost guaranteed unless two NOPS are inserted between the final dependent instruction and the two preceding hazardous writes.
+
+	Any pointer increment or decrement does not take effect until the next cycle. Thus, it is advised that the programmer not write sequential memory instructions with increments on the same pointer. They should either add a single NOP, or, if they can perform interleaving of independent memory accesses.3.36.1 Stack Pointer Low (SPL)
+
+It should be noted that is the CPU were to interrupt between any instruction that affects the flags and an instuction that uses those results, upon return from that interrupt, correct program execution would be lost. <br>
+
+
+
 ### Register Descriptions
+Each list number represents the described register's address in the SFR File <br>
 1. Stack Pointer Low (SPL) <br>
 Low byte of the 16-Bit stack pointer. <br>
 2. Stack Pointer High (SPH) <br>
