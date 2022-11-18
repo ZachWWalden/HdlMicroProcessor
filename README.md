@@ -289,6 +289,7 @@ The Z pointer, is a general purpose memory pointer. It may be used to address pr
 
 ### Assembler User Guide
 [Assembler Source Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/assembler/zwriscassemble) <br>
+[bin2coe Source Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/assembler/bin2coe) <br>
 #### Comments
 The following code demonstrates how you can
 
