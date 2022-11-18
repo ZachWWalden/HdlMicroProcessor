@@ -23,7 +23,7 @@ To wrap up, I am glad I went with the pipelined design. It presented my with a s
 ## Microarchitecture
 ![microarch](images/microarchitecture_high_res.jpg) <br>
 This is the code that was synthesized for running on the FPGA, It includes all Xilinx black box memory and clock generation units along with the VGA sync generator: [Top Module Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/soc.v) <br>
-This code strips out all the Xilinx IP and the VGA sync generator for simulation: Simulation Top Module](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/cpu.v) <br>
+This code strips out all the Xilinx IP and the VGA sync generator for simulation: [Simulation Top Module](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/cpu.v) <br>
 Here is the test bench code for the CPU it assumes the test program, in the .coe format used for initializing Xilinx Block Rams is in the same directory named "test.coe": [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/cpu_tb.py) <br>
 ### SOC Functional Units
 1. vga_controller
@@ -279,7 +279,7 @@ This register is Byte 7 of the timer’s value. It is read in on any cycle that 
 
 ### Memory Pointer Usage
 1. Stack Pointer <br>
-	This pointer is used only by push and pop instructions. The programmer should intialize it to point to the end of ram at the beginning 	of their program by loading in 0xFF to the high and low byte. <br>
+This pointer is used only by push and pop instructions. The programmer should intialize it to point to the end of ram at the beginning 	of their program by loading in 0xFF to the high and low byte. <br>
 2. X Pointer <br>
 The X pointer, is a general purpose memory pointer. It may be used to address program memory, main memory, or the framebuffer. After using it you may increment it by using this syntax: X+, rather than this syntax X. <br>
 3. Y Pointer <br>
@@ -288,6 +288,9 @@ The Y pointer, is a general purpose memory pointer. It may be used to address pr
 The Z pointer, is a general purpose memory pointer. It may be used to address program memory, main memory, or the framebuffer. After using it you may increment it by using this syntax: Z+, rather than this syntax Z. <br>
 
 ### Assembler User Guide
+[Assembler Source Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/assembler/zwriscassemble) <br>
 #### Comments
+	;Illegal Opcode Exception
+		JMP MAIN
 #### Operands
 #### Loading Into FPGA
