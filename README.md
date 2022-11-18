@@ -2,9 +2,9 @@
 8-bit Microprocessor with 5-stage RISC Pipeline
 
 ## Project Goals
-
+While this project was technically for a class, I greatly expanded the scope of the project to get more experience with more advanced concepts in the real of Digital Design. The standard project for this class is to implement a sequential processor with a limited instruction set. Going into this class, I had gained a reasonable level of experience in basic computer architecture from sources such as Ben Eaters Breadboard build and doing projects my Junior year in school in assembly.
 ## Design Overview
-My processor utilizes a 5 stage pipeline to increase the performance of the processor. This was done mainly because I wanted to design something more complex to challenge myself and reinforce advanced topics in computer architecture. This resulted in a full System on Chip that includes a VGA controller that outputs a 160x120 progressive signal at 12-Bits per pixel and uses a framebuffer tightly coupled to the core. A 64-Bit timer for simple performance evaluation and future plans for PWM modules. My design also contains an interrupt controller for I/O and ensures that the framebuffer is only written to during the vertical blanking period for prevention of screen tearing. Delving into the core, there are five pipeline stages: fetch decode, execute, memory, and writeback. The core is mostly bypassed due to a few oversights on my part when writing the pipeline hazard detection and avoidance modules. Pipelining allows for significantly higher clock frequencies than a single cycle design while maintaining the effective execution latency of the single cycle design.
+My processor utilizes a 5 stage pipeline and bypassing to increase the performance of the processor. This was done mainly because I wanted to design something more complex to challenge myself and reinforce advanced topics in computer architecture. This resulted in a full System on Chip that includes a VGA controller that outputs a 160x120 progressive signal at 12-Bits per pixel and uses a framebuffer tightly coupled to the core. A 64-Bit timer for simple performance evaluation and future plans for PWM modules. My design also contains an interrupt controller for I/O and ensures that the framebuffer is only written to during the vertical blanking period for prevention of screen tearing. Delving into the core, there are five pipeline stages: fetch decode, execute, memory, and writeback. The core is mostly bypassed due to a few oversights on my part when writing the pipeline hazard detection and avoidance modules. Pipelining allows for significantly higher clock frequencies than a single cycle design while maintaining the effective execution latency of the single cycle design.
 
 ## Verifacation & Validation
 ### CocoTB & GTKWave
@@ -108,7 +108,7 @@ This stage is quite simple relative to the Execute and Memory stages. It simply 
 	Rx <- Rx - k <br>
 6. Compare - CP Rx, Ry - CPI Rx, k <br>
 	This instruction subtracts the second operand from the first, but does not store the result. Thus only relevant flags are produced for any subsequent control flow instruction to make use of. The effective cycle latency is 1 Cycle. <br>
-7. Multiply - MUL Rx, Ry - MULI Rx, Rx1,  k <br>
+7. Multiply - MUL Rx, Ry - MULI Rx, Ry,  k <br>
 	This instruction multiplies either two registers or a register and an immediate value. The effective cycle latency is 1 Cycle. <br>
 	Rx, Ry <- Rx * Ry <br>
 	Rx, Ry <- Rx * k <br>
@@ -290,7 +290,30 @@ The Z pointer, is a general purpose memory pointer. It may be used to address pr
 ### Assembler User Guide
 [Assembler Source Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/assembler/zwriscassemble) <br>
 #### Comments
+The following code demonstrates how you can
 	;Illegal Opcode Exception
 		JMP MAIN
+
+	CALL TEST_INC ;LED = 0x01
+	CALL TEST_DEC ;LED = 0x02
+#### Labels
+Labels must start the line with a colon ":". When using a label for a control flow instruction, the colong should not be included.
+		CPI R1 0xFF
+		BREQ test_add_ret
+		CALL TEST_FAILED
+	:test_add_ret
+		INC R30
 #### Operands
+Operands are to be spearated by spaces. For immeadiate values, use this hexadecimal format "0xXX". For General purpose registers, use this syntax "RXX". For registers under 10 use this syntax "RX". For special function registers, register names are in parentheses following their full names. For memory pointers, Z equates to using the Z pointer, X+ would use the X register with a post increment, and Y- would denote usage of the Y pointer with a post decrement.
+	LDI R31 0x00 ;Set up sucess flag
+	LDI R30 0x00
+
+	LDI R3 0x70
+	STR X+ R1
+	STR Y+ R2
+
+	OUT XH R0
+	OUT XL R0
+	LDI R10 0x0D
 #### Loading Into FPGA
+	To load an assembled program into your fpga, assuming you have all the HDL files properly included, run the .asm file through the assmbler which will output a 64 KB binary file containing your assembled program. Next run the assembled binary file thorough the "bin2coe" script which will translate the binary file into Xilinx's coe format. That coe file can then be used in the Block Memory Generator within Vivado to initialize the CPU's program memory. Next simply resynthesize the entire project
