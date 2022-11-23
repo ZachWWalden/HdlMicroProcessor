@@ -2,7 +2,7 @@
 8-bit Microprocessor with 5-stage RISC Pipeline
 
 # Table of Contents
-1. [Project Goals](projectgoals)
+1. [Project Goals](#projectgoals)
 
 ## Project Goals <a name="projectgoals"></a>
 While this project was technically for a class, I greatly expanded the scope of the project to get more experience with more advanced concepts in the real of Digital Design. The standard project for this class is to implement a sequential processor with a limited instruction set. Going into this class, I had gained a reasonable level of experience in basic computer architecture from sources such as Ben Eaters Breadboard build and doing projects my Junior year in school in assembly.
