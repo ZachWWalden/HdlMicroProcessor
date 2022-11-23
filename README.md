@@ -1,13 +1,17 @@
 # HdlMicroProcessor
 8-bit Microprocessor with 5-stage RISC Pipeline
 
-## Project Goals
+# Table of Contents
+1. [Project Goals](projectgoals)
+
+## Project Goals <a name="projectgoals"></a>
 While this project was technically for a class, I greatly expanded the scope of the project to get more experience with more advanced concepts in the real of Digital Design. The standard project for this class is to implement a sequential processor with a limited instruction set. Going into this class, I had gained a reasonable level of experience in basic computer architecture from sources such as Ben Eaters Breadboard build and doing projects my Junior year in school in assembly.
 ## Design Overview
 My processor utilizes a 5 stage pipeline and bypassing to increase the performance of the processor. This was done mainly because I wanted to design something more complex to challenge myself and reinforce advanced topics in computer architecture. This resulted in a full System on Chip that includes a VGA controller that outputs a 160x120 progressive signal at 12-Bits per pixel and uses a framebuffer tightly coupled to the core. A 64-Bit timer for simple performance evaluation and future plans for PWM modules. My design also contains an interrupt controller for I/O and ensures that the framebuffer is only written to during the vertical blanking period for prevention of screen tearing. Delving into the core, there are five pipeline stages: fetch decode, execute, memory, and writeback. The core is mostly bypassed due to a few oversights on my part when writing the pipeline hazard detection and avoidance modules. Pipelining allows for significantly higher clock frequencies than a single cycle design while maintaining the effective execution latency of the single cycle design.
 
 ## Verifacation & Validation
 ### CocoTB & GTKWave
+![gtkwave](images/gtkwave.jpg) <br>
 ### VGA
 ### CPU Simulation
 ### FPGA Validation
@@ -65,7 +69,7 @@ This stage translates instruction words into operands and control signals to be 
 4. ID/EX Selection Mux. This determines whether immediate data values, or the register file read values are latched into ID/EX on the next clock cycle. <br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/datapath/pipeline/stages/decode/id_ex_data_input_mux/id_ex_data_input_mux.v) <br>
 #### Execute Stage
 ![execute](images/execute.jpg) <br>
-The execute stage has two major functions. First it has the Arithmetic Logic Unit which performs all the calculations of the CPU. Second it checks for data hazards related to writes to either memory or the special function register file. If a hazard is found, multiplexor control signals are generated that ensure that the sequential model of execution is presented to the programmer. <br>  [Code]( <br>
+The execute stage has two major functions. First it has the Arithmetic Logic Unit which performs all the calculations of the CPU. Second it checks for data hazards related to writes to either memory or the special function register file. If a hazard is found, multiplexor control signals are generated that ensure that the sequential model of execution is presented to the programmer. <br>  [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/datapath/pipeline/stages/execute/execute.v) <br>
 ##### Functional Units
 1. Alu Input Mux. This mux can send 1 of 5 data values into each operand port of the alu. ID/EX top and bottom to the top and bottom operand respectively. Both operand ports can take both data values stored in EX/MEM, and MEM/WB. <br>  [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/datapath/pipeline/stages/execute/alu_input_mux/alu_input_mux.v) <br> [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/datapath/pipeline/stages/execute/alu_input_mux/alu_input_mux_tb.py) <br>
 2. ALU. This module contains a multiplier, bit shifter, adder/subtractor, and bitwise logic unit. It uses a common result bus with the low 2-bits of the instruction word effectively encoding a selection signal to generate individual output enable signals to each of the four functional units within the alu, ensuring no bus conflicts occur. <br>  [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/datapath/pipeline/stages/execute/alu/alu.v) <br> [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/datapath/pipeline/stages/execute/alu/alu_tb.py) <br>
