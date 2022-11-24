@@ -43,6 +43,9 @@ My processor utilizes a 5 stage pipeline and bypassing to increase the performan
 ### CocoTB & GTKWave <a name="cctbgtk"></a>
 ![gtkwave](images/gtkwave.jpg) <br>
 ### VGA <a name="vga"></a>
+![Sync Generator Finished](images/syncgen.jpg)
+![Frame	Buffer Read Address Issues](images/fbread.jpg)
+![Finished](images/vgadone.jpg)
 ### CPU Simulation <a name="cpusim"></a>
 ### FPGA Validation <a name="fpgaval"></a>
 
