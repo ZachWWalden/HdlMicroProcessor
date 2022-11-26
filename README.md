@@ -41,13 +41,45 @@ My processor utilizes a 5 stage pipeline and bypassing to increase the performan
 
 ## Verifacation & Validation <a name="vv"></a>
 ### CocoTB & GTKWave <a name="cctbgtk"></a>
+The CocoTB framework for Python was used to write testbenches for each module that needed them. CocoTB was quite easy to write test benches in due to using Python, this does not come without its drawbacks. Python is notoriously slow, and it shows here. Larger simulations that last longer can take ages to complete. Had my test benches been written in Verilog, they would have been much faster. But the ease of use with CocoTB lowered the learning curve and allowed me to work faster on this project. Each simulation would spit out a value change dump file which I viewed in a program called GTKWave. An example of this setup is shown below.
 ![gtkwave](images/gtkwave.jpg) <br>
 ### VGA <a name="vga"></a>
-![Sync Generator Finished](images/syncgen.jpg)
-![Frame	Buffer Read Address Issues](images/fbread.jpg)
-![Finished](images/vgadone.jpg)
+Having a system on an fpga with no output is quite a dull affair. What better way to spice it up than by adding a vga controller and a writable framebuffer. The first step is to write and validate horizontal and vertical sync generators. Due to memory limitations I settled on 1 160x120 progressive resolution. To achieve this resolution, I took the clock and horizontal timing numbers for 640x480 and divided them by 4. This will present the correct horizontal sync and visible area timings to any monitor while achieving a horiztontal resolution one-fourth of the original 640x40 resolution. It must be noted that the vertical timing numbers must not be changed. If each row was diplayed once,  before moving on to the next row the image would be stretched out by the factor the original clock signal was divided by. To fix this issue each row must be displayed the same number of times as the factor that the original resolution's clock was divided by, in this case 4 times.
+![VGA Simulation](images/vgasim.png) <br>
+THe above image is a simulation of a single frame from the vga controller. This simulation took a few minutes to run, showing the main weakness of CocoTB.
+![Sync Generator Finished](images/syncgen.jpg) <br>
+The above image is of my sync generator code running on the fpga at a resolution of 1920x1080. Each pixel value was incremented from the previous one.
+![Frame	Buffer Read Address Issues](images/fbread.jpg) <br>
+The above image shows the visual result of an issue where an extra memory address increment occured after each row, progressively shifting the left of the image right and then wrapping around.
+![Finished](images/vgadone.jpg) <br>
+This image shows the final result of the VGA controller after being fully debugged.
 ### CPU Simulation <a name="cpusim"></a>
+Simulating the full CPU and programs I wrote for it with CocoTB allowed this project to complete on time. I wasted a week on one singular issue where a significant portion of the design was being optimized away due to a one line error in the control unit due to a copied and pasted line that I had not changed to be the correct value. This happened to be the signal that detemined which of the potential values for the next program counter would be chosen. This caused the data outputs of the return address stack to be left unconnected as the error was on the line where that value was supposed to be chosen. Following the discovery of this error, I bit the bullet and wrote a program simulation framework testbench. I fixed many errors in program execution using this simulation including return timings, stack pointer increment timing issues, among others.
 ### FPGA Validation <a name="fpgaval"></a>
+To debug on-chip behaviour of the test program, Xilinx's Integrated Logic Analyzer or ILA was used in conjunction with one of the switches on my dev board to trigger off a reset signal and dump the signals I routed into the ILA IP.
+
+	ila_0 ila(
+		.clk(ila_clk), // input wire clk
+
+
+		.trig_in(nreset_sel),// input wire trig_in
+		.trig_in_ack(trig_ack),// output wire trig_in_ack
+		.probe0(prog_mem_addra), // input wire [13:0]  probe0
+		.probe1(prog_mem_douta), // input wire [31:0]  probe1
+		.probe2(mem_wen), // input wire [0:0]  probe2
+		.probe3(call_stk_en), // input wire [0:0]  probe3
+		.probe4(main_mem_en), // input wire [0:0]  probe4
+		.probe5(fb_en), // input wire [0:0]  probe5
+		.probe6(prog_mem_en), // input wire [0:0]  probe6
+		.probe7(addr_in), // input wire [15:0]  probe7
+		.probe8(data_in), // input wire [11:0]  probe8
+		.probe9(led), // input wire [7:0]  probe9
+		.probe10(memwb_data), // input wire [15:0]  probe10
+		.probe11(reg_file_wen), // input wire [1:0]  probe11
+		.probe12(mem_wb_opcode), // input wire [7:0]  probe12
+		.probe13(nreset), // input wire [0:0]  probe13
+		.probe14(core_clk) // input wire [0:0]  probe14
+	);
 
 ## Design Retrospective <a name="desrec"></a>
 Using the modern FPGA rather than the old lattice part allows a much more integrated fast system. Based on static timing analysis, the highest clock speed this design would reach is approximately 50 MHz. Most instructions will work well over a hundred MHz, but due to a misguided design decision, any branch occurring directly after an arithmetic instruction creates a massive time constraint as it forces the branch resolution logic data outputs to be valid before the negative edge of the clock to ensure the hazard unit sequences a taken branch correctly. Because, I designed the Branch Resolution logic to simply look at the flags asynchronously in the decode stage, while the arithmetic instruction executes in the execute stage, I made it to where every arithmetic operation has be be finished before the negative edge of the clock. This greatly increases cycle time in order to ensure correct operation of branches following arithmetic. I made this decision because it reduced the taken branch penalty to a single cycle, while allowing not taken branches to have no penalty. There are two solutions to this problem. The first, which I would choose, is to move the branch resolution logic to the execute stage and read from the flags register. This has one disadvantage in making the penalty for a taken branch 2 cycles rather than 1 a 50% increase on the effective latency of that instruction, but granting a much lower cycle time. To facilitate this change some slight modifications must be made to the hazard control unit for sequencing the a taken branch and invalidating the two instructions fetch directly after the taken branch. The second option, which is more time and resource intensive, is to add a second ALU into the decode stage and reject the use of a condition code register all together. This would match RISC-V’s implementation of branch instructions. It would leave taken branches with a penalty with a penalty of two cycles because two register values would have to be read, operated on, than the results would have to be examined, a lengthy process with high latency. This solution would work well on deeper pipelines that split decode into multiple stages.
@@ -63,11 +95,13 @@ This is the code that was synthesized for running on the FPGA, It includes all X
 This code strips out all the Xilinx IP and the VGA sync generator for simulation: [Simulation Top Module](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/cpu.v) <br>
 Here is the test bench code for the CPU it assumes the test program, in the .coe format used for initializing Xilinx Block Rams is in the same directory named "test.coe": [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/cpu_tb.py) <br>
 ### SOC Functional Units
-1. vga_controller
-2. timer
-3. hazard
-4. memory multiplexor
-5. interrupt controller
+1. VGA Controller: A simple 160x120 vga controller that reads from a dual ported memory where the other ends is accessible by the cpu core.<br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/vga_controller/vga_controller.v) <br>
+Horizontal Counter:<br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/vga_controller/horiz_cntr/horiz_cntr.v) <br>
+Vertical Counter:<br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/vga_controller/vert_cntr/vert_cntr.v <br>
+2. Timer: A simple 64-bit timer. Triggers interrupt on campare value match. Compare Value and Timer value can be wrote and read by the CPU through the special function register file.<br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/timer/timer.v) <br> [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/timer/timer_tb.py) <br>
+3. Hazard Control Unit: State machine that handles pipeline stall sequences when exceptional events occur such as interrupts, call or return instructions, taken branches, halts, and pipeline hazards.<br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/hazard_control_unit/hazard_control_unit.v) <br> [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/hazard_control_unit/hazard_control_unit_tb.py) <br>
+4. Memory Multiplexor: Multiplexor that reads memory unit selection along with the R/~W signal to determine where data needs to be placed. <br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/memory_io/memory_io.v) <br> [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/memory_io/memory_io_tb.py) <br>
+5. Interrupt Controller: Simple interrupt controller using a double flip-flop edge detector along with a state machine to know whether the processor is interrupted or not. This was not completed, but was not a part of the project requirements. It is on the top of the list moving forward.<br> [Code](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/interrupt_controller/interrupt_controller.v) <br> [Test Bench](https://github.com/ZachWWalden/HdlMicroProcessor/blob/main/src/soc/interrupt_controller/interrupt_controller_tb.py) <br>
 ### Memory Architecture <a name="memarch"></a>
 My processor has a Harvard memory architecture. What that means is that the data and instruction memories are split. In my case, I have one ROM that stores the instructions and any constant data baked into a program. The other parts of the memory structure are the Framebuffer and Main memory. These are both RAM’s that are used for two separate things, which I will dive into shortly. All memories can complete a read and write within a single CPU cycle. This is achieved by running the memory clock at exactly twice the frequency of the core. This happens to be the number one performance bottleneck in this architecture.
 #### Program Memory <a name="progmem"></a>
